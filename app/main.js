@@ -18,6 +18,7 @@
 */
 
 var deviceInfo = function() {
+    console.info(device);
     document.getElementById("platform").innerHTML = device.platform;
     document.getElementById("version").innerHTML = device.version;
     document.getElementById("uuid").innerHTML = device.uuid;
@@ -163,3 +164,4 @@ function init() {
     // document.addEventListener("touchmove", preventBehavior, false);
     document.addEventListener("deviceready", deviceInfo, true);
 }
+init();
