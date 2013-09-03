@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/platforms/android/android.iml" filepath="$PROJECT_DIR$/platforms/android/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/org.apache.cordova.core.splashscreen/src/org.apache.cordova.core.splashscreen.iml" filepath="$PROJECT_DIR$/plugins/org.apache.cordova.core.splashscreen/src/org.apache.cordova.core.splashscreen.iml" />
     </modules>
   </component>
 </project>

@@ -29,7 +29,8 @@ public class SexDiaries extends DroidGap
     {
         super.onCreate(savedInstanceState);
         // Set by <content src="index.html" /> in config.xml
-        super.loadUrl(Config.getStartUrl());
+        super.setIntegerProperty("splashscreen", R.drawable.splash);
+        super.loadUrl(Config.getStartUrl(), 2000);
         //super.loadUrl("file:///android_asset/www/index.html")
     }
 }
