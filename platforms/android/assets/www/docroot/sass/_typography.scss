@@ -1,0 +1,38 @@
+/* Table of Contents
+==================================================
+		#Imported Fonts
+    #Fonts
+    #Typography
+    #Blockquotes
+    #Links
+    #Lists
+		#Images
+		#Figures
+		#Tables
+		#File Types
+		#RTL Overrides
+*/
+/* #Imported Fonts ------------------------------------------------------------------------ */
+@include font-face(sdFont, font-files("sdFont.ttf.woff"));
+
+/* #Fonts ------------------------------------------------------------------------ */
+$font-stack-main: sdFont, Arial, serif;
+$font-stack-paragraph: Arial, Trebuchet, sans-serif;
+$font-stack-menu: sdFont, arial, sans-serif;
+
+/* #Page Typography ------------------------------------------------------------------------ */
+html {font-size: 62.5%}
+body {padding: 0; margin:0;font-family: $font-stack-paragraph; color: $text-color; font-size: 1.6em !important; line-height: 1.538em;}
+
+// #Links ---------------------------------------------------------------------
+a, a:visited { color: $link-color; text-decoration: none; outline: 0; }
+a:hover, a:focus { color: $link-color-hover;text-decoration: none; }
+p a, p a:visited { line-height: inherit; }
+
+
+// #Headers ---------------------------------------------------------------------
+h1, h2, h3, h4, h5, h6  {
+  color: $text-color;
+  font-family: $font-stack-main;
+  font-weight: normal;
+}

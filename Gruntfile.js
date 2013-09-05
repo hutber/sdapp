@@ -14,9 +14,10 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        docroot: 'platforms/android/assets/www/docroot',
+        rootPath: 'platforms/android/assets/www',
+        docroot: '<%= yeoman.rootPath %>/docroot',
         css: '<%= yeoman.docroot %>/css',
-        fonts: '<%= yeoman.docroot %>/fonts',
+        fonts: 'docroot/fonts',
         sass: '<%= yeoman.docroot %>/sass',
         img: '<%= yeoman.docroot %>/img',
         js: '<%= yeoman.docroot %>/js',
@@ -37,9 +38,8 @@ module.exports = function (grunt) {
             },
             livereload: {
                 files: [
-                    '{,*/}/*.html',
                     '{<%= yeoman.sass %>}/{,*/}*.sass',
-                    '{,*/}*.html',
+                    '<%= yeoman.rootPath %>/{,*/}*.html',
                     '<%= yeoman.js %>/{,*/}*.js',
                     '<%= yeoman.img %>/{,*/}*.{png,jpg,jpeg,gif,webp}'
                 ]
@@ -55,10 +55,10 @@ module.exports = function (grunt) {
             options: {
                 sassDir: '<%= yeoman.sass %>',
                 imagesDir: '<%= yeoman.img %>',
-                javascriptsDir: '<%= yeoman.js%>',
-                fontsDir: '<%= yeoman.fonts %>/fonts',
-                importPath: '<%= yeoman.docroot %>/bower_components',
-                relativeAssets: true
+                javascriptsDir: '<%= yeoman.js %>',
+                httpPath:'../',
+                httpFontsDir: 'fonts',
+                importPath: 'bower_components'
             },
             dist: {
                 options: {

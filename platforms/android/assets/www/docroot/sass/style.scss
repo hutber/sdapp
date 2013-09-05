@@ -1,95 +1,128 @@
-@import "_ie", "_print", "_screen";
 /*
-* Taken from the phonegap default
+==================================================
+Table of Contents
+==================================================
+	#Compass imports
+    #Imports dependencies
+    #Main Styles
+      #logo
 */
-* {
-  -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-}
+
+/* #Compass imports ------------------------------------------------------------------------ */
+@import "compass/reset";
+@import "compass/css3";
+
+
+/* #Imports dependencies ------------------------------------------------------------------------ */
+@import
+"_origi",
+"_variables",
+"_typography",
+"_ie",
+"_forms",
+"_print";
+
+
+/* #Main Styles ------------------------------------------------------------------------ */
 
 body {
-  -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-  -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
-  -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-  background-color:#E4E4E4;
-  background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-  background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-  background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-  background-attachment:fixed;
-  font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-  font-size:12px;
-  height:100%;
-  margin:0px;
-  padding:0px;
-  text-transform:uppercase;
-  width:100%;
-  color: #000;
+  background-color: #9acdcb;
+  @include filter-gradient(#9acdcb, #9acdcb, horizontal);
+  $experimental-support-for-svg: true;
+  @include background-image(radial-gradient(center, ellipse cover,  #9acdcb 0%,#9acdcb 14%,#a6d3d1 30%,#abd5d4 44%,#a9d4d3 61%,#9acdcb 84%,#9acdcb 100%));
 }
 
-/* Portrait layout (default) */
-.app {
-  background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-  position:absolute;             /* position in the center of the screen */
-  left:50%;
-  top:50%;
-  height:50px;                   /* text area height */
-  width:225px;                   /* text area width */
-  text-align:center;
-  padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-  margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
-  /* offset horizontal: half of text area width */
-}
+  // #Logo -------------------------------------------------------------------
+  logo {
+    padding: 0;
+    font-size: 28px;
+    color: $main-grey;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 13px 0 0;
+    line-height: 0.85em;
+    font-family: $font-stack-main;
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    span {
+      color: $link-color;
+    }
+  }
 
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-  .app {
-    background-position:left center;
-    padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-    margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-    /* offset horizontal: half of image width and text area width */
+  form {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+
+    input, button {
+      width: 80%;
+      padding: 7px;
+    }
+  }
+
+
+.login {
+  color: #FFF;
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  text-align: center;
+  a {
+    font-weight: bold;
   }
 }
 
-h1 {
-  font-size:24px;
-  font-weight:normal;
-  margin:0px;
-  overflow:visible;
-  padding:0px;
-  text-align:center;
+// #Janrain -------------------------------------------------------------------
+#openid_choice {
+  margin: 0px 0 0;
+  height: 25px;
+  width: 200px;
+  display: inline-block;
+}
+.providers {
+  margin: 0;
+  float: left;
+  width: 95px;
+  li {
+    background: transparent !important;
+    padding: 0;
+  }
+  span:first-child {
+    display: none !important;
+  }
 }
 
-.event {
-  border-radius:4px;
-  -webkit-border-radius:4px;
-  color:#FFFFFF;
-  font-size:12px;
-  margin:0px 30px;
-  padding:2px 0px;
+#janrain-facebook a, #janrain-twitter a {
+  background: url("/img/icons/social-icons.png") no-repeat scroll 6px 2px #597DB5;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 0 -2px 0 0 #1C498E inset;
+  color: #FFFFFF;
+  display: inline-block;
+  font-size: 13px;
+  font-weight: bold;
+  height: 22px;
+  line-height: 21px;
+  margin-top: -2px;
+  overflow: hidden;
+  padding-bottom: 2px;
+  padding-left: 26px;
+  text-align: center;
+  vertical-align: middle;
 }
 
-.event.listening {
-  background-color:#333333;
-  display:block;
+span.janrain-provider-text-color-facebook, span.janrain-provider-text-color-twitter {
+  color: #FFFFFF !important;
+  font-weight: bold;
+  font-family: tahoma;
+  padding: -r;
+  padding-right: 8px;
 }
 
-.event.received {
-  background-color:#4B946A;
-  display:none;
-}
-
-@keyframes fade {
-  from { opacity: 1.0; }
-  50% { opacity: 0.4; }
-  to { opacity: 1.0; }
-}
-
-@-webkit-keyframes fade {
-  from { opacity: 1.0; }
-  50% { opacity: 0.4; }
-  to { opacity: 1.0; }
-}
-
-.blink {
-  animation:fade 3000ms infinite;
-  -webkit-animation:fade 3000ms infinite;
+#janrain-twitter a {
+  background-position: 2px -25px;
+  background-color: #00ACED;
+  box-shadow: 0 -2px 0 0 #0082b3 inset;
+  margin-left: 5px;
 }
