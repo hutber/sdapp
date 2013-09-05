@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        docroot: 'docroot',
+        docroot: 'platforms/android/assets/www/docroot',
         css: '<%= yeoman.docroot %>/css',
         fonts: '<%= yeoman.docroot %>/fonts',
         sass: '<%= yeoman.docroot %>/sass',
@@ -236,7 +236,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('createDefaultTemplate', function () {
-        grunt.file.write('docroot/dist/js/templates.js', 'this.JST = this.JST || {};');
+        grunt.file.write('platforms/android/assets/www/docroot/dist/js/templates.js', 'this.JST = this.JST || {};');
     });
 
     grunt.registerTask('dev', function () {
