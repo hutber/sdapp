@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 
     // configurable paths
     var yeomanConfig = {
-        docroot: 'docroot/',
+        docroot: 'docroot',
         css: '<%= yeoman.docroot %>/css',
         fonts: '<%= yeoman.docroot %>/fonts',
         sass: '<%= yeoman.docroot %>/sass',
@@ -54,24 +54,24 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 sassDir: '<%= yeoman.sass %>',
-                cssDir: '<%= yeoman.dist %>/css',
                 imagesDir: '<%= yeoman.img %>',
                 javascriptsDir: '<%= yeoman.js%>',
                 fontsDir: '<%= yeoman.fonts %>/fonts',
                 importPath: '<%= yeoman.docroot %>/bower_components',
-                relativeAssets: true,
-                assetCacheBuster: false
+                relativeAssets: true
             },
             dist: {
                 options: {
+                    cssDir: '<%= yeoman.dist %>/css',
                     outputStyle: 'compressed',
                     environment: 'production'
                 }
             },
             dev: {
                 options: {
-                    outputStyle: 'expanded',
+                    cssDir: '<%= yeoman.docroot %>/css',
                     cssPath: '<%= yeoman.docroot %>/css',
+                    outputStyle: 'expanded',
                     debugInfo: true
                 }
             }

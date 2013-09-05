@@ -1,1 +1,213 @@
-*{-webkit-tap-highlight-color:rgba(0,0,0,0)}body{-webkit-touch-callout:none;-webkit-text-size-adjust:none;-webkit-user-select:none;background-attachment:fixed;font-family:HelveticaNeue-Light,HelveticaNeue,Helvetica,Arial,sans-serif;font-size:12px;height:100%;margin:0;padding:0;text-transform:uppercase;width:100%}.app{background:url(../img/logo.png) no-repeat center top;position:absolute;left:50%;top:50%;height:50px;width:225px;text-align:center;padding:180px 0 0;margin:-115px 0 0 -112px}@media screen and (min-aspect-ratio:1/1) and (min-width:400px){.app{background-position:left center;padding:75px 0 75px 170px;margin:-90px 0 0 -198px}}h1{font-size:24px;font-weight:400;margin:0;overflow:visible;padding:0;text-align:center}.event{border-radius:4px;-webkit-border-radius:4px;color:#FFF;font-size:12px;margin:0 30px;padding:2px 0}.event.listening{background-color:#333;display:block}.event.received{background-color:#4B946A;display:none}@keyframes fade{from{opacity:1}50%{opacity:.4}to{opacity:1}}@-webkit-keyframes fade{from{opacity:1}50%{opacity:.4}to{opacity:1}}.blink{animation:fade 3000ms infinite;-webkit-animation:fade 3000ms infinite}*{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block}audio,canvas,video{display:inline-block;*display:inline;*zoom:1}audio:not([controls]){display:none}html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}a:hover,a:active,a:focus{outline:0}sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}img{height:auto;border:0;-ms-interpolation-mode:bicubic;vertical-align:middle}button,input,select,textarea{margin:0;font-size:100%;vertical-align:middle}button,input{*overflow:visible;line-height:normal}button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0}button,input[type=button],input[type=reset],input[type=submit]{cursor:pointer;-webkit-appearance:button}input[type=search]{box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;-webkit-box-sizing:border-box;-khtml-box-sizing:border-box}input[type=search]::-webkit-search-decoration,input[type=search]::-webkit-search-cancel-button{-webkit-appearance:none}textarea{overflow:auto;vertical-align:top}@font-face{font-family:sdFont;src:url(/fonts/sdFont.ttf.woff) format("woff"),url(/fonts/sdFont.ttf.svg) format("svg"),url(/fonts/sdFont.ttf.eot) format('eot'),url(/fonts/sdFont.ttf.eot?#iefix) format("embedded-opentype");font-weight:400;font-style:normal}html{font-size:62.5%}body{padding:0;margin:0;font-family:Arial,Trebuchet,sans-serif;color:#333;font-size:1.6em!important;line-height:1.538em}a,a:visited{color:#fff;text-decoration:none;outline:0}a:hover,a:focus{color:#fff;text-decoration:none}p a,p a:visited{line-height:inherit}h1,h2,h3,h4,h5,h6{color:#333;font-family:sdFont,Arial,serif;font-weight:400}h1 a,h2 a,h3 a,h4 a,h5 a,h6 a{font-weight:inherit}h1{font-size:3.385em;line-height:1em;margin:0 0 19px;color:#b9dcdb}h2{font-size:2.462em;line-height:1.2em;margin-bottom:8px;color:#b9dcdb}h3{font-size:1.692em;line-height:1.2em;margin-bottom:8px;color:#191919}h4{font-size:1.231em;line-height:1.2em;margin-bottom:.5em;color:#191919;margin:0}h5{font-size:.91667em;line-height:1.2em;margin-bottom:.5em}h6{font-size:.91667em;line-height:1.2em;margin-bottom:.5em}html{height:100%;width:100%}body{background:#9acdcb;background:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNzUlIj4KICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM5YWNkY2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxNCUiIHN0b3AtY29sb3I9IiM5YWNkY2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIzMCUiIHN0b3AtY29sb3I9IiNhNmQzZDEiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI0NCUiIHN0b3AtY29sb3I9IiNhYmQ1ZDQiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MSUiIHN0b3AtY29sb3I9IiNhOWQ0ZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4NCUiIHN0b3AtY29sb3I9IiM5YWNkY2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOWFjZGNiIiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L3JhZGlhbEdyYWRpZW50PgogIDxyZWN0IHg9Ii01MCIgeT0iLTUwIiB3aWR0aD0iMTAxIiBoZWlnaHQ9IjEwMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);background:-moz-radial-gradient(center,ellipse cover,#9acdcb 0,#9acdcb 14%,#a6d3d1 30%,#abd5d4 44%,#a9d4d3 61%,#9acdcb 84%,#9acdcb 100%);background:-webkit-gradient(radial,center center,0,center center,100%,color-stop(0%,#9acdcb),color-stop(14%,#9acdcb),color-stop(30%,#a6d3d1),color-stop(44%,#abd5d4),color-stop(61%,#a9d4d3),color-stop(84%,#9acdcb),color-stop(100%,#9acdcb));background:-webkit-radial-gradient(center,ellipse cover,#9acdcb 0,#9acdcb 14%,#a6d3d1 30%,#abd5d4 44%,#a9d4d3 61%,#9acdcb 84%,#9acdcb 100%);background:-o-radial-gradient(center,ellipse cover,#9acdcb 0,#9acdcb 14%,#a6d3d1 30%,#abd5d4 44%,#a9d4d3 61%,#9acdcb 84%,#9acdcb 100%);background:-ms-radial-gradient(center,ellipse cover,#9acdcb 0,#9acdcb 14%,#a6d3d1 30%,#abd5d4 44%,#a9d4d3 61%,#9acdcb 84%,#9acdcb 100%);background:radial-gradient(ellipse at center,#9acdcb 0,#9acdcb 14%,#a6d3d1 30%,#abd5d4 44%,#a9d4d3 61%,#9acdcb 84%,#9acdcb 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#9acdcb', endColorstr='#9acdcb', GradientType=1)}
+/* Welcome to Compass. Use this file to write IE specific override styles.
+ * Import this file using the following HTML or equivalent:
+ * <!--[if IE]>
+ *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+ * <![endif]--> */
+/* Welcome to Compass. Use this file to define print styles.
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000317}}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
+html {
+  line-height: 1;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
+ol, ul {
+  list-style: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
+q, blockquote {
+  quotes: none;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
+a img {
+  border: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/*
+* Taken from the phonegap default
+*/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\000035}}
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\000039}}
+body {
+  -webkit-touch-callout: none;
+  /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;
+  /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;
+  /* prevent copy paste, to allow, change 'none' to 'text' */
+  background-color: #E4E4E4;
+  background-image: linear-gradient(top, #a7a7a7 0%, #e4e4e4 51%);
+  background-image: -webkit-linear-gradient(top, #a7a7a7 0%, #e4e4e4 51%);
+  background-image: -ms-linear-gradient(top, #a7a7a7 0%, #e4e4e4 51%);
+  background-attachment: fixed;
+  font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  text-transform: uppercase;
+  width: 100%;
+  color: #000;
+}
+
+/* Portrait layout (default) */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000329}}
+.app {
+  background: url(../img/logo.png) no-repeat center top;
+  /* 170px x 200px */
+  position: absolute;
+  /* position in the center of the screen */
+  left: 50%;
+  top: 50%;
+  height: 50px;
+  /* text area height */
+  width: 225px;
+  /* text area width */
+  text-align: center;
+  padding: 180px 0px 0px 0px;
+  /* image height is 200px (bottom 20px are overlapped with text) */
+  margin: -115px 0px 0px -112px;
+  /* offset vertical: half of image height and text area height */
+  /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1 / 1) and (min-width: 400px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000344}}
+  .app {
+    background-position: left center;
+    padding: 75px 0px 75px 170px;
+    /* padding-top + padding-bottom + text area = image height */
+    margin: -90px 0px 0px -198px;
+    /* offset vertical: half of image height */
+    /* offset horizontal: half of image width and text area width */
+  }
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000352}}
+h1 {
+  font-size: 24px;
+  font-weight: normal;
+  margin: 0px;
+  overflow: visible;
+  padding: 0px;
+  text-align: center;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000361}}
+.event {
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  color: #FFFFFF;
+  font-size: 12px;
+  margin: 0px 30px;
+  padding: 2px 0px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000370}}
+.event.listening {
+  background-color: #333333;
+  display: block;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000375}}
+.event.received {
+  background-color: #4B946A;
+  display: none;
+}
+
+@keyframes fade {
+  /* line 81, C:/var/www/sexdiaries.co.uk/sdapp/platforms/android/assets/www/docroot/sass/style.scss */
+  from {
+    opacity: 1.0;
+  }
+
+  /* line 82, C:/var/www/sexdiaries.co.uk/sdapp/platforms/android/assets/www/docroot/sass/style.scss */
+  50% {
+    opacity: 0.4;
+  }
+
+  /* line 83, C:/var/www/sexdiaries.co.uk/sdapp/platforms/android/assets/www/docroot/sass/style.scss */
+  to {
+    opacity: 1.0;
+  }
+}
+
+@-webkit-keyframes fade {
+  /* line 87, C:/var/www/sexdiaries.co.uk/sdapp/platforms/android/assets/www/docroot/sass/style.scss */
+  from {
+    opacity: 1.0;
+  }
+
+  /* line 88, C:/var/www/sexdiaries.co.uk/sdapp/platforms/android/assets/www/docroot/sass/style.scss */
+  50% {
+    opacity: 0.4;
+  }
+
+  /* line 89, C:/var/www/sexdiaries.co.uk/sdapp/platforms/android/assets/www/docroot/sass/style.scss */
+  to {
+    opacity: 1.0;
+  }
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000392}}
+.blink {
+  animation: fade 3000ms infinite;
+  -webkit-animation: fade 3000ms infinite;
+}
