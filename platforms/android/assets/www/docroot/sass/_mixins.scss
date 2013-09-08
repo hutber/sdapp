@@ -1,0 +1,36 @@
+@mixin input-states ($color) {
+  border-color: $color;
+  color: $color;
+  @include box-shadow(none);
+
+  &:focus {
+    @include box-shadow(none);
+  }
+}
+
+@mixin placeholder-color ($color) {
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+  &.placeholder {
+    color: $color;
+  }
+}
+
+@mixin swap-button-color($color, $hover, $active) {
+ background-color: $color;
+
+ &:hover,
+ &:focus,
+ .btn-group:focus &.dropdown-toggle {
+   background-color: $hover;
+ }
+ &:active,
+ .btn-group.open &.dropdown-toggle,
+ &.active {
+   background-color: $active;
+ }
+}

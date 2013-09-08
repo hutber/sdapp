@@ -9,22 +9,28 @@ Table of Contents
 */
 
 /* #Compass imports ------------------------------------------------------------------------ */
+@import "susy";
 @import "compass/reset";
 @import "compass/css3";
 
 
+
 /* #Imports dependencies ------------------------------------------------------------------------ */
 @import
+"_mixins",
 "_origi",
 "_variables",
 "_typography",
+"modules/_input",
+"modules/_buttons",
 "_ie",
-"_forms",
 "_print";
 
 
-/* #Main Styles ------------------------------------------------------------------------ */
+/* #Config ------------------------------------------------------------------------ */
+@include border-box-sizing;
 
+/* #Main Styles ------------------------------------------------------------------------ */
 body {
   background-color: #9acdcb;
   @include filter-gradient(#9acdcb, #9acdcb, horizontal);
@@ -39,22 +45,20 @@ body {
     color: $main-grey;
     text-align: center;
     text-transform: uppercase;
-    margin: 13px 0 0;
+    margin: 13px 0;
     line-height: 0.85em;
-    font-family: $font-stack-main;
+    font-family: $sdFont;
     width: 100%;
-    position: absolute;
-    top: 20%;
+    display: block;
     span {
-      color: $link-color;
+      color: $linkColor;
     }
   }
 
   form {
-    position: absolute;
-    top: 40%;
     width: 100%;
     text-align: center;
+    margin: 10px 0;
 
     input, button {
       width: 80%;
@@ -65,7 +69,6 @@ body {
 
 .login {
   color: #FFF;
-  position: absolute;
   top: 50%;
   width: 100%;
   text-align: center;
@@ -82,7 +85,7 @@ body {
   display: inline-block;
 }
 .providers {
-  margin: 0;
+  margin: 0 5px 0 0;
   float: left;
   width: 95px;
   li {
@@ -96,7 +99,7 @@ body {
 
 #janrain-facebook a, #janrain-twitter a {
   background: url("/img/icons/social-icons.png") no-repeat scroll 6px 2px #597DB5;
-  border-radius: 3px 3px 3px 3px;
+  @include border-radius(3px 3px 3px 3px);
   box-shadow: 0 -2px 0 0 #1C498E inset;
   color: #FFFFFF;
   display: inline-block;
@@ -124,5 +127,4 @@ span.janrain-provider-text-color-facebook, span.janrain-provider-text-color-twit
   background-position: 2px -25px;
   background-color: #00ACED;
   box-shadow: 0 -2px 0 0 #0082b3 inset;
-  margin-left: 5px;
 }

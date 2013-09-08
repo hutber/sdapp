@@ -3,10 +3,62 @@
     #COLOURS
 */
 //  Base Colours --------------------------------------------------------------
-$text-color:									#333333;
-$text-color-alt:								#191919;
-$text-color-light:								#605f5b;
-$text-color-mid-light:							#6e6e6e;
+$textColor:									    #FFF;
+$textColorAlt:                                  #191919;
+$mainGreen:                                     #6CB7B4;
+
+//
+// Color Swatches
+// --------------------------------------------------
+$turquoise:     #1abc9c;
+$green-sea:     #16a085;
+
+$emerald:      #2ecc71;
+$nephritis:     #27ae60;
+
+$peter-river:   #3498db;
+$belize-hole:   #2980b9;
+
+$amethyst:      #9b59b6;
+$wisteria:      #8e44ad;
+
+$wet-asphalt:   #34495e;
+$midnight-blue: #2c3e50;
+
+$sun-flower:    #f1c40f;
+$orange:        #f39c12;
+
+$carrot:        #e67e22;
+$pumpkin:       #d35400;
+
+$alizarin:      #e74c3c;
+$pomegranate:   #c0392b;
+
+$clouds:        #ecf0f1;
+$silver:        #bdc3c7;
+
+$concrete:      #95a5a6;
+$asbestos:      #7f8c8d;
+
+//  Base Colours --------------------------------------------------------------
+
+$base:             $wet-asphalt;
+$firm:             $turquoise;
+
+$gray:             $concrete;
+$lightgray:        $silver;
+$inverse:          white;
+
+$success:          $emerald;
+$danger:           $alizarin;
+$warning:          $sun-flower;
+$info:             $peter-river;
+
+$linkColor:       $green-sea;
+$link-hover-color: $turquoise;
+
+//  Greys ----------------------------------------------------------------------
+$lightGray:      								#605f5b;
 $main-color:									#B9DCDB;
 $main-color-alt:                                #99b8b7;
 $main-grey:									    #7F7F7F;
@@ -18,26 +70,34 @@ $form-bg-color:									#eeede8;
 $plain-link-color:								#666666;
 
 //  Link Colours ---------------------------------------------------------------
-$link-color:           							#FFF;
-$link-color-visited:    						$main-color;
-$link-color-hover:     							#FFF;
-$link-color-active:     						$main-color;
+$linkColor:           							$mainGreen;
+$linkColor-visited:    						    darken($mainGreen, 90%);
+$linkColorHover:     							darken($mainGreen, 50%);
+$linkColor-active:     						    $main-color;
 $alt-link-color: 								#ffd300;
 $background-alt: 								#F0F0F0;
 
 //  Button Colours ---------------------------------------------------------------
+$button-text:           $inverse;
+$button-hover:          mix($lightgray, white, 80%);
+$button-active:         mix($lightgray, black, 85%);
+$button-primary-hover:  mix($firm, white, 80%);
+$button-primary-active: mix($firm, black, 85%);
+$button-info-hover:     mix($info, white, 80%);
+$button-info-active:    mix($info, black, 85%);
+$button-success-hover:  mix($success, white, 80%);
+$button-success-active: mix($success, black, 85%);
+$button-danger-hover:   mix($danger, white, 80%);
+$button-danger-active:  mix($danger, black, 85%);
+$button-warning-hover:  overlay($warning, darken(white, 37.5%));
+$button-warning-active: mix($warning, black, 85%);
+$button-inverse-hover:  overlay($base, darken(white, 37.5%));
+$button-inverse-active: mix($base, black, 85%);
 
+//  Border Colours -------------------------------------------------------------
+$buttonText:                                    $textColorAlt;
+$border:                                        $mainGreen;
 
-//	Tag Colours ------------------------------------------------------------------
-$lightgrey:										#f7f7f7;
-$darkgrey:										#cbcac1;
-$darkergrey:									#808080;
-$darkgreen:										#005030;
-$pink:											#ECBDBE;
-$slightDarkPink:								#EBBABB;
-$turkwise:											#BADDDC;
-$blue:											#00aeef;
-$purple:										#5b358c;
-$orange:										#e57700;
-$darkblue:										#003a63;
-$darkred:										#8b0b04;
+// Progress/slider
+// -------------------------
+$progress-height: 12px;
