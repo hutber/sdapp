@@ -53,12 +53,13 @@ module.exports = function (grunt) {
         },
         compass: {
             options: {
+                require: 'susy',
                 sassDir: '<%= yeoman.sass %>',
                 imagesDir: '<%= yeoman.img %>',
                 javascriptsDir: '<%= yeoman.js %>',
                 httpPath:'../',
                 httpFontsDir: 'fonts',
-                importPath: 'bower_components'
+                importPath: '<%= yeoman.rootPath %>/bower_components'
             },
             dist: {
                 options: {
