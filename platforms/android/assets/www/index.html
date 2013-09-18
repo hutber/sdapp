@@ -26,25 +26,28 @@
         <title>Sex Diaries</title>
     </head>
     <body>
-        <logo>Sex<span> Diaries</span></logo>
-        <form action="/">
-            <input type="text" placeholder="Username"/>
-            <input type="password" placeholder="Password"/>
-            <button class="btn" type="submit">Login</button>
-        </form>
-        <div class="login">
-            <a href="/registration">Sign Up</a>
-            or
-            <a href="/users">Login</a>
-        </div>
-        <!--<script type="text/javascript" src="phonegap.js"></script>-->
-            <script type="text/javascript" src="index.js"></script>
-            <script type="text/javascript">
-                app.initialize();
-            </script>
-        <script type="text/javascript">
+	<overlay>
+		<message>
+			<img src="docroot/img/donkey.png" alt=""/>
+			<text>
+				Loading Please Wait...
+			</text>
+		</message>
+	</overlay>
+        <content>
+            <header>
+                <logo>Sex<span> Diaries</span></logo>
+            </header>
+            <page>
 
-        </script>
+            </page>
+        </content>
+<!--            <script type="text/javascript" src="phonegap.js"></script>-->
+<!--            <script type="text/javascript" src="index.js"></script>-->
+<!--            <script type="text/javascript">-->
+<!--                app.initialize();-->
+<!--            </script>-->
+<!--		<script src="docroot/js/core.functions.js"></script>-->
         <!-- build:js docroot/js/main.js -->
         <script data-main="docroot/js/main" src="bower_components/requirejs/require.js"></script>
         <!-- endbuild -->

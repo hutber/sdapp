@@ -23,6 +23,7 @@
   cursor: pointer;
   font-weight: bold;
   margin: 5px 0 0;
+  width: 100%;
   @include border-radius(6px);
   @include box-shadow(none);
   @include transition(0.25s);

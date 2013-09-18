@@ -23,11 +23,20 @@ Table of Contents
 "_typography",
 "modules/_input",
 "modules/_buttons",
+"modules/_overlay",
 "_ie",
 "_print";
 
 
 /* #Config ------------------------------------------------------------------------ */
+// Setting up the Magic Grid
+$total-columns: 12; // 12 columns
+$column-width: 4em; // columns are 4em wide
+$gutter-width: 1em; // with 1em gutters
+$grid-padding: 1em; // and 1em padding on the grid container
+
+$container-width: 100%;
+
 @include border-box-sizing;
 
 /* #Main Styles ------------------------------------------------------------------------ */
@@ -37,6 +46,12 @@ body {
   $experimental-support-for-svg: true;
   @include background-image(radial-gradient(center, ellipse cover,  #9acdcb 0%,#9acdcb 14%,#a6d3d1 30%,#abd5d4 44%,#a9d4d3 61%,#9acdcb 84%,#9acdcb 100%));
 }
+
+  // #content -------------------------------------------------------------------
+  content {
+    @include container;
+    width: 100%;
+  }
 
   // #Logo -------------------------------------------------------------------
   logo {
@@ -55,18 +70,6 @@ body {
     }
   }
 
-  form {
-    width: 100%;
-    text-align: center;
-    margin: 10px 0;
-
-    input, button {
-      width: 80%;
-      padding: 7px;
-    }
-  }
-
-
 .login {
   color: #FFF;
   top: 50%;
@@ -75,6 +78,11 @@ body {
   a {
     font-weight: bold;
   }
+}
+
+// #Page -------------------------------------------------------------------
+page {
+  clear: both;
 }
 
 // #Janrain -------------------------------------------------------------------

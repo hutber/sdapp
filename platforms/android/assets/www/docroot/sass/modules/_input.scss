@@ -4,20 +4,7 @@
 
 // Text fields
 textarea,
-input[type="text"],
-input[type="password"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="date"],
-input[type="month"],
-input[type="time"],
-input[type="week"],
-input[type="number"],
-input[type="email"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-input[type="color"],
+input,
 .uneditable-input {
   border: 4px solid $mainGreen;
   color: $textColorAlt;
@@ -25,10 +12,12 @@ input[type="color"],
   text-indent: 6px;
   margin: 5px 0;
   -webkit-appearance: none;
+  font-weight: bold;
   @include border-radius(6px);
   @include box-shadow(none);
   @include placeholder-color($concrete);
   @include transition(0.25s);
+  width: 100%;
 
   // Alternate state
   // --------------------------------------------------
@@ -151,7 +140,7 @@ textarea[readonly] {
 input,
 textarea,
 .uneditable-input {
-  width: 192px;
+  //width: 192px;
 }
 
 // Textarea

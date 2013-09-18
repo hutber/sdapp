@@ -1,0 +1,21 @@
+overlay {
+	background: rgba(104, 109, 109, 0.6);
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	z-index: 2;
+	text-align: center;
+	display: none;
+
+	message {
+
+	}
+
+	img {
+		display: inline-block;
+	}
+
+	text {
+		display: block;
+	}
+}

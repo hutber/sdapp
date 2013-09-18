@@ -2114,7 +2114,7 @@ window.cordova = require('cordova');
 // file: lib/scripts/bootstrap-android.js
 
 // Tell the native code that a page change has occurred.
-require('cordova/exec')(null, null, 'PluginManager', 'startup', []);
-require('cordova/channel').onNativeReady.fire();
+//require('cordova/exec')(null, null, 'PluginManager', 'startup', []);
+//require('cordova/channel').onNativeReady.fire();
 
 })();

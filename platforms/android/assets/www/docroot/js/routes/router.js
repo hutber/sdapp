@@ -1,16 +1,18 @@
 /*global define*/
-
 define([
     'jquery',
-    'backbone'
-], function ($, Backbone) {
+    'backbone',
+    'sd.functions'
+
+], function ($, Backbone, SD) {
     'use strict';
 
+	//routes from the home page
     var Router = Backbone.Router.extend({
         routes: {
-            '': 'home'
+            '': 'login',
+			'login': 'login'
         }
-
     });
 
     return Router;
