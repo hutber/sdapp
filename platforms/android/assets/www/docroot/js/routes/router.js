@@ -11,7 +11,12 @@ define([
     var Router = Backbone.Router.extend({
         routes: {
             '': 'login',
-			'login': 'login'
+			'login': 'login',
+			'wank': 'wank',
+			'fingers': 'fingers',
+			'oral': 'oral',
+			'sex': 'sex',
+			'anything': 'anything'
         }
     });
 

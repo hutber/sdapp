@@ -1,6 +1,7 @@
 /**
  * Created by Hutber on 13/09/13.
  */
+var SD = {}; //define SD so we can use it globally
 define([
 	'jquery',
 	'backbone'
@@ -9,9 +10,16 @@ define([
 
 	SD = {
 		ENVIROMENT: 'liveApp',
-		CDN: 'm.sexdiaries.co.uk/',
-		HTTP: 'http://m.sexdiaries.co.uk/',
-		AJAX: SD.HTTP
+		CDN: 'stage.sexdiaries.co.uk/',
+		HTTP: 'http://stage.sexdiaries.co.uk/',
+		AJAX: SD.HTTP,
+		STATE: function(){
+			if(sessionStorage.getItem('privateKey')!==null){
+				return true;
+			}else{
+				return false;
+			}
+		}()
 	};
 
 	SD.init = function () {
@@ -20,6 +28,35 @@ define([
 			SD.centerItems($('content')); //center the items in the middle of the page
 		});
 	};
+
+	SD.defaultView = function(){ //Default controller for all views
+		var templatesNeeded = function () {
+			var myself;
+			if (SD.STATE) {
+				myself = {
+					header: JST['platforms/android/assets/www/docroot/js/templates/comp/headerIn.ejs'],
+					menu: JST['platforms/android/assets/www/docroot/js/templates/comp/menu.ejs'],
+					shell: JST['platforms/android/assets/www/docroot/js/templates/comp/shell.ejs'],
+					footer: JST['platforms/android/assets/www/docroot/js/templates/comp/footer.ejs'],
+				};
+				myself = myself.header() + myself.menu() + myself.shell() + myself.footer();
+			} else {
+				myself = {
+					header: JST['platforms/android/assets/www/docroot/js/templates/comp/headerOut.ejs'],
+				};
+			}
+			return myself;
+		}();
+		var HomeView = Backbone.View.extend({
+			el: 'body > content',
+			render: function () {
+				this.$el.html(templatesNeeded);
+			}
+		});
+		var defaultView = new HomeView();
+		defaultView.render();
+		return HomeView;
+	}();
 
 	SD.globals = function () {
 		switch (window.location.hostname) {
@@ -38,6 +75,10 @@ define([
 			middleHeight = (appHeight / 2) - (bodyHeight / 2);
 
 		eleme.css({top: middleHeight, position: 'absolute'});
+	};
+
+	SD.paths = function(){
+		c(SD.ENVIROMENT);
 	};
 
 	SD.checkConnection = function () {

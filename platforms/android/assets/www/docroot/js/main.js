@@ -9,7 +9,7 @@ if(typeof console === "object" && typeof console.error === "function"){
 	c =  function (msg){alert(msg);};
 }
 
-var SD = {}; //define SD so we can use it globally
+//var SD = {}; //define SD so we can use it globally
 
 require.config({
     shim: {
@@ -26,13 +26,18 @@ require.config({
 		jStorage: {
 			deps: ['jquery'],
 			exports: '$.jStorage'
-		}
+		},
+//		phonegap: {
+//			deps: ['jquery'],
+//			exports: 'phonegap'
+//		}
     },
     paths: {
         jquery: '../../bower_components/jquery/jquery',
         backbone: '../../bower_components/backbone/backbone',
         underscore: '../../bower_components/underscore/underscore',
-		jStorage: 'collections/plugins/jStorage'
+		jStorage: 'collections/plugins/jStorage',
+//		phonegap: '../../phonegap'
     }
 });
 
@@ -41,25 +46,36 @@ require([
     // Requires ----------------
     'backbone',
 	'jStorage',
+//	'phonegap',
 
     // Routes ----------------
     'routes/router',
 
-    // Views ----------------
-    'views/HomeView',
-    'views/LoginView',
-
     // functions ----------------
     'core.functions',
-    'sd.functions'
+    'sd.functions',
+
+	// Views ----------------
+	'views/HomeView',
+	'views/LoginView',
+	'views/sex/wank',
+	'views/sex/fingers',
+	'views/sex/oral',
+	'views/sex/sex',
+	'views/sex/anything'
 
 ], function () {
     //set arguments to values for ease of reading arguments
     var Backbone = arguments[0],
         Router = arguments[2],
-        HomeView = arguments[3],
-        LoginView = arguments[4],
-        SD = arguments[6];
+		SD = arguments[4],
+        HomeView = arguments[5],
+        LoginView = arguments[6],
+		wankView = arguments[7],
+        fingersView = arguments[8],
+        oralView = arguments[9],
+        sexView = arguments[10],
+        anythingView = arguments[11];
 
     // initiate routers ----------------
     var router = new Router();
@@ -68,40 +84,40 @@ require([
     var homeView = new HomeView();
     var loginView = new LoginView();
 
-	//Start home route
-//	router.on('route:home', function(){
-//		//if logged in logic
-//		homeView.render();
-//	});
+	// Sex views ---------------------------
+	var WankView = new wankView();
+	var FingersView = new fingersView();
+	var OralView = new oralView();
+	var SexView = new sexView();
+	var AnythingView = new anythingView();
 
+	// Router ---------------------------
 	router.on('route:login', function(){
 		if(sessionStorage.getItem('privateKey')!==null){
 			homeView.render();
 		}else{
+			SD.checkConnection();
 			loginView.render();
 		}
 	});
 
-	//set up the error codes meaning
-	$.ajaxSetup({
-		statusCode: {
-			401: function(){
-				// Redirec the to the login page.
-				window.location.replace('/#login');
-
-			},
-			403: function() {
-				// 403 -- Access denied
-				window.location.replace('/#denied');
-			},
-			405: function(){
-				// Redirec the to the login page.
-				window.location.replace('/#methodwrong');
-
-			}
-		}
+	// Sex Routers ---------------------------
+	router.on('route:wank', function(){
+		WankView.render();
+	});
+	router.on('route:fingers', function(){
+		FingersView.render();
+	});
+	router.on('route:oral', function(){
+		OralView.render();
+	});
+	router.on('route:sex', function(){
+		SexView.render();
+	});
+	router.on('route:anything', function(){
+		AnythingView.render();
 	});
 
-    //start entire application
+	//start entire application
     Backbone.history.start();
 });

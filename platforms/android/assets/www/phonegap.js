@@ -526,7 +526,7 @@ function include(parent, objects, clobber, merge) {
             include(result, obj.children, clobber, merge);
           }
         } catch(e) {
-//          utils.alert('Exception building cordova JS globals: ' + e + ' for key "' + key + '"');
+          utils.alert('Exception building cordova JS globals: ' + e + ' for key "' + key + '"');
         }
     });
 }
@@ -2114,7 +2114,7 @@ window.cordova = require('cordova');
 // file: lib/scripts/bootstrap-android.js
 
 // Tell the native code that a page change has occurred.
-//require('cordova/exec')(null, null, 'PluginManager', 'startup', []);
-//require('cordova/channel').onNativeReady.fire();
+require('cordova/exec')(null, null, 'PluginManager', 'startup', []);
+require('cordova/channel').onNativeReady.fire();
 
 })();

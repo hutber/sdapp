@@ -1,5 +1,3 @@
-/*global define*/
-
 define([
     'jquery',
     'underscore',
@@ -7,25 +5,24 @@ define([
     '../../dist/js/templates',
 	'../core.functions',
 	'../sd.functions'
-], function ($, _, Backbone, JST) {
+], function ($, _, Backbone, JST, core, SD) {
     'use strict';
 
-    var HomeView = Backbone.View.extend({
-        el: 'page',
-
-        template: JST['platforms/android/assets/www/docroot/js/templates/home.ejs'],
-
+	//set up homeview
+    var HomeView = SD.defaultView.extend({
+		el: 'page',
+        template: JST[
+			'platforms/android/assets/www/docroot/js/templates/home.ejs'
+		],
+		events:{
+			"click acts a" : 'changeSex'
+		},
         render: function () {
             this.$el.html(this.template);
         },
-
-        events: {
-            'submit .loginForm ': 'logUserIn'
-        },
-
-        logUserIn: function (elem) {
-
-        }
+		changeSex: function(elem){
+			Backbone.history.loadUrl(elem.currentTarget.id);
+		}
     });
     return HomeView;
 });

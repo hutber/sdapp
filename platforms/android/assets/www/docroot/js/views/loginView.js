@@ -11,7 +11,7 @@ define([
     'use strict';
 
     var LoginView = Backbone.View.extend({
-        el: 'page',
+		el: 'body > content',
 
         template: JST['platforms/android/assets/www/docroot/js/templates/login.ejs'],
 
