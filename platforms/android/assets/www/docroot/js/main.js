@@ -27,6 +27,17 @@ require.config({
 			deps: ['jquery'],
 			exports: '$.jStorage'
 		},
+		sd: {
+			deps: ['jquery'],
+			exports: 'SD'
+		},
+		core: {
+			deps: ['jquery']
+		},
+		touchCarousel: {
+			deps: ['jquery'],
+			exports: 'jQuery.fn.touchCarousel'
+		},
 //		phonegap: {
 //			deps: ['jquery'],
 //			exports: 'phonegap'
@@ -36,7 +47,10 @@ require.config({
         jquery: '../../bower_components/jquery/jquery',
         backbone: '../../bower_components/backbone/backbone',
         underscore: '../../bower_components/underscore/underscore',
-		jStorage: 'collections/plugins/jStorage',
+		jStorage: 'libs/jStorage',
+		touchCarousel: 'libs/jquery.touchcarousel-1.2',
+		core: 'core.functions',
+		sd : 'sd.functions',
 //		phonegap: '../../phonegap'
     }
 });
@@ -96,7 +110,7 @@ require([
 		if(sessionStorage.getItem('privateKey')!==null){
 			homeView.render();
 		}else{
-			SD.checkConnection();
+//			SD.checkConnection();
 			loginView.render();
 		}
 	});
@@ -120,4 +134,6 @@ require([
 
 	//start entire application
     Backbone.history.start();
+
+	SD.centerItems($('content'));
 });

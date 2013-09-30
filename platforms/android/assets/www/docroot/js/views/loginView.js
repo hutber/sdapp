@@ -10,8 +10,8 @@ define([
 ], function ($, _, Backbone, JST, SD) {
     'use strict';
 
-    var LoginView = Backbone.View.extend({
-		el: 'body > content',
+    var LoginView = SD.defaultView.extend({
+		el: 'page',
 
         template: JST['platforms/android/assets/www/docroot/js/templates/login.ejs'],
 
@@ -39,6 +39,7 @@ define([
 			if(error){
 				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
+				alert(SD.AJAX+'users/login');
 				$.ajax({
 					url: SD.AJAX+'users/login',
 					type: 'post',
@@ -47,8 +48,9 @@ define([
 						'pword': values.pword
 					},
 					crossDomain: true,
-					error: function(){
-						alert('o fuck!');
+					error: function(data){
+						SD.overlay.hideme();
+						c(data.status);
 					},
 					success: function(data){
 						data = JSON.parse(data);

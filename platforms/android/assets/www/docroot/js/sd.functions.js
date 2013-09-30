@@ -15,6 +15,7 @@ define([
 		AJAX: SD.HTTP,
 		STATE: function(){
 			if(sessionStorage.getItem('privateKey')!==null){
+				$('body').addClass('loggin');
 				return true;
 			}else{
 				return false;
@@ -24,6 +25,7 @@ define([
 
 	SD.init = function () {
 		SD.globals(); //set up our global variables
+//		alert(SD.HTTP);
 		$(window).resize(function(){
 			SD.centerItems($('content')); //center the items in the middle of the page
 		});
@@ -43,7 +45,11 @@ define([
 			} else {
 				myself = {
 					header: JST['platforms/android/assets/www/docroot/js/templates/comp/headerOut.ejs'],
+					menu: JST['platforms/android/assets/www/docroot/js/templates/comp/menu.ejs'],
+					shell: JST['platforms/android/assets/www/docroot/js/templates/comp/shell.ejs'],
+					footer: JST['platforms/android/assets/www/docroot/js/templates/comp/footer.ejs'],
 				};
+				myself = myself.header() + myself.menu() + myself.shell() + myself.footer();
 			}
 			return myself;
 		}();
@@ -66,6 +72,11 @@ define([
 					SD.HTTP = 'http://sd.local/',
 					SD.AJAX = 'http://sexdiaires.local/app/';
 				break;
+			default:
+				SD.ENVIROMENT = 'wifiApp',
+					SD.AJAX = SD.HTTP+ '/app/';
+				break;
+
 		}
 	};
 
@@ -75,10 +86,6 @@ define([
 			middleHeight = (appHeight / 2) - (bodyHeight / 2);
 
 		eleme.css({top: middleHeight, position: 'absolute'});
-	};
-
-	SD.paths = function(){
-		c(SD.ENVIROMENT);
 	};
 
 	SD.checkConnection = function () {

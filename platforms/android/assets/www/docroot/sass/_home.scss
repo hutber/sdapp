@@ -2,57 +2,61 @@
 // #Base of Sex Acts -------------------------------------------------------------------
 acts {
 	display: block;
+	//width: 2000px;
 	@include clearfix;
 }
 
-acts a {
-	background: url(../img/sex/boywanking.jpg) #000 top right no-repeat;
-	display: block;
+acts li {
+	a {
+		background: url("../img/sex/sexes.png") no-repeat;
+		display: block;
+		height: 215px;
+		width: 200px;
+		@include transition-duration(.2s);
+		background-size: 1400px;
+	}
 	float: left;
-	height: 200px;
-	width: 200px;
 	margin: 10px;
-	border: 3px solid #FFF;
-	background-size: 450%;
-	//@include rounded(120px);
-	//@include opacity(.67);
-	@include transition-duration(.2s);
+	filter: $grayscale; /* Firefox 10+, Firefox on Android */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(1); /* Google Chrome & Safari 6+ */
 	&.alternative {
 		background-image: url(../img/sex/girlTouchingHerself.jpg);
 	}
 }
 
-acts a:hover, acts a.active {
-	opacity: 1;
-	border: 3px solid $blueBorderColor;
-	//@include box-shadow-both(4px 4px 7px rgba(0, 0, 0, 0.25), 8px 7px 8px rgba(86, 122, 211, 0.25) inset);
-	background-size: 105%;
-	background-position: center center;
+acts li:hover, acts li.active {
+	filter: none;
+	-webkit-filter: grayscale(0);
 }
 
 acts a#fingers {
-	background-image: url(../img/sex/fingering.jpg);
+	background-position: -210px 0;
+	width: 360px;
 	&.alternative {
-		background-image: url(../img/sex/handJob.jpg);
+		background-image: url(../img/sex/sexes.png);
 	}
 }
 
 acts a#oral {
-	background-image: url(../img/sex/blowjob.jpg);
+	background-position: -589px 0;
+	width: 267px;
 	&.alternative {
 		background-image: url(../img/sex/oralPleasures.jpg);
 	}
 }
 
 acts a#sex {
-	background-image: url(../img/sex/sex.jpg);
+	background-position: -866px 0;
+	width: 352px;
 	&.alternative {
 		background-image: url(../img/sex/cowboy.jpg);
 	}
 }
 
 acts a#anything {
-	background-image: url(../img/sex/anythingelse.jpg);
+	background-position: -1223px 0;
+	width: 179px;
 	&.alternative {
 		background-image: url(../img/sex/donkey.jpg);
 	}

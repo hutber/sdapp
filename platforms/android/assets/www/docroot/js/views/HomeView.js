@@ -4,7 +4,8 @@ define([
     'backbone',
     '../../dist/js/templates',
 	'../core.functions',
-	'../sd.functions'
+	'../sd.functions',
+	'touchCarousel'
 ], function ($, _, Backbone, JST, core, SD) {
     'use strict';
 
@@ -19,6 +20,9 @@ define([
 		},
         render: function () {
             this.$el.html(this.template);
+			SD.sliderInstance = $("acts").touchCarousel({
+				pagingNavControls: true
+			}).data("touchCarousel");
         },
 		changeSex: function(elem){
 			Backbone.history.loadUrl(elem.currentTarget.id);

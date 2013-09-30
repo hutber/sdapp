@@ -1,20 +1,7 @@
-/*
-==================================================
-Table of Contents
-==================================================
-	#Compass imports
-    #Imports dependencies
-    #Main Styles
-      #logo
-*/
-
 /* #Compass imports ------------------------------------------------------------------------ */
 @import "susy";
 @import "compass/reset";
 @import "compass/css3";
-
-
-
 /* #Imports dependencies ------------------------------------------------------------------------ */
 @import
 "_mixins",
@@ -24,116 +11,108 @@ Table of Contents
 "modules/_input",
 "modules/_buttons",
 "modules/_overlay",
+"modules/_touchcarousel",
 "_ie",
 "_print",
 "_home";
 
-
 /* #Config ------------------------------------------------------------------------ */
 // Setting up the Magic Grid
-$total-columns: 12; // 12 columns
-$column-width: 4em; // columns are 4em wide
-$gutter-width: 1em; // with 1em gutters
-$grid-padding: 1em; // and 1em padding on the grid container
+$total-columns: 12;
+// 12 columns
+$column-width: 4em;
+// columns are 4em wide
+$gutter-width: 1em;
+// with 1em gutters
+$grid-padding: 1em;
+// and 1em padding on the grid container
 
 $container-width: 100%;
 
 @include border-box-sizing;
-
+/*
+==================================================
+Table of Contents
+==================================================
+    #Main Styles
+      #logo
+      #page
+      #footer
+*/
 /* #Main Styles ------------------------------------------------------------------------ */
 body {
-  background-color: #9acdcb;
-  @include filter-gradient(#9acdcb, #9acdcb, horizontal);
-  $experimental-support-for-svg: true;
-  @include background-image(radial-gradient(center, ellipse cover,  #9acdcb 0%,#9acdcb 14%,#a6d3d1 30%,#abd5d4 44%,#a9d4d3 61%,#9acdcb 84%,#9acdcb 100%));
+	background-color: #9acdcb;
+	@include filter-gradient(#9acdcb, #9acdcb, horizontal);
+	$experimental-support-for-svg: true;
+	@include background-image(radial-gradient(center, ellipse cover, #9acdcb 0%, #9acdcb 14%, #a6d3d1 30%, #abd5d4 44%, #a9d4d3 61%, #9acdcb 84%, #9acdcb 100%));
 }
 
-  // #content -------------------------------------------------------------------
-  content {
-    @include container;
-    width: 100%;
-  }
+// #content -------------------------------------------------------------------
+content {
+	@include container;
+	width: 100%;
+	max-width: 620px;
+	display: block;
+	border: 1px solid black;
+	height: 320px;
+	overflow: hidden;
+}
 
-  // #Logo -------------------------------------------------------------------
-  logo {
-    padding: 0;
-    font-size: 28px;
-    color: $main-grey;
-    text-align: center;
-    text-transform: uppercase;
-    margin: 13px 0;
-    line-height: 0.85em;
-    font-family: $sdFont;
-    width: 100%;
-    display: block;
-    span {
-      color: $linkColor;
-    }
-  }
+// #Logo -------------------------------------------------------------------
+logo {
+	padding: 0;
+	font-size: 28px;
+	color: $main-grey;
+	text-align: center;
+	text-transform: uppercase;
+	margin: 13px 0;
+	line-height: 0.85em;
+	font-family: $sdFont;
+	width: 100%;
+	display: block;
+	.loggin & {
+		color: #FFF;
+	}
+	span {
+		color: $linkColor;
+	}
+}
 
 .login {
-  color: #FFF;
-  top: 50%;
-  width: 100%;
-  text-align: center;
-  a {
-    font-weight: bold;
-  }
+	color: #FFF;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	a {
+		font-weight: bold;
+	}
 }
 
 // #Page -------------------------------------------------------------------
 page {
-  clear: both;
+	clear: both;
 }
 
-// #Janrain -------------------------------------------------------------------
-#openid_choice {
-  margin: 0px 0 0;
-  height: 25px;
-  width: 200px;
-  display: inline-block;
-}
-.providers {
-  margin: 0 5px 0 0;
-  float: left;
-  width: 95px;
-  li {
-    background: transparent !important;
-    padding: 0;
-  }
-  span:first-child {
-    display: none !important;
-  }
+// #Footer -------------------------------------------------------------------
+footer {
+	menuBtn {
+		background: url('../img/icons/sm_menu.png') no-repeat;
+		height: 24px;
+		width: 32px;
+		bottom: 4px;
+		left: -6px;
+		position: relative;
+		text-indent: -999em;
+		cursor: pointer;
+		display: block;
+	}
 }
 
-#janrain-facebook a, #janrain-twitter a {
-  background: url("/img/icons/social-icons.png") no-repeat scroll 6px 2px #597DB5;
-  @include border-radius(3px 3px 3px 3px);
-  box-shadow: 0 -2px 0 0 #1C498E inset;
-  color: #FFFFFF;
-  display: inline-block;
-  font-size: 13px;
-  font-weight: bold;
-  height: 22px;
-  line-height: 21px;
-  margin-top: -2px;
-  overflow: hidden;
-  padding-bottom: 2px;
-  padding-left: 26px;
-  text-align: center;
-  vertical-align: middle;
-}
+.loggin logo {
+	display: inline;
+	left: -7px;
+	margin: 0;
+	position: relative;
+	top: 11px;
 
-span.janrain-provider-text-color-facebook, span.janrain-provider-text-color-twitter {
-  color: #FFFFFF !important;
-  font-weight: bold;
-  font-family: tahoma;
-  padding: -r;
-  padding-right: 8px;
-}
-
-#janrain-twitter a {
-  background-position: 2px -25px;
-  background-color: #00ACED;
-  box-shadow: 0 -2px 0 0 #0082b3 inset;
 }

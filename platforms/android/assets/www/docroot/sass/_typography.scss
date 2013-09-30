@@ -25,6 +25,11 @@ $icon-normal: 16px;
 $icon-medium: 18px;
 $icon-large:  32px;
 
+/* #Text shadow default effects ------------------------------------------------------------------------ */
+$default-text-shadow-color: rgba(black, 0.3);
+$default-text-shadow-blur: 3px;
+$default-text-shadow-v-offset: 1px;
+
 /* #Page Typography ------------------------------------------------------------------------ */
 html {font-size: $fontSize}
 body {padding: 0; margin:0;font-family: $textFont; color: $textColor; font-size: 1.6em !important; line-height: 1.538em;}
@@ -34,10 +39,10 @@ a, a:visited { color: $linkColor; text-decoration: none; outline: 0; }
 a:hover, a:focus { color: $linkColorHover; text-decoration: none; }
 p a, p a:visited { line-height: inherit; }
 
-
 // #Headers ---------------------------------------------------------------------
-h1, h2, h3, h4, h5, h6  {
-  color: $textColor;
-  font-family: $sdFont;
-  font-weight: normal;
+h1, h2, h3, h4, h5, h6 {
+	color: $textColor;
+	font-family: $sdFont;
+	font-weight: normal;
+	@include single-text-shadow;
 }
