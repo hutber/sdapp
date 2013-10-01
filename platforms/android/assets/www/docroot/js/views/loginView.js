@@ -37,9 +37,8 @@ define([
 			});
 
 			if(error){
-				SD.overlay.showme();
+//				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
-				alert(SD.AJAX+'users/login');
 				$.ajax({
 					url: SD.AJAX+'users/login',
 					type: 'post',
@@ -49,15 +48,21 @@ define([
 					},
 					crossDomain: true,
 					error: function(data){
-						SD.overlay.hideme();
+//						SD.overlay.hideme();
+						alert(data.status);
 						c(data.status);
 					},
 					success: function(data){
 						data = JSON.parse(data);
-						SD.overlay.hideme();
-						$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
-						sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
-						Backbone.history.loadUrl('');
+//						SD.overlay.hideme();
+						alert(data.message);
+						if(data.privateKey){
+							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
+							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
+							Backbone.history.loadUrl('');
+						}else{
+//							alert(data.message);
+						}
 					}
 				});
 			}

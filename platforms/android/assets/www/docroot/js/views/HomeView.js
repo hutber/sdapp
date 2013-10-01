@@ -16,16 +16,32 @@ define([
 			'platforms/android/assets/www/docroot/js/templates/home.ejs'
 		],
 		events:{
-			"click acts a" : 'changeSex'
+			"click anchor" : 'changeSex'
 		},
         render: function () {
             this.$el.html(this.template);
-			SD.sliderInstance = $("acts").touchCarousel({
-				pagingNavControls: true
-			}).data("touchCarousel");
+			var si = $('.royalSlider').royalSlider({
+				addActiveClass: true,
+				arrowsNav: false,
+				controlNavigation: 'none',
+				loop: true,
+				fadeinLoadedSlide: false,
+				globalCaption: true,
+				keyboardNavEnabled: true,
+				globalCaptionInside: false,
+				visibleNearby: {
+					enabled: true,
+					centerArea: 0.5,
+					center: true,
+					breakpoint: 650,
+					breakpointCenterArea: 0.64,
+					navigateByCenterClick: true
+				}
+			}).data('royalSlider');
         },
 		changeSex: function(elem){
 			Backbone.history.loadUrl(elem.currentTarget.id);
+			window.location.href = '#'+elem.currentTarget.id;
 		}
     });
     return HomeView;

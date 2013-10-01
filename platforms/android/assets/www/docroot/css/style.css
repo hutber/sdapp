@@ -787,215 +787,902 @@ overlay text {
   display: block;
 }
 
-/******************************************************\
-*
-*  Base TouchCarousel stylesheet
-*   
-*  Contents:
-*
-*   1. Main containers
-*   2. Carousel items
-*   3. Arrows(direction) navigation
-*   4. Paging navigation
-*   5. Scrollbar
-*   6. Cursors
-*
-\******************************************************/
-/******************************************************\
-*
-*  1. Main containers (carousel size, background)
-*
-\******************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000326}}
-.touchcarousel {
+/* v1.0.5 */
+/* Core RS CSS file. 95% of time you shouldn't change anything here. */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\000033}}
+.royalSlider {
+  width: 640px;
+  height: 215px;
   position: relative;
-  width: 600px;
-  height: 400px;
-  /* style is removed after carousel is inited, use !important if you want to keep it*/
-  overflow: hidden;
+  direction: ltr;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000334}}
-.touchcarousel .touchcarousel-container {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  left: 0;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000341}}
-.touchcarousel .touchcarousel-wrapper {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-}
-
-/******************************************************\
-*
-*  2. Carousel items (item styling, spacing between items)
-*
-\******************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000358}}
-.touchcarousel .touchcarousel-item {
-  /* use margin-right for spacing between items */
-  margin: 0 0 0 0;
-  padding: 0;
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\000039}}
+.royalSlider > * {
   float: left;
 }
 
-/* Last carousel item  */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000366}}
-.touchcarousel .touchcarousel-item.last {
-  margin-right: 0 !important;
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000313}}
+.rsWebkit3d .rsSlide {
+  -webkit-transform: translateZ(0);
 }
 
-/******************************************************\
-*
-*  3. Arrows(direction) navigation
-*
-\******************************************************/
-/* arrow hitstate and icon holder */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000381}}
-.touchcarousel .arrow-holder {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000327}}
+.rsWebkit3d .rsSlide,
+.rsWebkit3d .rsContainer,
+.rsWebkit3d .rsThumbs,
+.rsWebkit3d .rsPreloader,
+.rsWebkit3d img,
+.rsWebkit3d .rsOverflow,
+.rsWebkit3d .rsBtnCenterer,
+.rsWebkit3d .rsAbsoluteEl,
+.rsWebkit3d .rsABlock,
+.rsWebkit3d .rsLink {
+  -webkit-backface-visibility: hidden;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000332}}
+.rsFade.rsWebkit3d .rsSlide,
+.rsFade.rsWebkit3d img,
+.rsFade.rsWebkit3d .rsContainer {
+  -webkit-transform: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000335}}
+.rsOverflow {
+  width: 100%;
   height: 100%;
-  width: 45px;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000343}}
+.rsVisibleNearbyWrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  left: 0;
+  top: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000352}}
+.rsVisibleNearbyWrap .rsOverflow {
   position: absolute;
+  left: 0;
+  top: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000358}}
+.rsContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000366}}
+.rsArrow,
+.rsThumbsArrow {
+  cursor: pointer;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000370}}
+.rsThumb {
+  float: left;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000378}}
+.rsArrow,
+.rsNav,
+.rsThumbsArrow {
+  opacity: 1;
+  -webkit-transition: opacity 0.3s linear;
+  -moz-transition: opacity 0.3s linear;
+  -o-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000385}}
+.rsHidden {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  -moz-transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  -o-transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+  transition: visibility 0s linear 0.3s,opacity 0.3s linear;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000395}}
+.rsGCaption {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+/* Fullscreen options, very important ^^ */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003102}}
+.royalSlider.rsFullscreen {
+  position: fixed !important;
+  height: auto !important;
+  width: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 2147483647 !important;
+  top: 0 !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003115}}
+.royalSlider .rsSlide.rsFakePreloader {
+  opacity: 1 !important;
+  -webkit-transition: 0s;
+  -moz-transition: 0s;
+  -o-transition: 0s;
+  transition: 0s;
+  display: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003124}}
+.rsSlide {
+  position: absolute;
+  left: 0;
   top: 0;
   display: block;
-  cursor: pointer;
-  z-index: 25;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000390}}
-.touchcarousel .arrow-holder.left {
-  left: 0;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000393}}
-.touchcarousel .arrow-holder.right {
-  right: 0;
-}
-
-/* arrow icons */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000398}}
-.touchcarousel .arrow-icon {
-  width: 45px;
-  height: 90px;
-  top: 50%;
-  margin-top: -45px;
-  position: absolute;
-  cursor: pointer;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003109}}
-.touchcarousel .arrow-holder.disabled {
-  cursor: default;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003110}}
-.touchcarousel .arrow-holder.disabled .arrow-icon {
-  cursor: default;
-}
-
-/******************************************************\
-*
-*  4. Paging navigation
-*
-\******************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003122}}
-.touchcarousel .tc-paging-container {
+  overflow: hidden;
+  height: 100%;
   width: 100%;
-  overflow: hidden;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003136}}
+.royalSlider.rsAutoHeight,
+.rsAutoHeight .rsSlide {
+  height: auto;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003140}}
+.rsContent {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003146}}
+.rsPreloader {
   position: absolute;
-  margin-top: -20px;
-  z-index: 25;
+  z-index: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003129}}
-.touchcarousel .tc-paging-centerer {
-  float: left;
-  position: relative;
-  left: 50%;
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003151}}
+.rsNav {
+  -moz-user-select: -moz-none;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003134}}
-.touchcarousel .tc-paging-centerer-inside {
-  float: left;
-  position: relative;
-  left: -50%;
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003156}}
+.rsNavItem {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.25);
 }
 
-/* Paging items */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003141}}
-.touchcarousel .tc-paging-item {
-  float: left;
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003160}}
+.rsThumbs {
   cursor: pointer;
   position: relative;
-  display: block;
-  text-indent: -9999px;
-}
-
-/******************************************************\
-*
-*  5. Scrollbar
-*
-\******************************************************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003160}}
-.touchcarousel .scrollbar-holder {
-  position: absolute;
-  z-index: 30;
-  left: 6px;
-  right: 6px;
-  bottom: 5px;
-  height: 4px;
   overflow: hidden;
+  float: left;
+  z-index: 22;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003169}}
-.touchcarousel .scrollbar {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003167}}
+.rsTabs {
+  float: left;
+  background: none !important;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003172}}
+.rsTabs,
+.rsThumbs {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003178}}
+.rsVideoContainer {
+  /*left: 0;
+  top: 0;
+  position: absolute;*/
+  /*width: 100%;
+  height: 100%;
   position: absolute;
   left: 0;
-  height: 4px;
-  bottom: 0px;
+  top: 0;
+  float: left;*/
+  width: auto;
+  height: auto;
+  line-height: 0;
+  position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003175}}
-.touchcarousel .scrollbar.dark {
-  background-color: #828282;
-  background-color: rgba(0, 0, 0, 0.5);
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003193}}
+.rsVideoFrameHolder {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #141414;
+  opacity: 0;
+  -webkit-transition: .3s;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003179}}
-.touchcarousel .scrollbar.light {
-  background-color: #d2d2d2;
-  background-color: rgba(255, 255, 255, 0.5);
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003201}}
+.rsVideoFrameHolder.rsVideoActive {
+  opacity: 1;
 }
 
-/******************************************************\
-*
-*  6. Cursors
-*
-\******************************************************/
-/* IE and Opera use "move", FF uses -moz-grab */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003195}}
-.touchcarousel .grab-cursor {
-  cursor: url(grab.png) 8 8, move;
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003207}}
+.rsVideoContainer iframe,
+.rsVideoContainer video,
+.rsVideoContainer embed,
+.rsVideoContainer .rsVideoObj {
+  position: absolute;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003196}}
-.touchcarousel .grabbing-cursor {
-  cursor: url(grabbing.png) 8 8, move;
+/* ios controls over video bug, shifting video */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003218}}
+.rsVideoContainer.rsIOSVideo iframe,
+.rsVideoContainer.rsIOSVideo video,
+.rsVideoContainer.rsIOSVideo embed {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding-right: 44px;
 }
 
-/* Cursor that used when mouse drag is disabled */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003199}}
-.touchcarousel .auto-cursor {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003225}}
+.rsABlock {
+  left: 0;
+  top: 0;
+  position: absolute;
+  z-index: 15;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003233}}
+img.rsImg {
+  max-width: none;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003237}}
+.grab-cursor {
+  cursor: url(../img/icons/grab.png) 8 8, move;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003241}}
+.grabbing-cursor {
+  cursor: url(../img/icons/grabbing.png) 8 8, move;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003245}}
+.rsNoDrag {
   cursor: auto;
 }
 
-/* Copyright 2011, Dmitry Semenov, http://dimsemenov.com */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003249}}
+.rsLink {
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 20;
+  background: url(../img/icons/blank.gif);
+}
+
+/******************************
+*
+*  RoyalSlider White Controls Skin
+*
+*    1. Arrows
+*    2. Bullets
+*    3. Thumbnails
+*    4. Tabs
+*    5. Fullscreen button
+*    6. Play/close video button
+*    7. Preloader
+*    8. Caption
+*
+*  Sprite: 'rs-minimal-white.png'
+*  Feel free to edit anything
+*  If you don't some part - just delete it
+*
+******************************/
+/* Background */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003284}}
+.rsMinW,
+.rsMinW .rsOverflow,
+.rsMinW .rsSlide,
+.rsMinW .rsVideoFrameHolder,
+.rsMinW .rsThumbs {
+  color: #FFF;
+}
+
+/***************
+*
+*  1. Arrows
+*
+****************/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003295}}
+.rsMinW .rsArrow {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  z-index: 21;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003304}}
+.rsMinW .rsArrowLeft {
+  right: 37px;
+  bottom: 7px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003305}}
+.rsMinW .rsArrowRight {
+  right: 7px;
+  bottom: 7px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003307}}
+.rsMinW .rsArrowIcn {
+  width: 24px;
+  height: 24px;
+  margin-top: 3px;
+  margin-left: 3px;
+  position: absolute;
+  cursor: pointer;
+  background: url(../img/icons/rs-minimal-white.png) transparent;
+  border-radius: 2px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003323}}
+.rsMinW.rsHor .rsArrowLeft .rsArrowIcn {
+  background-position: -68px -36px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003324}}
+.rsMinW.rsHor .rsArrowRight .rsArrowIcn {
+  background-position: -68px -68px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003326}}
+.rsMinW.rsVer .rsArrowLeft .rsArrowIcn {
+  background-position: -100px -36px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003327}}
+.rsMinW.rsVer .rsArrowRight .rsArrowIcn {
+  background-position: -100px -68px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003329}}
+.rsMinW .rsArrowDisabled .rsArrowIcn {
+  opacity: .3 !important;
+  filter: alpha(opacity=30);
+  *display: none;
+}
+
+/***************
+*
+*  2. Bullets
+*
+****************/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003338}}
+.rsMinW .rsBullets {
+  position: absolute;
+  bottom: 15px;
+  right: 73px;
+  z-index: 35;
+  padding-top: 4px;
+  height: auto;
+  text-align: center;
+  line-height: 6px;
+  overflow: hidden;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003350}}
+.rsMinW .rsBullet {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  padding: 6px 5px 6px 4px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003358}}
+.rsMinW .rsBullet span {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #CCC;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003367}}
+.rsMinW .rsBullet.rsNavSelected span {
+  background: #FFF;
+}
+
+/***************
+*
+*  3. Thumbnails
+*
+****************/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003381}}
+.rsMinW .rsThumbsHor {
+  width: 100%;
+  height: 72px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003385}}
+.rsMinW .rsThumbsVer {
+  width: 96px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003392}}
+.rsMinW.rsWithThumbsHor .rsThumbsContainer {
+  position: relative;
+  height: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003396}}
+.rsMinW.rsWithThumbsVer .rsThumbsContainer {
+  position: relative;
+  width: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003400}}
+.rsMinW .rsThumb {
+  float: left;
+  overflow: hidden;
+  width: 96px;
+  height: 72px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003406}}
+.rsMinW .rsThumb img {
+  width: 100%;
+  height: 100%;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003410}}
+.rsMinW .rsThumb.rsNavSelected {
+  background: #333;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003413}}
+.rsMinW .rsThumb.rsNavSelected img {
+  filter: alpha(opacity=40);
+  opacity: 0.7;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003417}}
+.rsMinW .rsThumb.rsNavSelected span.thumbIco {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 2px solid #FFF;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  -webkit-backface-visibility: hidden;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003427}}
+.rsMinW .rsTmb {
+  display: block;
+}
+
+/* Thumbnails arrow icons */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003435}}
+.rsMinW .rsThumbsArrow {
+  height: 100%;
+  width: 20px;
+  position: absolute;
+  display: block;
+  cursor: pointer;
+  z-index: 21;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003443}}
+.rsMinW.rsWithThumbsVer .rsThumbsArrow {
+  width: 100%;
+  height: 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003447}}
+.rsMinW.rsWithThumbsVer .rsThumbsArrowLeft {
+  top: 0;
+  left: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003448}}
+.rsMinW.rsWithThumbsVer .rsThumbsArrowRight {
+  bottom: 0;
+  left: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003450}}
+.rsMinW.rsWithThumbsHor .rsThumbsArrowLeft {
+  left: 0;
+  top: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003451}}
+.rsMinW.rsWithThumbsHor .rsThumbsArrowRight {
+  right: 0;
+  top: 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003453}}
+.rsMinW .rsThumbsArrowIcn {
+  width: 16px;
+  height: 16px;
+  top: 50%;
+  left: 50%;
+  margin-top: -8px;
+  margin-left: -8px;
+  position: absolute;
+  cursor: pointer;
+  background: url(../img/icons/rs-minimal-white.png);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003465}}
+.rsMinW.rsWithThumbsHor .rsThumbsArrowLeft .rsThumbsArrowIcn {
+  background-position: -128px -32px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003466}}
+.rsMinW.rsWithThumbsHor .rsThumbsArrowRight .rsThumbsArrowIcn {
+  background-position: -128px -48px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003468}}
+.rsMinW.rsWithThumbsVer .rsThumbsArrowLeft .rsThumbsArrowIcn {
+  background-position: -144px -32px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003469}}
+.rsMinW.rsWithThumbsVer .rsThumbsArrowRight .rsThumbsArrowIcn {
+  background-position: -144px -48px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003471}}
+.rsMinW .rsThumbsArrowDisabled {
+  display: none !important;
+}
+
+/* Thumbnails resizing on smaller screens */
+@media screen and (min-width: 0px) and (max-width: 800px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003475}}
+  .rsMinW .rsThumb {
+    width: 59px;
+    height: 44px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003479}}
+  .rsMinW .rsThumbsHor {
+    height: 44px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003482}}
+  .rsMinW .rsThumbsVer {
+    width: 59px;
+  }
+}
+/***************
+*
+*  4. Tabs
+*
+****************/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003496}}
+.rsMinW .rsTabs {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden;
+  padding-top: 12px;
+  position: relative;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003503}}
+.rsMinW .rsTab {
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  height: auto;
+  width: auto;
+  color: #333;
+  padding: 5px 13px 6px;
+  min-width: 72px;
+  border: 1px solid #D9D9DD;
+  border-right: 1px solid #f5f5f5;
+  text-decoration: none;
+  background-image: -webkit-linear-gradient(top, #fefefe, #f4f4f4);
+  background-image: -moz-linear-gradient(top, #fefefe, #f4f4f4);
+  background-image: linear-gradient(to bottom, #fefefe, #f4f4f4);
+  *display: inline;
+  *zoom: 1;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003523}}
+.rsMinW .rsTab:first-child {
+  -webkit-border-top-left-radius: 4px;
+  border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003529}}
+.rsMinW .rsTab:last-child {
+  -webkit-border-top-right-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-right: 1px solid #cfcfcf;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003537}}
+.rsMinW .rsTab:active {
+  border: 1px solid #D9D9DD;
+  background-color: #f4f4f4;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003542}}
+.rsMinW .rsTab.rsNavSelected {
+  color: #000;
+  border: 1px solid #999;
+  text-shadow: 1px 1px #838383;
+  box-shadow: 0 1px 9px rgba(102, 102, 102, 0.65) inset;
+  background: #ACACAC;
+  background-image: -webkit-linear-gradient(top, #acacac, #bbbbbb);
+  background-image: -moz-llinear-gradient(top, #acacac, #bbbbbb);
+  background-image: linear-gradient(to bottom, #acacac, #bbbbbb);
+}
+
+/***************
+*
+*  5. Fullscreen button
+*
+****************/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003563}}
+.rsMinW .rsFullscreenBtn {
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  z-index: 22;
+  display: block;
+  position: absolute;
+  cursor: pointer;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003574}}
+.rsMinW .rsFullscreenIcn {
+  display: block;
+  margin: 6px;
+  width: 32px;
+  height: 32px;
+  background: url(../img/icons/rs-minimal-white.png) 0 0 transparent;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003582}}
+.rsMinW .rsFullscreenIcn:hover {
+  opacity: 0.8;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003585}}
+.rsMinW.rsFullscreen .rsFullscreenIcn {
+  background-position: -32px 0;
+}
+
+/***************
+*
+*  6. Play/close video button
+*
+****************/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003599}}
+.rsMinW .rsPlayBtn {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+  width: 64px;
+  height: 64px;
+  margin-left: -32px;
+  margin-top: -32px;
+  cursor: pointer;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003607}}
+.rsMinW .rsPlayBtnIcon {
+  width: 64px;
+  display: block;
+  height: 64px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-transition: .3s;
+  -moz-transition: .3s;
+  transition: .3s;
+  background: url(../img/icons/rs-minimal-white.png) no-repeat 0 -32px;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003621}}
+.rsMinW .rsPlayBtn:hover .rsPlayBtnIcon {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003624}}
+.rsMinW .rsBtnCenterer {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003631}}
+.rsMinW .rsCloseVideoBtn {
+  right: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  z-index: 500;
+  position: absolute;
+  cursor: pointer;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003643}}
+.rsMinW .rsCloseVideoBtn.rsiOSBtn {
+  top: -38px;
+  right: -6px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003648}}
+.rsMinW .rsCloseVideoIcn {
+  margin: 6px;
+  width: 32px;
+  height: 32px;
+  background: url(../img/icons/rs-minimal-white.png) -64px 0;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003655}}
+.rsMinW .rsCloseVideoIcn:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/***************
+*
+*  7. Preloader
+*
+****************/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003667}}
+.rsMinW .rsPreloader {
+  width: 20px;
+  height: 20px;
+  background-image: url(../img/icons/preloaders/preloader-white.gif);
+  left: 50%;
+  top: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+/***************
+*
+*  8. Global caption
+*
+****************/
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003686}}
+.rsMinW .rsGCaption {
+  position: absolute;
+  float: none;
+  bottom: 6px;
+  left: 6px;
+  text-align: left;
+  background: #000;
+  background: rgba(0, 0, 0, 0.75);
+  color: #FFF;
+  padding: 2px 8px;
+  width: auto;
+  font-size: 12px;
+  border-radius: 2px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003702}}
+.visibleNearby {
+  width: 100%;
+  color: #FFF;
+  padding-top: 25px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003707}}
+.visibleNearby .rsGCaption {
+  font-size: 16px;
+  line-height: 18px;
+  padding: 12px 0 16px;
+  width: 100%;
+  position: static;
+  float: left;
+  left: auto;
+  bottom: auto;
+  text-align: center;
+}
+
+/* Scaling transforms */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003720}}
+.visibleNearby .rsSlide img {
+  opacity: 0.45;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+  transform: scale(0.7);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003732}}
+.visibleNearby .rsActiveSlide img {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+}
+
+/* Non-linear resizing on smaller screens */
+@media screen and (min-width: 0px) and (max-width: 900px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003743}}
+  #gallery-1 {
+    padding: 12px 0 12px;
+  }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003747}}
+  #gallery-1 .rsOverflow,
+  .royalSlider#gallery-1 {
+    height: 400px !important;
+  }
+}
+@media screen and (min-width: 0px) and (max-width: 500px) {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003753}}
+  #gallery-1 .rsOverflow,
+  .royalSlider#gallery-1 {
+    height: 300px !important;
+  }
+}
 /* Welcome to Compass. Use this file to write IE specific override styles.
  * Import this file using the following HTML or equivalent:
  * <!--[if IE]>
@@ -1005,25 +1692,27 @@ overlay text {
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/print.css" media="print" rel="stylesheet" type="text/css" /> */
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\000033}}
-acts {
+.acts {
   display: block;
-  overflow: hidden;
-  *zoom: 1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\000039}}
-acts li {
-  float: left;
-  margin: 10px;
-  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
-  /* Firefox 10+, Firefox on Android */
-  filter: gray;
-  /* IE6-9 */
-  -webkit-filter: grayscale(1);
-  /* Google Chrome & Safari 6+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\000038}}
+anchor {
+  color: #FFF;
+  cursor: pointer;
+  font-family: sdFont, Arial, serif;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000310}}
-acts li a {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000312}}
+anchor span {
+  color: #8e44ad;
+  clear: both;
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000321}}
+acts a {
   background: url("../img/sex/sexes.png") no-repeat;
   display: block;
   height: 215px;
@@ -1033,54 +1722,61 @@ acts li a {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
   background-size: 1400px;
+  margin: 10px;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale");
+  /* Firefox 10+, Firefox on Android */
+  filter: gray;
+  /* IE6-9 */
+  -webkit-filter: grayscale(1);
+  /* Google Chrome & Safari 6+ */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000323}}
-acts li.alternative {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000333}}
+acts a.alternative {
   background-image: url(../img/sex/girlTouchingHerself.jpg);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000328}}
-acts li:hover, acts li.active {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000338}}
+acts a:hover, acts a.active {
   filter: none;
   -webkit-filter: grayscale(0);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000343}}
 acts a#fingers {
   background-position: -210px 0;
   width: 360px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000346}}
 acts a#fingers.alternative {
   background-image: url(../img/sex/sexes.png);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000351}}
 acts a#oral {
   background-position: -589px 0;
   width: 267px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000354}}
 acts a#oral.alternative {
   background-image: url(../img/sex/oralPleasures.jpg);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000359}}
 acts a#sex {
   background-position: -866px 0;
   width: 352px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000362}}
 acts a#sex.alternative {
   background-image: url(../img/sex/cowboy.jpg);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000367}}
 acts a#anything {
   background-position: -1223px 0;
   width: 179px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/_home\.scss}line{font-family:\0000370}}
 acts a#anything.alternative {
   background-image: url(../img/sex/donkey.jpg);
 }
@@ -1127,11 +1823,9 @@ content {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  max-width: 620px;
   display: block;
   border: 1px solid black;
   height: 320px;
-  overflow: hidden;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 content:after {
@@ -1140,7 +1834,7 @@ content:after {
   clear: both;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000361}}
 logo {
   padding: 0;
   font-size: 28px;
@@ -1153,33 +1847,33 @@ logo {
   width: 100%;
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000372}}
 .loggin logo {
   color: #FFF;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000375}}
 logo span {
   color: #6cb7b4;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000380}}
 .login {
   color: #FFF;
   top: 50%;
   width: 100%;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000386}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000385}}
 .login a {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000391}}
 page {
   clear: both;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000397}}
 footer menuBtn {
   background: url("../img/icons/sm_menu.png") no-repeat;
   height: 24px;
@@ -1192,7 +1886,7 @@ footer menuBtn {
   display: block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\00003111}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\00003110}}
 .loggin logo {
   display: inline;
   left: -7px;

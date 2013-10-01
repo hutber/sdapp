@@ -2,15 +2,8 @@
 'use strict';
 
 //Because I am lazy I rebind console to c
-var c = false;
-if(typeof console === "object" && typeof console.error === "function"){
-	c = function (msg){console.info(msg);};
-}else{
-	c =  function (msg){alert(msg);};
-}
-
+var c = false; if(typeof console === "object" && typeof console.error === "function"){ c = function (msg){console.info(msg);}; }else{ c =  function (msg){alert(msg);};}
 //var SD = {}; //define SD so we can use it globally
-
 require.config({
     shim: {
         underscore: {

@@ -51,11 +51,10 @@ body {
 content {
 	@include container;
 	width: 100%;
-	max-width: 620px;
+	//max-width: 620px;
 	display: block;
 	border: 1px solid black;
 	height: 320px;
-	overflow: hidden;
 }
 
 // #Logo -------------------------------------------------------------------

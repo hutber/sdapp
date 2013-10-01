@@ -7,7 +7,6 @@ define([
 	'backbone'
 ], function ($, Backbone) {
 	'use strict';
-
 	SD = {
 		ENVIROMENT: 'liveApp',
 		CDN: 'stage.sexdiaries.co.uk/',
@@ -25,7 +24,6 @@ define([
 
 	SD.init = function () {
 		SD.globals(); //set up our global variables
-//		alert(SD.HTTP);
 		$(window).resize(function(){
 			SD.centerItems($('content')); //center the items in the middle of the page
 		});
@@ -72,9 +70,13 @@ define([
 					SD.HTTP = 'http://sd.local/',
 					SD.AJAX = 'http://sexdiaires.local/app/';
 				break;
+			case "192.168.0.25":
+				SD.ENVIROMENT = 'mobilePhone',
+					SD.AJAX = SD.HTTP+ 'app/';
+				break;
 			default:
 				SD.ENVIROMENT = 'wifiApp',
-					SD.AJAX = SD.HTTP+ '/app/';
+					SD.AJAX = SD.HTTP+ 'app/';
 				break;
 
 		}

@@ -1,21 +1,31 @@
 
 // #Base of Sex Acts -------------------------------------------------------------------
-acts {
+.acts {
 	display: block;
-	//width: 2000px;
-	@include clearfix;
+	//@include clearfix;
 }
 
-acts li {
-	a {
-		background: url("../img/sex/sexes.png") no-repeat;
+anchor {
+	color: #FFF;
+	cursor: pointer;
+	font-family: $sdFont;
+	span {
+		color: $wisteria;
+		clear: both;
 		display: block;
-		height: 215px;
-		width: 200px;
-		@include transition-duration(.2s);
-		background-size: 1400px;
+		font-size: 14px;
+		line-height: 22px;
 	}
-	float: left;
+}
+
+acts a {
+	background: url("../img/sex/sexes.png") no-repeat;
+	display: block;
+	height: 215px;
+	width: 200px;
+	@include transition-duration(.2s);
+	background-size: 1400px;
+	//float: left;
 	margin: 10px;
 	filter: $grayscale; /* Firefox 10+, Firefox on Android */
 	filter: gray; /* IE6-9 */
@@ -25,7 +35,7 @@ acts li {
 	}
 }
 
-acts li:hover, acts li.active {
+acts a:hover, acts a.active {
 	filter: none;
 	-webkit-filter: grayscale(0);
 }
