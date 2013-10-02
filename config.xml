@@ -11,6 +11,7 @@
     <author email="support@sexdiaries.co.uk" href="http://www.sexdiaries.co.uk">
         Sex Diaries
     </author>
+    <preference name="phonegap-version" value="3.0.0" />
 
     <!--/////////////////////////////////////////////////
                      White list of Domains
