@@ -29,6 +29,9 @@ define([
 				globalCaption: true,
 				keyboardNavEnabled: true,
 				globalCaptionInside: false,
+				autoScaleSlider: true,
+				autoScaleSliderWidth: 640,
+				autoScaleSliderHeight: 215,
 				visibleNearby: {
 					enabled: true,
 					centerArea: 0.5,

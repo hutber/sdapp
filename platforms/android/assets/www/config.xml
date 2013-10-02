@@ -39,7 +39,7 @@
     <!--/////////////////////////////////////////////////
                            Origin
      /////////////////////////////////////////////////-->
-    <access origin="http://127.0.0.1*" />
+    <access origin="*" />
 
     <!--/////////////////////////////////////////////////
                            Networking
@@ -47,6 +47,7 @@
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.NetworkManager" />
     </feature>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <!--/////////////////////////////////////////////////
                            Notification

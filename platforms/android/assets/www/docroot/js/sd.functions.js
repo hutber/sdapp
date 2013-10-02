@@ -21,7 +21,6 @@ define([
 			}
 		}()
 	};
-
 	SD.init = function () {
 		SD.globals(); //set up our global variables
 		$(window).resize(function(){
@@ -105,7 +104,7 @@ define([
 
 		alert('Connection type: ' + states[networkState]);
 	};
-
+	SD.checkConnection();
 	SD.overlay = {
 		init: function(elem) {
 			SD.centerItems(elem);

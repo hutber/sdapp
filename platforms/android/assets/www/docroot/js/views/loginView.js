@@ -50,18 +50,19 @@ define([
 					error: function(data){
 //						SD.overlay.hideme();
 						alert(data.status);
-						c(data.status);
+//						alert(data.statusText);
+//						alert(data.state());
+						c(data);
 					},
 					success: function(data){
 						data = JSON.parse(data);
 //						SD.overlay.hideme();
-						alert(data.message);
 						if(data.privateKey){
 							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
 							Backbone.history.loadUrl('');
 						}else{
-//							alert(data.message);
+							alert(data.message);
 						}
 					}
 				});
