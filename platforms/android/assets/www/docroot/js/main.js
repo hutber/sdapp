@@ -124,9 +124,10 @@ require([
 	router.on('route:anything', function(){
 		AnythingView.render();
 	});
-
-	//start entire application
-    Backbone.history.start();
+	$(document).ready(function() {
+		//start entire application
+		Backbone.history.start();
+	});
 
 	SD.centerItems($('content'));
 });
