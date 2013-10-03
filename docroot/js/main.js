@@ -22,7 +22,6 @@ require.config({
 			exports: '$.jStorage'
 		},
 		sd: {
-			deps: ['jquery'],
 			exports: 'SD'
 		},
 		core: {
