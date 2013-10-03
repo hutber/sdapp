@@ -63,8 +63,8 @@ require([
     'sd.functions',
 
 	// Views ----------------
-	'views/HomeView',
-	'views/LoginView',
+	'views/homeView',
+	'views/loginView',
 	'views/sex/wank',
 	'views/sex/fingers',
 	'views/sex/oral',
