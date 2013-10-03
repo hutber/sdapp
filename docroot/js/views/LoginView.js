@@ -3,7 +3,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    '../../dist/js/templates',
+    'JST',
 	'../sd.functions',
 	'../core.functions'
 ], function ($, _, Backbone, JST, SD) {

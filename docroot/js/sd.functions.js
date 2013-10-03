@@ -4,8 +4,9 @@
 var SD = {}; //define SD so we can use it globally
 define([
 	'jquery',
-	'backbone'
-], function ($, Backbone) {
+	'backbone',
+	'JST',
+], function ($, Backbone, JST) {
 	'use strict';
 	SD = {
 		ENVIROMENT: 'liveApp',
@@ -39,6 +40,7 @@ define([
 					shell: JST['platforms/android/assets/www/docroot/js/templates/comp/shell.ejs'],
 					footer: JST['platforms/android/assets/www/docroot/js/templates/comp/footer.ejs'],
 				};
+				SD.templates = myself;
 				myself = myself.header() + myself.menu() + myself.shell() + myself.footer();
 			} else {
 				myself = {
@@ -47,6 +49,7 @@ define([
 					shell: JST['platforms/android/assets/www/docroot/js/templates/comp/shell.ejs'],
 					footer: JST['platforms/android/assets/www/docroot/js/templates/comp/footer.ejs'],
 				};
+				SD.templates = myself;
 				myself = myself.header() + myself.menu() + myself.shell() + myself.footer();
 			}
 			return myself;

@@ -28,6 +28,10 @@ require.config({
 		core: {
 			deps: ['jquery']
 		},
+		JST: {
+			deps: ['underscore'],
+			exports: 'JST'
+		},
 		touchCarousel: {
 			deps: ['jquery'],
 			exports: 'jQuery.fn.touchCarousel'
@@ -45,6 +49,7 @@ require.config({
 		touchCarousel: 'libs/jquery.touchcarousel-1.2',
 		core: 'core.functions',
 		sd : 'sd.functions',
+		JST : 'templates',
 //		phonegap: '../../phonegap'
     }
 });

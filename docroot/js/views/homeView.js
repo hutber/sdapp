@@ -2,7 +2,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    '../../dist/js/templates',
+    'JST',
 	'../core.functions',
 	'../sd.functions',
 	'touchCarousel'

@@ -2,7 +2,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    '../../../dist/js/templates',
+    'JST',
 	'../../sd.functions'
 ], function ($, _, Backbone, JST, SD) {
     'use strict';
