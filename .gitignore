@@ -3,6 +3,5 @@ dist
 test/temp
 .sass-cache
 .tmp
-*bower_components
 out
 .idea
