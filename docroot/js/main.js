@@ -96,6 +96,8 @@ require([
         sexView = arguments[10],
         anythingView = arguments[11];
 
+	SD.SUPERGLOBAL = arguments;
+
     // initiate routers ----------------
     var router = new Router();
 
@@ -112,9 +114,11 @@ require([
 
 	// Router ---------------------------
 	router.on('route:login', function(){
+		alert('router start');
 		if(sessionStorage.getItem('privateKey')!==null){
 			homeView.render();
 		}else{
+			alert('login router starting');
 //			SD.checkConnection();
 			loginView.render();
 		}
@@ -136,12 +140,18 @@ require([
 	router.on('route:anything', function(){
 		AnythingView.render();
 	});
-	document.addEventListener("deviceready", Backbone.history.start, false);
+	document.addEventListener("deviceready", gogo, false);
 
 	$(document).ready(function() {
 		//start entire application
-		Backbone.history.start();
+		gogo();
 	});
+
+	function gogo (){
+		alert('going');
+		Backbone.history.start();
+
+	}
 
 	SD.centerItems($('content'));
 });
