@@ -1826,6 +1826,7 @@ content {
   display: block;
   border: 1px solid black;
   height: 320px;
+  padding: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 content:after {
@@ -1834,7 +1835,7 @@ content:after {
   clear: both;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000362}}
 logo {
   padding: 0;
   font-size: 28px;
@@ -1847,33 +1848,33 @@ logo {
   width: 100%;
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000373}}
 .loggin logo {
   color: #FFF;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000376}}
 logo span {
   color: #6cb7b4;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000381}}
 .login {
   color: #FFF;
   top: 50%;
   width: 100%;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000386}}
 .login a {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000392}}
 page {
   clear: both;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\0000398}}
 footer menuBtn {
   background: url("../img/icons/sm_menu.png") no-repeat;
   height: 24px;
@@ -1886,7 +1887,7 @@ footer menuBtn {
   display: block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/platforms\/android\/assets\/www\/docroot\/sass\/style\.scss}line{font-family:\00003111}}
 .loggin logo {
   display: inline;
   left: -7px;
