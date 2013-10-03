@@ -96,6 +96,8 @@ require([
         sexView = arguments[10],
         anythingView = arguments[11];
 
+	SD.ARGS = arguments;
+
     // initiate routers ----------------
     var router = new Router();
 
