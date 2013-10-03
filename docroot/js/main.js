@@ -3,6 +3,7 @@
 
 //Because I am lazy I rebind console to c
 var c = false; if(typeof console === "object" && typeof console.error === "function"){ c = function (msg){console.info(msg);}; }else{ c =  function (msg){alert(msg);};}
+window.isphone = false; if(document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {	window.isphone = true;}
 //var SD = {}; //define SD so we can use it globally
 require.config({
     shim: {
@@ -74,7 +75,7 @@ require([
 ], function () {
 
 	//Check to see if we are in the live app
-	if(document.URL!=="file:///android_asset/www/index.html"){
+	if(!window.isphone){
 		$.getScript('cordova.js', function() { alert('Load was performed.'); });
 	}
 
@@ -130,6 +131,8 @@ require([
 	router.on('route:anything', function(){
 		AnythingView.render();
 	});
+	document.addEventListener("deviceready", Backbone.history.start, false);
+
 	$(document).ready(function() {
 		//start entire application
 		Backbone.history.start();
