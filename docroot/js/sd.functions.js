@@ -104,7 +104,7 @@ define([
 
 		alert('Connection type: ' + states[networkState]);
 	};
-	SD.checkConnection();
+
 	SD.overlay = {
 		init: function(elem) {
 			SD.centerItems(elem);
