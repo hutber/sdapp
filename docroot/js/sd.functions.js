@@ -27,10 +27,6 @@ define([
 			SD.centerItems($('content')); //center the items in the middle of the page
 		});
 
-		//Check to see if we are in the live app
-		if(SD.ENVIROMENT==="liveApp"){
-			$.getScript('../phonegap.js', function() { alert('Load was performed.'); });
-		};
 	};
 
 	SD.defaultView = function(){ //Default controller for all views

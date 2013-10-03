@@ -2053,7 +2053,7 @@ window.cordova = require('cordova');
             logUnfiredChannels(platformInitChannelsArray);
             logUnfiredChannels(channel.deviceReadyChannelsArray);
         }
-    }, 5000);
+    }, 10000);
 
     // Replace navigator before any modules are required(), to ensure it happens as soon as possible.
     // We replace it so that properties that can't be clobbered can instead be overridden.

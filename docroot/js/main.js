@@ -72,6 +72,12 @@ require([
 	'views/sex/anything'
 
 ], function () {
+
+	//Check to see if we are in the live app
+	if(document.URL!=="file:///android_asset/www/index.html"){
+		$.getScript('cordova.js', function() { alert('Load was performed.'); });
+	}
+
     //set arguments to values for ease of reading arguments
     var Backbone = arguments[0],
         Router = arguments[2],
