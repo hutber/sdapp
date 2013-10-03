@@ -121,6 +121,5 @@ define([
 		}
 	};
 
-	SD.init();
 	return SD;
 });

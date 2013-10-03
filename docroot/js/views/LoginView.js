@@ -15,6 +15,7 @@ define([
         template: JST['platforms/android/assets/www/docroot/js/templates/login.ejs'],
 
         render: function () {
+			SD.templates.login = this.template;
             this.$el.html(this.template);
         },
 

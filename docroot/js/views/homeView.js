@@ -19,6 +19,7 @@ define([
 			"click anchor" : 'changeSex'
 		},
         render: function () {
+			SD.templates.home = this.template;
             this.$el.html(this.template);
 			var si = $('.royalSlider').royalSlider({
 				addActiveClass: true,
