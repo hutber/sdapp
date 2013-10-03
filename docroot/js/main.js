@@ -78,7 +78,7 @@ require([
 	'views/sex/anything'
 
 ], function () {
-
+alert(window.isphone);
 	//Check to see if we are in the live app
 	if(!window.isphone){
 		$.getScript('cordova.js', function() { alert('Load was performed.'); });
