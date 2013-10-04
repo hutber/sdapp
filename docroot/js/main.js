@@ -1,9 +1,6 @@
 /*global require*/
 'use strict';
-//Because I am lazy I rebind console to c
-var c = false; if(typeof console === "object" && typeof console.error === "function"){ c = function (msg){console.info(msg);}; }else{ c =  function (msg){alert(msg);};}
-window.isphone = false; if(document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {	window.isphone = true;}
-//var SD = {}; //define SD so we can use it globally
+
 require.config({
     shim: {
         underscore: {
@@ -68,33 +65,34 @@ require([
 
 	// Views ----------------
 	'views/homeView',
-//	'views/loginView',
-//	'views/sex/wank',
-//	'views/sex/fingers',
-//	'views/sex/oral',
-//	'views/sex/sex',
-//	'views/sex/anything'
+	'views/loginView',
+	'views/sex/wank',
+	'views/sex/fingers',
+	'views/sex/oral',
+	'views/sex/sex',
+	'views/sex/anything'
 
 ], function () {
-	//Check to see if we are in the live app
-	if(!window.isphone){
-		$.getScript('cordova.js', function() { alert('cordova Load was performed.'); });
-	}else{
-		$.getScript('http://localhost:35729/livereload.js', function() { console.info('livereload Load was performed.'); });
-	}
-
     //set arguments to values for ease of reading arguments
     var Backbone = arguments[0],
         Router = arguments[2],
 		SD = arguments[4],
         HomeView = arguments[5],
-//        LoginView = arguments[6],
-//		wankView = arguments[7],
-//        fingersView = arguments[8],
-//        oralView = arguments[9],
-//        sexView = arguments[10],
-//        anythingView = arguments[11];
-//
+        LoginView = arguments[6],
+		wankView = arguments[7],
+        fingersView = arguments[8],
+        oralView = arguments[9],
+        sexView = arguments[10],
+        anythingView = arguments[11];
+
+	//Check to see if we are in the live app
+	if(SD.isMobile){
+		$.getScript('cordova.js', function() { alert('cordova Load was performed.'); });
+	}else{
+		$.getScript('http://localhost:35729/livereload.js');
+	}
+
+	SD.init(); //start SD
 	SD.ARGS = arguments;
 
     // initiate routers ----------------
@@ -102,47 +100,50 @@ require([
 
     // views ---------------------------
     var homeView = new HomeView();
-//    var loginView = new LoginView();
-//
-//	// Sex views ---------------------------
-//	var WankView = new wankView();
-//	var FingersView = new fingersView();
-//	var OralView = new oralView();
-//	var SexView = new sexView();
-//	var AnythingView = new anythingView();
-//
-//	// Router ---------------------------
-//	router.on('route:login', function(){
-//		if(sessionStorage.getItem('privateKey')!==null){
+    var loginView = new LoginView();
+
+	// Sex views ---------------------------
+	var WankView = new wankView();
+	var FingersView = new fingersView();
+	var OralView = new oralView();
+	var SexView = new sexView();
+	var AnythingView = new anythingView();
+
+	// Router ---------------------------
+	router.on('route:login', function(){
+		if(sessionStorage.getItem('privateKey')!==null){
 			homeView.render();
-//		}else{
-////			SD.checkConnection();
-//			loginView.render();
-//		}
-//	});
-//
-//	// Sex Routers ---------------------------
-//	router.on('route:wank', function(){
-//		WankView.render();
-//	});
-//	router.on('route:fingers', function(){
-//		FingersView.render();
-//	});
-//	router.on('route:oral', function(){
-//		OralView.render();
-//	});
-//	router.on('route:sex', function(){
-//		SexView.render();
-//	});
-//	router.on('route:anything', function(){
-//		AnythingView.render();
-//	});
-	document.addEventListener("deviceready", Backbone.history.start, false);
-//
-//	$(document).ready(function() {
-//		//start entire application
-//		Backbone.history.start();
-//	});
-//
+		}else{
+			loginView.render();
+		}
+	});
+
+	// Sex Routers ---------------------------
+	router.on('route:wank', function(){
+		WankView.render();
+	});
+	router.on('route:fingers', function(){
+		FingersView.render();
+	});
+	router.on('route:oral', function(){
+		OralView.render();
+	});
+	router.on('route:sex', function(){
+		SexView.render();
+	});
+	router.on('route:anything', function(){
+		AnythingView.render();
+	});
+
+	if(SD.isMobile){
+		document.addEventListener("deviceready", function(){
+			Backbone.history.start();
+		}, true);
+	}else{
+		$(document).ready(function() {
+			Backbone.history.start();
+		});
+	}
+
 	SD.centerItems($('content'));
 });

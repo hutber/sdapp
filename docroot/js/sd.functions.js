@@ -1,7 +1,7 @@
 /**
  * Created by Hutber on 13/09/13.
  */
-var SD = {}; //define SD so we can use it globally
+
 define([
 	'jquery',
 	'backbone',
@@ -12,7 +12,6 @@ define([
 		ENVIROMENT: 'liveApp',
 		CDN: 'stage.sexdiaries.co.uk/',
 		HTTP: 'http://stage.sexdiaries.co.uk/',
-		AJAX: SD.HTTP,
 		STATE: function(){
 			if(sessionStorage.getItem('privateKey')!==null){
 				$('body').addClass('loggin');
@@ -22,8 +21,10 @@ define([
 			}
 		}()
 	};
+
 	SD.init = function () {
 		SD.globals(); //set up our global variables
+		alert(SD.AJAX);
 		$(window).resize(function(){
 			SD.centerItems($('content')); //center the items in the middle of the page
 		});
@@ -72,16 +73,16 @@ define([
 					SD.CDN = 'sd.local/',
 					SD.HTTP = 'http://sd.local/',
 					SD.AJAX = 'http://sexdiaires.local/app/';
-				break;
+			break;
 			case "192.168.0.25":
 				SD.ENVIROMENT = 'mobilePhone',
 					SD.AJAX = SD.HTTP+ 'app/';
-				break;
+			break;
 			default:
-				SD.ENVIROMENT = 'wifiApp',
-					SD.AJAX = SD.HTTP+ 'app/';
-				break;
-
+//				SD.ENVIROMENT = 'wifiApp',
+//					SD.AJAX = SD.HTTP+ 'app/';
+				SD.AJAX = SD.HTTP+'app/';
+			break;
 		}
 	};
 
