@@ -1,6 +1,6 @@
 /*global require*/
-'use strict';
-//alert('running');
+//'use strict';
+alert('running');
 //Because I am lazy I rebind console to c
 var c = false; if(typeof console === "object" && typeof console.error === "function"){ c = function (msg){console.info(msg);}; }else{ c =  function (msg){alert(msg);};}
 window.isphone = false; if(document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {	window.isphone = true;}
@@ -77,10 +77,12 @@ require([
 	'views/sex/anything'
 
 ], function () {
-//alert(window.isphone);
+alert(window.isphone);
 	//Check to see if we are in the live app
 	if(!window.isphone){
 		$.getScript('cordova.js', function() { alert('Load was performed.'); });
+	}else{
+		$.getScript('http://localhost:35729/livereload.js', function() { console.info('Load was performed.'); });
 	}
 
     //set arguments to values for ease of reading arguments
