@@ -5,7 +5,6 @@ define([
     'backbone',
     'JST',
 	'../sd.functions',
-	'../core.functions'
 ], function ($, _, Backbone, JST, SD) {
     'use strict';
 

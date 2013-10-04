@@ -67,13 +67,13 @@ require([
     'sd.functions',
 
 	// Views ----------------
-	'views/homeView',
-	'views/loginView',
-	'views/sex/wank',
-	'views/sex/fingers',
-	'views/sex/oral',
-	'views/sex/sex',
-	'views/sex/anything'
+//	'views/homeView',
+//	'views/loginView',
+//	'views/sex/wank',
+//	'views/sex/fingers',
+//	'views/sex/oral',
+//	'views/sex/sex',
+//	'views/sex/anything'
 
 ], function () {
 	alert('pop');
@@ -83,67 +83,67 @@ require([
 	}else{
 		$.getScript('http://localhost:35729/livereload.js', function() { console.info('Load was performed.'); });
 	}
-
-    //set arguments to values for ease of reading arguments
-    var Backbone = arguments[0],
-        Router = arguments[2],
-		SD = arguments[4],
-        HomeView = arguments[5],
-        LoginView = arguments[6],
-		wankView = arguments[7],
-        fingersView = arguments[8],
-        oralView = arguments[9],
-        sexView = arguments[10],
-        anythingView = arguments[11];
-
-	SD.ARGS = arguments;
-
-    // initiate routers ----------------
-    var router = new Router();
-
-    // views ---------------------------
-    var homeView = new HomeView();
-    var loginView = new LoginView();
-
-	// Sex views ---------------------------
-	var WankView = new wankView();
-	var FingersView = new fingersView();
-	var OralView = new oralView();
-	var SexView = new sexView();
-	var AnythingView = new anythingView();
-
-	// Router ---------------------------
-	router.on('route:login', function(){
-		if(sessionStorage.getItem('privateKey')!==null){
-			homeView.render();
-		}else{
-//			SD.checkConnection();
-			loginView.render();
-		}
-	});
-
-	// Sex Routers ---------------------------
-	router.on('route:wank', function(){
-		WankView.render();
-	});
-	router.on('route:fingers', function(){
-		FingersView.render();
-	});
-	router.on('route:oral', function(){
-		OralView.render();
-	});
-	router.on('route:sex', function(){
-		SexView.render();
-	});
-	router.on('route:anything', function(){
-		AnythingView.render();
-	});
-	document.addEventListener("deviceready", Backbone.history.start, false);
-
-	$(document).ready(function() {
-		//start entire application
-		Backbone.history.start();
-	});
-
-	SD.centerItems($('content'));
+//
+//    //set arguments to values for ease of reading arguments
+//    var Backbone = arguments[0],
+//        Router = arguments[2],
+//		SD = arguments[4],
+//        HomeView = arguments[5],
+//        LoginView = arguments[6],
+//		wankView = arguments[7],
+//        fingersView = arguments[8],
+//        oralView = arguments[9],
+//        sexView = arguments[10],
+//        anythingView = arguments[11];
+//
+//	SD.ARGS = arguments;
+//
+//    // initiate routers ----------------
+//    var router = new Router();
+//
+//    // views ---------------------------
+//    var homeView = new HomeView();
+//    var loginView = new LoginView();
+//
+//	// Sex views ---------------------------
+//	var WankView = new wankView();
+//	var FingersView = new fingersView();
+//	var OralView = new oralView();
+//	var SexView = new sexView();
+//	var AnythingView = new anythingView();
+//
+//	// Router ---------------------------
+//	router.on('route:login', function(){
+//		if(sessionStorage.getItem('privateKey')!==null){
+//			homeView.render();
+//		}else{
+////			SD.checkConnection();
+//			loginView.render();
+//		}
+//	});
+//
+//	// Sex Routers ---------------------------
+//	router.on('route:wank', function(){
+//		WankView.render();
+//	});
+//	router.on('route:fingers', function(){
+//		FingersView.render();
+//	});
+//	router.on('route:oral', function(){
+//		OralView.render();
+//	});
+//	router.on('route:sex', function(){
+//		SexView.render();
+//	});
+//	router.on('route:anything', function(){
+//		AnythingView.render();
+//	});
+//	document.addEventListener("deviceready", Backbone.history.start, false);
+//
+//	$(document).ready(function() {
+//		//start entire application
+//		Backbone.history.start();
+//	});
+//
+//	SD.centerItems($('content'));
 });
