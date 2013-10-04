@@ -1,12 +1,11 @@
 /*global require*/
-//'use strict';
-alert('running');
+'use strict';
 //Because I am lazy I rebind console to c
 var c = false; if(typeof console === "object" && typeof console.error === "function"){ c = function (msg){console.info(msg);}; }else{ c =  function (msg){alert(msg);};}
 window.isphone = false; if(document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {	window.isphone = true;}
 //var SD = {}; //define SD so we can use it globally
 require.config({
-    shim: {
+    shim: {a
         underscore: {
             exports: '_'
         },
@@ -77,7 +76,6 @@ require([
 	'views/sex/anything'
 
 ], function () {
-alert(window.isphone);
 	//Check to see if we are in the live app
 	if(!window.isphone){
 		$.getScript('cordova.js', function() { alert('Load was performed.'); });
