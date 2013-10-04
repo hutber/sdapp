@@ -5,7 +5,7 @@ var c = false; if(typeof console === "object" && typeof console.error === "funct
 window.isphone = false; if(document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {	window.isphone = true;}
 //var SD = {}; //define SD so we can use it globally
 require.config({
-    shim: {a
+    shim: {
         underscore: {
             exports: '_'
         },
