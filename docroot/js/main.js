@@ -67,7 +67,7 @@ require([
     'sd.functions',
 
 	// Views ----------------
-//	'views/homeView',
+	'views/homeView',
 //	'views/loginView',
 //	'views/sex/wank',
 //	'views/sex/fingers',
@@ -76,19 +76,18 @@ require([
 //	'views/sex/anything'
 
 ], function () {
-	alert('pop');
 	//Check to see if we are in the live app
 	if(!window.isphone){
-		$.getScript('cordova.js', function() { alert('Load was performed.'); });
+		$.getScript('cordova.js', function() { alert('cordova Load was performed.'); });
 	}else{
-		$.getScript('http://localhost:35729/livereload.js', function() { console.info('Load was performed.'); });
+		$.getScript('http://localhost:35729/livereload.js', function() { console.info('livereload Load was performed.'); });
 	}
-//
-//    //set arguments to values for ease of reading arguments
-//    var Backbone = arguments[0],
-//        Router = arguments[2],
-//		SD = arguments[4],
-//        HomeView = arguments[5],
+
+    //set arguments to values for ease of reading arguments
+    var Backbone = arguments[0],
+        Router = arguments[2],
+		SD = arguments[4],
+        HomeView = arguments[5],
 //        LoginView = arguments[6],
 //		wankView = arguments[7],
 //        fingersView = arguments[8],
@@ -96,13 +95,13 @@ require([
 //        sexView = arguments[10],
 //        anythingView = arguments[11];
 //
-//	SD.ARGS = arguments;
-//
-//    // initiate routers ----------------
-//    var router = new Router();
-//
-//    // views ---------------------------
-//    var homeView = new HomeView();
+	SD.ARGS = arguments;
+
+    // initiate routers ----------------
+    var router = new Router();
+
+    // views ---------------------------
+    var homeView = new HomeView();
 //    var loginView = new LoginView();
 //
 //	// Sex views ---------------------------
@@ -115,7 +114,7 @@ require([
 //	// Router ---------------------------
 //	router.on('route:login', function(){
 //		if(sessionStorage.getItem('privateKey')!==null){
-//			homeView.render();
+			homeView.render();
 //		}else{
 ////			SD.checkConnection();
 //			loginView.render();
@@ -138,12 +137,12 @@ require([
 //	router.on('route:anything', function(){
 //		AnythingView.render();
 //	});
-//	document.addEventListener("deviceready", Backbone.history.start, false);
+	document.addEventListener("deviceready", Backbone.history.start, false);
 //
 //	$(document).ready(function() {
 //		//start entire application
 //		Backbone.history.start();
 //	});
 //
-//	SD.centerItems($('content'));
+	SD.centerItems($('content'));
 });
