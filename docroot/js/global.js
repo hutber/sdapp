@@ -21,7 +21,11 @@ if (document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {
 
 if (SD.isMobile){
 	window.onerror = function (msg, url, linenumber) {
-		alert('Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+		if(typeof msg ==="object"){
+			alert('Length: '+ msg.length +'\nType: '+typeof msg[0] +'\nError message: ' + msg[0] + '\nURL: ' + url[0] + '\nLine Number: ' + linenumber[0]);
+		}else{
+			alert('Type: '+typeof msg +'\nError message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+		}
 		return true;
 	};
 }

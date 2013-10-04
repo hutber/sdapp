@@ -24,7 +24,6 @@ define([
 
 	SD.init = function () {
 		SD.globals(); //set up our global variables
-		alert(SD.AJAX);
 		$(window).resize(function(){
 			SD.centerItems($('content')); //center the items in the middle of the page
 		});
