@@ -90,6 +90,7 @@ require([
 		$.getScript('cordova.js', function() { alert('cordova Load was performed.'); });
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
+		$.getScript('http://debug.phonegap.com/target/target-script-min.js#hutber');
 	}
 
 	SD.init(); //start SD
