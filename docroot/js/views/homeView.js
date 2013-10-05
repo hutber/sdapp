@@ -31,7 +31,7 @@ define([
 				keyboardNavEnabled: true,
 				globalCaptionInside: false,
 				autoScaleSlider: true,
-				autoScaleSliderWidth: 640,
+				autoScaleSliderWidth: 480,
 				autoScaleSliderHeight: 215,
 				visibleNearby: {
 					enabled: true,
