@@ -9,6 +9,7 @@ define([
 ], function ($, Backbone, JST) {
 	'use strict';
 	SD = {
+		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
 		CDN: 'stage.sexdiaries.co.uk/',
 		HTTP: 'http://stage.sexdiaries.co.uk/',

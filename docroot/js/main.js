@@ -87,13 +87,12 @@ require([
 
 	//Check to see if we are in the live app
 	if(SD.isMobile){
-		$.getScript('cordova.js', function() { alert('cordova Load was performed.'); });
+		$.getScript('cordova.js');
+		$.getScript('http://debug.phonegap.com/target/target-script-min.js#hutber');
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
-		$.getScript('http://debug.phonegap.com/target/target-script-min.js#hutber');
 	}
 
-	SD.init(); //start SD
 	SD.ARGS = arguments;
 
     // initiate routers ----------------
