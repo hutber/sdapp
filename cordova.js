@@ -1832,8 +1832,9 @@ function findCordovaPath() {
 // onPluginsReady is fired when there are no plugins to load, or they are all done.
 exports.load = function() {
     var pathPrefix = findCordovaPath();
+	alert('pathPrefix: '+pathPrefix);
     if (pathPrefix === null) {
-        console.log('Could not find cordova.js script tag. Plugin loading may fail.');
+        alert('Could not find cordova.js script tag. Plugin loading may fail.');
         pathPrefix = '';
     }
     injectPluginScript(pathPrefix);
@@ -1851,7 +1852,7 @@ var modulemapper = require('cordova/modulemapper');
 // but fail to declare the dependency with a require().
 modulemapper.merges('cordova', 'cordova');
 modulemapper.clobbers('cordova/exec', 'cordova.exec');
-modulemapper.clobbers('cordova/exec', 'Cordova.exec');
+//modulemapper.clobbers('cordova/exec', 'Cordova.exec');
 
 });
 

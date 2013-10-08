@@ -38,8 +38,8 @@ define([
 			if(noerror){
 //				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
-				c(values.uname);
-				c(SD);
+//				c(values.uname);
+//				c(SD);
 				$.ajax({
 					url: SD.AJAX+'users/login',
 					type: 'post',

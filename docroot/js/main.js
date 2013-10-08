@@ -1,5 +1,14 @@
 /*global require*/
 'use strict';
+function script(url) {
+	var s = document.createElement('script');
+	s.type = 'text/javascript';
+	s.async = true;
+	s.src = url;
+	var x = document.getElementsByTagName('body')[0];
+	x.appendChild(s);
+}
+
 
 require.config({
     shim: {
@@ -30,7 +39,7 @@ require.config({
 		touchCarousel: {
 			deps: ['jquery'],
 			exports: 'jQuery.fn.touchCarousel'
-		},
+		}
 //		phonegap: {
 //			deps: ['jquery'],
 //			exports: 'phonegap'
@@ -87,13 +96,19 @@ require([
 
 	//Check to see if we are in the live app
 	if(SD.isMobile){
-		$.getScript('cordova.js');
-		$.getScript('http://debug.phonegap.com/target/target-script-min.js#hutber');
+//		$.getScript('cordova.js', function(){
+//			alert('loaded cordova');
+			SD.checkConnection();
+			$.getScript('http://debug.build.phonegap.com/target/target-script-min.js#hutber', function(){
+				alert('loaded debug');
+			});
+//		});
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
 	}
 
 	SD.ARGS = arguments;
+	SD.init();
 
     // initiate routers ----------------
     var router = new Router();
@@ -146,4 +161,5 @@ require([
 	}
 
 	SD.centerItems($('content'));
+//	SD.checkConnection();
 });
