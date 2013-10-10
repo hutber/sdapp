@@ -1832,7 +1832,7 @@ function findCordovaPath() {
 // onPluginsReady is fired when there are no plugins to load, or they are all done.
 exports.load = function() {
     var pathPrefix = findCordovaPath();
-	alert('pathPrefix: '+pathPrefix);
+//	alert('pathPrefix: '+pathPrefix);
     if (pathPrefix === null) {
         alert('Could not find cordova.js script tag. Plugin loading may fail.');
         pathPrefix = '';

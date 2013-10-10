@@ -20,7 +20,7 @@ if (document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {
 }
 
 if (SD.isMobile){
-	window.onerror = function (msg, url, linenumber) {
+//	window.onerror = function (msg, url, linenumber) {
 //		if(typeof msg ==="object"){
 //			for (var key in msg) {
 //				var obj = msg[key];
@@ -41,8 +41,9 @@ if (SD.isMobile){
 ////				alert(elm);
 ////			});
 //		}else{
-			alert('Type: '+typeof msg +'\nError message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+		window.onerror = function(error) { console.log(error); };
+//			alert('Type: '+typeof msg +'\nError message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
 //		}
-		return true;
-	};
+//		return true;
+//	};
 }

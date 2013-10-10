@@ -96,13 +96,9 @@ require([
 
 	//Check to see if we are in the live app
 	if(SD.isMobile){
-//		$.getScript('cordova.js', function(){
-//			alert('loaded cordova');
-			SD.checkConnection();
-			$.getScript('http://debug.build.phonegap.com/target/target-script-min.js#hutber', function(){
-				alert('loaded debug');
-			});
-//		});
+		$.getScript('http://debug.build.phonegap.com/target/target-script-min.js#hutber', function(){
+			alert('loaded debug');
+		});
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
 	}
@@ -152,6 +148,7 @@ require([
 
 	if(SD.isMobile){
 		document.addEventListener("deviceready", function(){
+			alert('device ready');
 			Backbone.history.start();
 		}, true);
 	}else{
