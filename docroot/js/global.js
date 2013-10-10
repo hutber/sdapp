@@ -20,6 +20,7 @@ if (document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {
 }
 
 if (SD.isMobile){
+		window.onerror = function(error) { console.log(error);return true; };
 //	window.onerror = function (msg, url, linenumber) {
 //		if(typeof msg ==="object"){
 //			for (var key in msg) {
@@ -41,7 +42,6 @@ if (SD.isMobile){
 ////				alert(elm);
 ////			});
 //		}else{
-		window.onerror = function(error) { console.log(error); };
 //			alert('Type: '+typeof msg +'\nError message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
 //		}
 //		return true;
