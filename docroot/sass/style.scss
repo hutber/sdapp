@@ -47,6 +47,14 @@ body {
 	@include background-image(radial-gradient(center, ellipse cover, #9acdcb 0%, #9acdcb 14%, #a6d3d1 30%, #abd5d4 44%, #a9d4d3 61%, #9acdcb 84%, #9acdcb 100%));
 }
 
+debug li {
+	background: none repeat scroll 0 0 #53838E;
+	padding: 5px;
+	@include clearfix();
+	width: 100%;
+	border-bottom: 1px solid #DDD;
+}
+
 // #content -------------------------------------------------------------------
 content {
 	@include container;

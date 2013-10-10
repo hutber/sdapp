@@ -35,42 +35,38 @@ define([
 				}
 			});
 
+			c(SD.AJAX+'users/login');
 			if(noerror){
 //				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
-//				c(values.uname);
-//				c(SD);
-				alert(SD.AJAX+'users/login');
+//				myAjax(SD.AJAX+'users/log1in', 'POST', 'uname='+ values.uname +'&pword='+ values.pword +'',
+//					function(data){
+//						c(data);
+//					},
+//					function(data){
+//						c(data);
+//					}
+//				);
+				//url, method, parameters, callback
 				$.ajax({
-					url: SD.AJAX+'users/login',
-					type: 'post',
+					url: 'http://stage.sexdiaries.co.uk/app/users/login',
+					type: 'POST',
+					dataType: "script",
 					data: {
 						'uname': values.uname,
 						'pword': values.pword
 					},
 					crossDomain: true,
 					error: function(data){
-//						SD.overlay.hideme();
-//						c(data.status);
-//						c(data);
-						var newArray = [];
-						for (var key in data) {
-							newArray.push(key);
-						}
-						newArray.forEach(function (elm) {
-							alert(elm);
-						});
+						c(data.status);
 					},
 					success: function(data){
-						c('siccess'+data);
+						c('success: '+data);
 						data = JSON.parse(data);
-//						SD.overlay.hideme();
 						if(data.privateKey){
 							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
 							Backbone.history.loadUrl('');
-						}else{
-							c(data.message);
 						}
 					}
 				});

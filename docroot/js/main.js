@@ -1,88 +1,88 @@
-/*global require*/
+/*
+==================================================
+Table of Contents - Created by Hutber on 04/10/13.
+==================================================
+ #Require JS Config
+ #Require Routes set up
+ #Arguments
+ #isMobile If
+ #SD init
+ #Route Vars
+ #Routes
+ #On Ready
+ */
+
 'use strict';
-function script(url) {
-	var s = document.createElement('script');
-	s.type = 'text/javascript';
-	s.async = true;
-	s.src = url;
-	var x = document.getElementsByTagName('body')[0];
-	x.appendChild(s);
-}
-
-
-require.config({
-    shim: {
-        underscore: {
-            exports: '_'
-        },
-        backbone: {
-            deps: [
-                'underscore',
-                'jquery'
-            ],
-            exports: 'Backbone'
-        },
-		jStorage: {
-			deps: ['jquery'],
-			exports: '$.jStorage'
+/*==================================================
+ Require JS Config
+==================================================*/
+	require.config({
+		shim: {
+			underscore: {
+				exports: '_'
+			},
+			backbone: {
+				deps: [
+					'underscore',
+					'jquery'
+				],
+				exports: 'Backbone'
+			},
+			jStorage: {
+				deps: ['jquery'],
+				exports: '$.jStorage'
+			},
+			sd: {
+				exports: 'SD'
+			},
+			core: {
+				deps: ['jquery']
+			},
+			JST: {
+				deps: ['underscore'],
+				exports: 'JST'
+			},
+			touchCarousel: {
+				deps: ['jquery'],
+				exports: 'jQuery.fn.touchCarousel'
+			}
 		},
-		sd: {
-			exports: 'SD'
-		},
-		core: {
-			deps: ['jquery']
-		},
-		JST: {
-			deps: ['underscore'],
-			exports: 'JST'
-		},
-		touchCarousel: {
-			deps: ['jquery'],
-			exports: 'jQuery.fn.touchCarousel'
+		paths: {
+			jquery: '../../bower_components/jquery/jquery',
+			backbone: '../../bower_components/backbone/backbone',
+			underscore: '../../bower_components/underscore/underscore',
+			jStorage: 'libs/jStorage',
+			touchCarousel: 'libs/jquery.touchcarousel-1.2',
+			core: 'core.functions',
+			sd : 'sd.functions',
+			JST : 'templates',
 		}
-//		phonegap: {
-//			deps: ['jquery'],
-//			exports: 'phonegap'
-//		}
-    },
-    paths: {
-        jquery: '../../bower_components/jquery/jquery',
-        backbone: '../../bower_components/backbone/backbone',
-        underscore: '../../bower_components/underscore/underscore',
-		jStorage: 'libs/jStorage',
-		touchCarousel: 'libs/jquery.touchcarousel-1.2',
-		core: 'core.functions',
-		sd : 'sd.functions',
-		JST : 'templates',
-//		phonegap: '../../phonegap'
-    }
-});
+	});
 
-//Start off the router
-require([
-    // Requires ----------------
-    'backbone',
-	'jStorage',
-//	'phonegap',
-
-    // Routes ----------------
-    'routes/router',
-
-    // functions ----------------
-    'core.functions',
-    'sd.functions',
-
-	// Views ----------------
-	'views/homeView',
-	'views/loginView',
-	'views/sex/wank',
-	'views/sex/fingers',
-	'views/sex/oral',
-	'views/sex/sex',
-	'views/sex/anything'
-
+/*==================================================
+Routers
+==================================================*/
+// Requires ----------------
+	require([
+		'backbone',
+		'jStorage',
+// Routes ----------------
+		'routes/router',
+// functions ----------------
+		'core.functions',
+		'sd.functions',
+// Views ----------------
+		'views/homeView',
+		'views/loginView',
+		'views/sex/wank',
+		'views/sex/fingers',
+		'views/sex/oral',
+		'views/sex/sex',
+		'views/sex/anything'
 ], function () {
-    //set arguments to values for ease of reading arguments
+/*==================================================
+set arguments to values for ease of reading arguments
+================================================== */
     var Backbone = arguments[0],
         Router = arguments[2],
 		SD = arguments[4],
@@ -94,39 +94,53 @@ require([
         sexView = arguments[10],
         anythingView = arguments[11];
 
-	//Check to see if we are in the live app
+/*==================================================
+Load in scripts depending on which device we are.
+================================================== */
 	if(SD.isMobile){
-		$.getScript('phonegap.js', function(){
-			c('cordova.js loaded');
-			$.getScript( "http://debug.build.phonegap.com/target/target-script-min.js#hutber", function( data, textStatus, jqxhr ) {
-				c( data ); // Data returned
-				c( textStatus ); // Success
-				c( jqxhr.status ); // 200
-				c( "Load was performed." );
-			});
+		$.getScript('phonegap.js', function( data, textStatus, jqxhr){
+			c( "cordova was loaded." );
 		});
+//		$.ajax({
+//			url: "http://debug.build.phonegap.com/target/target-script-min.js#hutber",
+//			dataType: "script",
+//			error: function(data){
+//				c('debug: '+ data.status);
+//			},
+//			success: function(data){
+//				c('debug: '+ data);
+//			}
+//		});
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
 	}
 
-	SD.ARGS = arguments;
+/*==================================================
+Start up SD global object.
+================================================== */
 	SD.init();
 
-    // initiate routers ----------------
+/*==================================================
+Routes Vars
+================================================== */
+// initiate routers ----------------
     var router = new Router();
 
-    // views ---------------------------
+// views ---------------------------
     var homeView = new HomeView();
     var loginView = new LoginView();
 
-	// Sex views ---------------------------
+// Sex views ---------------------------
 	var WankView = new wankView();
 	var FingersView = new fingersView();
 	var OralView = new oralView();
 	var SexView = new sexView();
 	var AnythingView = new anythingView();
 
-	// Router ---------------------------
+/*==================================================
+Routes
+================================================== */
+//# Default router ----------------------------------------------------------------
 	router.on('route:login', function(){
 		if(sessionStorage.getItem('privateKey')!==null){
 			homeView.render();
@@ -135,7 +149,7 @@ require([
 		}
 	});
 
-	// Sex Routers ---------------------------
+// Sex Routers ---------------------------
 	router.on('route:wank', function(){
 		WankView.render();
 	});
@@ -152,11 +166,19 @@ require([
 		AnythingView.render();
 	});
 
+/*==================================================
+On Device Ready
+================================================== */
 	if(SD.isMobile){
 		document.addEventListener("deviceready", function(){
 			c('device ready');
 			Backbone.history.start();
 			SD.checkConnection();
+			myAjax('http://debug.build.phonegap.com/target/target-script-min.js#hutber', 'GET','',function() {
+				c(data);
+			}, function(data){
+				c(data);
+			});
 		}, true);
 	}else{
 		$(document).ready(function() {

@@ -15,11 +15,11 @@ define([
 ], function ($, Backbone, JST) {
 	'use strict';
 
-	/*==================================================
-	Globals
-	================================================== */
+/*==================================================
+Globals
+================================================== */
 
-	// #Globals for SD ------------------------------------------------------
+// #Globals for SD ------------------------------------------------------
 	SD = {
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
@@ -35,13 +35,13 @@ define([
 		}()
 	};
 
-	// #define the globals depending on where we are ------------------------------------------------------
+// #define the globals depending on where we are ------------------------------------------------------
 	SD.globals = function () {
 		switch (window.location.hostname) {
 			case "sd.local":
 				SD.ENVIROMENT = 'localApp',
 					SD.CDN = 'sd.local/',
-					SD.HTTP = 'http://sd.local/',
+					SD.HTTP = 'http://sexdiaires.local/',
 					SD.AJAX = SD.HTTP+'app/';
 				break;
 			case "192.168.0.25":
@@ -54,10 +54,10 @@ define([
 		}
 	};
 
-	/*==================================================
-	Routes/Views
-	================================================== */
-	// #Set up the Deult router view ------------------------------------------------------
+/*==================================================
+Routes/Views
+================================================== */
+// #Set up the Deult router view ------------------------------------------------------
 	SD.defaultView = function(){ //Default controller for all views
 		var templatesNeeded = function () {
 			var myself;
@@ -93,10 +93,10 @@ define([
 		return HomeView;
 	}();
 
-	/*==================================================
-	 Display functions
-	 ================================================== */
-	// #Will center the view ------------------------------------------------------
+/*==================================================
+Display functions
+================================================== */
+// #Will center the view ------------------------------------------------------
 	SD.centerItems = function (eleme) {
 		var appHeight = $(document).outerHeight(),
 			bodyHeight = eleme.outerHeight(),
@@ -109,7 +109,7 @@ define([
 		});
 	};
 
-	// #display the popup/overlay ------------------------------------------------------
+// #display the popup/overlay ------------------------------------------------------
 	SD.overlay = {
 		init: function(elem) {
 			SD.centerItems(elem);
@@ -122,9 +122,9 @@ define([
 		}
 	};
 
-	/*==================================================
-	 Networking functions
-	 ================================================== */
+/*==================================================
+Networking functions
+================================================== */
 	SD.checkConnection = function () {
 		var networkState = navigator.connection.type;
 
@@ -141,16 +141,16 @@ define([
 
 			c('Connection type: ' + states[networkState]);
 		}else{
-			c('not ready yet');
+			c('Connection not ready yet');
 		}
 	};
 
 
-	// #Init for SD ------------------------------------------------------
+// #Init for SD ------------------------------------------------------
 	SD.init = function () {
 		SD.globals(); //set up our global variables
 	};
 
-	//return SD
+//return SD
 	return SD;
 });
