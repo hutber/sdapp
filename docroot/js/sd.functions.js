@@ -1,13 +1,25 @@
-/**
- * Created by Hutber on 13/09/13.
+/*
+ ==================================================
+ Table of Contents - Created by Hutber on 13/09/13.
+ ==================================================
+ #Definitions from require
+ #Globals
+ #Routes/Views
+ #Display functions
+ #Networking functions
  */
-
 define([
 	'jquery',
 	'backbone',
 	'JST',
 ], function ($, Backbone, JST) {
 	'use strict';
+
+	/*==================================================
+	Globals
+	================================================== */
+
+	// #Globals for SD ------------------------------------------------------
 	SD = {
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
@@ -23,14 +35,29 @@ define([
 		}()
 	};
 
-	SD.init = function () {
-		SD.globals(); //set up our global variables
-		$(window).resize(function(){
-			SD.centerItems($('content')); //center the items in the middle of the page
-		});
-
+	// #define the globals depending on where we are ------------------------------------------------------
+	SD.globals = function () {
+		switch (window.location.hostname) {
+			case "sd.local":
+				SD.ENVIROMENT = 'localApp',
+					SD.CDN = 'sd.local/',
+					SD.HTTP = 'http://sd.local/',
+					SD.AJAX = SD.HTTP+'app/';
+				break;
+			case "192.168.0.25":
+				SD.ENVIROMENT = 'mobilePhone',
+					SD.AJAX = SD.HTTP+ 'app/';
+				break;
+			default:
+				SD.AJAX = SD.HTTP+'app/';
+				break;
+		}
 	};
 
+	/*==================================================
+	Routes/Views
+	================================================== */
+	// #Set up the Deult router view ------------------------------------------------------
 	SD.defaultView = function(){ //Default controller for all views
 		var templatesNeeded = function () {
 			var myself;
@@ -66,34 +93,38 @@ define([
 		return HomeView;
 	}();
 
-	SD.globals = function () {
-		switch (window.location.hostname) {
-			case "sd.local":
-				SD.ENVIROMENT = 'localApp',
-					SD.CDN = 'sd.local/',
-					SD.HTTP = 'http://sd.local/',
-					SD.AJAX = 'http://sexdiaires.local/app/';
-			break;
-			case "192.168.0.25":
-				SD.ENVIROMENT = 'mobilePhone',
-					SD.AJAX = SD.HTTP+ 'app/';
-			break;
-			default:
-//				SD.ENVIROMENT = 'wifiApp',
-//					SD.AJAX = SD.HTTP+ 'app/';
-				SD.AJAX = SD.HTTP+'app/';
-			break;
-		}
-	};
-
+	/*==================================================
+	 Display functions
+	 ================================================== */
+	// #Will center the view ------------------------------------------------------
 	SD.centerItems = function (eleme) {
 		var appHeight = $(document).outerHeight(),
 			bodyHeight = eleme.outerHeight(),
 			middleHeight = (appHeight / 2) - (bodyHeight / 2);
 
 		eleme.css({top: middleHeight, position: 'absolute'});
+
+		$(window).resize(function(){
+			SD.centerItems($('content')); //center the items in the middle of the page
+		});
 	};
 
+	// #display the popup/overlay ------------------------------------------------------
+	SD.overlay = {
+		init: function(elem) {
+			SD.centerItems(elem);
+		},
+		showme: function(){
+			$('overlay').fadeIn();
+		},
+		hideme: function(){
+			$('overlay').fadeOut('fast');
+		}
+	};
+
+	/*==================================================
+	 Networking functions
+	 ================================================== */
 	SD.checkConnection = function () {
 		var networkState = navigator.connection.type;
 
@@ -108,23 +139,18 @@ define([
 			states[Connection.CELL]     = 'Cell generic connection';
 			states[Connection.NONE]     = 'No network connection';
 
-			alert('Connection type: ' + states[networkState]);
+			c('Connection type: ' + states[networkState]);
 		}else{
-			alert('not ready yet');
+			c('not ready yet');
 		}
 	};
 
-	SD.overlay = {
-		init: function(elem) {
-			SD.centerItems(elem);
-		},
-		showme: function(){
-			$('overlay').fadeIn();
-		},
-		hideme: function(){
-			$('overlay').fadeOut('fast');
-		}
+
+	// #Init for SD ------------------------------------------------------
+	SD.init = function () {
+		SD.globals(); //set up our global variables
 	};
 
+	//return SD
 	return SD;
 });

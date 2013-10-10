@@ -1,10 +1,28 @@
-/**
- * Created by Hutber on 04/10/13.
+/*
+ ==================================================
+ Table of Contents - Created by Hutber on 04/10/13.
+ ==================================================
+ #isMobile
+ #C
+ #Erorr handling
  */
+
+//Define SD
 var SD = {}; //define SD so we can use it globally
 
+/*==================================================
+ Is Mobile - If true then we are a mobile
+ ================================================== */
+SD.isMobile = true;
+if (document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {
+	SD.isMobile = false;
+}
+
+/*==================================================
+ Bind C to be alert on mobile console.log in desktop
+ ================================================== */
 var c = false;
-if (typeof console === "object" && typeof console.error === "function") {
+if (typeof console === "object" && typeof console.error === "function" && !SD.isMobile) {
 	c = function (msg) {
 		console.info(msg);
 	};
@@ -14,14 +32,12 @@ if (typeof console === "object" && typeof console.error === "function") {
 	};
 }
 
-SD.isMobile = true;
-if (document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {
-	SD.isMobile = false;
-}
-
+/*==================================================
+ Error handling on mobile
+ ================================================== */
 if (SD.isMobile){
-		window.onerror = function(error) { console.log(error);return true; };
-//	window.onerror = function (msg, url, linenumber) {
+//		window.onerror = function(error) { console.log(error);return true; };
+	window.onerror = function (msg, url, linenumber) {
 //		if(typeof msg ==="object"){
 //			for (var key in msg) {
 //				var obj = msg[key];
@@ -42,8 +58,8 @@ if (SD.isMobile){
 ////				alert(elm);
 ////			});
 //		}else{
-//			alert('Type: '+typeof msg +'\nError message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+			alert('Type: '+typeof msg +'\nError message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
 //		}
-//		return true;
-//	};
+		return true;
+	};
 }

@@ -96,9 +96,15 @@ require([
 
 	//Check to see if we are in the live app
 	if(SD.isMobile){
-//		$.getScript('http://debug.build.phonegap.com/target/target-script-min.js#hutber', function(){
-//			alert('loaded debug');
-//		});
+		$.getScript('phonegap.js', function(){
+			c('cordova.js loaded');
+			$.getScript( "http://debug.build.phonegap.com/target/target-script-min.js#hutber", function( data, textStatus, jqxhr ) {
+				c( data ); // Data returned
+				c( textStatus ); // Success
+				c( jqxhr.status ); // 200
+				c( "Load was performed." );
+			});
+		});
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
 	}
@@ -148,11 +154,9 @@ require([
 
 	if(SD.isMobile){
 		document.addEventListener("deviceready", function(){
-			alert('device ready');
+			c('device ready');
 			Backbone.history.start();
-			$.getScript('http://debug.build.phonegap.com/target/target-script-min.js#hutber', function(){
-				alert('loaded debug');
-			});
+			SD.checkConnection();
 		}, true);
 	}else{
 		$(document).ready(function() {
@@ -161,5 +165,4 @@ require([
 	}
 
 	SD.centerItems($('content'));
-//	SD.checkConnection();
 });

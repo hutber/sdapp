@@ -40,6 +40,7 @@ define([
 				var values = $(elem.currentTarget).serializeObject();
 //				c(values.uname);
 //				c(SD);
+				alert(SD.AJAX+'users/login');
 				$.ajax({
 					url: SD.AJAX+'users/login',
 					type: 'post',
@@ -50,10 +51,18 @@ define([
 					crossDomain: true,
 					error: function(data){
 //						SD.overlay.hideme();
-						alert(data.status);
-						c(data);
+//						c(data.status);
+//						c(data);
+						var newArray = [];
+						for (var key in data) {
+							newArray.push(key);
+						}
+						newArray.forEach(function (elm) {
+							alert(elm);
+						});
 					},
 					success: function(data){
+						c('siccess'+data);
 						data = JSON.parse(data);
 //						SD.overlay.hideme();
 						if(data.privateKey){
@@ -61,7 +70,7 @@ define([
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
 							Backbone.history.loadUrl('');
 						}else{
-							alert(data.message);
+							c(data.message);
 						}
 					}
 				});
