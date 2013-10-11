@@ -6,7 +6,7 @@ define(function(){
 
   this["JST"]["platforms/android/assets/www/docroot/js/templates/comp/footer.ejs"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<footer><menuBtn>-</menuBtn></footer>';}return __p};
 
-  this["JST"]["platforms/android/assets/www/docroot/js/templates/comp/headerIn.ejs"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<header><!--<logo>SD</logo>--><a href="sessionStorage.clear(); return false;">Logout</a></header>';}return __p};
+  this["JST"]["platforms/android/assets/www/docroot/js/templates/comp/headerIn.ejs"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<header><!--<logo>SD</logo>--><a href="javascript: sessionStorage.clear(); Backbone.history.loadUrl(\'#login\');">Logout</a></header>';}return __p};
 
   this["JST"]["platforms/android/assets/www/docroot/js/templates/comp/headerOut.ejs"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<header><logo><a href="/#home">Sex<span> Diaries</span></a></logo></header>';}return __p};
 

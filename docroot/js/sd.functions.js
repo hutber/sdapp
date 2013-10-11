@@ -11,9 +11,9 @@
 define([
 	'jquery',
 	'backbone',
-	'JST',
+	'JST'
 ], function ($, Backbone, JST) {
-	'use strict';
+//	'use strict';
 
 /*==================================================
 Globals

@@ -12,7 +12,7 @@ Table of Contents - Created by Hutber on 04/10/13.
  #On Ready
  */
 
-'use strict';
+//'use strict';
 /*==================================================
  Require JS Config
 ==================================================*/
@@ -55,7 +55,7 @@ Table of Contents - Created by Hutber on 04/10/13.
 			touchCarousel: 'libs/jquery.touchcarousel-1.2',
 			core: 'core.functions',
 			sd : 'sd.functions',
-			JST : 'templates',
+			JST : 'templates'
 		}
 	});
 
@@ -171,14 +171,14 @@ On Device Ready
 ================================================== */
 	if(SD.isMobile){
 		document.addEventListener("deviceready", function(){
-			c('device ready');
 			Backbone.history.start();
 			SD.checkConnection();
-			myAjax('http://debug.build.phonegap.com/target/target-script-min.js#hutber', 'GET','',function() {
-				c(data);
-			}, function(data){
-				c(data);
-			});
+			c(SD.AJAX+'users/login');
+			var s = document.createElement('script');
+			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
+			s.setAttribute("id","hutber");
+			document.getElementsByTagName('body')[0].appendChild(s);
+			c('hutber elm: '+$('#hutber')[0]);
 		}, true);
 	}else{
 		$(document).ready(function() {

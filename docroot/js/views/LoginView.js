@@ -4,9 +4,9 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'../sd.functions',
+	'../sd.functions'
 ], function ($, _, Backbone, JST, SD) {
-    'use strict';
+//    'use strict';
 
     var LoginView = SD.defaultView.extend({
 		el: 'page',
@@ -35,34 +35,21 @@ define([
 				}
 			});
 
-			c(SD.AJAX+'users/login');
 			if(noerror){
-//				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
-//				myAjax(SD.AJAX+'users/log1in', 'POST', 'uname='+ values.uname +'&pword='+ values.pword +'',
-//					function(data){
-//						c(data);
-//					},
-//					function(data){
-//						c(data);
-//					}
-//				);
-				//url, method, parameters, callback
 				$.ajax({
-					url: 'http://stage.sexdiaries.co.uk/app/users/login',
+					url: SD.AJAX+'users/login',
 					type: 'POST',
-					dataType: "script",
+					dataType: "json",
 					data: {
 						'uname': values.uname,
 						'pword': values.pword
 					},
-					crossDomain: true,
 					error: function(data){
 						c(data.status);
 					},
 					success: function(data){
-						c('success: '+data);
-						data = JSON.parse(data);
+						c('Login code:'+ data.code);
 						if(data.privateKey){
 							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
