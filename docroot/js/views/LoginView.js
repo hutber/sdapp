@@ -36,14 +36,14 @@ define([
 			});
 
 			if(noerror){
-				var values = $(elem.currentTarget).serializeObject();
+//				var values = $(elem.currentTarget).serializeObject();
 				$.ajax({
 					url: SD.AJAX+'users/login',
 					type: 'POST',
 					dataType: "json",
 					data: {
-						'uname': values.uname,
-						'pword': values.pword
+						'uname': 'hutber',
+						'pword': 'jamie'
 					},
 					error: function(data){
 						c(data.status);
