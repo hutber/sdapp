@@ -99,7 +99,14 @@ Requests
 	//					important check that this is objects own property
 	//					not from prototype prop inherited
 						if(obj.hasOwnProperty(prop)){
-							c(prop + " = " + obj[prop]);
+							var myself = obj[prop];
+							if(typeof(myself) === 'string'){
+								c(prop + " = " + myself);
+							}
+							else if (myself !== null && myself.toString){
+								myself = myself.toString();
+								c(myself);
+							}
 						}
 					}
 				}
