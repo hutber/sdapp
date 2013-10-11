@@ -4,9 +4,9 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'../sd.functions'
+	'../sd.functions',
 ], function ($, _, Backbone, JST, SD) {
-//    'use strict';
+    'use strict';
 
     var LoginView = SD.defaultView.extend({
 		el: 'page',
@@ -36,14 +36,14 @@ define([
 			});
 
 			if(noerror){
-//				var values = $(elem.currentTarget).serializeObject();
+				var values = $(elem.currentTarget).serializeObject();
 				$.ajax({
 					url: SD.AJAX+'users/login',
 					type: 'POST',
 					dataType: "json",
 					data: {
-						'uname': 'hutber',
-						'pword': 'jamie'
+						'uname': values.uname,
+						'pword': values.pword
 					},
 					error: function(data){
 						c(data.status);

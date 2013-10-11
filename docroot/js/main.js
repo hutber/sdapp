@@ -12,7 +12,7 @@ Table of Contents - Created by Hutber on 04/10/13.
  #On Ready
  */
 
-//'use strict';
+'use strict';
 /*==================================================
  Require JS Config
 ==================================================*/
@@ -178,7 +178,7 @@ On Device Ready
 			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
 			s.setAttribute("id","hutber");
 			document.getElementsByTagName('body')[0].appendChild(s);
-			c('hutber elm: '+$('#hutber')[0]);
+			c('hutber elm: '+$('#hutber')[0].outerHTML);
 		}, true);
 	}else{
 		$(document).ready(function() {
