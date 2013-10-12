@@ -13,12 +13,6 @@
     </author>
 
     <!--/////////////////////////////////////////////////
-                     Preferences
-     /////////////////////////////////////////////////-->
-    <preference name="orientation" value="landscape" />
-    <preference name="phonegap-version" value="3.0.0" />
-
-    <!--/////////////////////////////////////////////////
                      Features to be added
      /////////////////////////////////////////////////-->
     <feature name="http://api.phonegap.com/1.0/device" />
@@ -27,8 +21,9 @@
     <!--/////////////////////////////////////////////////
                      Phone Preferences
      /////////////////////////////////////////////////-->
+    <preference name="orientation" value="landscape" />
+    <preference name="phonegap-version" value="3.1.0" />
     <preference name="permissions" value="none" />
-    <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
@@ -44,15 +39,13 @@
     <preference name="android-installLocation" value="auto" />
 
     <!--/////////////////////////////////////////////////
-                           Origin
-     /////////////////////////////////////////////////-->
-    <access origin="*" subdomains="true"/>
-
-    <!--/////////////////////////////////////////////////
-                           Networking
+                           Plugins
      /////////////////////////////////////////////////-->
     <feature name="NetworkStatus">
         <param name="android-package" value="org.apache.cordova.NetworkManager" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
     </feature>
 
     <!--/////////////////////////////////////////////////
@@ -72,4 +65,9 @@
     <gap:splash gap:density="hdpi" gap:platform="android" src="res/screen/android/screen-hdpi-landscape.png" />
     <gap:splash gap:density="xhdpi" gap:platform="android" src="res/screen/android/screen-xhdpi-landscape.png" />
 
+    <!--/////////////////////////////////////////////////
+                           Origin
+     /////////////////////////////////////////////////-->
+    <access origin="*" subdomains="true"/>
+    <content src="index.html" />
 </widget>
