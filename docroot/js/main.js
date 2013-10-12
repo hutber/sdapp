@@ -171,14 +171,15 @@ On Device Ready
 ================================================== */
 	if(SD.isMobile){
 		document.addEventListener("deviceready", function(){
+			c('device ready');
 			Backbone.history.start();
 			SD.checkConnection();
 			c(SD.AJAX+'users/login');
-			var s = document.createElement('script');
-			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
-			s.setAttribute("id","hutber");
-			document.getElementsByTagName('body')[0].appendChild(s);
-			c('hutber elm: '+$('#hutber')[0].outerHTML);
+//			var s = document.createElement('script');
+//			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
+//			s.setAttribute("id","hutber");
+//			document.getElementsByTagName('body')[0].appendChild(s);
+//			c('hutber elm: '+$('#hutber')[0].outerHTML);
 		}, true);
 	}else{
 		$(document).ready(function() {

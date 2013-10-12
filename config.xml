@@ -11,8 +11,6 @@
     <author email="support@sexdiaries.co.uk" href="http://www.sexdiaries.co.uk">
         Sex Diaries
     </author>
-    <log level="DEBUG"/>
-
 
     <!--/////////////////////////////////////////////////
                      Preferences
@@ -21,13 +19,14 @@
     <preference name="phonegap-version" value="3.0.0" />
 
     <!--/////////////////////////////////////////////////
-                     White list of Domains
+                     Features to be added
      /////////////////////////////////////////////////-->
-    <!--<access origin="http://sexdiaires.local/" subdomains="true"/>-->
-    <!--<access origin="http://sexdiaries.co.uk/" subdomains="true"/>-->
-
-
     <feature name="http://api.phonegap.com/1.0/device" />
+    <feature name="http://api.phonegap.com/1.0/network"/>
+
+    <!--/////////////////////////////////////////////////
+                     Phone Preferences
+     /////////////////////////////////////////////////-->
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -47,7 +46,7 @@
     <!--/////////////////////////////////////////////////
                            Origin
      /////////////////////////////////////////////////-->
-    <access origin="http://*" subdomains="true"/>
+    <access origin="*" subdomains="true"/>
 
     <!--/////////////////////////////////////////////////
                            Networking

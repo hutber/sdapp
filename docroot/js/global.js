@@ -92,34 +92,7 @@ Requests
 //#alert errors ----------------------------------------------------
 	if (SD.isMobile){
 		window.onerror = function (msg, url, linenumber) {
-			if(typeof msg ==="object"){
-				for (var key in msg) {
-					var obj = msg[key];
-					for (var prop in obj) {
-	//					important check that this is objects own property
-	//					not from prototype prop inherited
-						if(obj.hasOwnProperty(prop)){
-							var myself = obj[prop];
-							if(typeof(myself) === 'string'){
-								c(prop + " = " + myself);
-							}
-							else if (myself !== null && myself.toString){
-								myself = myself.toString();
-								c(myself);
-							}
-						}
-					}
-				}
-	//			var newArray = [];
-	//			for (var key in msg) {
-	//				newArray.push(key);
-	//			}
-	//			newArray.forEach(function(elm){
-	//				alert(elm);
-	//			});
-			}else{
-				c('Type: '+typeof msg +'\nError message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
-			}
+			c('Type: '+typeof msg +'\nError message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
 			return true;
 		};
 	}
