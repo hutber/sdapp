@@ -1,0 +1,16 @@
+#Normal Site
+.DS_Store
+.idea
+
+#yeoman grunt
+bower_components
+node_modules
+.sass-cache
+.tmp
+
+#Phone Gap Ignores
+.cordova
+merges
+out
+platforms
+plugins
