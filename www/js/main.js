@@ -100,17 +100,10 @@ Load in scripts depending on which device we are.
 	if(SD.isMobile){
 		$.getScript('phonegap.js', function( data, textStatus, jqxhr){
 			c( "cordova was loaded." );
+			var s = document.createElement('script');
+			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
+			document.getElementsByTagName('body')[0].appendChild(s);
 		});
-//		$.ajax({
-//			url: "http://debug.build.phonegap.com/target/target-script-min.js#hutber",
-//			dataType: "script",
-//			error: function(data){
-//				c('debug: '+ data.status);
-//			},
-//			success: function(data){
-//				c('debug: '+ data);
-//			}
-//		});
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
 	}
@@ -174,12 +167,6 @@ On Device Ready
 			c('device ready');
 			Backbone.history.start();
 			SD.checkConnection();
-			c(SD.AJAX+'users/login');
-//			var s = document.createElement('script');
-//			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
-//			s.setAttribute("id","hutber");
-//			document.getElementsByTagName('body')[0].appendChild(s);
-//			c('hutber elm: '+$('#hutber')[0].outerHTML);
 		}, true);
 	}else{
 		$(document).ready(function() {
@@ -187,5 +174,5 @@ On Device Ready
 		});
 	}
 
-	SD.centerItems($('content'));
+//	SD.centerItems($('content'));
 });

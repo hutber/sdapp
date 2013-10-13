@@ -58,12 +58,16 @@ debug li {
 // #content -------------------------------------------------------------------
 content {
 	@include container;
-	width: 100%;
+	//width: 100%;
 	//max-width: 620px;
-	display: block;
-	border: 1px solid black;
-	height: 320px;
+	//display: block;
+	//border: 1px solid black;
+	//height: 320px;
 	padding: 0;
+
+	height: auto;
+	width: 100%;
+	@include vertical-middle;
 }
 
 // #Logo -------------------------------------------------------------------
@@ -107,9 +111,9 @@ footer {
 		background: url('../img/icons/sm_menu.png') no-repeat;
 		height: 24px;
 		width: 32px;
-		bottom: 4px;
-		left: -6px;
-		position: relative;
+		bottom: 7px;
+		left: 7px;
+		position: fixed;
 		text-indent: -999em;
 		cursor: pointer;
 		display: block;

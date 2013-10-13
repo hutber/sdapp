@@ -13,14 +13,15 @@ define([
     var HomeView = SD.defaultView.extend({
 		el: 'page',
         template: JST[
-			'js/templates/home.ejs'
+			'app/www/js/templates/home.ejs'
 		],
 		events:{
 			"click anchor" : 'changeSex'
 		},
         render: function () {
-			SD.templates.home = this.template;
-            this.$el.html(this.template);
+			var myself = this;
+			SD.templates.home = myself.template;
+			myself.$el.html(myself.template);
 			var si = $('.royalSlider').royalSlider({
 				addActiveClass: true,
 				arrowsNav: false,
@@ -39,13 +40,22 @@ define([
 					center: true,
 					breakpoint: 650,
 					breakpointCenterArea: 0.64,
-					navigateByCenterClick: true
+					navigateByCenterClick: false
 				}
 			}).data('royalSlider');
+			si.ev.on('rsSlideClick', function() { //Add click events to the sex icons
+				myself.changeSex($('.rsGCaption').find('anchor').attr('id'));
+			});
         },
 		changeSex: function(elem){
-			Backbone.history.loadUrl(elem.currentTarget.id);
-			window.location.href = '#'+elem.currentTarget.id;
+			var useme;
+			if(typeof elem === "object"){
+				useme = elem.currentTarget.id;
+			}else{
+				useme = elem;
+			}
+			Backbone.history.loadUrl(useme);
+			window.location.href = '#'+useme;
 		}
     });
     return HomeView;

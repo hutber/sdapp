@@ -104,9 +104,9 @@ Display functions
 
 		eleme.css({top: middleHeight, position: 'absolute'});
 
-		$(window).resize(function(){
-			SD.centerItems($('content')); //center the items in the middle of the page
-		});
+//		$(window).resize(function(){
+//			SD.centerItems($('content')); //center the items in the middle of the page
+//		});
 	};
 
 // #display the popup/overlay ------------------------------------------------------
