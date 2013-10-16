@@ -3,8 +3,8 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'../core.functions',
-	'../sd.functions',
+	'core.functions',
+	'sd.functions',
 	'touchCarousel'
 ], function ($, _, Backbone, JST, core, SD) {
     'use strict';
@@ -44,18 +44,11 @@ define([
 				}
 			}).data('royalSlider');
 			si.ev.on('rsSlideClick', function() { //Add click events to the sex icons
-				myself.changeSex($('.rsGCaption').find('anchor').attr('id'));
+				SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
 			});
         },
 		changeSex: function(elem){
-			var useme;
-			if(typeof elem === "object"){
-				useme = elem.currentTarget.id;
-			}else{
-				useme = elem;
-			}
-			Backbone.history.loadUrl(useme);
-			window.location.href = '#'+useme;
+			SD.pageLoad(elem);
 		}
     });
     return HomeView;

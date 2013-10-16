@@ -4,7 +4,7 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'../sd.functions',
+	'sd.functions',
 ], function ($, _, Backbone, JST, SD) {
     'use strict';
 
@@ -36,6 +36,7 @@ define([
 			});
 
 			if(noerror){
+				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
 				$.ajax({
 					url: SD.AJAX+'users/login',
@@ -47,14 +48,16 @@ define([
 					},
 					error: function(data){
 						c(data.status);
+						SD.overlay.hideme();
 					},
 					success: function(data){
 						c('Login code:'+ data.code);
 						if(data.privateKey){
 							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
-							Backbone.history.loadUrl('');
+							Backbone.history.loadUrl('#home');
 						}
+						SD.overlay.hideme();
 					}
 				});
 			}

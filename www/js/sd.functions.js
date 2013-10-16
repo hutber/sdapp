@@ -32,7 +32,10 @@ Globals
 			}else{
 				return false;
 			}
-		}()
+		}(),
+		ARGS: JST,
+		CURRENTSEX: 'na',
+		ROUTER: false
 	};
 
 // #define the globals depending on where we are ------------------------------------------------------
@@ -82,10 +85,24 @@ Routes/Views
 			}
 			return myself;
 		}();
+
 		var HomeView = Backbone.View.extend({
 			el: 'body > content',
+			events: {
+				'click .logout': 'doLogOut',
+				'click logo a': 'goHome',
+			},
 			render: function () {
 				this.$el.html(templatesNeeded);
+			},
+			doLogOut: function(){
+				sessionStorage.clear();
+				SD.ROUTER.navigate('home', true);
+				return false;
+			},
+			goHome: function(){
+				SD.ROUTER.navigate('home', true);
+				return false;
 			}
 		});
 		var defaultView = new HomeView();
@@ -93,6 +110,25 @@ Routes/Views
 		return HomeView;
 	}();
 
+	//update details on page load
+	SD.pageLoad = function(elem){
+		var useme;
+		if(typeof elem === "object"){
+			useme = elem.currentTarget.id;
+		}else if(elem){
+			useme = elem;
+		}else if(document.location.hash){
+			useme = document.location.hash.replace('#','');
+		}else{
+			useme = elem;
+		}
+
+		SD.CURRENTSEX = useme; //update the stae
+
+		$('body').data('location',useme);
+
+		SD.ROUTER.navigate(useme, true);
+	};
 /*==================================================
 Display functions
 ================================================== */

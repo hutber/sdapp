@@ -3,18 +3,21 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'../../sd.functions'
-], function ($, _, Backbone, JST, SD) {
+	'sd.functions',
+	'defaultSexView'
+], function ($, _, Backbone, JST, SD, SV) {
     'use strict';
-
 	//set up homeview
     var wank = SD.defaultView.extend({
         el: 'page',
-
-        template: JST['app/www/js/templates/sex/wank.ejs'],
-
+        template: JST['app/www/js/templates/sex.ejs'],
+		information: {
+			header: 'MOTHER FUCKING WANK!!!',
+			image: '/img/path.jpg'
+		},
         render: function () {
-            this.$el.html(this.template);
+			var infom = _.template(this.template(), this.information);
+			this.$el.html(infom);
         }
     });
     return wank;

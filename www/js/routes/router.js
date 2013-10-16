@@ -12,6 +12,7 @@ define([
         routes: {
             '': 'login',
 			'login': 'login',
+			'home': 'home',
 			'wank': 'wank',
 			'fingers': 'fingers',
 			'oral': 'oral',

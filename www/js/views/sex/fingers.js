@@ -13,7 +13,8 @@ define([
         template: JST['app/www/js/templates/sex/fingers.ejs'],
 
         render: function () {
-            this.$el.html(this.template);
+			var template = _.template(this.template, this.data);
+            this.$el.html(template);
         }
     });
     return fingers;

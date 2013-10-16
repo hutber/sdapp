@@ -40,52 +40,6 @@ Bind C to be alert on mobile console.log in desktop
 	}
 
 /*==================================================
-Requests
-================================================== */
-//	function loadJs(src, callback, target) {
-//		if(typeof target === "undefined"){
-//			target = 'head';
-//		}
-//		var s = document.createElement('script');
-//		document.getElementsByTagName(target)[0].appendChild(s);
-//		s.onload = function() {
-//			//callback if existent.
-//			if (typeof callback === "function") {callback();}
-//			callback = null;
-//		};
-//		s.onreadystatechange = function() {
-//			if (s.readyState === 4 || s.readyState === "complete") {
-//				if (typeof callback === "function") {callback();}
-//				callback = null; // Wipe callback, to prevent multiple calls.
-//			}
-//		};
-//		s.src = src;
-//	}
-//
-//	function myAjax(url, method, parameters, onComplete, onError) {
-//		var xmlHttp = new XMLHttpRequest();
-//		xmlHttp.open(method, url, true);
-//
-//		//Black magic paragraph
-//		xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-//		xmlHttp.setRequestHeader("Content-length", parameters.length);
-//		xmlHttp.setRequestHeader("Connection", "close");
-//
-//		xmlHttp.onreadystatechange = function() {
-//			if (xmlHttp.readyState === 4) {
-//				if(xmlHttp.status === 200) {
-//					//document.getElementById("xmlResults").innerHTML = xmlhttp.responseText;
-//					onComplete(xmlHttp.responseText);
-//				} else {
-//					onError(xmlHttp.status);
-//				}
-//			}
-//		};
-//
-//		xmlHttp.send(parameters);
-//	}
-
-/*==================================================
  Error handling on mobile
  ================================================== */
 
