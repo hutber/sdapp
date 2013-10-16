@@ -11,13 +11,14 @@ define([
     var wank = SD.defaultView.extend({
         el: 'page',
         template: JST['app/www/js/templates/sex.ejs'],
-		information: {
+		data: {
 			header: 'MOTHER FUCKING WANK!!!',
 			image: '/img/path.jpg'
 		},
         render: function () {
-			var infom = _.template(this.template(), this.information);
-			this.$el.html(infom);
+			c(this.template());
+//			var compiled = _.template("hello: <%= header %>");
+//			this.$el.html(compiled(this.data));
         }
     });
     return wank;

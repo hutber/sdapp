@@ -18,7 +18,7 @@ define(function(){
 
   this["JST"]["app/www/js/templates/login.ejs"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<form action="/" class="loginForm"><div class="control-group"><input type="text" name="uname" placeholder="Username" value="jamiehutber"/></div><div class="control-group"><input type="password" name="pword" placeholder="Password" value="jadwiga82"/></div><button class="btn" type="submit">Login</button></form><div class="login"><a href="/#registration">Sign Up</a> or <a href="/#login">Login</a></div>';}return __p};
 
-  this["JST"]["app/www/js/templates/sex.ejs"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape, __j = Array.prototype.join;function print() { __p += __j.call(arguments, '') }with (obj) { var myself = this; c(myself.information.header); ;__p += '<h2>' +((__t = ( myself.information )) == null ? '' : __t) +'</h2><sexform></sexform>';}return __p};
+  this["JST"]["app/www/js/templates/sex.ejs"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape, __j = Array.prototype.join;function print() { __p += __j.call(arguments, '') }with (obj) { c(this); ;__p += '<sexform></sexform>';}return __p};
 
   this["JST"]["app/www/js/templates/sex/anything.ejs"] = function(obj) {obj || (obj = {});var __t, __p = '', __e = _.escape;with (obj) {__p += '<h2>Anything</h2>';}return __p};
 
