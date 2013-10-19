@@ -1,20 +1,23 @@
 define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'JST',
-	'../../sd.functions'
+	'jquery',
+	'underscore',
+	'backbone',
+	'JST',
+	'sd.functions'
 ], function ($, _, Backbone, JST, SD) {
-    'use strict';
-
+	'use strict';
 	//set up homeview
-    var oral = SD.defaultView.extend({
+	var oral = SD.defaultView.extend({
 		el: 'page',
-        template: JST['app/www/js/templates/sex/oral.ejs'],
-
-        render: function () {
-            this.$el.html(this.template);
-        }
-    });
-    return oral;
+		jstemplate: JST['app/www/js/templates/sex.ejs'],
+		data: {
+			header: "Can't talk mouth full!!!",
+			image: '/img/path.jpg'
+		},
+		render: function () {
+			var compiled = this.jstemplate(this.data);
+			this.$el.html(compiled);
+		}
+	});
+	return oral;
 });

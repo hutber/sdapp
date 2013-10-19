@@ -44,5 +44,10 @@ h1, h2, h3, h4, h5, h6 {
 	color: $textColor;
 	font-family: $sdFont;
 	font-weight: normal;
+	text-align: center;
 	@include single-text-shadow;
 }
+
+h1 {font-size: 2.5em;}
+// #Img ---------------------------------------------------------------------
+img {width: 100%}

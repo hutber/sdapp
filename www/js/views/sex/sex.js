@@ -1,20 +1,23 @@
 define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'JST',
-	'../../sd.functions'
-], function ($, _, Backbone, JS, SD) {
-    'use strict';
-
+	'jquery',
+	'underscore',
+	'backbone',
+	'JST',
+	'sd.functions'
+], function ($, _, Backbone, JST, SD) {
+	'use strict';
 	//set up homeview
-    var sex = SD.defaultView.extend({
+	var sex = SD.defaultView.extend({
 		el: 'page',
-        template: JST['app/www/js/templates/sex/sex.ejs'],
-
-        render: function () {
-            this.$el.html(this.template);
-        }
-    });
-    return sex;
+		jstemplate: JST['app/www/js/templates/sex.ejs'],
+		data: {
+			header: 'Heh... sex...',
+			image: '/img/path.jpg'
+		},
+		render: function () {
+			var compiled = this.jstemplate(this.data);
+			this.$el.html(compiled);
+		}
+	});
+	return sex;
 });

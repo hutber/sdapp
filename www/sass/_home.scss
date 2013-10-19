@@ -9,12 +9,14 @@ anchor {
 	color: #FFF;
 	cursor: pointer;
 	font-family: $sdFont;
+	font-size: 3.4em;
+	line-height: 1.1em;
 	span {
 		color: $midnight-blue;
 		clear: both;
 		display: block;
-		font-size: 14px;
-		line-height: 22px;
+		font-size: 0.45em;
+		line-height: 0.45em;
 	}
 }
 
@@ -40,7 +42,7 @@ acts a:hover, acts a.active {
 	-webkit-filter: grayscale(0);
 }
 
-acts a#fingers {
+acts a#hands {
 	background-position: -210px 0;
 	width: 360px;
 	&.alternative {

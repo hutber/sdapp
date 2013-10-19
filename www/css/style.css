@@ -65,142 +65,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /* #Imports dependencies ------------------------------------------------------------------------ */
-/*
-* Taken from the phonegap default
-*/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\000034}}
-* {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  /* make transparent link selection, adjust last value opacity 0 to 1.0 */
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\000038}}
-body {
-  -webkit-touch-callout: none;
-  /* prevent callout to copy image, etc when tap to hold */
-  -webkit-text-size-adjust: none;
-  /* prevent webkit from resizing text to fit */
-  -webkit-user-select: none;
-  /* prevent copy paste, to allow, change 'none' to 'text' */
-  background-color: #E4E4E4;
-  background-image: linear-gradient(top, #a7a7a7 0%, #e4e4e4 51%);
-  background-image: -webkit-linear-gradient(top, #a7a7a7 0%, #e4e4e4 51%);
-  background-image: -ms-linear-gradient(top, #a7a7a7 0%, #e4e4e4 51%);
-  background-attachment: fixed;
-  font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
-  font-size: 12px;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-  width: 100%;
-  color: #000;
-}
-
-/* Portrait layout (default) */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\0000328}}
-.app {
-  background: url(../img/logo.png) no-repeat center top;
-  /* 170px x 200px */
-  position: absolute;
-  /* position in the center of the screen */
-  left: 50%;
-  top: 50%;
-  height: 50px;
-  /* text area height */
-  width: 225px;
-  /* text area width */
-  text-align: center;
-  padding: 180px 0px 0px 0px;
-  /* image height is 200px (bottom 20px are overlapped with text) */
-  margin: -115px 0px 0px -112px;
-  /* offset vertical: half of image height and text area height */
-  /* offset horizontal: half of text area width */
-}
-
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1 / 1) and (min-width: 400px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\0000343}}
-  .app {
-    background-position: left center;
-    padding: 75px 0px 75px 170px;
-    /* padding-top + padding-bottom + text area = image height */
-    margin: -90px 0px 0px -198px;
-    /* offset vertical: half of image height */
-    /* offset horizontal: half of image width and text area width */
-  }
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\0000351}}
-h1 {
-  font-size: 24px;
-  font-weight: normal;
-  margin: 0px;
-  overflow: visible;
-  padding: 0px;
-  text-align: center;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\0000360}}
-.event {
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  color: #FFFFFF;
-  font-size: 12px;
-  margin: 0px 30px;
-  padding: 2px 0px;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\0000369}}
-.event.listening {
-  background-color: #333333;
-  display: block;
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\0000374}}
-.event.received {
-  background-color: #4B946A;
-  display: none;
-}
-
-@keyframes fade {
-  /* line 80, C:/var/www/sexdiaries.co.uk/sdapp/app/www/sass/_origi.scss */
-  from {
-    opacity: 1.0;
-  }
-
-  /* line 81, C:/var/www/sexdiaries.co.uk/sdapp/app/www/sass/_origi.scss */
-  50% {
-    opacity: 0.4;
-  }
-
-  /* line 82, C:/var/www/sexdiaries.co.uk/sdapp/app/www/sass/_origi.scss */
-  to {
-    opacity: 1.0;
-  }
-}
-
-@-webkit-keyframes fade {
-  /* line 86, C:/var/www/sexdiaries.co.uk/sdapp/app/www/sass/_origi.scss */
-  from {
-    opacity: 1.0;
-  }
-
-  /* line 87, C:/var/www/sexdiaries.co.uk/sdapp/app/www/sass/_origi.scss */
-  50% {
-    opacity: 0.4;
-  }
-
-  /* line 88, C:/var/www/sexdiaries.co.uk/sdapp/app/www/sass/_origi.scss */
-  to {
-    opacity: 1.0;
-  }
-}
-
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_origi\.scss}line{font-family:\0000391}}
-.blink {
-  animation: fade 3000ms infinite;
-  -webkit-animation: fade 3000ms infinite;
-}
-
 /* Table of Contents
 ==================================================
     #COLOURS
@@ -266,7 +130,18 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
   font-family: sdFont, Arial, serif;
   font-weight: normal;
+  text-align: center;
   text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_typography\.scss}line{font-family:\0000351}}
+h1 {
+  font-size: 2.5em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_typography\.scss}line{font-family:\0000353}}
+img {
+  width: 100%;
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/modules\/_input\.scss}line{font-family:\000038}}
@@ -1700,17 +1575,19 @@ anchor {
   color: #FFF;
   cursor: pointer;
   font-family: sdFont, Arial, serif;
+  font-size: 3.4em;
+  line-height: 1.1em;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000314}}
 anchor span {
   color: #2c3e50;
   clear: both;
   display: block;
-  font-size: 14px;
-  line-height: 22px;
+  font-size: 0.45em;
+  line-height: 0.45em;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000323}}
 acts a {
   background: url("../img/sex/sexes.png") no-repeat;
   display: block;
@@ -1729,55 +1606,164 @@ acts a {
   -webkit-filter: grayscale(1);
   /* Google Chrome & Safari 6+ */
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000335}}
 acts a.alternative {
   background-image: url(../img/sex/girlTouchingHerself.jpg);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000340}}
 acts a:hover, acts a.active {
   filter: none;
   -webkit-filter: grayscale(0);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000343}}
-acts a#fingers {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000345}}
+acts a#hands {
   background-position: -210px 0;
   width: 360px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000346}}
-acts a#fingers.alternative {
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000348}}
+acts a#hands.alternative {
   background-image: url(../img/sex/sexes.png);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000353}}
 acts a#oral {
   background-position: -589px 0;
   width: 267px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000356}}
 acts a#oral.alternative {
   background-image: url(../img/sex/oralPleasures.jpg);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000361}}
 acts a#sex {
   background-position: -866px 0;
   width: 352px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000362}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000364}}
 acts a#sex.alternative {
   background-image: url(../img/sex/cowboy.jpg);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000369}}
 acts a#anything {
   background-position: -1223px 0;
   width: 179px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_home\.scss}line{font-family:\0000372}}
 acts a#anything.alternative {
   background-image: url(../img/sex/donkey.jpg);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\000031}}
+sexform {
+  background-image: url(../img/sex/full/wank.png);
+  display: block;
+  margin-top: 4%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\000035}}
+sexform form {
+  width: 66.10169%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\000037}}
+sexform form items {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000311}}
+sexform form items > * {
+  width: 25%;
+  margin: 0 7.3%;
+  margin-bottom: 1.6%;
+  font-family: sdFont, Arial, serif;
+  background-repeat: no-repeat;
+  text-align: center;
+  font-size: 1.2em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000334}}
+sexform form items location {
+  width: 30%;
+  margin: 8%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000339}}
+sexform form items where {
+  width: 18%;
+  margin: 0 18% 0 13%;
+  padding: 0 5px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000345}}
+sexform form items extra {
+  width: 31%;
+  margin: 0px 9% 0 2%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000352}}
+sexform seximage {
+  width: 32.20339%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000357}}
+sexoptions {
+  position: fixed;
+  bottom: -20px;
+  height: 100px;
+  width: 49.15254%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+  text-align: center;
+  left: 0;
+  width: 100%;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000366}}
+sexoptions > * {
+  width: 100px;
+  background-image: url(../img/sex/wank.png);
+  display: inline-block;
+  height: 100px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000375}}
+sexoptions wank {
+  margin-bottom: 9px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000379}}
+sexoptions hands {
+  background-image: url(../img/sex/hands.png);
+  width: 193px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000384}}
+sexoptions oral {
+  background-image: url(../img/sex/oral.png);
+  width: 150px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000389}}
+sexoptions sex {
+  background-image: url(../img/sex/sex.png);
+  width: 150px;
+  margin-bottom: 22px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\0000395}}
+sexoptions anything {
+  background-image: url(../img/sex/anything.png);
+  margin-bottom: 14px;
+  width: 84px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_sex\.scss}line{font-family:\00003103}}
+sexform form items > * {
+  font-size: 1.3em;
+  vertical-align: bottom;
 }
 
 /* #Config ------------------------------------------------------------------------ */
@@ -1797,8 +1783,14 @@ Table of Contents
       #page
       #footer
 */
-/* #Main Styles ------------------------------------------------------------------------ */
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000343}}
+* {
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+/* #Main Styles ------------------------------------------------------------------------ */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000346}}
 body {
   background-color: #9acdcb;
   *zoom: 1;
@@ -1812,7 +1804,7 @@ body {
   background-image: radial-gradient(center, ellipse cover, #9acdcb 0%, #9acdcb 14%, #a6d3d1 30%, #abd5d4 44%, #a9d4d3 61%, #9acdcb 84%, #9acdcb 100%);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000353}}
 debug li {
   background: none repeat scroll 0 0 #53838E;
   padding: 5px;
@@ -1822,7 +1814,7 @@ debug li {
   border-bottom: 1px solid #DDD;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000362}}
 content {
   *zoom: 1;
   max-width: 100%;
@@ -1832,9 +1824,10 @@ content {
   margin-left: auto;
   margin-right: auto;
   padding: 0;
-  min-height: 560px;
-  height: auto;
   width: 100%;
+  max-width: 1140px;
+  overflow: hidden;
+  min-height: 560px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -1850,60 +1843,59 @@ content:after {
   clear: both;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000374}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000373}}
 logo, h2 {
   padding: 0;
-  font-size: 28px;
+  font-size: 2em;
   color: #7f7f7f;
   text-align: center;
   text-transform: uppercase;
   margin: 13px 0;
   line-height: 0.85em;
   font-family: sdFont, Arial, serif;
-  width: 100%;
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000383}}
 .loggin logo, .loggin h2 {
   color: #FFF;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000386}}
 logo span, h2 span {
   color: #6cb7b4;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000391}}
 .logosmall {
   position: absolute;
   top: 10px;
   right: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\0000397}}
 .login {
   color: #FFF;
   top: 50%;
   width: 100%;
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003104}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003102}}
 .login a {
   font-weight: bold;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003108}}
 .logout {
   position: absolute;
   top: 10px;
   right: 10px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003117}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003115}}
 page {
   clear: both;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003123}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003121}}
 footer menuBtn {
   background: url("../img/icons/sm_menu.png") no-repeat;
   height: 24px;
@@ -1916,10 +1908,10 @@ footer menuBtn {
   display: block;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003136}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/style\.scss}line{font-family:\00003134}}
 .loggin logo {
   display: inline;
-  left: -7px;
+  left: 0px;
   margin: 0;
   position: relative;
   top: 11px;

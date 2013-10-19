@@ -11,17 +11,12 @@ define([
 
 	//set up homeview
     var sexView = SD.defaultView.extend({
-		el: 'page',
-        template: JST[
-			'app/www/js/templates/sex.ejs'
-		],
-        render: function () {
-			var myself = this;
-			SD.templates.defaultSex = myself.template;
-			myself.$el.html(myself.template);
-        }
+		events:{
+			"click sexoptions > *" : 'changeSex'
+		},
+		changeSex: function(elem){
+			SD.pageLoad(elem);
+		}
     });
-	var thisView = new sexView();
-	thisView.render();
     return sexView;
 });

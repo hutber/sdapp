@@ -7,18 +7,20 @@ define([
 	'defaultSexView'
 ], function ($, _, Backbone, JST, SD, SV) {
     'use strict';
+
 	//set up homeview
-    var wank = SD.defaultView.extend({
+    var wank = SV.extend({
         el: 'page',
-        template: JST['app/www/js/templates/sex.ejs'],
+        jstemplate: JST['app/www/js/templates/sex.ejs'],
 		data: {
+			url: SD.HTTP+'stats/add',
+			sextype: 'wank',
 			header: 'MOTHER FUCKING WANK!!!',
 			image: '/img/path.jpg'
 		},
         render: function () {
-			c(this.template());
-//			var compiled = _.template("hello: <%= header %>");
-//			this.$el.html(compiled(this.data));
+			var compiled = this.jstemplate(this.data);
+			this.$el.html(compiled);
         }
     });
     return wank;

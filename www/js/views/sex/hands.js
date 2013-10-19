@@ -7,11 +7,11 @@ define([
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
 	//set up homeview
-	var anything = SD.defaultView.extend({
+	var hands = SD.defaultView.extend({
 		el: 'page',
 		jstemplate: JST['app/www/js/templates/sex.ejs'],
 		data: {
-			header: 'Good lord really? That?!!!',
+			header: 'Bloody Hands and hands!!!',
 			image: '/img/path.jpg'
 		},
 		render: function () {
@@ -19,5 +19,5 @@ define([
 			this.$el.html(compiled);
 		}
 	});
-	return anything;
+	return hands;
 });

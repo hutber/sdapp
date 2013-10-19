@@ -5,7 +5,7 @@
 /* #Imports dependencies ------------------------------------------------------------------------ */
 @import
 "_mixins",
-"_origi",
+//"_origi",
 "_variables",
 "_typography",
 "modules/_input",
@@ -14,7 +14,8 @@
 "modules/_touchcarousel",
 "_ie",
 "_print",
-"_home";
+"_home",
+"_sex";
 
 /* #Config ------------------------------------------------------------------------ */
 // Setting up the Magic Grid
@@ -39,6 +40,8 @@ Table of Contents
       #page
       #footer
 */
+* {background-size: 100%;background-repeat: no-repeat;}
+
 /* #Main Styles ------------------------------------------------------------------------ */
 body {
 	background-color: #9acdcb;
@@ -58,29 +61,24 @@ debug li {
 // #content -------------------------------------------------------------------
 content {
 	@include container;
-	//width: 100%;
-	//max-width: 620px;
-	//display: block;
-	//border: 1px solid black;
-	//height: 320px;
 	padding: 0;
-	min-height: 560px;
-	height: auto;
 	width: 100%;
+	max-width: 1140px;
+	overflow: hidden;
+	min-height: 560px;
 	@include vertical-middle;
 }
 
 // #Logo -------------------------------------------------------------------
 logo, h2 {
 	padding: 0;
-	font-size: 28px;
+	font-size: 2em;
 	color: $main-grey;
 	text-align: center;
 	text-transform: uppercase;
 	margin: 13px 0;
 	line-height: 0.85em;
 	font-family: $sdFont;
-	width: 100%;
 	display: block;
 	.loggin & {
 		color: #FFF;
@@ -135,7 +133,7 @@ footer {
 
 .loggin logo {
 	display: inline;
-	left: -7px;
+	left: 0px;
 	margin: 0;
 	position: relative;
 	top: 11px;

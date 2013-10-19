@@ -113,8 +113,11 @@ Routes/Views
 	//update details on page load
 	SD.pageLoad = function(elem){
 		var useme;
-		if(typeof elem === "object"){
+		c(elem);
+		if(typeof elem === "object" && elem.currentTarget.id){
 			useme = elem.currentTarget.id;
+		}else if(typeof elem === "object"){
+			useme = elem.currentTarget.localName;
 		}else if(elem){
 			useme = elem;
 		}else if(document.location.hash){

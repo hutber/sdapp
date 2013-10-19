@@ -14,7 +14,7 @@ define([
 			'login': 'login',
 			'home': 'home',
 			'wank': 'wank',
-			'fingers': 'fingers',
+			'hands': 'hands',
 			'oral': 'oral',
 			'sex': 'sex',
 			'anything': 'anything'

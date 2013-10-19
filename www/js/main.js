@@ -80,11 +80,10 @@ Routers
 		'views/homeView',
 		'views/loginView',
 		'views/sex/wank',
-		'views/sex/fingers',
+		'views/sex/hands',
 		'views/sex/oral',
 		'views/sex/sex',
-		'views/sex/anything',
-		'defaultSexView'
+		'views/sex/anything'
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -95,11 +94,10 @@ set arguments to values for ease of reading arguments
         HomeView = arguments[5],
         LoginView = arguments[6],
 		wankView = arguments[7],
-        fingersView = arguments[8],
+        handsView = arguments[8],
         oralView = arguments[9],
         sexView = arguments[10],
-        anythingView = arguments[11],
-		defaultSexView = arguments[12];
+        anythingView = arguments[11];
 
 /*==================================================
 Load in scripts depending on which device we are.
@@ -132,11 +130,10 @@ Routes Vars
 
 // Sex views ---------------------------
 	var WankView = new wankView(),
-	FingersView = new fingersView(),
+	handsView = new handsView(),
 	OralView = new oralView(),
 	SexView = new sexView(),
-	AnythingView = new anythingView(),
-	DefaultSexView = new defaultSexView();
+	AnythingView = new anythingView();
 
 /*==================================================
 Routes
@@ -161,11 +158,10 @@ Routes
 
 // Sex Routers ---------------------------
 	SD.ROUTER.on('route:wank', function(){
-//		DefaultSexView.render();
 		WankView.render();
 	});
-	SD.ROUTER.on('route:fingers', function(){
-		FingersView.render();
+	SD.ROUTER.on('route:hands', function(){
+		handsView.render();
 	});
 	SD.ROUTER.on('route:oral', function(){
 		OralView.render();
@@ -190,7 +186,5 @@ On Device Ready
 		$(document).ready(function() {
 			Backbone.history.start();
 		});
-	}
-
-//	SD.centerItems($('content'));
+	};
 });

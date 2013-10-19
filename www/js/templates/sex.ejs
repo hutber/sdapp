@@ -1,1 +1,26 @@
-<% c(this); %><sexform></sexform>
+<h2><%= data.header %></h2>
+
+<sexform class="<%= data.sextype %>">
+	<form action="post" method="<%= data.url %>">
+		<items>
+			<when><img src="../img/sex/when.png" alt=""/><span>When</span></when>
+			<who><img src="../img/sex/who.png" alt=""/><span>Who</span></who>
+			<rating><img src="../img/sex/rating.png" alt=""/><span>Rating</span></rating>
+		</items>
+		<items>
+			<location><img src="../img/sex/location.png" alt=""/><span>Location</span></location>
+			<where><img src="../img/sex/where.png" alt=""/><span>Where</span></where>
+			<extra><img src="../img/sex/save.png" alt=""/><span>Extra</span></extra>
+		</items>
+		<input type="hidden" name="when"/>
+	</form>
+	<seximage><img src="../img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/></seximage>
+</sexform>
+
+<sexoptions>
+	<wank></wank>
+	<hands></hands>
+	<oral></oral>
+	<sex></sex>
+	<anything></anything>
+</sexoptions>
