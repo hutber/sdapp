@@ -65,8 +65,8 @@ content {
 	width: 100%;
 	max-width: 1140px;
 	overflow: hidden;
-	min-height: 560px;
-	@include vertical-middle;
+	//min-height: 560px;
+	height: 100%;
 }
 
 // #Logo -------------------------------------------------------------------
@@ -113,7 +113,7 @@ logo, h2 {
 
 // #Page -------------------------------------------------------------------
 page {
-	clear: both;
+	@include clearfix;
 }
 
 // #Footer -------------------------------------------------------------------

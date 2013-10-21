@@ -113,7 +113,7 @@ Routes/Views
 	//update details on page load
 	SD.pageLoad = function(elem){
 		var useme;
-		c(elem);
+
 		if(typeof elem === "object" && elem.currentTarget.id){
 			useme = elem.currentTarget.id;
 		}else if(typeof elem === "object"){
@@ -126,10 +126,7 @@ Routes/Views
 			useme = elem;
 		}
 
-		SD.CURRENTSEX = useme; //update the stae
-
-		$('body').data('location',useme);
-
+		SD.CURRENTSEX = useme; //update the state
 		SD.ROUTER.navigate(useme, true);
 	};
 /*==================================================

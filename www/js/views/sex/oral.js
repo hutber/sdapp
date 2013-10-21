@@ -11,6 +11,8 @@ define([
 		el: 'page',
 		jstemplate: JST['app/www/js/templates/sex.ejs'],
 		data: {
+			url: SD.HTTP+'stats/add',
+			sextype: 'oral',
 			header: "Can't talk mouth full!!!",
 			image: '/img/path.jpg'
 		},

@@ -46,6 +46,10 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['backbone'],
 				exports: 'defaultSexView'
 			},
+			bigtext: {
+				deps: ['jquery'],
+				exports: 'jQuery.fn.bigtext'
+			},
 			touchCarousel: {
 				deps: ['jquery'],
 				exports: 'jQuery.fn.touchCarousel'
@@ -55,8 +59,9 @@ Table of Contents - Created by Hutber on 04/10/13.
 			jquery: 'libs/jquery.min',
 			backbone: 'libs/backbone-min',
 			underscore: 'libs/underscore-min',
-			jStorage: 'libs/jStorage',
-			touchCarousel: 'libs/jquery.touchcarousel-1.2',
+			jStorage: 'libs/plugins/jStorage',
+			touchCarousel: 'libs/plugins/jquery.touchcarousel-1.2',
+			bigtext: 'libs/plugins/bigtext.jquery',
 			core: 'core.functions',
 			sd : 'sd.functions',
 			defaultSexView : 'views/sexView',
@@ -130,7 +135,7 @@ Routes Vars
 
 // Sex views ---------------------------
 	var WankView = new wankView(),
-	handsView = new handsView(),
+	HandsView = new handsView(),
 	OralView = new oralView(),
 	SexView = new sexView(),
 	AnythingView = new anythingView();
@@ -161,7 +166,7 @@ Routes
 		WankView.render();
 	});
 	SD.ROUTER.on('route:hands', function(){
-		handsView.render();
+		HandsView.render();
 	});
 	SD.ROUTER.on('route:oral', function(){
 		OralView.render();

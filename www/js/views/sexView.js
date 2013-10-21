@@ -5,7 +5,8 @@ define([
     'JST',
 	'core.functions',
 	'sd.functions',
-	'touchCarousel'
+	'touchCarousel',
+	'bigtext'
 ], function ($, _, Backbone, JST, core, SD) {
     'use strict';
 
@@ -16,6 +17,7 @@ define([
 		},
 		changeSex: function(elem){
 			SD.pageLoad(elem);
+			$(elem.currentTarget.localName).addClass('selected');
 		}
     });
     return sexView;

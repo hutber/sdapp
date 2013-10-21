@@ -1,13 +1,21 @@
 sexform	{
-	background-image: url(../img/sex/full/wank.png);
 	display: block;
 	margin-top: 4%;
+	background-position: center right;
+	width: 100%;
+	@include vertical-middle;
+
 	form{
 		@include span-columns(8,12);
+		//display: flex;
+		//align-items: center;
+		//flex-wrap: wrap;
+
 		items {
 			display: flex;
 			align-items: stretch;
 			justify-content: center;
+			margin-bottom: 5%;
 			> * {
 				//@include span-columns(3,12);
 				width: 25%;
@@ -22,6 +30,7 @@ sexform	{
 					//bottom: 0;
 				}
 			}
+
 			when {
 				//background-image: url(../img/sex/when.png);
 			}
@@ -47,16 +56,21 @@ sexform	{
 				margin: 0px 9% 0 2%;
 				//background-image: url(../img/sex/save.png);
 			}
+			&:last-child {
+				margin: 0;
+			}
 		}
 	}
 	seximage {
 		@include span-columns(4 omega,12);
+		img {
+		}
 	}
 }
 
 sexoptions {
 	position: fixed;
-	bottom: -20px;
+	bottom: 0px;
 	height: 100px;
 	@include span-columns(6,12);
 	text-align: center;
@@ -69,39 +83,41 @@ sexoptions {
 		display: inline-block;
 		height: 100px;
 		cursor: pointer;
-		margin-bottom: 30px;
+		@include transition-duration(.2s);
+		&.selected {
+			margin-bottom: 57px;
+		}
 	}
 
 	wank {
-		margin-bottom: 9px;
+		margin-bottom: 26px;
+		width: 117px;
 	}
 
 	hands {
 		background-image: url(../img/sex/hands.png);
 		width: 193px;
+		margin-bottom: 30px;
 	}
 
 	oral {
 		background-image: url(../img/sex/oral.png);
 		width: 150px;
+		margin-bottom: 30px;
 	}
 
 	sex {
 		background-image: url(../img/sex/sex.png);
 		width: 150px;
-		margin-bottom: 22px;
+		//margin-bottom: 22px;
+		margin-bottom: 28px;
 	}
 
 	anything {
 		background-image: url(../img/sex/anything.png);
-		margin-bottom: 14px;
+		//margin-bottom: 14px;
 		width: 84px;
+		margin-bottom: 25px;
 	}
-
-}
-
-sexform form items > * {
-	font-size: 1.3em;
-	vertical-align: bottom;
 
 }
