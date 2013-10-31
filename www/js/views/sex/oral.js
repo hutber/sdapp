@@ -6,10 +6,9 @@ define([
 	'sd.functions'
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
+
 	//set up homeview
-	var oral = SD.defaultView.extend({
-		el: 'page',
-		jstemplate: JST['app/www/js/templates/sex.ejs'],
+	var oral = SD.defaultSexView.extend({
 		data: {
 			url: SD.HTTP+'stats/add',
 			sextype: 'oral',
@@ -17,8 +16,7 @@ define([
 			image: '/img/path.jpg'
 		},
 		render: function () {
-			var compiled = this.jstemplate(this.data);
-			this.$el.html(compiled);
+			SD.DSV.renderSex(SD.DSV.ownView(this.data));
 		}
 	});
 	return oral;

@@ -42,10 +42,6 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['underscore'],
 				exports: 'JST'
 			},
-			defaultSexView: {
-				deps: ['backbone'],
-				exports: 'defaultSexView'
-			},
 			bigtext: {
 				deps: ['jquery'],
 				exports: 'jQuery.fn.bigtext'
@@ -64,7 +60,6 @@ Table of Contents - Created by Hutber on 04/10/13.
 			bigtext: 'libs/plugins/bigtext.jquery',
 			core: 'core.functions',
 			sd : 'sd.functions',
-			defaultSexView : 'views/sexView',
 			JST : 'templates'
 		}
 	});
@@ -127,55 +122,46 @@ Start up SD global object.
 Routes Vars
 ================================================== */
 // initiate routers ----------------
-    SD.ROUTER = new Router();
+    SD.ROUTER = new Router(),
 
 // views ---------------------------
-    var homeView = new HomeView(),
-    loginView = new LoginView();
+    SD.VIEWS.homeView = new HomeView(),
+	SD.VIEWS.loginView = new LoginView(),
 
 // Sex views ---------------------------
-	var WankView = new wankView(),
-	HandsView = new handsView(),
-	OralView = new oralView(),
-	SexView = new sexView(),
-	AnythingView = new anythingView();
+	SD.VIEWS.WankView = new wankView(),
+	SD.VIEWS.HandsView = new handsView(),
+	SD.VIEWS.OralView = new oralView(),
+	SD.VIEWS.SexView = new sexView(),
+	SD.VIEWS.AnythingView = new anythingView();
 
 /*==================================================
 Routes
 ================================================== */
 //# Default router ----------------------------------------------------------------
-		SD.ROUTER.on('route:login', function(){
+	SD.ROUTER.on('route:login route:home', function(){
 		if(sessionStorage.getItem('privateKey')!==null){
-			homeView.render();
+			SD.VIEWS.homeView.render();
 		}else{
-			loginView.render();
-		}
-	});
-
-// Home Page ---------------------------
-		SD.ROUTER.on('route:home', function(){
-		if(sessionStorage.getItem('privateKey')!==null){
-			homeView.render();
-		}else{
-			loginView.render();
+			SD.VIEWS.loginView.render();
 		}
 	});
 
 // Sex Routers ---------------------------
 	SD.ROUTER.on('route:wank', function(){
-		WankView.render();
+		SD.VIEWS.WankView.render();
 	});
 	SD.ROUTER.on('route:hands', function(){
-		HandsView.render();
+		SD.VIEWS.HandsView.render();
 	});
 	SD.ROUTER.on('route:oral', function(){
-		OralView.render();
+		SD.VIEWS.OralView.render();
 	});
 	SD.ROUTER.on('route:sex', function(){
-		SexView.render();
+		SD.VIEWS.SexView.render();
 	});
 	SD.ROUTER.on('route:anything', function(){
-		AnythingView.render();
+		SD.VIEWS.AnythingView.render();
 	});
 
 /*==================================================

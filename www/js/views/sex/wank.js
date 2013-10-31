@@ -3,15 +3,12 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'sd.functions',
-	'defaultSexView'
-], function ($, _, Backbone, JST, SD, SV) {
+	'sd.functions'
+], function ($, _, Backbone, JST, SD) {
     'use strict';
 
 	//set up homeview
-    var wank = SV.extend({
-        el: 'page',
-        jstemplate: JST['app/www/js/templates/sex.ejs'],
+    var wank = SD.defaultSexView.extend({
 		data: {
 			url: SD.HTTP+'stats/add',
 			sextype: 'wank',
@@ -19,8 +16,7 @@ define([
 			image: '/img/path.jpg'
 		},
         render: function () {
-			var compiled = this.jstemplate(this.data);
-			this.$el.html(compiled);
+			SD.DSV.renderSex(SD.DSV.ownView(this.data));
         }
     });
     return wank;

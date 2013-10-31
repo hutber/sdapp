@@ -25,6 +25,7 @@ sexform	{
 				background-repeat: no-repeat;
 				text-align: center;
 				font-size: 1.2em;
+				cursor: pointer;
 				span {
 					//position: fixed;
 					//bottom: 0;
@@ -74,50 +75,59 @@ sexoptions {
 	height: 100px;
 	@include span-columns(6,12);
 	text-align: center;
-	left: 0;
-	width: 100%;
+	width: 75%;
+	transform: translate(25%, 15%);
 
 	> * {
-		width: 100px;
+		@include span-columns(2.2,12);
 		background-image: url(../img/sex/wank.png);
+		background-size: 100%;
 		display: inline-block;
 		height: 100px;
 		cursor: pointer;
-		@include transition-duration(.2s);
+		@include transition-duration(1s);
+		opacity: .4;
 		&.selected {
 			margin-bottom: 57px;
+			opacity: 1;
+		}
+		&:hover {
+			opacity: 1;
+			width: 23%
 		}
 	}
 
 	wank {
-		margin-bottom: 26px;
-		width: 117px;
+//		margin-bottom: 26px;
+//		width: 117px;
+		width: 11%;
 	}
 
 	hands {
 		background-image: url(../img/sex/hands.png);
-		width: 193px;
-		margin-bottom: 30px;
+//		width: 193px;
+//		margin-bottom: 30px;
 	}
 
 	oral {
 		background-image: url(../img/sex/oral.png);
-		width: 150px;
-		margin-bottom: 30px;
+//		width: 150px;
+//		margin-bottom: 30px;
 	}
 
 	sex {
 		background-image: url(../img/sex/sex.png);
-		width: 150px;
+//		width: 150px;
 		//margin-bottom: 22px;
-		margin-bottom: 28px;
+//		margin-bottom: 28px;
 	}
 
 	anything {
 		background-image: url(../img/sex/anything.png);
 		//margin-bottom: 14px;
-		width: 84px;
-		margin-bottom: 25px;
+//		width: 84px;
+//		margin-bottom: 25px;
+		width: 11%;
 	}
 
 }

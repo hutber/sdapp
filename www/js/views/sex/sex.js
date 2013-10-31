@@ -6,10 +6,9 @@ define([
 	'sd.functions'
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
+
 	//set up homeview
-	var sex = SD.defaultView.extend({
-		el: 'page',
-		jstemplate: JST['app/www/js/templates/sex.ejs'],
+	var sex = SD.defaultSexView.extend({
 		data: {
 			url: SD.HTTP+'stats/add',
 			sextype: 'sex',
@@ -17,9 +16,7 @@ define([
 			image: '/img/path.jpg'
 		},
 		render: function () {
-			var compiled = this.jstemplate(this.data);
-			this.$el.html(compiled);
-			$(this.data.sextype).addClass('selected');
+			SD.DSV.renderSex(SD.DSV.ownView(this.data));
 		}
 	});
 	return sex;

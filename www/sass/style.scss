@@ -43,11 +43,33 @@ Table of Contents
 * {background-size: 100%;background-repeat: no-repeat;}
 
 /* #Main Styles ------------------------------------------------------------------------ */
+html, body { height: 100%; }
 body {
 	background-color: #9acdcb;
-	@include filter-gradient(#9acdcb, #9acdcb, horizontal);
-	$experimental-support-for-svg: true;
-	@include background-image(radial-gradient(center, ellipse cover, #9acdcb 0%, #9acdcb 14%, #a6d3d1 30%, #abd5d4 44%, #a9d4d3 61%, #9acdcb 84%, #9acdcb 100%));
+	@include filter-gradient(#9acdcb,  darken(#9acdcb, 75%), horizontal);
+//	$experimental-support-for-svg: true;
+//	@include background-image(radial-gradient(center, ellipse cover, #9acdcb 0%, #9acdcb 14%, #a6d3d1 30%, #abd5d4 44%, #a9d4d3 61%, #9acdcb 84%, #9acdcb 100%));
+	@include transition-duration(1.5s);
+	&.wank {
+		background-color: $mainGreen;
+		@include filter-gradient($mainGreen,  darken($mainGreen, 75%), horizontal);
+	}
+	&.hands {
+		background-color: $hands;
+		@include filter-gradient($hands,  darken($hands, 75%), horizontal);
+	}
+	&.oral {
+		background-color: $oral;
+		@include filter-gradient($oral,  darken($oral, 75%), horizontal);
+	}
+	&.sex {
+		background-color: $sex;
+		@include filter-gradient($sex,  darken($sex, 75%), horizontal);
+	}
+	&.anything {
+		background-color: $anything;
+		@include filter-gradient($anything,  darken($anything, 75%), horizontal);
+	}
 }
 
 debug li {
@@ -80,7 +102,7 @@ logo, h2 {
 	line-height: 0.85em;
 	font-family: $sdFont;
 	display: block;
-	.loggin & {
+	.loggedin & {
 		color: #FFF;
 	}
 	span {
@@ -131,11 +153,10 @@ footer {
 	}
 }
 
-.loggin logo {
+body[data=loggedin] logo {
 	display: inline;
 	left: 0px;
 	margin: 0;
 	position: relative;
 	top: 11px;
-
 }
