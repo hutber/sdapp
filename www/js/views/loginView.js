@@ -11,7 +11,7 @@ define([
     var LoginView = SD.defaultView.extend({
 		el: 'page',
 
-        template: JST['app/www/js/templates/login.ejs'],
+        template: JST['app/www/js/templates/login/login.ejs'],
 
         render: function () {
 			SD.templates.login = this.template(this.data);
@@ -59,7 +59,7 @@ define([
 						if(data.privateKey){
 							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
-							Backbone.history.loadUrl('#home');
+							SD.login.checkLoginState(true);
 						}
 						SD.overlay.hideme();
 					}

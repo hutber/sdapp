@@ -15,7 +15,8 @@
 "_ie",
 "_print",
 "_home",
-"_sex";
+"_sex",
+"_loginsignup";
 
 /* #Config ------------------------------------------------------------------------ */
 // Setting up the Magic Grid
@@ -43,33 +44,22 @@ Table of Contents
 * {background-size: 100%;background-repeat: no-repeat;}
 
 /* #Main Styles ------------------------------------------------------------------------ */
-html, body { height: 100%; }
+body {
+	height: 100%;
+	max-width: 480px;
+	min-width: 320px;
+//	height: 800px;
+	margin: 0 auto;
+	position: relative;
+	border: 3px solid black;
+	text-align: center;
+}
 body {
 	background-color: #9acdcb;
-	@include filter-gradient(#9acdcb,  darken(#9acdcb, 75%), horizontal);
+//	@include  vertical-middle;
 //	$experimental-support-for-svg: true;
 //	@include background-image(radial-gradient(center, ellipse cover, #9acdcb 0%, #9acdcb 14%, #a6d3d1 30%, #abd5d4 44%, #a9d4d3 61%, #9acdcb 84%, #9acdcb 100%));
 	@include transition-duration(1.5s);
-	&.wank {
-		background-color: $mainGreen;
-		@include filter-gradient($mainGreen,  darken($mainGreen, 75%), horizontal);
-	}
-	&.hands {
-		background-color: $hands;
-		@include filter-gradient($hands,  darken($hands, 75%), horizontal);
-	}
-	&.oral {
-		background-color: $oral;
-		@include filter-gradient($oral,  darken($oral, 75%), horizontal);
-	}
-	&.sex {
-		background-color: $sex;
-		@include filter-gradient($sex,  darken($sex, 75%), horizontal);
-	}
-	&.anything {
-		background-color: $anything;
-		@include filter-gradient($anything,  darken($anything, 75%), horizontal);
-	}
 }
 
 debug li {
@@ -80,77 +70,121 @@ debug li {
 	border-bottom: 1px solid #DDD;
 }
 
+// #Header -------------------------------------------------------------------
+header {
+	&.loggedin {
+		@include background-image(linear-gradient($turquoise, $green-sea));
+		border-bottom: 1px solid $emerald;
+		padding-top: 8px;
+		padding-bottom: 5px;
+		@include clearfix;
+	}
+	menuBtn {
+		@include span-columns(1, 12);
+		background: url(/img/icons/sm_menu.png) no-repeat;
+		display: block;
+		height: 24px;
+		text-indent: -9999em;
+		margin-left: 8px;
+		margin-top: 10px;
+		cursor: pointer;
+	}
+	.title {
+		@include span-columns(10, 12);
+		font-family: $sdFont;
+//		font-size: 1em;
+		text-shadow: 0 0 2px rgba(0, 0, 0, 0.48);
+		display: inline-block;
+		text-overflow: ellipsis;
+		margin-right: 0;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.logout {
+		@include span-columns(1 omega, 12);
+		color: #fff;
+	}
+}
 // #content -------------------------------------------------------------------
 content {
+//	@include vertical-middle ();
 	@include container;
 	padding: 0;
 	width: 100%;
-	max-width: 1140px;
-	overflow: hidden;
-	//min-height: 560px;
-	height: 100%;
 }
 
 // #Logo -------------------------------------------------------------------
-logo, h2 {
+header logo {
 	padding: 0;
-	font-size: 2em;
+	font-size: 2.3em;
 	color: $main-grey;
 	text-align: center;
-	text-transform: uppercase;
-	margin: 13px 0;
+	margin: 13px 0 50px;
 	line-height: 0.85em;
 	font-family: $sdFont;
 	display: block;
-	.loggedin & {
-		color: #FFF;
-	}
-	span {
-		color: $linkColor;
-	}
-}
-
-.logosmall {
-	position: absolute;
-	top: 10px;
-	right: 10px;
-}
-
-.login {
-	color: #FFF;
-	top: 50%;
-	width: 100%;
-	text-align: center;
 	a {
-		font-weight: bold;
+		-webkit-text-stroke-width: 2px;
+		-webkit-text-stroke-color: #FFF;
+		color: $logoGrey !important;
+		.loggedin & {
+		}
+		span {
+			color: #FFF;
+			-webkit-text-stroke-color: $logoGrey;
+		}
+	}
+}
+
+// #btns -------------------------------------------------------------------
+a.signup {
+	background: $sex;
+}
+
+// #social -------------------------------------------------------------------
+.social {
+	margin: 0 auto;
+	width: $globalWidths;
+	a {
+		@include span-columns(6);
+		border: 1px solid #1C498E;
+		background: url("/img/icons/social.png") no-repeat scroll center 12px #597DB5;
+		text-indent: -9999em;
+		margin-top: 20px;
+		padding-bottom: 15px;
+		&.facebook {}
+		&.twitter {
+			@include span-columns(6 omega);
+			background-color: #33CCFF;
+			border-color: #00A2D7;
+		}
 	}
 }
 
 // #Logout -------------------------------------------------------------------
 .logout {
-	position: absolute;
-	top: 10px;
-	right: 10px;
+//	position: absolute;
+//	top: 10px;
+//	right: 10px;
 }
 
 // #Page -------------------------------------------------------------------
 page {
+	display: block;
+	@include clearfix;
+}
+
+form {
 	@include clearfix;
 }
 
 // #Footer -------------------------------------------------------------------
 footer {
-	menuBtn {
-		background: url('../img/icons/sm_menu.png') no-repeat;
-		height: 24px;
-		width: 32px;
-		bottom: 7px;
-		left: 7px;
-		position: fixed;
-		text-indent: -999em;
-		cursor: pointer;
-		display: block;
-	}
+	@include background-image(linear-gradient($turquoise, $green-sea));
+	border-top: 1px solid $emerald;
+	height: 85px;
+	width: 100%;
+	z-index: -1;
 }
 
 body[data=loggedin] logo {
@@ -159,4 +193,9 @@ body[data=loggedin] logo {
 	margin: 0;
 	position: relative;
 	top: 11px;
+}
+
+.social a.twitter {
+	background-position: center -22px;
+
 }

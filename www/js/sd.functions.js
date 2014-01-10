@@ -26,11 +26,11 @@ Globals
 		CDN: 'stage.sexdiaries.co.uk/',
 		HTTP: 'http://stage.sexdiaries.co.uk/',
 		STATE: function(){
-			if(sessionStorage.getItem('privateKey')!==null){
+			if(sessionStorage.getItem('privateKey')===null){
+				return false;
+			}else{
 				$('body').data('state','loggedin');
 				return true;
-			}else{
-				return false;
 			}
 		}(),
 		CURRENTSEX: 'na',
@@ -58,51 +58,70 @@ Globals
 	};
 
 /*==================================================
+Login functions
+================================================== */
+SD.login = {
+	checkLoginState : function(state) { //We use this state to enable us to use the function on every page load to check if the user is logged in
+		if(sessionStorage.getItem('privateKey')===null && typeof state !== "undefined"){ //Make sure we didn't come from the logview.js
+			document.location.replace('/');
+		}else if (state){ //This state is only ever set when loggin in: loginView.js:62
+			window.location.href = "/#home";
+			location.reload();
+		}
+	}
+};
+
+/*==================================================
 Routes/Views
 ================================================== */
 // #Set up the Deult router view ------------------------------------------------------
 	SD.defaultView = function(){ //Default controller for all views
-		var templatesNeeded = function () {
+		var templatesNeeded = function () { //create a var of the template view
 			var myself;
-			if (SD.STATE) {
+			if (SD.STATE) { //Chhek if we are logged in or not then give different templates
 				myself = {
 					header: JST['app/www/js/templates/comp/headerIn.ejs'],
 					menu: JST['app/www/js/templates/comp/menu.ejs'],
 					shell: JST['app/www/js/templates/comp/shell.ejs'],
-					footer: JST['app/www/js/templates/comp/footer.ejs'],
+					footer: JST['app/www/js/templates/comp/footerIn.ejs'],
 				};
-				SD.templates = myself;
-				myself = myself.header() + myself.menu() + myself.shell() + myself.footer();
 			} else {
 				myself = {
 					header: JST['app/www/js/templates/comp/headerOut.ejs'],
 					menu: JST['app/www/js/templates/comp/menu.ejs'],
 					shell: JST['app/www/js/templates/comp/shell.ejs'],
-					footer: JST['app/www/js/templates/comp/footer.ejs'],
+					footer: JST['app/www/js/templates/comp/footerOut.ejs'],
 				};
-				SD.templates = myself;
-				myself = myself.header() + myself.menu() + myself.shell() + myself.footer();
+
 			}
-			return myself;
+			SD.templates = myself;
+			return myself.header() + myself.menu() + myself.shell() + myself.footer();
 		}();
 
+		//extend the view with the default home view
 		var HomeView = Backbone.View.extend({
 			el: 'body > content',
-			events: {
+			events: { //Add click events for global clicks
 				'click .logout': 'doLogOut',
 				'click logo a': 'goHome',
+				'click a': 'globalClass',
 			},
 			render: function () {
+				SD.login.checkLoginState();
 				this.$el.html(templatesNeeded);
 			},
 			doLogOut: function(){
 				sessionStorage.clear();
-				SD.ROUTER.navigate('home', true);
+				document.location.replace('/');
 				return false;
 			},
 			goHome: function(){
 				SD.ROUTER.navigate('home', true);
 				return false;
+			},
+			globalClass: function(m){
+				console.trace('globalClass');
+				$('body').removeAttr('class').addClass(m.currentTarget.hash.substring(1));
 			}
 		});
 		var defaultView = new HomeView();
@@ -157,7 +176,14 @@ Routes/Views
 			openASex: function(el){
 
 			},
-			render: function () {
+			render: function () { //the global render
+
+				useme = document.location.hash.replace('#','');
+				if(useme.length===0){
+					$('body').removeAttr('class').addClass('login');
+				}else {
+					$('body').removeAttr('class').addClass(useme);
+				}
 				var compiled = this.jstemplate();
 				this.$el.html(compiled);
 			},

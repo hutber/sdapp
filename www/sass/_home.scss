@@ -1,3 +1,17 @@
+.royalSlider  {
+	&.rsDefault .rsThumb {
+		img {
+			height: auto;
+			width: auto;
+		}
+	}
+//	.rsNavItem {
+//		@include span-columns(2);
+//		&:last-child {
+//			@include span-columns(2 omega);
+//		}
+//	}
+}
 
 // #Base of Sex Acts -------------------------------------------------------------------
 .acts {
@@ -10,13 +24,14 @@ anchor {
 	cursor: pointer;
 	font-family: $sdFont;
 	font-size: 3.4em;
-	line-height: 1.1em;
+	display: block;
 	span {
-		color: $midnight-blue;
+//		color: $silver;
 		clear: both;
 		display: block;
-		font-size: 0.45em;
-		line-height: 0.45em;
+//		font-size: 0.45em;
+		height: 20px;
+		font-size: 14px;
 	}
 }
 

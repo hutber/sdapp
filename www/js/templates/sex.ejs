@@ -2,17 +2,12 @@
 
 <sexform class="<%= data.sextype %>">
 	<form action="post" method="<%= data.url %>">
-		<items>
-			<when><img src="../img/sex/when.png" alt=""/><span>When</span></when>
-			<who><img src="../img/sex/who.png" alt=""/><span>Who</span></who>
-			<rating><img src="../img/sex/rating.png" alt=""/><span>Rating</span></rating>
-		</items>
-		<items>
-			<location><img src="../img/sex/location.png" alt=""/><span>Location</span></location>
-			<where><img src="../img/sex/where.png" alt=""/><span>Where</span></where>
-			<extra><img src="../img/sex/save.png" alt=""/><span>Extra</span></extra>
-		</items>
-		<input type="hidden" name="when"/>
+		<when><span>When</span><input name="when" type="date" required/></when>
+		<who><span>Who</span><input name="when" type="text" placeholder="Who" required/></who>
+		<rating><span>Rating</span><input name="when" type="text" placeholder="Rating" required/></rating>
+		<location><span>Location</span><input name="when" type="text" placeholder="Location" required/></location>
+		<where><span>Where</span><input name="where" type="text" placeholder="Where" required/></where>
+		<extra><span>Extra</span><br><button name="save" type="submit" value="1">Save</button></extra>
 	</form>
-	<seximage><img src="../img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/></seximage>
+	<!--<seximage><img src="img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/></seximage>-->
 </sexform>

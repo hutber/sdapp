@@ -1,9 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="co.uk.sexdiaries.appLocal"
-        xmlns="http://www.w3.org/ns/widgets"
-        xmlns:gap = "http://phonegap.com/ns/1.0"
-        versionCode="10"
-        version   = "0.0.1">
+<widget id="co.uk.sexdiaries.appLocal"  xmlns="http://www.w3.org/ns/widgets" xmlns:gap = "http://phonegap.com/ns/1.0" versionCode="10" version   = "0.0.1">
     <name>Sex Diaries</name>
     <description>
         Track all your sex in one sexy place.

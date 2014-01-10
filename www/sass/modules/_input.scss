@@ -6,122 +6,135 @@
 textarea,
 input,
 .uneditable-input {
-  border: 4px solid $mainGreen;
-  color: $textColorAlt;
-  padding: 12px 5px;
-  text-indent: 6px;
-  margin: 5px 0;
-  -webkit-appearance: none;
-  font-weight: bold;
-  @include border-radius(6px);
-  @include box-shadow(none);
-  @include placeholder-color($concrete);
-  @include transition(0.25s);
-  width: 100%;
+	border: 4px solid $mainGreen;
+	color: $textColorAlt;
+	padding: 12px 5px;
+	text-indent: 12px;
+	margin: 5px auto;
+	-webkit-appearance: none;
+	font-weight: bold;
+	@include border-radius(2px);
+	@include box-shadow(none);
+	@include placeholder-color($concrete);
+	@include transition(0.25s);
+	width: 100%;
+	font-size: .7em;
 
-  // Alternate state
-  // --------------------------------------------------
-  .control-group.focus &,
-  &:focus {
-    border-color: $border;
-    @include box-shadow(none);
-  }
+	// Alternate state
+	// --------------------------------------------------
+	.control-group.focus &,
+	&:focus {
+		text-align: center;
+		border-color: $border;
+		@include box-shadow(none);
+	}
 
-  .row-fluid & {
-    height: 41px;
-    width: 100%;
-  }
+	.row-fluid & {
+		height: 41px;
+		width: 100%;
+	}
 
-  // Flat (without border)
-  &.flat {
-    border-color: transparent;
-    &:hover {
-      border-color: $lightGray;
-    }
-    &:focus {
-      border-color: $border;
-    }
-  }
+	// Flat (without border)
+	&.flat {
+		border-color: transparent;
+		&:hover {
+			border-color: $lightGray;
+		}
+		&:focus {
+			border-color: $border;
+		}
+	}
 
-  // Alternate Colors
-  // --------------------------------------------------
-  .control-group.error &   { @include input-states($danger); }
-  .control-group.success & { @include input-states($success); }
-  .control-group.warning & { @include input-states($warning); }
-  .control-group.info &    { @include input-states($info); }
+	// Alternate Colors
+	// --------------------------------------------------
+	.control-group.error & {
+		@include input-states($danger);
+	}
+	.control-group.success & {
+		@include input-states($success);
+	}
+	.control-group.warning & {
+		@include input-states($warning);
+	}
+	.control-group.info & {
+		@include input-states($info);
+	}
 
-  .control-group & { margin-bottom: 0; }
+	//  .control-group & { margin-bottom: 0; }
 }
 
 // INPUT ICONS
 // ----------------------
 .control-group {
-  position: relative;
+	position: relative;
+	label {
+		font-size: .8em;
+	}
+	> .input-icon {
+		position: absolute;
+		top: 2px;
+		right: 2px;
+		line-height: 37px;
+		vertical-align: middle;
+		font-size: $fontSize * 1.428; /* 20px */
+		color: desaturate(lighten($textColor, 45%), 15%);
+		background-color: #ffffff;
+		padding: 0 10px;
+		@include border-radius(6px);
+	}
 
-  > .input-icon {
-    position: absolute;
-    top: 2px;
-    right: 2px;
-    line-height: 37px;
-    vertical-align: middle;
-    font-size: $fontSize * 1.428; /* 20px */
-    color: desaturate(lighten($textColor, 45%), 15%);
-    background-color: #ffffff;
-    padding: 0 10px;
-    @include border-radius(6px);
-  }
+	input:focus + .input-icon {
+		color: $textColor;
+	}
 
-  input:focus + .input-icon { color: $textColor; }
+	// Icon Sizes
+	// --------------------------------------------------
 
-  // Icon Sizes
-  // --------------------------------------------------
+	// Huge
+	&.huge {
+		> .input-icon {
+			line-height: 49px;
+		}
+	}
 
-  // Huge
-  &.huge {
-    > .input-icon {
-      line-height: 49px;
-    }
-  }
+	//Large
+	&.large {
+		> .input-icon {
+			line-height: 41px;
+		}
+	}
 
-  //Large
-  &.large {
-    > .input-icon {
-      line-height: 41px;
-    }
-  }
+	// Small
+	&.small {
+		> .input-icon {
+			font-size: $fontSize * 1.142; /* 16px */
+			line-height: 30px;
+		}
+	}
 
-  // Small
-  &.small {
-    > .input-icon {
-      font-size: $fontSize * 1.142; /* 16px */
-      line-height: 30px;
-    }
-  }
-
-
-  // Icon Colors
-  // --------------------------------------------------
-  &.success {
-    > .input-icon, input + .input-icon {
-      color: $success;
-    }
-  }
-  &.warning {
-    > .input-icon, input + .input-icon {
-      color: $warning;
-    }
-  }
-  &.error {
-    > .input-icon, input + .input-icon {
-      color: $danger;
-    }
-  }
-  &.disabled {
-    > .input-icon, input + .input-icon {
-      color: mix($gray, white, 40%);
-      background-color: mix($gray, white, 10%);
-    }
-  }
+	// Icon Colors
+	// --------------------------------------------------
+	&.success {
+		> .input-icon, input + .input-icon {
+			color: $success;
+		}
+	}
+	&.warning {
+		> .input-icon, input + .input-icon {
+			color: $warning;
+		}
+	}
+	&.error {
+		> .input-icon, input + .input-icon {
+			color: $danger;
+		}
+	}
+	&.disabled {
+		> .input-icon, input + .input-icon {
+			color: mix($gray, white, 40%);
+			background-color: mix($gray, white, 10%);
+		}
+	}
 
 }
 
@@ -130,33 +143,34 @@ input[disabled],
 input[readonly],
 textarea[disabled],
 textarea[readonly] {
-  background-color: mix($gray, white, 10%);
-  border-color: mix($gray, white, 40%);
-  color: mix($gray, white, 40%);
-  cursor: default;
+	background-color: mix($gray, white, 10%);
+	border-color: mix($gray, white, 40%);
+	color: mix($gray, white, 40%);
+	cursor: default;
 }
 
 // Text field grids
 input,
 textarea,
 .uneditable-input {
-  //width: 192px;
+	//width: 192px;
 }
 
 // Textarea
 textarea {
-  height: auto;
-  font-size: $fontSize * 1.071; /* 15px */
-  line-height: 24px;
-  padding: 5px 11px;
-  text-indent: 0;
+	height: auto;
+	font-size: $fontSize * 1.071; /* 15px */
+	line-height: 24px;
+	padding: 5px 11px;
+	text-indent: 0;
 
-  .row-fluid & {
-    height: auto;
-    width: 100% !important;
-  }
+	.row-fluid & {
+		height: auto;
+		width: 100% !important;
+	}
 }
+
 textarea[class*="span"] {
-  width: 100% !important;
-  @include box-sizing(border-box);
+	width: 100% !important;
+	@include box-sizing(border-box);
 }

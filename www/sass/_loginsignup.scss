@@ -1,0 +1,28 @@
+// #Loging & Signup -------------------------------------------------------------------
+.signup, .login {
+	page {
+		margin: 0 auto;
+		width: $globalWidths;
+	}
+	input.terms {
+		width: auto;
+	}
+}
+
+.login {
+	logo {
+		margin-top: 200px;
+	}
+	page {
+		margin-bottom: 200px;
+	}
+}
+
+.signup {
+	input[type=checkbox] {
+		margin-right: 10px;
+	}
+	logo {
+		margin-top: 30px;
+	}
+}

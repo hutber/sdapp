@@ -46,9 +46,22 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['jquery'],
 				exports: 'jQuery.fn.bigtext'
 			},
-			touchCarousel: {
+			//Carousel items
+			slider: {
 				deps: ['jquery'],
 				exports: 'jQuery.fn.touchCarousel'
+			},
+			slidervisibleNearby: {
+				deps: ['slider'],
+				exports: 'jQuery.fn.visibleNearby'
+			},
+			sliderthumbnails: {
+				deps: ['slider'],
+				exports: 'jQuery.fn.thumbnails'
+			},
+			sliderCaption: {
+				deps: ['slider'],
+				exports: 'jQuery.fn.global-caption'
 			}
 		},
 		paths: {
@@ -56,7 +69,10 @@ Table of Contents - Created by Hutber on 04/10/13.
 			backbone: 'libs/backbone-min',
 			underscore: 'libs/underscore-min',
 			jStorage: 'libs/plugins/jStorage',
-			touchCarousel: 'libs/plugins/jquery.touchcarousel-1.2',
+			slider: 'libs/plugins/slider/jquery.royalslider',
+			slidervisibleNearby: 'libs/plugins/slider/modules/jquery.rs.visible-nearby',
+			sliderthumbnails: 'libs/plugins/slider/modules/jquery.rs.thumbnails',
+			sliderCaption: 'libs/plugins/slider/modules/jquery.rs.global-caption',
 			bigtext: 'libs/plugins/bigtext.jquery',
 			core: 'core.functions',
 			sd : 'sd.functions',
@@ -77,8 +93,10 @@ Routers
 		'core.functions',
 		'sd.functions',
 // Views ----------------
+		'views/indexView',
 		'views/homeView',
 		'views/loginView',
+		'views/signUpView',
 		'views/sex/wank',
 		'views/sex/hands',
 		'views/sex/oral',
@@ -91,13 +109,15 @@ set arguments to values for ease of reading arguments
     var Backbone = arguments[0],
         Router = arguments[2],
 		SD = arguments[4],
-        HomeView = arguments[5],
-        LoginView = arguments[6],
-		wankView = arguments[7],
-        handsView = arguments[8],
-        oralView = arguments[9],
-        sexView = arguments[10],
-        anythingView = arguments[11];
+		IndexView = arguments[5],
+        HomeView = arguments[6],
+        LoginView = arguments[7],
+		SignUpView = arguments[8],
+		wankView = arguments[9],
+        handsView = arguments[10],
+        oralView = arguments[11],
+        sexView = arguments[12],
+        anythingView = arguments[13];
 
 /*==================================================
 Load in scripts depending on which device we are.
@@ -125,7 +145,9 @@ Routes Vars
     SD.ROUTER = new Router(),
 
 // views ---------------------------
+    SD.VIEWS.indexView = new IndexView(),
     SD.VIEWS.homeView = new HomeView(),
+	SD.VIEWS.signUpView = new SignUpView(),
 	SD.VIEWS.loginView = new LoginView(),
 
 // Sex views ---------------------------
@@ -139,12 +161,20 @@ Routes Vars
 Routes
 ================================================== */
 //# Default router ----------------------------------------------------------------
-	SD.ROUTER.on('route:login route:home', function(){
+	SD.ROUTER.on('route:index route:home', function(){
 		if(sessionStorage.getItem('privateKey')!==null){
 			SD.VIEWS.homeView.render();
 		}else{
-			SD.VIEWS.loginView.render();
+			SD.VIEWS.indexView.render();
 		}
+	});
+
+// Not logged in Routers ---------------------------
+	SD.ROUTER.on('route:login', function(){
+		SD.VIEWS.loginView.render();
+	});
+	SD.ROUTER.on('route:signup', function(){
+		SD.VIEWS.signUpView.render();
 	});
 
 // Sex Routers ---------------------------
@@ -169,7 +199,6 @@ On Device Ready
 ================================================== */
 	if(SD.isMobile){
 		document.addEventListener("deviceready", function(){
-			c('device ready');
 			Backbone.history.start();
 			SD.checkConnection();
 		}, true);
@@ -177,5 +206,5 @@ On Device Ready
 		$(document).ready(function() {
 			Backbone.history.start();
 		});
-	};
+	}
 });

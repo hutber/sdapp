@@ -1,6 +1,8 @@
 overlay {
 	background: rgba(104, 109, 109, 0.6);
 	position: fixed;
+	left: 0;
+	top: 0;
 	height: 100%;
 	width: 100%;
 	z-index: 2;
@@ -8,11 +10,12 @@ overlay {
 	display: none;
 
 	message {
-
+		@include  vertical-middle;
 	}
 
 	img {
 		display: inline-block;
+		width: auto;
 	}
 
 	text {

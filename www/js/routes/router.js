@@ -10,8 +10,9 @@ define([
 	//routes from the home page
     var Router = Backbone.Router.extend({
         routes: {
-            '': 'login',
+            '': 'index',
 			'login': 'login',
+			'signup': 'signup',
 			'home': 'home',
 			'wank': 'wank',
 			'hands': 'hands',

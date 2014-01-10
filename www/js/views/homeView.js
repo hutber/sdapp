@@ -5,7 +5,10 @@ define([
     'JST',
 	'core.functions',
 	'sd.functions',
-	'touchCarousel'
+	'slider',
+	'slidervisibleNearby',
+	'sliderthumbnails',
+	'sliderCaption'
 ], function ($, _, Backbone, JST, core, SD) {
     'use strict';
 
@@ -21,29 +24,44 @@ define([
         render: function () {
 			var myself = this;
 			SD.templates.home = myself.template;
+			$('.title').html('SELECT SOME SEXYNESS');
 			myself.$el.html(myself.template);
 			var si = $('.royalSlider').royalSlider({
-				addActiveClass: true,
-				arrowsNav: false,
-				controlNavigation: 'none',
-				loop: true,
-				fadeinLoadedSlide: false,
+				controlNavigation: 'thumbnails',
+				arrowsNavHideOnTouch: true,
 				globalCaption: true,
-				keyboardNavEnabled: true,
-				globalCaptionInside: false,
-				autoScaleSlider: true,
-				autoScaleSliderWidth: 480,
-				autoScaleSliderHeight: 215,
-				visibleNearby: {
-					enabled: true,
-					centerArea: 0.5,
-					center: true,
-					breakpoint: 650,
-					breakpointCenterArea: 0.64,
-					navigateByCenterClick: false
-				}
+				globalCaptionInside: true,
+				imageScaleMode: 'fit',
+				arrowsNav: false,
+				imageScalePadding: 10,
+				thumbs: {
+					arrows: false,
+					appendSpan: false,
+					firstMargin: false
+				},
+//				addActiveClass: true,
+//				arrowsNav: false,
+//				controlNavigation: 'none',
+//				loop: true,
+//				fadeinLoadedSlide: false,
+//				globalCaption: true,
+//				keyboardNavEnabled: true,
+//				globalCaptionInside: false,
+//				autoScaleSlider: true,
+//				autoScaleSliderWidth: 480,
+//				autoScaleSliderHeight: 400,
+//				imgHeight: 200,
+//				visibleNearby: {
+//					enabled: true,
+//					centerArea: 0.5,
+//					center: true,
+//					breakpoint: 650,
+//					breakpointCenterArea: 0.64,
+//					navigateByCenterClick: false
+//				}
 			}).data('royalSlider');
 			si.ev.on('rsSlideClick', function() { //Add click events to the sex icons
+				c($('.rsGCaption').find('anchor').attr('id'));
 				SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
 			});
         },
