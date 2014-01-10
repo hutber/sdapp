@@ -14,9 +14,13 @@
 Is Mobile - If true then we are a mobile
 ================================================== */
 	SD.isMobile = true;
+alert(SD.isMobile);
+alert(document.URL.indexOf("local"))
+alert(document.URL.indexOf("sex"))
 	if (document.URL.indexOf("local") > 0 || document.URL.indexOf("sex") > 0) {
 		SD.isMobile = false;
 	}
+alert(SD.isMobile);
 
 	//# Debug on the page ----------------------------------------------------
 	function debug (msg) {
