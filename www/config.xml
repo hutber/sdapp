@@ -17,7 +17,7 @@
     <!--/////////////////////////////////////////////////
                      Phone Preferences
      /////////////////////////////////////////////////-->
-    <preference name="phonegap-version" value="3.0.3" />
+    <preference name="phonegap-version" value="3.0.0" />
     <preference name="orientation" value="portrait" />
     <preference name="permissions" value="none" />
     <preference name="target-device" value="universal" />
