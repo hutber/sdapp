@@ -12,11 +12,11 @@ define([
 		data: {
 			url: SD.HTTP+'stats/add',
 			sextype: 'anything',
-			header: 'Good lord really? That?!!!',
 			image: '/img/path.jpg'
 		},
 		render: function () {
 			SD.DSV.renderSex(SD.DSV.ownView(this.data));
+			SD.setTitle('Good lord really? That?!!!');
 		}
 	});
 	return anything;

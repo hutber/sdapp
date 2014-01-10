@@ -12,11 +12,11 @@ define([
 		data: {
 			url: SD.HTTP+'stats/add',
 			sextype: 'sex',
-			header: 'Argh yeee...  ...   sex  ... yeeee',
 			image: '/img/path.jpg'
 		},
 		render: function () {
 			SD.DSV.renderSex(SD.DSV.ownView(this.data));
+			SD.setTitle('Argh yeee...  ...   sex  ... yeeee');
 		}
 	});
 	return sex;

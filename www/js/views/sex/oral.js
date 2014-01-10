@@ -12,11 +12,11 @@ define([
 		data: {
 			url: SD.HTTP+'stats/add',
 			sextype: 'oral',
-			header: "Can't talk mouth full!!!",
 			image: '/img/path.jpg'
 		},
 		render: function () {
 			SD.DSV.renderSex(SD.DSV.ownView(this.data));
+			SD.setTitle("Can't talk mouth full!!!");
 		}
 	});
 	return oral;

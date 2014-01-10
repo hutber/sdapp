@@ -185,6 +185,8 @@ footer {
 	height: 85px;
 	width: 100%;
 	z-index: -1;
+	position: absolute;
+	bottom: 0;
 }
 
 body[data=loggedin] logo {

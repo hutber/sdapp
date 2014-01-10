@@ -24,7 +24,7 @@ define([
         render: function () {
 			var myself = this;
 			SD.templates.home = myself.template;
-			$('.title').html('SELECT SOME SEXYNESS');
+			SD.setTitle('SELECT SOME SEXYNESS');
 			myself.$el.html(myself.template);
 			var si = $('.royalSlider').royalSlider({
 				controlNavigation: 'thumbnails',

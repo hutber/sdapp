@@ -12,11 +12,11 @@ define([
 		data: {
 			url: SD.HTTP+'stats/add',
 			sextype: 'wank',
-			header: 'MOTHER FUCKING WANK!!!',
 			image: '/img/path.jpg'
 		},
         render: function () {
 			SD.DSV.renderSex(SD.DSV.ownView(this.data));
+			SD.setTitle('MOTHER FUCKING WANK!!!');
         }
     });
     return wank;

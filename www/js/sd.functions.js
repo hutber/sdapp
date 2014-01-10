@@ -104,7 +104,7 @@ Routes/Views
 			events: { //Add click events for global clicks
 				'click .logout': 'doLogOut',
 				'click logo a': 'goHome',
-				'click a': 'globalClass',
+				'click a, sexoptions > *': 'globalClass',
 			},
 			render: function () {
 				SD.login.checkLoginState();
@@ -120,38 +120,19 @@ Routes/Views
 				return false;
 			},
 			globalClass: function(m){
-				console.trace('globalClass');
-				$('body').removeAttr('class').addClass(m.currentTarget.hash.substring(1));
+				var desireClass = function(){if(m.currentTarget.nodeName === "A"){
+						return m.currentTarget.hash.substring(1);
+					}else{
+						return m.currentTarget.nodeName;
+					}
+				}
+				$('body').removeAttr('class').addClass(desireClass);
 			}
 		});
 		var defaultView = new HomeView();
 		defaultView.render();
 		return HomeView;
 	}();
-
-	//update details on page load
-	SD.pageLoad = function(elem){
-		var useme;
-
-		if(typeof elem === "object" && elem.currentTarget.id){
-			useme = elem.currentTarget.id;
-		}else if(typeof elem === "object"){
-			useme = elem.currentTarget.localName;
-		}else if(elem){
-			useme = elem;
-		}else if(document.location.hash){
-			useme = document.location.hash.replace('#','');
-		}else{
-			useme = elem;
-		}
-
-		if(!$('sexdetails').length){
-			SD.DSV.render();
-		}
-
-		SD.CURRENTSEX = useme; //update the state
-		SD.ROUTER.navigate(useme, true);
-	};
 
 	SD.defaultSexView = function(){
 		//set up homeview
@@ -177,7 +158,6 @@ Routes/Views
 
 			},
 			render: function () { //the global render
-
 				useme = document.location.hash.replace('#','');
 				if(useme.length===0){
 					$('body').removeAttr('class').addClass('login');
@@ -189,6 +169,7 @@ Routes/Views
 			},
 			renderSex: function (view){
 				$('sexdetails').html(view);
+
 			}
 		});
 
@@ -196,9 +177,15 @@ Routes/Views
 		SD.DSV.render();
 		return sexView;
 	}();
+
 /*==================================================
 Display functions
 ================================================== */
+//	#Update title
+	SD.setTitle = function(title){
+		$('.title').html(title);
+	};
+
 //	#Remove Classes
 	SD.updateSexClass = function(sex){
 		var bodydom = $('body');
@@ -219,6 +206,29 @@ Display functions
 		}
 	};
 
+	//update details on page load
+	SD.pageLoad = function(elem){
+		var useme;
+
+		if(typeof elem === "object" && elem.currentTarget.id){
+			useme = elem.currentTarget.id;
+		}else if(typeof elem === "object"){
+			useme = elem.currentTarget.localName;
+		}else if(elem){
+			useme = elem;
+		}else if(document.location.hash){
+			useme = document.location.hash.replace('#','');
+		}else{
+			useme = elem;
+		}
+
+		if(!$('sexdetails').length){
+			SD.DSV.render();
+		}
+
+		SD.CURRENTSEX = useme; //update the state
+		SD.ROUTER.navigate(useme, true);
+	};
 /*==================================================
 Networking functions
 ================================================== */
