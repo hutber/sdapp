@@ -1767,6 +1767,10 @@ sexoptions anything {
 .login logo {
   margin-top: 200px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_loginsignup\.scss}line{font-family:\0000316}}
+.login page {
+  margin-bottom: 200px;
+}
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/app\/www\/sass\/_loginsignup\.scss}line{font-family:\0000322}}
 .signup input[type=checkbox] {
