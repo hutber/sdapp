@@ -51,11 +51,11 @@ define([
 						'pword': values.pword
 					},
 					error: function(data){
-						c(data.status);
+						c('Sorry Login Failed: '+data.status);
 						SD.overlay.hideme();
 					},
 					success: function(data){
-						c('Login code:'+ data.code);
+						c('Login code: '+ data.code);
 						if(data.privateKey){
 							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab

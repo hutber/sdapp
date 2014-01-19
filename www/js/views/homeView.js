@@ -23,12 +23,11 @@ define([
 		},
         render: function () {
 			var myself = this;
-			c(myself.template);
 			SD.templates.home = myself.template;
 			SD.setTitle('SELECT SOME SEXYNESS');
 			myself.$el.html(myself.template);
-			c(myself.$el);
-			var si = $('.royalSlider').royalSlider({
+
+			var si = $('.royalSlider').royalSlider({ //Set up slider
 				controlNavigation: 'thumbnails',
 				arrowsNavHideOnTouch: true,
 				globalCaption: true,

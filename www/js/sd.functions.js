@@ -63,14 +63,16 @@ Login functions
 SD.login = {
 	checkLoginState : function(state) { //We use this state to enable us to use the function on every page load to check if the user is logged in
 		if(sessionStorage.getItem('privateKey')===null && typeof state !== "undefined"){ //Not logged in, force to home
-//			document.location.replace('/');
-			SD.defaultView.render();
-			SD.ROUTER.navigate('');
+			document.location.replace('');
+			location.reload();
+//			SD.defaultView.render();
+//			SD.ROUTER.navigate('');
 		}else if (state){ //This state is only ever set when loggin in: loginView.js:62 //If logged in force to sex picker
-//			window.location.href = "/#home";
-//			location.reload();
-			SD.DSV.render();
-			SD.ROUTER.navigate('home');
+			window.location.href = "#home";
+			location.reload();
+//			SD.DSV.render();
+//			SD.VIEWS.homeView.render();
+//			SD.ROUTER.navigate('home');
 		}
 	}
 };
@@ -129,7 +131,7 @@ Routes/Views
 					}else{
 						return m.currentTarget.nodeName;
 					}
-				}
+				};
 				$('body').removeAttr('class').addClass(desireClass);
 			}
 		});
