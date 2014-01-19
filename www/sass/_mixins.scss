@@ -35,12 +35,23 @@
  }
 }
 
-@mixin vertical-middle (){
+@mixin vertical-middle ($top:50%, $left:50%){
 	position: absolute;
-	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
-	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
+	left: $left;
+	top: $top;
+	transform: translate(-$left, -$top);
+	-webkit-transform: translate(-$left, -$top);
+	-moz-transform: translate(-$left, -$top);
+	-ms-transform: translate(-$left, -$top);
 }
+
+
+//@mixin vertical-middle ($top:'50%', $left:'50%'){
+//	position: absolute;
+//	left: $left;
+//	top: $top;
+//	transform: translate(-$top, -$left);
+//	-webkit-transform: translate(-$top, -$left);
+//	-moz-transform: translate(-$top, -$left);
+//	-ms-transform: translate(-$top, -$left);
+//}

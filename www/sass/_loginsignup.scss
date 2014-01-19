@@ -10,8 +10,9 @@
 }
 
 .login {
-	logo {
-		margin-top: 200px;
+	header {
+		width: 100%;
+		@include vertical-middle (20%, 50%);
 	}
 	& page {
 //		margin-bottom: 200px;
@@ -27,5 +28,12 @@
 	}
 	footer {
 		margin-top: 20px;
+	}
+}
+
+// #Logged In -------------------------------------------------------------------
+.home {
+	page {
+		height: 100%;
 	}
 }

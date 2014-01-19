@@ -48,29 +48,22 @@ Table of Contents
 /* #Main Styles ------------------------------------------------------------------------ */
 body {
 	height: 100%;
-//	max-width: 480px;
-//	min-width: 320px;
-//	height: 800px;
-//	margin: 0 auto;
 	width: 100%;
 	position: absolute;
-	border: 3px solid black;
+//	border: 3px solid black;
 	text-align: center;
-}
-body {
 	background-color: #9acdcb;
-//	@include  vertical-middle;
-//	$experimental-support-for-svg: true;
-//	@include background-image(radial-gradient(center, ellipse cover, #9acdcb 0%, #9acdcb 14%, #a6d3d1 30%, #abd5d4 44%, #a9d4d3 61%, #9acdcb 84%, #9acdcb 100%));
 	@include transition-duration(1.5s);
 }
 
 debug li {
 	background: none repeat scroll 0 0 #53838E;
-	padding: 5px;
+	padding: 3px;
 	@include clearfix();
 	width: 100%;
 	border-bottom: 1px solid #DDD;
+	font-size: 10px;
+	line-height: 10px;
 }
 
 // #Header -------------------------------------------------------------------
@@ -89,19 +82,21 @@ header {
 		height: 24px;
 		text-indent: -9999em;
 		margin-left: 8px;
-		margin-top: 10px;
+		margin-top: 3px;
 		cursor: pointer;
+		margin-bottom: 4px;
+		width: 6.77966%;
 	}
 	.title {
 		@include span-columns(10, 12);
 		font-family: $sdFont;
-//		font-size: 1em;
 		text-shadow: 0 0 2px rgba(0, 0, 0, 0.48);
 		display: inline-block;
 		text-overflow: ellipsis;
 		margin-right: 0;
 		white-space: nowrap;
 		overflow: hidden;
+		line-height: 31px;
 	}
 	.logout {
 		@include span-columns(1 omega, 12);
@@ -110,35 +105,37 @@ header {
 }
 // #content -------------------------------------------------------------------
 content {
-//	@include vertical-middle ();
 	@include container;
 	padding: 0;
 	width: 100%;
 	// #page -------------------------------------------------------------------
 	page {
+		width: 100%;
 		@include vertical-middle ();
 	}
 }
 
 // #Logo -------------------------------------------------------------------
-header logo {
-	padding: 0;
-	font-size: 2.3em;
-	color: $main-grey;
-	text-align: center;
-	margin: 13px 0 50px;
-	line-height: 0.85em;
-	font-family: $sdFont;
-	display: block;
-	a {
-		-webkit-text-stroke-width: 2px;
-		-webkit-text-stroke-color: #FFF;
-		color: $logoGrey !important;
-		.loggedin & {
-		}
-		span {
-			color: #FFF;
-			-webkit-text-stroke-color: $logoGrey;
+header {
+	logo {
+		padding: 0;
+		font-size: 2.3em;
+		color: $main-grey;
+		text-align: center;
+		margin: 13px 0 50px;
+		line-height: 0.85em;
+		font-family: $sdFont;
+		display: block;
+		a {
+			-webkit-text-stroke-width: 2px;
+			-webkit-text-stroke-color: #FFF;
+			color: $logoGrey !important;
+			.loggedin & {
+			}
+			span {
+				color: #FFF;
+				-webkit-text-stroke-color: $logoGrey;
+			}
 		}
 	}
 }
@@ -155,7 +152,7 @@ a.signup {
 	a {
 		@include span-columns(6);
 		border: 1px solid #1C498E;
-		background: url("/img/icons/social.png") no-repeat scroll center 12px #597DB5;
+		background: url("../img/icons/social.png") no-repeat scroll center 12px #597DB5;
 		text-indent: -9999em;
 		margin-top: 20px;
 		padding-bottom: 15px;
@@ -206,5 +203,12 @@ body[data=loggedin] logo {
 
 .social a.twitter {
 	background-position: center -22px;
+
+}
+
+header.loggedin {
+	position: absolute;
+	width: 100%;
+	z-index: 2;
 
 }

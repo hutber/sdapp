@@ -6,7 +6,7 @@ define(function(){
 
   this["JST"]["app/www/js/templates/comp/footerOut.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<footer><div class="social"><a class="facebook" href="#facebook">facebook</a><a class="twitter" href="#twitter">twitter</a></div></footer>';return __p};
 
-  this["JST"]["app/www/js/templates/comp/headerIn.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<header class="loggedin"><menuBtn>=</menuBtn><div class="title"></div><a class="logout" href="/">Logout</a></header>';return __p};
+  this["JST"]["app/www/js/templates/comp/headerIn.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<header class="loggedin"><menuBtn>=</menuBtn><div class="title"></div><a class="logout" href="/">LO</a></header>';return __p};
 
   this["JST"]["app/www/js/templates/comp/headerOut.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<header><logo><a href="/">Sex<span> Diaries</span></a></logo></header>';return __p};
 

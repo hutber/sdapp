@@ -2,7 +2,7 @@
 /* Core RS CSS file. 95% of time you shouldn't change anything here. */
 .royalSlider {
 //	width: 600px;
-	height: 730px;
+	height: 100%;
 	position: relative;
 	direction: ltr;
 }
@@ -288,9 +288,7 @@ img.rsImg {
 
 
 /***************
-*
 *  1. Arrows
-*
 ****************/
 
 .rsDefault .rsArrow {
@@ -344,9 +342,7 @@ img.rsImg {
 
 
 /***************
-*
 *  2. Bullets
-*
 ****************/
 
 .rsDefault .rsBullets {
@@ -385,14 +381,8 @@ img.rsImg {
 	background-color: #FFF;
 }
 
-
-
-
-
 /***************
-*
 *  3. Thumbnails
-*
 ****************/
 
 .rsDefault .rsThumbsHor {
