@@ -21,6 +21,17 @@ define([
 		events:{
 			"click anchor" : 'changeSex'
 		},
+		thumbWidthGen: function(){
+			var neededWidth = 0;
+			$('.rsNavItem').each(function(){
+				neededWidth += parseFloat($(this).outerWidth());
+			});
+			var widthNeeded = neededWidth+42;
+
+			$('.rsThumbsHor').css({
+				width: widthNeeded,
+			});
+		},
         render: function () {
 			var myself = this;
 			SD.templates.home = myself.template;
@@ -28,43 +39,27 @@ define([
 			myself.$el.html(myself.template);
 
 			var si = $('.royalSlider').royalSlider({ //Set up slider
-				controlNavigation: 'thumbnails',
+				controlNavigation: 'none',
 				arrowsNavHideOnTouch: true,
 				globalCaption: true,
 				globalCaptionInside: true,
 				imageScaleMode: 'fit',
 				arrowsNav: false,
-				imageScalePadding: 10,
 				thumbs: {
 					arrows: false,
 					appendSpan: false,
-					firstMargin: false
-				},
-//				addActiveClass: true,
-//				arrowsNav: false,
-//				controlNavigation: 'none',
-//				loop: true,
-//				fadeinLoadedSlide: false,
-//				globalCaption: true,
-//				keyboardNavEnabled: true,
-//				globalCaptionInside: false,
-//				autoScaleSlider: true,
-//				autoScaleSliderWidth: 480,
-//				autoScaleSliderHeight: 400,
-//				imgHeight: 200,
-//				visibleNearby: {
-//					enabled: true,
-//					centerArea: 0.5,
-//					center: true,
-//					breakpoint: 650,
-//					breakpointCenterArea: 0.64,
-//					navigateByCenterClick: false
-//				}
+					firstMargin: false,
+					autoCenter: false,
+					spacing: 5
+				}
 			}).data('royalSlider');
 			si.ev.on('rsSlideClick', function() { //Add click events to the sex icons
-				c($('.rsGCaption').find('anchor').attr('id'));
 				SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
 			});
+			this.thumbWidthGen();
+//			$(window).resize(function(){
+//				myself.thumbWidthGen();
+//			});
         },
 		changeSex: function(elem){
 			SD.pageLoad(elem);

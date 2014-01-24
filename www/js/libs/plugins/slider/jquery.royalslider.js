@@ -1464,7 +1464,7 @@
 					if(newWidth != self.width) {
 						self.slider.css("height", newWidth * (ash / asw) );
 						newWidth = self.slider.width();
-					}	
+					}
 					newHeight = self.slider.height();
 				} else {
 					newHeight = self.slider.height();
@@ -1499,7 +1499,13 @@
 
 
 				self._slideSize = (self._slidesHorizontal ? self._wrapWidth : self._wrapHeight) + self.st.slidesSpacing;
-				
+
+				//Hutber
+				if(self._wrapWidth<440){
+					$('.rsThumbsHor').css({
+						width: self._wrapWidth,
+					});
+				}
 
 				self._imagePadding = self.st.imageScalePadding;
 				var item,

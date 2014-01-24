@@ -106,7 +106,7 @@ Routes/Views
 
 		//extend the view with the default home view
 		var HomeView = Backbone.View.extend({
-			el: 'body > content',
+			el: 'body > shell',
 			events: { //Add click events for global clicks
 				'click .logout': 'doLogOut',
 				'click logo a': 'goHome',
@@ -137,14 +137,18 @@ Routes/Views
 		});
 		var defaultView = new HomeView();
 		defaultView.render();
+		//now attach resize events to resize
+//		$(window).resize(function(){
+//
+//		});
 		return HomeView;
 	}();
 
 	SD.defaultSexView = function(){
 		//set up homeview
 		var sexView = SD.defaultView.extend({
-			el: 'page',
-			jstemplate: JST['app/www/js/templates/sex/sexTemplate.ejs'],
+			el: 'content',
+//			jstemplate: JST['app/www/js/templates/sex/sexTemplate.ejs'],
 			ownView: JST['app/www/js/templates/sex.ejs'],
 			events:{
 				"click sexoptions > *" : 'changeSex',
@@ -170,12 +174,11 @@ Routes/Views
 				}else {
 					$('body').removeAttr('class').addClass(useme);
 				}
-				var compiled = this.jstemplate();
-				this.$el.html(compiled);
+//				var compiled = this.jstemplate();
+//				this.$el.html(compiled);
 			},
 			renderSex: function (view){
 				$('sexdetails').html(view);
-
 			}
 		});
 

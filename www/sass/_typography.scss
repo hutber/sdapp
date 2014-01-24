@@ -20,6 +20,7 @@ $sdFont: sdFont, Arial, serif;
 $textFont: Arial, Trebuchet, sans-serif;
 //$fontSize: 62.5%;
 $fontSize: 18px;
+$lineheight: 18px;
 
 // Icons
 $icon-normal: 16px;
@@ -32,8 +33,8 @@ $default-text-shadow-blur: 3px;
 $default-text-shadow-v-offset: 1px;
 
 /* #Page Typography ------------------------------------------------------------------------ */
-html {font-size: $fontSize}
-body {padding: 0; margin:0;font-family: $textFont; color: $textColor; font-size: 1.6em !important; line-height: 1em;}
+//html {font-size: $fontSize}
+body {padding: 0; margin:0; font-family: $textFont; color: $textColor; font-size: $fontSize;line-height: $lineheight;}
 
 // #Links ---------------------------------------------------------------------
 a, a:visited { color: $linkColor; text-decoration: none; outline: 0; }

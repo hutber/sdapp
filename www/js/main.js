@@ -42,10 +42,6 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['underscore'],
 				exports: 'JST'
 			},
-			bigtext: {
-				deps: ['jquery'],
-				exports: 'jQuery.fn.bigtext'
-			},
 			//Carousel items
 			slider: {
 				deps: ['jquery'],
@@ -62,6 +58,10 @@ Table of Contents - Created by Hutber on 04/10/13.
 			sliderCaption: {
 				deps: ['slider'],
 				exports: 'jQuery.fn.global-caption'
+			},
+			flowtype: {
+				deps: ['jquery'],
+				exports: 'jQuery.fn.flowtype'
 			}
 		},
 		paths: {
@@ -73,7 +73,7 @@ Table of Contents - Created by Hutber on 04/10/13.
 			slidervisibleNearby: 'libs/plugins/slider/modules/jquery.rs.visible-nearby',
 			sliderthumbnails: 'libs/plugins/slider/modules/jquery.rs.thumbnails',
 			sliderCaption: 'libs/plugins/slider/modules/jquery.rs.global-caption',
-			bigtext: 'libs/plugins/bigtext.jquery',
+			flowtype: 'libs/plugins/flowtype',
 			core: 'core.functions',
 			sd : 'sd.functions',
 			JST : 'templates'
@@ -101,7 +101,9 @@ Routers
 		'views/sex/hands',
 		'views/sex/oral',
 		'views/sex/sex',
-		'views/sex/anything'
+		'views/sex/anything',
+// Plugins --------------------,
+		'flowtype',
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -133,9 +135,10 @@ Load in scripts depending on which device we are.
 		$.getScript('http://localhost:35729/livereload.js');
 	}
 
-/*==================================================
-Start up SD global object.
-================================================== */
+
+		/*==================================================
+		Start up SD global object.
+		================================================== */
 	SD.init();
 
 /*==================================================
@@ -193,6 +196,15 @@ Routes
 	SD.ROUTER.on('route:anything', function(){
 		SD.VIEWS.AnythingView.render();
 	});
+
+/*==================================================
+Global Plugins
+================================================== */
+$('body').flowtype({
+	minFont   : 18,
+	maxFont   : 40,
+	fontRatio : 20
+});
 
 /*==================================================
 On Device Ready
