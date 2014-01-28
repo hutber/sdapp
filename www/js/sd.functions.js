@@ -34,6 +34,7 @@ Globals
 			}
 		}(),
 		CURRENTSEX: 'na',
+		SLIDER: null,
 		VIEWS: {},
 		ROUTER: false
 	};
@@ -62,11 +63,17 @@ Login functions
 ================================================== */
 SD.login = {
 	checkLoginState : function(state) { //We use this state to enable us to use the function on every page load to check if the user is logged in
-		if(sessionStorage.getItem('privateKey')===null && typeof state !== "undefined"){ //Make sure we didn't come from the logview.js
-			document.location.replace('/');
-		}else if (state){ //This state is only ever set when loggin in: loginView.js:62
-			window.location.href = "/#home";
+		if(sessionStorage.getItem('privateKey')===null && typeof state !== "undefined"){ //Not logged in, force to home
+			document.location.replace('');
 			location.reload();
+//			SD.defaultView.render();
+//			SD.ROUTER.navigate('');
+		}else if (state){ //This state is only ever set when loggin in: loginView.js:62 //If logged in force to sex picker
+			window.location.href = "#home";
+			location.reload();
+//			SD.DSV.render();
+//			SD.VIEWS.homeView.render();
+//			SD.ROUTER.navigate('home');
 		}
 	}
 };
@@ -100,11 +107,12 @@ Routes/Views
 
 		//extend the view with the default home view
 		var HomeView = Backbone.View.extend({
-			el: 'body > content',
+			el: 'body > shell',
 			events: { //Add click events for global clicks
 				'click .logout': 'doLogOut',
 				'click logo a': 'goHome',
 				'click a, sexoptions > *': 'globalClass',
+				'click footer sexnav' : 'sexNav'
 			},
 			render: function () {
 				SD.login.checkLoginState();
@@ -125,8 +133,21 @@ Routes/Views
 					}else{
 						return m.currentTarget.nodeName;
 					}
-				}
+				};
 				$('body').removeAttr('class').addClass(desireClass);
+			},
+			sexNav: function(m){
+				for(var index in m.currentTarget.children) {
+					if(m.target.outerHTML === m.currentTarget.children[index].innerHTML){
+						var currentClick = m.currentTarget.children[index],
+							currentClickIndex = index;
+					}
+				}
+				if($('.royalSlider')[0]){ //Check to see if the slider is open, if it is lets go to slide
+					SD.SLIDER.goTo(currentClickIndex);
+				}else{
+					SD.pageLoad(currentClick.attributes[0].value);
+				}
 			}
 		});
 		var defaultView = new HomeView();
@@ -169,7 +190,6 @@ Routes/Views
 			},
 			renderSex: function (view){
 				$('sexdetails').html(view);
-
 			}
 		});
 

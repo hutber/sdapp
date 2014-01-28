@@ -1,21 +1,17 @@
 // #Loging & Signup -------------------------------------------------------------------
 .signup, .login {
 	page {
-		margin: 0 auto;
-		width: $globalWidths;
+//		margin: 0 auto;
+//		width: $globalWidths;
+//		@include vertical-middle (50%, 50%);
 	}
 	input.terms {
-		width: auto;
+//		width: auto;
 	}
 }
 
 .login {
-	logo {
-		margin-top: 200px;
-	}
-	& page {
-//		margin-bottom: 200px;
-	}
+
 }
 
 .signup {
@@ -27,5 +23,17 @@
 	}
 	footer {
 		margin-top: 20px;
+	}
+}
+
+// #Logged In -------------------------------------------------------------------
+
+.home {
+	header {
+		.loggedin {
+			position: absolute;
+			width: 100%;
+			z-index: 2;
+		}
 	}
 }
