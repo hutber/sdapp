@@ -2,7 +2,7 @@ define(function(){
 
   this["JST"] = this["JST"] || {};
 
-  this["JST"]["app/www/js/templates/comp/footerIn.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<footer><sexnav><div><img src="img/sex/wank.png"></div><div><img src="img/sex/hands.png"></div><div><img src="img/sex/oral.png"></div><div><img src="img/sex/sex.png"></div><div><img src="img/sex/anything.png"></div></sexnav></footer>';return __p};
+  this["JST"]["app/www/js/templates/comp/footerIn.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<footer><sexnav><div data-type="wank"><img src="img/sex/wank.png"></div><div data-type="hands"><img src="img/sex/hands.png"></div><div data-type="oral"><img src="img/sex/oral.png"></div><div data-type="sex"><img src="img/sex/sex.png"></div><div data-type="anything"><img src="img/sex/anything.png"></div></sexnav></footer>';return __p};
 
   this["JST"]["app/www/js/templates/comp/footerOut.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<footer><div class="social"><a class="facebook" href="#facebook">facebook</a><a class="twitter" href="#twitter">twitter</a></div></footer>';return __p};
 
@@ -32,9 +32,9 @@ define(function(){
 
   this["JST"]["app/www/js/templates/sex/sex.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<h2>Sex</h2>';return __p};
 
-  this["JST"]["app/www/js/templates/sex/sexTemplate.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<sexdetails></sexdetails><sexoptions><wank></wank><hands></hands><oral></oral><sex></sex><anything></anything></sexoptions>';return __p};
+  this["JST"]["app/www/js/templates/sex/sexTemplate.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<sexdetails></sexdetails><!--<sexoptions>--><!--<wank></wank>--><!--<hands></hands>--><!--<oral></oral>--><!--<sex></sex>--><!--<anything></anything>--><!--</sexoptions>-->';return __p};
 
-  this["JST"]["app/www/js/templates/sex/wank.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<sexform class="wank"><form method="http://stage.sexdiaries.co.uk/stats/add" action="post"><items><when><img alt="" src="../img/sex/when.png"><span>When</span></when><who><img alt="" src="../img/sex/who.png"><span>Who</span></who><rating><img alt="" src="../img/sex/rating.png"><span>Rating</span></rating></items><items><location><img alt="" src="../img/sex/location.png"><span>Location</span></location><where><img alt="" src="../img/sex/where.png"><span>Where</span></where><extra><img alt="" src="../img/sex/save.png"><span>Extra</span></extra></items><input type="hidden" name="when"></form><seximage><img alt="wank" src="../img/sex/full/wank.png"></seximage></sexform>';return __p};
+  this["JST"]["app/www/js/templates/sex/wank.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<form method="http://stage.sexdiaries.co.uk/stats/add" action="post"><items><when><img alt="" src="../img/sex/when.png"><span>When</span></when><who><img alt="" src="../img/sex/who.png"><span>Who</span></who><rating><img alt="" src="../img/sex/rating.png"><span>Rating</span></rating></items><items><location><img alt="" src="../img/sex/location.png"><span>Location</span></location><where><img alt="" src="../img/sex/where.png"><span>Where</span></where><extra><img alt="" src="../img/sex/save.png"><span>Extra</span></extra></items><input type="hidden" name="when"></form><seximage><img alt="wank" src="../img/sex/full/wank.png"></seximage>';return __p};
 
   return this["JST"];
 

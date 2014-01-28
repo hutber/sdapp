@@ -21,24 +21,13 @@ define([
 		events:{
 			"click anchor" : 'changeSex'
 		},
-		thumbWidthGen: function(){
-			var neededWidth = 0;
-			$('.rsNavItem').each(function(){
-				neededWidth += parseFloat($(this).outerWidth());
-			});
-			var widthNeeded = neededWidth+42;
-
-			$('.rsThumbsHor').css({
-				width: widthNeeded,
-			});
-		},
         render: function () {
 			var myself = this;
 			SD.templates.home = myself.template;
 			SD.setTitle('SELECT SOME SEXYNESS');
 			myself.$el.html(myself.template);
 
-			var si = $('.royalSlider').royalSlider({ //Set up slider
+			SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
 				controlNavigation: 'none',
 				arrowsNavHideOnTouch: true,
 				globalCaption: true,
@@ -53,13 +42,10 @@ define([
 					spacing: 5
 				}
 			}).data('royalSlider');
-			si.ev.on('rsSlideClick', function() { //Add click events to the sex icons
+			SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
 				SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
 			});
-			this.thumbWidthGen();
-//			$(window).resize(function(){
-//				myself.thumbWidthGen();
-//			});
+
         },
 		changeSex: function(elem){
 			SD.pageLoad(elem);

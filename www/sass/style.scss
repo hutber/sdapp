@@ -139,6 +139,7 @@ content {
 		height: 81.3%;
 		position: relative;
 		top: 0;
+		overflow: scroll;
 		@include pie-clearfix;
 	}
 }
@@ -152,13 +153,13 @@ a.signup {
 .social {
 	margin: 0 auto;
 	width: $globalWidths;
+	@include vertical-middle;
 	a {
 		@include span-columns(6);
 		border: 1px solid #1C498E;
 		background: url("../img/icons/social.png") no-repeat scroll center 12px #597DB5;
 		text-indent: -9999em;
-		margin-top: 20px;
-		padding-bottom: 15px;
+		height: 45px;
 		&.facebook {}
 		&.twitter {
 			@include span-columns(6 omega);
@@ -189,11 +190,15 @@ footer {
 		@include pie-clearfix;
 		width: 100%;
 		display: block;
-//		@include vertical-middle;
+		@include vertical-middle;
+		img {
+			display: block;
+		}
 		div {
 			width: 15%;
 			float: left;
 			padding-right: 4px;
+			cursor: pointer;
 			& + div {
 				width: 25%;
 			}
@@ -209,15 +214,11 @@ footer {
 		}
 	}
 }
+
 body[data=loggedin] logo {
 	display: inline;
 	left: 0px;
 	margin: 0;
 	position: relative;
 	top: 11px;
-}
-
-.social a.twitter {
-	background-position: center -22px;
-
 }

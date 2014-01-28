@@ -34,6 +34,7 @@ Globals
 			}
 		}(),
 		CURRENTSEX: 'na',
+		SLIDER: null,
 		VIEWS: {},
 		ROUTER: false
 	};
@@ -111,6 +112,7 @@ Routes/Views
 				'click .logout': 'doLogOut',
 				'click logo a': 'goHome',
 				'click a, sexoptions > *': 'globalClass',
+				'click footer sexnav' : 'sexNav'
 			},
 			render: function () {
 				SD.login.checkLoginState();
@@ -133,22 +135,31 @@ Routes/Views
 					}
 				};
 				$('body').removeAttr('class').addClass(desireClass);
+			},
+			sexNav: function(m){
+				for(var index in m.currentTarget.children) {
+					if(m.target.outerHTML === m.currentTarget.children[index].innerHTML){
+						var currentClick = m.currentTarget.children[index],
+							currentClickIndex = index;
+					}
+				}
+				if($('.royalSlider')[0]){ //Check to see if the slider is open, if it is lets go to slide
+					SD.SLIDER.goTo(currentClickIndex);
+				}else{
+					SD.pageLoad(currentClick.attributes[0].value);
+				}
 			}
 		});
 		var defaultView = new HomeView();
 		defaultView.render();
-		//now attach resize events to resize
-//		$(window).resize(function(){
-//
-//		});
 		return HomeView;
 	}();
 
 	SD.defaultSexView = function(){
 		//set up homeview
 		var sexView = SD.defaultView.extend({
-			el: 'content',
-//			jstemplate: JST['app/www/js/templates/sex/sexTemplate.ejs'],
+			el: 'page',
+			jstemplate: JST['app/www/js/templates/sex/sexTemplate.ejs'],
 			ownView: JST['app/www/js/templates/sex.ejs'],
 			events:{
 				"click sexoptions > *" : 'changeSex',
@@ -174,8 +185,8 @@ Routes/Views
 				}else {
 					$('body').removeAttr('class').addClass(useme);
 				}
-//				var compiled = this.jstemplate();
-//				this.$el.html(compiled);
+				var compiled = this.jstemplate();
+				this.$el.html(compiled);
 			},
 			renderSex: function (view){
 				$('sexdetails').html(view);
