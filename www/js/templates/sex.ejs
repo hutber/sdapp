@@ -1,13 +1,81 @@
-<h2><%= data.header %></h2>
-
+<!--<h2><%= data.header %></h2>-->
 <sexform class="<%= data.sextype %>">
 	<form action="post" method="<%= data.url %>">
-		<when><span>When</span><input name="when" type="date" required/></when>
-		<who><span>Who</span><input name="when" type="text" placeholder="Who" required/></who>
-		<rating><span>Rating</span><input name="when" type="text" placeholder="Rating" required/></rating>
-		<location><span>Location</span><input name="when" type="text" placeholder="Location" required/></location>
-		<where><span>Where</span><input name="where" type="text" placeholder="Where" required/></where>
-		<extra><span>Extra</span><br><button name="save" type="submit" value="1">Save</button></extra>
+		<date>
+			<info>
+				<div>
+					TODAY, Mon 28
+				</div>
+			</info>
+		</date>
+		<when>
+			<info>
+				<div>
+					<h2><%= data.sextype %></h2>
+					<date>Today 22:22</date>
+				</div>
+			</info>
+			<detailsimage>
+				<div>
+					<img src="img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/>
+				</div>
+			</detailsimage>
+		</when>
+		<who>
+			<info>
+				<div>
+					<h2>Who</h2>
+					<date>Tina</date>
+				</div>
+			</info>
+			<detailsimage>
+				<div>
+					<img src="img/sex/who.png" alt="Who"/>
+				</div>
+			</detailsimage>
+		</who>
+		<Rating>
+			<info>
+				<div>
+					<h2>Rating</h2>
+					<date>1/5</date>
+				</div>
+			</info>
+			<detailsimage>
+				<div>
+					<img src="img/sex/rating.png" alt="Who"/>
+				</div>
+			</detailsimage>
+		</Rating>
+		<Location>
+			<info>
+				<div>
+					<h2>Location</h2>
+					<date>Toilets</date>
+				</div>
+			</info>
+			<detailsimage>
+				<div>
+					<img src="img/sex/location.png" alt="Who"/>
+				</div>
+			</detailsimage>
+		</Location>
+		<Where>
+			<info>
+				<div>
+					<h2>Where</h2>
+					<date>London, GB</date>
+				</div>
+			</info>
+			<detailsimage>
+				<div>
+					<img src="img/sex/where.png" alt="Who"/>
+				</div>
+			</detailsimage>
+		</Where>
+		<extra>
+			<h2>Extra Details?</h2>
+		</extra>
+		<button name="save" type="submit" value="1">Save</button>
 	</form>
-	<!--<seximage><img src="img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/></seximage>-->
 </sexform>

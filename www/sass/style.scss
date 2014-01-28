@@ -57,6 +57,13 @@ body {
 //	@include transition-duration(1.5s);
 }
 
+//Hack to stop landscape
+body[orient="landscape"] {
+	-webkit-transform: rotate(-90deg);
+	-moz-transform: rotate(-90deg);
+	transform: rotate(-90deg);
+}
+
 debug {
 	position: absolute;
 	top: 0;
@@ -131,6 +138,7 @@ content {
 	padding: 0;
 	width: 100%;
 	height: 100%;
+	overflow: hidden;
 
 	// #page -------------------------------------------------------------------
 	page {
@@ -139,7 +147,7 @@ content {
 		height: 81.3%;
 		position: relative;
 		top: 0;
-		overflow: scroll;
+		overflow: auto;
 		@include pie-clearfix;
 	}
 }
