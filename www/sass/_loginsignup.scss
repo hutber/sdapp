@@ -10,8 +10,30 @@
 	}
 }
 
-.login {
+.selector {
+	header {
+		padding-top: 20%;
+	}
+	page {
+		position: relative;
+		div {
+			@include vertical-middle(40%);
+			width: 80%;
+		}
+	}
+}
 
+.login {
+	header {
+		padding-top: 20%;
+	}
+	page {
+		position: relative;
+		> div {
+			@include vertical-middle(40%);
+			width: 80%;
+		}
+	}
 }
 
 .signup {

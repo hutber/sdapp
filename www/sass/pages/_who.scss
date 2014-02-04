@@ -1,0 +1,22 @@
+.who {
+	who {
+		display: block;
+		> * {
+			height: 100%;
+		}
+	}
+
+	#searchwho {
+		margin: 0;
+		border: 0;
+		.searching {
+			background: url("/img/icons/preloaders/preloader-white.gif") no-repeat 98% center white;
+		}
+	}
+
+	addContact, date {
+		background: darken($turquoise, .1%);
+		display: block;
+		border-bottom: 1px solid darken($mainGreen, 5%);
+	}
+}

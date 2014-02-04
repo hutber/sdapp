@@ -44,11 +44,10 @@
 				});
 			};
 
-//			changeHeightofContent = function(){
-//				var newHeight = $('body').outerHeight() - ($('header').outerHeight() + $('footer').outerHeight());
-//				c(newHeight);
-//				$('page').css({height:newHeight});
-//			};
+			var changeHeightofContent = function(){
+				var newHeight = $('body').outerHeight() - ($('header').outerHeight() + $('footer').outerHeight());
+				$('page').css({height:newHeight});
+			};
 
 // Make the magic visible
 // ======================
@@ -59,12 +58,12 @@
 
 			// Set changes on load
 			changes(this);
-//			changeHeightofContent();
+			changeHeightofContent();
 
 			// Make changes upon resize
 			$(window).resize(function(){
 				changes(that);
-//				changeHeightofContent();
+				changeHeightofContent();
 			});
 		});
 	};

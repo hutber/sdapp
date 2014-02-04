@@ -9,14 +9,18 @@ define([
 
 	//set up homeview
 	var sex = SD.defaultSexView.extend({
-		data: {
-			url: SD.HTTP+'stats/add',
-			sextype: 'sex',
-			image: '/img/path.jpg'
-		},
 		render: function () {
-			SD.DSV.renderSex(SD.DSV.ownView(this.data));
+			var data = this.dataChecker({
+				sextype: 'sex',
+			});
+
+			//Update the current sex
+			SD.CURRENTSEX = 'sex';
+
+			SD.DSV.render(data);
+
 			SD.setTitle('Argh yeee...  ...   sex  ... yeeee');
+
 		}
 	});
 	return sex;

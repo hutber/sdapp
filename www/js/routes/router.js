@@ -18,7 +18,11 @@ define([
 			'hands': 'hands',
 			'oral': 'oral',
 			'sex': 'sex',
-			'anything': 'anything'
+			'anything': 'anything',
+
+			//Details
+			'who': 'who',
+			'whoadd': 'whoadd'
         }
     });
 

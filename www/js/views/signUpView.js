@@ -14,8 +14,8 @@ define([
         template: JST['app/www/js/templates/login/signup.ejs'],
 
         render: function () {
-			SD.templates.login = this.template(this.data);
             this.$el.html(this.template);
+			this.globalClass();
         },
 
 		data: {
