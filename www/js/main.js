@@ -62,6 +62,10 @@ Table of Contents - Created by Hutber on 04/10/13.
 			flowtype: {
 				deps: ['jquery'],
 				exports: 'jQuery.fn.flowtype'
+			},
+			scroller: {
+				deps: ['jquery'],
+				exports: 'jQuery.fn.scroller'
 			}
 		},
 		paths: {
@@ -74,8 +78,11 @@ Table of Contents - Created by Hutber on 04/10/13.
 			sliderthumbnails: 'libs/plugins/slider/modules/jquery.rs.thumbnails',
 			sliderCaption: 'libs/plugins/slider/modules/jquery.rs.global-caption',
 			flowtype: 'libs/plugins/flowtype',
+			scroller: 'libs/plugins/date/mobiscroll',
 			core: 'core.functions',
 			sd : 'sd.functions',
+			dv : 'views/defaultView',
+			dsv : 'views/defaultSexView',
 			JST : 'templates'
 		}
 	});
@@ -92,6 +99,8 @@ Routers
 // functions ----------------
 		'core.functions',
 		'sd.functions',
+		'dv',
+		'dsv',
 // Views ----------------
 		'views/indexView',
 		'views/homeView',
@@ -102,8 +111,12 @@ Routers
 		'views/sex/oral',
 		'views/sex/sex',
 		'views/sex/anything',
+// Sex Details Pages --------------------,
+		'views/details/who',
+		'views/details/whoAdd',
 // Plugins --------------------,
 		'flowtype',
+		'scroller',
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -111,15 +124,17 @@ set arguments to values for ease of reading arguments
     var Backbone = arguments[0],
         Router = arguments[2],
 		SD = arguments[4],
-		IndexView = arguments[5],
-        HomeView = arguments[6],
-        LoginView = arguments[7],
-		SignUpView = arguments[8],
-		wankView = arguments[9],
-        handsView = arguments[10],
-        oralView = arguments[11],
-        sexView = arguments[12],
-        anythingView = arguments[13];
+		IndexView = arguments[7],
+        HomeView = arguments[8],
+        LoginView = arguments[9],
+		SignUpView = arguments[10],
+		wankView = arguments[11],
+        handsView = arguments[12],
+        oralView = arguments[13],
+        sexView = arguments[14],
+        anythingView = arguments[15],
+        whoView = arguments[16],
+		whoAddView = arguments[17];
 
 /*==================================================
 Load in scripts depending on which device we are.
@@ -158,7 +173,11 @@ Routes Vars
 	SD.VIEWS.HandsView = new handsView(),
 	SD.VIEWS.OralView = new oralView(),
 	SD.VIEWS.SexView = new sexView(),
-	SD.VIEWS.AnythingView = new anythingView();
+	SD.VIEWS.AnythingView = new anythingView(),
+
+// Sex Details views ---------------------------
+	SD.VIEWS.WhoView = new whoView(),
+	SD.VIEWS.WhoAddView = new whoAddView();
 
 /*==================================================
 Routes
@@ -195,6 +214,14 @@ Routes
 	});
 	SD.ROUTER.on('route:anything', function(){
 		SD.VIEWS.AnythingView.render();
+	});
+
+// Sex Details Routes ---------------------------
+	SD.ROUTER.on('route:who', function(){
+		SD.VIEWS.WhoView.render();
+	});
+	SD.ROUTER.on('route:whoadd', function(){
+		SD.VIEWS.WhoAddView.render();
 	});
 
 /*==================================================

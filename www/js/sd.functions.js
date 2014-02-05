@@ -34,9 +34,20 @@ Globals
 			}
 		}(),
 		CURRENTSEX: 'na',
+		SEXDETAILS: {
+			datetime:''
+		},
+		SEXDEFAULTS: {
+			url: SD.HTTP+'stats/add',
+			sextype: 'default',
+			image: '/img/path.jpg',
+		},
+		WHO: null,
+		TEMPLATE: 'footerout',
+		HASH:'',
 		SLIDER: null,
 		VIEWS: {},
-		ROUTER: false
+		ROUTER: false,
 	};
 
 // #define the globals depending on where we are ------------------------------------------------------
@@ -66,14 +77,9 @@ SD.login = {
 		if(sessionStorage.getItem('privateKey')===null && typeof state !== "undefined"){ //Not logged in, force to home
 			document.location.replace('');
 			location.reload();
-//			SD.defaultView.render();
-//			SD.ROUTER.navigate('');
 		}else if (state){ //This state is only ever set when loggin in: loginView.js:62 //If logged in force to sex picker
 			window.location.href = "#home";
 			location.reload();
-//			SD.DSV.render();
-//			SD.VIEWS.homeView.render();
-//			SD.ROUTER.navigate('home');
 		}
 	}
 };
@@ -81,122 +87,19 @@ SD.login = {
 /*==================================================
 Routes/Views
 ================================================== */
-// #Set up the Deult router view ------------------------------------------------------
-	SD.defaultView = function(){ //Default controller for all views
-		var templatesNeeded = function () { //create a var of the template view
-			var myself;
-			if (SD.STATE) { //Chhek if we are logged in or not then give different templates
-				myself = {
-					header: JST['app/www/js/templates/comp/headerIn.ejs'],
-					menu: JST['app/www/js/templates/comp/menu.ejs'],
-					shell: JST['app/www/js/templates/comp/shell.ejs'],
-					footer: JST['app/www/js/templates/comp/footerIn.ejs'],
-				};
-			} else {
-				myself = {
-					header: JST['app/www/js/templates/comp/headerOut.ejs'],
-					menu: JST['app/www/js/templates/comp/menu.ejs'],
-					shell: JST['app/www/js/templates/comp/shell.ejs'],
-					footer: JST['app/www/js/templates/comp/footerOut.ejs'],
-				};
+	SD.onHashChange = function(){
+		//Update the new hash
+		SD.HASH = window.location.hash.substring(1);
 
-			}
-			SD.templates = myself;
-			return myself.header() + myself.menu() + myself.shell() + myself.footer();
-		}();
+		//Update the current sex state with whatever is in the hash
+//		SD.CURRENTSEX = SD.HASH;
 
-		//extend the view with the default home view
-		var HomeView = Backbone.View.extend({
-			el: 'body > shell',
-			events: { //Add click events for global clicks
-				'click .logout': 'doLogOut',
-				'click logo a': 'goHome',
-				'click a, sexoptions > *': 'globalClass',
-				'click footer sexnav' : 'sexNav'
-			},
-			render: function () {
-				SD.login.checkLoginState();
-				this.$el.html(templatesNeeded);
-			},
-			doLogOut: function(){
-				sessionStorage.clear();
-				document.location.replace('/');
-				return false;
-			},
-			goHome: function(){
-				SD.ROUTER.navigate('home', true);
-				return false;
-			},
-			globalClass: function(m){
-				var desireClass = function(){if(m.currentTarget.nodeName === "A"){
-						return m.currentTarget.hash.substring(1);
-					}else{
-						return m.currentTarget.nodeName;
-					}
-				};
-				$('body').removeAttr('class').addClass(desireClass);
-			},
-			sexNav: function(m){
-				for(var index in m.currentTarget.children) {
-					if(m.target.outerHTML === m.currentTarget.children[index].innerHTML){
-						var currentClick = m.currentTarget.children[index],
-							currentClickIndex = index;
-					}
-				}
-				if($('.royalSlider')[0]){ //Check to see if the slider is open, if it is lets go to slide
-					SD.SLIDER.goTo(currentClickIndex);
-				}else{
-					SD.pageLoad(currentClick.attributes[0].value);
-				}
-			}
-		});
-		var defaultView = new HomeView();
-		defaultView.render();
-		return HomeView;
-	}();
+		//On page load update body class with current page
+		SD.DV.globalClass();
 
-	SD.defaultSexView = function(){
-		//set up homeview
-		var sexView = SD.defaultView.extend({
-			el: 'page',
-			jstemplate: JST['app/www/js/templates/sex/sexTemplate.ejs'],
-			ownView: JST['app/www/js/templates/sex.ejs'],
-			events:{
-				"click sexoptions > *" : 'changeSex',
-				"click sexform items > *" : 'openASex',
-			},
-			changeSex: function(elem){
-				var me = elem.currentTarget.localName;
-				SD.updateSexClass(me); // #update body classes with new sex class
-
-				$('.selected').removeClass('selected');// #update selected from bottom navigation
-				$(me).addClass('selected');
-
-				SD.CURRENTSEX = elem; //update the state
-				SD.pageLoad(elem);
-			},
-			openASex: function(el){
-
-			},
-			render: function () { //the global render
-				useme = document.location.hash.replace('#','');
-				if(useme.length===0){
-					$('body').removeAttr('class').addClass('login');
-				}else {
-					$('body').removeAttr('class').addClass(useme);
-				}
-				var compiled = this.jstemplate();
-				this.$el.html(compiled);
-			},
-			renderSex: function (view){
-				$('sexdetails').html(view);
-			}
-		});
-
-		SD.DSV = new sexView();
-		SD.DSV.render();
-		return sexView;
-	}();
+		//Add new class to body
+//		$('body').removeAttr('class').addClass(SD.HASH); //Update class on body
+	};
 
 /*==================================================
 Display functions
@@ -204,13 +107,6 @@ Display functions
 //	#Update title
 	SD.setTitle = function(title){
 		$('.title').html(title);
-	};
-
-//	#Remove Classes
-	SD.updateSexClass = function(sex){
-		var bodydom = $('body');
-//		if(bodydom.hasClass('loggin')){bodydom.attr('class','loggin');}
-		bodydom.toggleClass(sex);
 	};
 
 // #display the popup/overlay ------------------------------------------------------
@@ -227,27 +123,28 @@ Display functions
 	};
 
 	//update details on page load
-	SD.pageLoad = function(elem){
+	SD.pageLoad = function(pageToLoad){
 		var useme;
 
-		if(typeof elem === "object" && elem.currentTarget.id){
-			useme = elem.currentTarget.id;
-		}else if(typeof elem === "object"){
-			useme = elem.currentTarget.localName;
-		}else if(elem){
-			useme = elem;
+		//Simple check if we have been given a string
+		if(typeof pageToLoad === "string"){
+			useme = pageToLoad;
 		}else if(document.location.hash){
-			useme = document.location.hash.replace('#','');
+			useme = SD.HASH;
 		}else{
-			useme = elem;
+			c('Nothing was given in the pageLoad');
 		}
 
 		if(!$('sexdetails').length){
+			//If the sex details page isn't in view load it up
+			//So that we can then load the sex details page
 			SD.DSV.render();
 		}
 
-		SD.CURRENTSEX = useme; //update the state
+		//update current sex
+//		SD.CURRENTSEX = useme;
 		SD.ROUTER.navigate(useme, true);
+
 	};
 /*==================================================
 Networking functions
@@ -276,6 +173,13 @@ Networking functions
 // #Init for SD ------------------------------------------------------
 	SD.init = function () {
 		SD.globals(); //set up our global variables
+		SD.onHashChange();
+		window.addEventListener("hashchange", SD.onHashChange, false);
+
+		//Remove debugs if they are there
+		$('debug').on('click', 'li:first', function(){
+			$('debug li').remove();
+		});
 	};
 
 //return SD

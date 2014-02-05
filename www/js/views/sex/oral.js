@@ -3,19 +3,23 @@ define([
 	'underscore',
 	'backbone',
 	'JST',
-	'sd.functions'
+	'sd.functions',
+	'dsv',
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
 
 	//set up homeview
 	var oral = SD.defaultSexView.extend({
-		data: {
-			url: SD.HTTP+'stats/add',
-			sextype: 'oral',
-			image: '/img/path.jpg'
-		},
 		render: function () {
-			SD.DSV.renderSex(SD.DSV.ownView(this.data));
+			var data = this.dataChecker({
+				sextype: 'oral',
+			});
+
+			//Update the current sex
+			SD.CURRENTSEX = 'oral';
+
+			SD.DSV.render(data);
+
 			SD.setTitle("Can't talk mouth full!!!");
 		}
 	});

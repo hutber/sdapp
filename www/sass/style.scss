@@ -12,6 +12,9 @@
 "modules/_buttons",
 "modules/_overlay",
 "modules/_touchcarousel",
+"modules/_blocks",
+"modules/_date",
+"pages/_who",
 "_ie",
 "_print",
 "_home",
@@ -65,7 +68,7 @@ body[orient="landscape"] {
 }
 
 debug {
-	position: absolute;
+	position: fixed;
 	top: 0;
 	z-index: 4;
 	li {
@@ -91,6 +94,8 @@ header {
 		color: $main-grey;
 		font-family: $sdFont;
 		display: block;
+		font-size: 3em;
+		line-height: 1em;
 		a {
 			-webkit-text-stroke-width: 2px;
 			-webkit-text-stroke-color: #FFF;
@@ -138,7 +143,7 @@ content {
 	padding: 0;
 	width: 100%;
 	height: 100%;
-	overflow: hidden;
+	overflow-x: hidden;
 
 	// #page -------------------------------------------------------------------
 	page {
@@ -147,7 +152,8 @@ content {
 		height: 81.3%;
 		position: relative;
 		top: 0;
-		overflow: auto;
+		overflow: hidden;
+		overflow-y: auto;
 		@include pie-clearfix;
 	}
 }
@@ -194,32 +200,8 @@ footer {
 	display: block;
 	position: relative;
 
-	sexnav {
-		@include pie-clearfix;
-		width: 100%;
-		display: block;
-		@include vertical-middle;
-		img {
-			display: block;
-		}
-		div {
-			width: 15%;
-			float: left;
-			padding-right: 4px;
-			cursor: pointer;
-			& + div {
-				width: 25%;
-			}
-			& + div + div {
-				width: 21%;
-			}
-			& + div + div + div {
-				width: 24%;
-			}
-			& + div + div + div + div {
-				width: 14.6%;
-			}
-		}
+	> * {
+		display: none; //default, sexnav is turned off
 	}
 }
 

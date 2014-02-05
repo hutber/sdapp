@@ -24,7 +24,7 @@ input,
 	// --------------------------------------------------
 	.control-group.focus &,
 	&:focus {
-		text-align: center;
+//		text-align: center;
 		border-color: $border;
 		@include box-shadow(none);
 	}

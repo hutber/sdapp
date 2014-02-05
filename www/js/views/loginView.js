@@ -5,6 +5,7 @@ define([
     'backbone',
     'JST',
 	'sd.functions',
+	'dv',
 ], function ($, _, Backbone, JST, SD) {
     'use strict';
 
@@ -14,8 +15,8 @@ define([
         template: JST['app/www/js/templates/login/login.ejs'],
 
         render: function () {
-			SD.templates.login = this.template(this.data);
             this.$el.html(this.template);
+			this.globalClass();
         },
 
 		data: {
@@ -23,7 +24,7 @@ define([
 		},
 
         events: {
-            'submit .loginForm ': 'logUserIn'
+            'submit .loginForm ': 'logUserIn',
         },
 
         logUserIn: function (elem) {

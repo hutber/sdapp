@@ -16,6 +16,7 @@
      /////////////////////////////////////////////////-->
     <feature name="http://api.phonegap.com/1.0/device" />
     <feature name="http://api.phonegap.com/1.0/network"/>
+    <feature name="Notification"><param name="android-package" value="org.apache.cordova.dialogs.Notification" /></feature>
 
     <!--/////////////////////////////////////////////////
                      Phone Preferences

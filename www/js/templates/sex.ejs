@@ -1,81 +1,94 @@
 <!--<h2><%= data.header %></h2>-->
-<sexform class="<%= data.sextype %>">
+<sexform class="<%= data.sextype %> blocks">
+	<date>
+		<info>
+			<div>
+				Today, Mon 28
+			</div>
+		</info>
+	</date>
+	<when>
+		<info>
+			<div>
+				<h2><%= data.sextype %></h2>
+				<date><%= data.sextime %></date>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/>
+			</div>
+		</detailsimage>
+	</when>
+	<who>
+		<info>
+			<div>
+				<h2>Who</h2>
+				<date><%= data.who %></date>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/who.png" alt="Who"/>
+			</div>
+		</detailsimage>
+	</who>
+	<Rating>
+		<info>
+			<div>
+				<h2>Rating</h2>
+				<date>1/5</date>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/rating.png" alt="Who"/>
+			</div>
+		</detailsimage>
+	</Rating>
+	<Location>
+		<info>
+			<div>
+				<h2>Location</h2>
+				<date>Toilets</date>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/location.png" alt="Who"/>
+			</div>
+		</detailsimage>
+	</Location>
+	<Where>
+		<info>
+			<div>
+				<h2>Where</h2>
+				<date>London, GB</date>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/where.png" alt="Who"/>
+			</div>
+		</detailsimage>
+	</Where>
+	<save>
+		<info>
+			<div>
+				<h2>Save the sex?</h2>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/save.png" alt="Save?"/>
+			</div>
+		</detailsimage>
+	</save>
+	<extra>
+		<h2>Extra Details?</h2>
+	</extra>
 	<form action="post" method="<%= data.url %>">
-		<date>
-			<info>
-				<div>
-					TODAY, Mon 28
-				</div>
-			</info>
-		</date>
-		<when>
-			<info>
-				<div>
-					<h2><%= data.sextype %></h2>
-					<date>Today 22:22</date>
-				</div>
-			</info>
-			<detailsimage>
-				<div>
-					<img src="img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/>
-				</div>
-			</detailsimage>
-		</when>
-		<who>
-			<info>
-				<div>
-					<h2>Who</h2>
-					<date>Tina</date>
-				</div>
-			</info>
-			<detailsimage>
-				<div>
-					<img src="img/sex/who.png" alt="Who"/>
-				</div>
-			</detailsimage>
-		</who>
-		<Rating>
-			<info>
-				<div>
-					<h2>Rating</h2>
-					<date>1/5</date>
-				</div>
-			</info>
-			<detailsimage>
-				<div>
-					<img src="img/sex/rating.png" alt="Who"/>
-				</div>
-			</detailsimage>
-		</Rating>
-		<Location>
-			<info>
-				<div>
-					<h2>Location</h2>
-					<date>Toilets</date>
-				</div>
-			</info>
-			<detailsimage>
-				<div>
-					<img src="img/sex/location.png" alt="Who"/>
-				</div>
-			</detailsimage>
-		</Location>
-		<Where>
-			<info>
-				<div>
-					<h2>Where</h2>
-					<date>London, GB</date>
-				</div>
-			</info>
-			<detailsimage>
-				<div>
-					<img src="img/sex/where.png" alt="Who"/>
-				</div>
-			</detailsimage>
-		</Where>
-		<extra>
-			<h2>Extra Details?</h2>
-		</extra>
-		<button name="save" type="submit" value="1">Save</button>
+		<!--<input type="text" id="when"/>-->
+		<input type="hidden" id="date" />
 	</form>
 </sexform>
