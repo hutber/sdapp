@@ -5,6 +5,7 @@ define([
     'backbone',
     'JST',
 	'sd.functions',
+	'dv',
 ], function ($, _, Backbone, JST, SD) {
     'use strict';
 
@@ -27,6 +28,7 @@ define([
         },
 
         logUserIn: function (elem) {
+			c(typeof elem);
 			var items = $(elem.currentTarget).find('input'),
 				noerror = true;
 			items.each(function (himself){
@@ -51,16 +53,17 @@ define([
 						'pword': values.pword
 					},
 					error: function(data){
-						c('Sorry Login Failed: '+data.status);
+						SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
 						SD.overlay.hideme();
 					},
 					success: function(data){
-						c('Login code: '+ data.code);
-						c(data);
+//						SD.message.showMessage('Login code: '+ data.code);
 						if(data.privateKey){
 							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
 							SD.login.checkLoginState(true);
+						}else{
+							SD.message.showMessage(data.message, 'bad');
 						}
 						SD.overlay.hideme();
 					}

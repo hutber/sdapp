@@ -34,13 +34,15 @@ Globals
 			}
 		}(),
 		CURRENTSEX: 'na',
-		SEXDETAILS: {
-			datetime:''
-		},
 		SEXDEFAULTS: {
-			url: SD.HTTP+'stats/add',
 			sextype: 'default',
+			sexnumber: 0,
 			image: '/img/path.jpg',
+			sextime:[false,false],
+			who: {},
+			rating: 0,
+			location: [false, 'Click to get your location'],
+			where: {},
 		},
 		WHO: null,
 		TEMPLATE: 'footerout',
@@ -54,17 +56,20 @@ Globals
 	SD.globals = function () {
 		switch (window.location.hostname) {
 			case "sd.local":
-				SD.ENVIROMENT = 'localApp',
+					SD.ENVIROMENT = 'localApp',
 					SD.CDN = 'sd.local/',
 					SD.HTTP = 'http://sexdiaires.local/',
-					SD.AJAX = SD.HTTP+'app/';
+					SD.AJAX = SD.HTTP+'app/',
+					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 				break;
 			case "192.168.0.25":
-				SD.ENVIROMENT = 'mobilePhone',
-					SD.AJAX = SD.HTTP+ 'app/';
+					SD.ENVIROMENT = 'mobilePhone',
+					SD.AJAX = SD.HTTP+ 'app/',
+					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 				break;
 			default:
-				SD.AJAX = SD.HTTP+'app/';
+					SD.AJAX = SD.HTTP+'app/',
+					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 				break;
 		}
 	};
@@ -87,19 +92,75 @@ SD.login = {
 /*==================================================
 Routes/Views
 ================================================== */
-	SD.onHashChange = function(){
-		//Update the new hash
-		SD.HASH = window.location.hash.substring(1);
+SD.onHashChange = function(){
+	//Update the new hash
+	SD.HASH = window.location.hash.substring(1);
 
-		//Update the current sex state with whatever is in the hash
+	//Update the current sex state with whatever is in the hash
 //		SD.CURRENTSEX = SD.HASH;
 
-		//On page load update body class with current page
-		SD.DV.globalClass();
+	//On page load update body class with current page
+	SD.DV.globalClass();
 
-		//Add new class to body
+	//Add new class to body
 //		$('body').removeAttr('class').addClass(SD.HASH); //Update class on body
-	};
+};
+
+/*==================================================
+Add Sex Functions
+================================================== */
+SD.addSex = {
+	convertPhp: function(){
+		var php = {};
+
+		php.sexnumber = SD.SEXDEFAULTS.sexnumber,
+		php.sextime = SD.SEXDEFAULTS.sextime[0],
+		php.rating = SD.SEXDEFAULTS.rating;
+
+		if(SD.SEXDEFAULTS.location[0]!==false){
+			//Location Generator
+			for	(var index in SD.SEXDEFAULTS.location[0].address) {
+				php['location'+index] = SD.SEXDEFAULTS.location[0].address[index];
+			}
+			php.locationlat = SD.SEXDEFAULTS.location[0].lat,
+			php.locationlon = SD.SEXDEFAULTS.location[0].lon;
+		}
+
+		if(Object.keys(SD.SEXDEFAULTS.who).length>0){
+			php.who = SD.SEXDEFAULTS.who;
+		}
+		if(Object.keys(SD.SEXDEFAULTS.where).length>0){
+			php.where = SD.SEXDEFAULTS.where;
+		}
+
+		return php;
+	},
+	save: function(){
+		if(sessionStorage.privateKey){
+			$.ajax({
+				url: SD.AJAX+'add',
+				type: 'POST',
+				data: {
+					info: SD.addSex.convertPhp(),
+					privateKey: sessionStorage.privateKey
+				},
+				error: function(data){
+					c('Sorry Login Failed: '+data.status);
+					SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
+				},
+				success: function(data){
+					if(data.length===2){
+						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', null, 2500);
+					}else{
+						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
+					}
+				}
+			});
+		}else{
+			SD.message.showMessage('You appear to not be logged in?', 'bad');
+		}
+	}
+};
 
 /*==================================================
 Display functions
@@ -135,17 +196,36 @@ Display functions
 			c('Nothing was given in the pageLoad');
 		}
 
+		//TODO review code - Why did we need this?
 		if(!$('sexdetails').length){
 			//If the sex details page isn't in view load it up
 			//So that we can then load the sex details page
-			SD.DSV.render();
+//			SD.DSV.render();
 		}
 
 		//update current sex
-//		SD.CURRENTSEX = useme;
-		SD.ROUTER.navigate(useme, true);
+		//SD.CURRENTSEX = useme; //Removed as this was causing double loads, we are already rendering by using on:wank for example,
+		// this was nessesery we we had two renders for sex
 
+		//Update the current view, don't re-redner it
+		SD.ROUTER.navigate(useme, true);
 	};
+
+	SD.message = {
+		timer: null,
+		showMessage: function(message, type, duration){
+			if(typeof duration === "undefined") duration = 5000;
+			$('messageBox').addClass(type).show().css("display","block");
+			$('messageBox message').fadeIn().find('div').html(message);
+			this.timer = setTimeout(this.hideMessage, duration);
+		},
+		hideMessage: function(){
+			$('messageBox, messageBox close').fadeOut();
+			clearTimeout(this.timer);
+		}
+	};
+	//set up click event to hide
+	$('messageBox').on('click', SD.message.hideMessage);
 /*==================================================
 Networking functions
 ================================================== */
@@ -169,8 +249,42 @@ Networking functions
 		}
 	};
 
+/*==================================================
+ Display functions
+ ================================================== */
+	SD.locationSucess = function(position) {
+		if(!SD.SEXDEFAULTS.location[0]){
+			$.ajax({
+				url: 'http://nominatim.openstreetmap.org/reverse',
+				dataType: "json",
+				data: {
+					'format': 'json',
+					'lat': position.coords.latitude,
+					'lon': position.coords.longitude,
+					'zoom' : 18
+				},
+				error: function(data){
+					SD.overlay.hideme();
+				},
+				success: function(data){
+					SD.SEXDEFAULTS.location[0] = data;
+					SD.SEXDEFAULTS.location[1] = data.address.city_district + ', '+ data.address.city +', '+data.address.country_code.toUpperCase();
+					$('location location').html(SD.SEXDEFAULTS.location[1]);
+					SD.overlay.hideme();
+				}
+			});
+		}
+	};
+	SD.locationFail = function (error) {
+		alert('code: '    + error.code    + '\n' +
+			'message: ' + error.message + '\n');
+		SD.overlay.hideme();
+	}
 
-// #Init for SD ------------------------------------------------------
+
+	/*==================================================
+	Init for SD
+	================================================== */
 	SD.init = function () {
 		SD.globals(); //set up our global variables
 		SD.onHashChange();

@@ -3,7 +3,9 @@
 Sex Pages
 ==================================================
 */
-
+sexdetails {
+	min-height: 520px;
+}
 
 sexnav {
 	@include pie-clearfix;
@@ -46,4 +48,42 @@ sexnav {
 	sexnav {
 		display: block;
 	}
+}
+
+.blocks Rating {
+	padding: 3% 5px;
+	info {
+		width: 100%;
+		height: 100%;
+		@include pie-clearfix;
+		@include vertical-middle;
+		position: relative;
+
+		//Faces AKA ratings
+		face {
+			height: 100%;
+			opacity: .6;
+			@include span-columns(2.2, 12);
+			&:last-child {
+				@include span-columns(2.2 omega, 12);
+			}
+			&.selected {
+				opacity: 1;
+			}
+			img {
+				height: 100%;
+				width: auto;
+				display: block;
+				margin-bottom: 1px;
+			}
+		}
+	}
+}
+
+searchselecteditems {
+	text-transform: capitalize;
+}
+
+location location {
+	@include ellipsis(true);
 }

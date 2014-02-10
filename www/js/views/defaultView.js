@@ -39,7 +39,8 @@ define([
 			events: { //Add click events for global clicks
 				'click .logout': 'doLogOut',
 				'click logo a': 'goHome',
-				'click footer sexnav' : 'sexNav'
+				'click footer sexnav' : 'sexNav',
+				'click footer saveBox': 'saveBox',
 			},
 			render: function () {
 				//make sure we are logged in, if we are not forward back to home page
@@ -96,7 +97,13 @@ define([
 					}else{
 						SD.pageLoad(currentClick.attributes[0].value);
 					}
+
+					SD.SEXDEFAULTS.sexnumber = currentClickIndex;
 				}
+			},
+			saveBox: function(){
+				//Now we have added the who reload the sex details page.
+				SD.pageLoad(SD.CURRENTSEX);
 			},
 		});
 		SD.DV = new HomeView();

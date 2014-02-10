@@ -5,6 +5,7 @@ define([
     'JST',
 	'core.functions',
 	'sd.functions',
+	'dv',
 	'slider',
 	'slidervisibleNearby',
 	'sliderthumbnails',

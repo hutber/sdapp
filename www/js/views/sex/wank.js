@@ -3,7 +3,8 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'sd.functions'
+	'sd.functions',
+	'dsv'
 ], function ($, _, Backbone, JST, SD) {
     'use strict';
 

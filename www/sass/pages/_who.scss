@@ -1,12 +1,15 @@
-.who {
-	who {
+.who, .where {
+	saveBox {
 		display: block;
 		> * {
 			height: 100%;
 		}
 	}
+}
 
-	#searchwho {
+.searchbox {
+
+	> input {
 		margin: 0;
 		border: 0;
 		.searching {
@@ -18,5 +21,9 @@
 		background: darken($turquoise, .1%);
 		display: block;
 		border-bottom: 1px solid darken($mainGreen, 5%);
+	}
+
+	result.selected {
+		background: darken($turquoise, .1%);
 	}
 }

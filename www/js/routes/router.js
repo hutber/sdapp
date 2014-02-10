@@ -22,7 +22,9 @@ define([
 
 			//Details
 			'who': 'who',
-			'whoadd': 'whoadd'
+			'whoadd': 'whoadd',
+			'where': 'where',
+			'whereadd': 'whereadd',
         }
     });
 

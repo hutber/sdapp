@@ -66,7 +66,7 @@ Table of Contents - Created by Hutber on 04/10/13.
 			scroller: {
 				deps: ['jquery'],
 				exports: 'jQuery.fn.scroller'
-			}
+			},
 		},
 		paths: {
 			jquery: 'libs/jquery.min',
@@ -114,6 +114,7 @@ Routers
 // Sex Details Pages --------------------,
 		'views/details/who',
 		'views/details/whoAdd',
+		'views/details/where',
 // Plugins --------------------,
 		'flowtype',
 		'scroller',
@@ -134,7 +135,8 @@ set arguments to values for ease of reading arguments
         sexView = arguments[14],
         anythingView = arguments[15],
         whoView = arguments[16],
-		whoAddView = arguments[17];
+		whoAddView = arguments[17],
+		whereView = arguments[18];
 
 /*==================================================
 Load in scripts depending on which device we are.
@@ -177,7 +179,8 @@ Routes Vars
 
 // Sex Details views ---------------------------
 	SD.VIEWS.WhoView = new whoView(),
-	SD.VIEWS.WhoAddView = new whoAddView();
+	SD.VIEWS.WhoAddView = new whoAddView(),
+	SD.VIEWS.WhereView = new whereView();
 
 /*==================================================
 Routes
@@ -222,6 +225,9 @@ Routes
 	});
 	SD.ROUTER.on('route:whoadd', function(){
 		SD.VIEWS.WhoAddView.render();
+	});
+	SD.ROUTER.on('route:where', function(){
+		SD.VIEWS.WhereView.render();
 	});
 
 /*==================================================

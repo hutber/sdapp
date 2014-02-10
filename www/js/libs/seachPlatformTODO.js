@@ -1,3 +1,6 @@
+/**
+ * Created by Hutber on 08/02/14.
+ */
 define([
 	'jquery',
 	'underscore',
@@ -16,7 +19,7 @@ define([
 		events: {
 			'keyup #searchwho': 'searchWho',
 			'click addContact': 'openAddContact',
-			'click result': 'selectSearchResults',
+			'click person': 'selectWho',
 		},
 		template: JST['app/www/js/templates/details/who.ejs'],
 		resultreturned: JST['app/www/js/templates/details/who_result.ejs'],
@@ -26,7 +29,7 @@ define([
 			this.timer = setTimeout(this.getWho, 500);
 		},
 		getWho: function(){
-			var who = $('#searchwho'), results = $('whoReturned');
+			var who = $('#searchwho'), results = $('resultsreturned');
 			who.addClass('searching');
 
 			$.ajax({
@@ -50,23 +53,23 @@ define([
 				}
 			});
 		},
-		//With each click we update the global object
-		selectSearchResults: function(me){
+		selectWho: function(me){
 			me = $(me.currentTarget);
 			me.toggleClass('selected');
 
 			if(me.hasClass('selected')) {
 				//Make sure we aren't already in an array
-				if ( $.inArray(me.data('id'), SD.SEXDEFAULTS[SD.HASH]) === -1 ) {
-					var id = me.data('name');
-					SD.SEXDEFAULTS[SD.HASH][id] = me.data('id');
+				if ( $.inArray(me.data('name'), SD.SEXDEFAULTS.who) === -1 ) {
+					SD.SEXDEFAULTS.who.push(me.data('name'));
 				}
 			}else {
-				//If we are in the array and we have already been selected remove from the object
-				for	(var index in SD.SEXDEFAULTS[SD.HASH]) {
-					if(me.data('name') === index){delete SD.SEXDEFAULTS[SD.HASH][me.data('name')];}
-				}
+				SD.SEXDEFAULTS.who.forEach(function(myself, index){
+					if(me.data('name') === myself) SD.SEXDEFAULTS.who.splice(index, 1);
+				});
 			}
+
+			//Also update the SEXDEFAULTS defaults so we can write it to the menu through the already outlined settings
+//			SD.SEXDEFAULTS.who = me.data('name');
 		},
 		render: function () {
 			myself = this;

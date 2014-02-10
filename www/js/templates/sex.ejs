@@ -11,7 +11,7 @@
 		<info>
 			<div>
 				<h2><%= data.sextype %></h2>
-				<date><%= data.sextime %></date>
+				<date><%= data.sextime[1] %></date>
 			</div>
 		</info>
 		<detailsimage>
@@ -24,7 +24,11 @@
 		<info>
 			<div>
 				<h2>Who</h2>
-				<date><%= data.who %></date>
+				<searchSelectedItems><%
+					for(var index in data.who){ %>
+					<%= index %>
+					<% if(index !== Object.keys(data.who)[--Object.keys(data.who).length]){ %>, <% }
+					} %></searchSelectedItems>
 			</div>
 		</info>
 		<detailsimage>
@@ -35,27 +39,23 @@
 	</who>
 	<Rating>
 		<info>
-			<div>
-				<h2>Rating</h2>
-				<date>1/5</date>
-			</div>
+			<face><img src="img/sex/face.png" alt="My Face!!!"/></face>
+			<face><img src="img/sex/face.png" alt="My Face!!!"/></face>
+			<face><img src="img/sex/face.png" alt="My Face!!!"/></face>
+			<face><img src="img/sex/face.png" alt="My Face!!!"/></face>
+			<face><img src="img/sex/face.png" alt="My Face!!!"/></face>
 		</info>
-		<detailsimage>
-			<div>
-				<img src="img/sex/rating.png" alt="Who"/>
-			</div>
-		</detailsimage>
 	</Rating>
 	<Location>
 		<info>
 			<div>
 				<h2>Location</h2>
-				<date>Toilets</date>
+				<location><%= data.location[1] %></location>
 			</div>
 		</info>
 		<detailsimage>
 			<div>
-				<img src="img/sex/location.png" alt="Who"/>
+				<img src="img/sex/location.png" alt="Where"/>
 			</div>
 		</detailsimage>
 	</Location>
@@ -63,12 +63,16 @@
 		<info>
 			<div>
 				<h2>Where</h2>
-				<date>London, GB</date>
+				<searchSelectedItems><%
+					for(var index in data.where){ %>
+						<%= index %>
+						<% if(index !== Object.keys(data.where)[--Object.keys(data.where).length]){ %>, <% }
+					} %></searchSelectedItems>
 			</div>
 		</info>
 		<detailsimage>
 			<div>
-				<img src="img/sex/where.png" alt="Who"/>
+				<img src="img/sex/where.png" alt="Location"/>
 			</div>
 		</detailsimage>
 	</Where>
@@ -84,11 +88,7 @@
 			</div>
 		</detailsimage>
 	</save>
-	<extra>
-		<h2>Extra Details?</h2>
-	</extra>
-	<form action="post" method="<%= data.url %>">
-		<!--<input type="text" id="when"/>-->
-		<input type="hidden" id="date" />
-	</form>
+	<!--<extra>-->
+		<!--<h2>Extra Details?</h2>-->
+	<!--</extra>-->
 </sexform>
