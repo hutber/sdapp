@@ -92,6 +92,12 @@ SD.login = {
 /*==================================================
 Routes/Views
 ================================================== */
+
+SD.changeHeightofContent = function(){
+	SD.pageHeight = $('body').outerHeight() - ($('header').outerHeight() + $('footer').outerHeight());
+	$('page').css({height:SD.pageHeight});
+};
+
 SD.onHashChange = function(){
 	//Update the new hash
 	SD.HASH = window.location.hash.substring(1);
@@ -101,6 +107,8 @@ SD.onHashChange = function(){
 
 	//On page load update body class with current page
 	SD.DV.globalClass();
+
+	SD.changeHeightofContent();
 
 	//Add new class to body
 //		$('body').removeAttr('class').addClass(SD.HASH); //Update class on body
@@ -114,7 +122,7 @@ SD.addSex = {
 		var php = {};
 
 		php.sexnumber = SD.SEXDEFAULTS.sexnumber,
-		php.sextime = SD.SEXDEFAULTS.sextime[0],
+		php.sextime = $.scroller.formatDate('yy-mm-dd HH:ii:ss', SD.SEXDEFAULTS.sextime[0].getDate()),
 		php.rating = SD.SEXDEFAULTS.rating;
 
 		if(SD.SEXDEFAULTS.location[0]!==false){
@@ -215,7 +223,7 @@ Display functions
 		timer: null,
 		showMessage: function(message, type, duration){
 			if(typeof duration === "undefined") duration = 5000;
-			$('messageBox').addClass(type).show().css("display","block");
+			$('messageBox').removeAttr('class').addClass(type).show().css("display","block");
 			$('messageBox message').fadeIn().find('div').html(message);
 			this.timer = setTimeout(this.hideMessage, duration);
 		},
@@ -243,7 +251,7 @@ Networking functions
 			states[Connection.CELL]     = 'Cell generic connection';
 			states[Connection.NONE]     = 'No network connection';
 
-			c('Connection type: ' + states[networkState]);
+//			c('Connection type: ' + states[networkState]);
 		}else{
 			c('Connection not ready yet');
 		}

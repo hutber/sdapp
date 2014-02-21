@@ -10,7 +10,7 @@
 	}
 }
 
-.selector {
+.selector, .forgotten {
 	header {
 		padding-top: 20%;
 	}
@@ -37,12 +37,27 @@
 }
 
 .signup {
-	input[type=checkbox] {
-		margin-right: 10px;
-	}
 	logo {
 		margin-top: 30px;
 	}
+	page {
+		position: relative;
+
+		.elements {
+			@include span-columns(11, 12);
+//			width: 80%;
+			@include vertical-middle(0,50%);
+//			@include pie-clearfix();
+		}
+		.control-group {
+
+		}
+		.terms {
+			width: auto;
+			margin-right: 10px;
+		}
+	}
+
 	footer {
 		margin-top: 20px;
 	}

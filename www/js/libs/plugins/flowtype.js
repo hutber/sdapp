@@ -44,11 +44,6 @@
 				});
 			};
 
-			var changeHeightofContent = function(){
-				var newHeight = $('body').outerHeight() - ($('header').outerHeight() + $('footer').outerHeight());
-				$('page').css({height:newHeight});
-			};
-
 // Make the magic visible
 // ======================
 		return this.each(function() {
@@ -58,12 +53,12 @@
 
 			// Set changes on load
 			changes(this);
-			changeHeightofContent();
+			SD.changeHeightofContent();
 
 			// Make changes upon resize
 			$(window).resize(function(){
 				changes(that);
-				changeHeightofContent();
+				SD.changeHeightofContent();
 			});
 		});
 	};

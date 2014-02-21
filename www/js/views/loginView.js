@@ -28,7 +28,6 @@ define([
         },
 
         logUserIn: function (elem) {
-			c(typeof elem);
 			var items = $(elem.currentTarget).find('input'),
 				noerror = true;
 			items.each(function (himself){

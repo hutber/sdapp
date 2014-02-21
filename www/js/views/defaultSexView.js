@@ -27,12 +27,6 @@ define([
 							SD.SEXDEFAULTS[index] = data[index];
 						}
 					}
-
-					//Check to see if the datetime has been set before, if it hasn't add the default date time
-					if(SD.SEXDEFAULTS.sextime.length === 0){
-						SD.SEXDEFAULTS.sextime =  $.scroller.formatDate('DD d M yy H:ii', $.scroller.parseDate());
-					}
-
 				}
 				//return the updateed sexdefaults build from the SD.SEXDEFAULTS and the data supplied from the view
 				return SD.SEXDEFAULTS;
@@ -114,11 +108,6 @@ define([
 						//if we have the sex nav open on load select the correct class
 						$('div[data-type='+window.location.hash.substring(1)+']').addClass('selected');
 					}
-
-					//TODO write us a way to be able to save defaults
-					//Load into the date hidden field the current date.
-					SD.SEXDEFAULTS.sextime[0] = $.scroller.formatDate('yy-mm-dd HH:ii:ss', $.scroller.parseDate());
-					SD.SEXDEFAULTS.sextime[1] = $.scroller.formatDate('DD d M yy H:ii', $.scroller.parseDate());
 				},
 				//Load in a save default sex after html has been complied
 				post: function(){
@@ -128,6 +117,31 @@ define([
 
 					//Display the correct rating
 					SD.DSV.rating();
+
+
+					//Time date picker
+					$('when').mobiscroll({
+						preset: 'datetime',
+						dateFormat: 'DD d M yy',
+						timeFormat: 'H:ii',
+						maxDate: new Date(),
+						ampm: false,
+//						height: SD.pageHeight/20,
+						dateOrder: 'dMyy',
+						onSelect: function(el) {
+							$('when date').html(el);
+							SD.SEXDEFAULTS.sextime[1] = el,
+								SD.SEXDEFAULTS.sextime[2] = SD.SEXDEFAULTS.sextime[0].values;
+						},
+						onBeforeShow: function(){
+							if(SD.SEXDEFAULTS.sextime[0]){
+								SD.SEXDEFAULTS.sextime[0].setValue(SD.SEXDEFAULTS.sextime[2]);
+							}
+						}
+					});
+					SD.SEXDEFAULTS.sextime[0] = $('when').mobiscroll('getInst'),
+					SD.SEXDEFAULTS.sextime[1] = SD.SEXDEFAULTS.sextime[0].val;
+					$('when date').html(SD.SEXDEFAULTS.sextime[1]);
 				}
 			},
 			render: function (data) {
@@ -151,22 +165,6 @@ define([
 					$('sexdetails').html(SD.DSV.ownView(data));
 
 					this.loadSaveSex.post();
-
-					//Time date picker
-					$('when').scroller({
-						preset: 'datetime',
-						dateFormat: 'DD d M yy',
-						timeFormat: 'H:ii',
-						lang: 'en-GB',
-						maxDate: new Date(),
-						ampm: false,
-						dateOrder: 'dMyy',
-						onSelect: function(el) {
-							$('when date').html(el);
-							SD.SEXDEFAULTS.sextime[1] = el;
-							SD.SEXDEFAULTS.sextime[0] = $.scroller.formatDate('yy-mm-dd HH:ii:ss', $.scroller.parseDate(el));
-						}
-					});
 				}
 			}
 		});

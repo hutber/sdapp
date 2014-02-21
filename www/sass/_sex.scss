@@ -87,3 +87,7 @@ searchselecteditems {
 location location {
 	@include ellipsis(true);
 }
+
+when {
+	@include ellipsis;
+}
