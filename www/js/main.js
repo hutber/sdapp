@@ -157,10 +157,7 @@ set arguments to values for ease of reading arguments
 /*==================================================
 Load in scripts depending on which device we are.
 ================================================== */
-		var s = document.createElement('script');
-		s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
-		document.getElementsByTagName('body')[0].appendChild(s);
-	if(SD.isMobile){
+	if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
 		$.getScript('phonegap.js', function( data, textStatus, jqxhr){
 //			c( "cordova was loaded." );
 			var s = document.createElement('script');
