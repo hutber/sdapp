@@ -35,6 +35,7 @@ define([
 				dataType: "json",
 				data: {
 					'code': who.val(),
+					'privateKey': sessionStorage.privateKey
 				},
 				error: function(data){
 					c('Sorry Login Failed: '+data.status);
@@ -60,6 +61,7 @@ define([
 				if ( $.inArray(me.data('id'), SD.SEXDEFAULTS[SD.HASH]) === -1 ) {
 					var id = me.data('name');
 					SD.SEXDEFAULTS[SD.HASH][id] = me.data('id');
+					$('save').removeClass('disabled')
 				}
 			}else {
 				//If we are in the array and we have already been selected remove from the object
@@ -71,6 +73,7 @@ define([
 		render: function () {
 			myself = this;
 			this.$el.html(this.template);
+			$('save').addClass('disabled');
 			SD.setTitle('Who was involved?');
 		},
 		openAddContact: function(){

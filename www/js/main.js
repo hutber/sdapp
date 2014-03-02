@@ -155,6 +155,10 @@ set arguments to values for ease of reading arguments
 		whereView = arguments[19];
 
 /*==================================================
+ Start up SD global object.
+ ================================================== */
+		SD.init();
+/*==================================================
 Load in scripts depending on which device we are.
 ================================================== */
 	if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
@@ -167,12 +171,6 @@ Load in scripts depending on which device we are.
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
 	}
-
-
-		/*==================================================
-		Start up SD global object.
-		================================================== */
-	SD.init();
 
 /*==================================================
 Routes Vars

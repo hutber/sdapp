@@ -46,6 +46,9 @@
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	td {
+		text-align: center;
+	}
 }
 .dwwc {
 	display: block;
@@ -70,6 +73,9 @@
 	top: -30px;
 	color: #fff;
 //	background: linear-gradient(black 0%, rgb(68, 68, 68) 45%, rgb(68, 68, 68) 55%, black 100%) repeat scroll 0 0 transparent;
+	.dwwo {
+		border-top: 3px solid #FFFFFF;
+	}
 }
 .dww ul {
 	list-style: none;

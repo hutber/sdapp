@@ -60,11 +60,39 @@ define([
 						c('extra');
 						break;
 					case "save":
+						var errorYes = true, me = $(el.currentTarget), disabled = me.hasClass('disabled');
+
 						if(SD.SEXDEFAULTS.sexnumber===0 || SD.SEXDEFAULTS.sexnumber==="" || typeof SD.SEXDEFAULTS.sexnumber=== "undefined"){
-							SD.message.showMessage('Somehow a category of sex has not been selected', 'bad');
-						}else{
-							SD.addSex.save();
+							SD.message.showMessage('Somehow a category of sex has not been selected', 'notice');
+							errorYes = false;
 						}
+
+						if(disabled && SD.SEXDEFAULTS.sextime===0 || SD.SEXDEFAULTS.sextime==="" || typeof SD.SEXDEFAULTS.sextime=== "undefined"){
+							SD.message.showMessage('This is technically impossble, but a time hasn\'t been set', 'notice');
+							errorYes = false;
+						}
+
+						if(disabled && SD.SEXDEFAULTS.rating===0 || SD.SEXDEFAULTS.rating==="" || typeof SD.SEXDEFAULTS.rating=== "undefined"){
+							SD.message.showMessage('Set a rating maybe? You don\'t have to, would be nice though', 'notice');
+							me.removeClass('disabled');
+							errorYes = false;
+						}
+
+						if(disabled && SD.SEXDEFAULTS.location[0]===false){
+							SD.message.showMessage('You know we can record where u fucking fucked, click it', 'notice');
+							me.removeClass('disabled');
+							errorYes = false;
+						}
+
+						if(disabled &&
+							SD.SEXDEFAULTS.where.length===0 || SD.SEXDEFAULTS.where==="" || typeof SD.SEXDEFAULTS.where=== "undefined"){
+							SD.message.showMessage('Bit boring if you don\'t set where you did it', 'notice');
+							me.removeClass('disabled');
+							errorYes = false;
+						}
+
+						//If we have no errors save the sex
+						if(errorYes) SD.addSex.save();
 						break;
 				}
 			},

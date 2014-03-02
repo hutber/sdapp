@@ -223,12 +223,12 @@ Display functions
 		timer: null,
 		showMessage: function(message, type, duration){
 			if(typeof duration === "undefined") duration = 5000;
-			$('messageBox').removeAttr('class').addClass(type).show().css("display","block");
-			$('messageBox message').fadeIn().find('div').html(message);
+			$('messageBox message').find('div').html(message);
+			$('messageBox').removeAttr('class').attr('class',type+' show');
 			this.timer = setTimeout(this.hideMessage, duration);
 		},
 		hideMessage: function(){
-			$('messageBox, messageBox close').fadeOut();
+			$('messageBox').removeClass('show').delay('500').removeAttr('class');
 			clearTimeout(this.timer);
 		}
 	};

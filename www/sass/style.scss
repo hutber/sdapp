@@ -46,7 +46,7 @@ Table of Contents
       	#page
       #footer
 */
-* {background-size: 100%;background-repeat: no-repeat;}
+* {background-size: 100%;background-repeat: no-repeat; &::selection {background: transparent;}}
 
 /* #Main Styles ------------------------------------------------------------------------ */
 body {
@@ -83,16 +83,26 @@ debug {
 }
 
 body messageBox {
-	position: fixed;
-	bottom: 0;
-	border-top: 1px solid #000;
+	position: absolute;
+	display: block;
+	bottom: -12%;
 	width: 100%;
-	display: none;
+	border-top: 1px solid #000;
 	@include background-image(linear-gradient($emerald, darken($emerald, 10%)));
-	&.bad {
+	@include transition-duration(.5s);
+	&.bad.show {
 		@include background-image(linear-gradient($danger, darken($danger, 10%)));
 		color: #FFF;
 	}
+	&.notice.show {
+		@include background-image(linear-gradient($notice, darken($notice, 10%)));
+		color: #FFF;
+	}
+
+	&.show {
+		bottom: 0;
+	}
+
 	message {
 		width: 100%;
 		position: relative;
@@ -161,7 +171,7 @@ header {
 		@include span-columns(1 omega, 12);
 		text-indent: -9999em;
 		background: url(../img/icons/lg.png) no-repeat;
-		background-size: 100% auto;
+		background-size: 96% auto;
 	}
 }
 

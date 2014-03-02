@@ -1,7 +1,6 @@
 
 .blocks {
 	height: 100%;
-
 	// #First Level Elements -------------------------------------------------------------------
 
 
@@ -10,13 +9,20 @@
 		background: darken($turquoise, .1%);
 		text-align: left;
 		font-size: 0.8em;
+		min-height: inherit;
 	}
 
 	> * { //Targets all first level items eg date, when, who, rating etc
 		height: 15%;
+		min-height: 60px;
 		display: block;
 		border-bottom: 1px solid darken($mainGreen, 5%);
 		padding-left: 10px;
+
+		&:active {
+			background: darken($turquoise, .1%);
+		}
+
 		> * { //Targeting all top level items inside date, when, who rating blah blah
 			height: 100%;
 			position: relative;
@@ -64,5 +70,11 @@
 			height: auto;
 			@include vertical-middle;
 		}
+	}
+}
+
+save {
+	&.disabled detailsimage, &.disabled info  {
+		opacity: .5;
 	}
 }

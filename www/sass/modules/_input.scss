@@ -21,6 +21,12 @@ select {
 	font-size: .7em;
 	background:#FFFFFF;
 
+	&.searching {
+		background-image: url("/img/icons/preloaders/preloader-white.gif");
+		background-repeat: no-repeat;
+		background-position:  98% center;
+	}
+
 	// Alternate state
 	// --------------------------------------------------
 	.control-group.focus &,

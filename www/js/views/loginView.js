@@ -56,9 +56,8 @@ define([
 						SD.overlay.hideme();
 					},
 					success: function(data){
-//						SD.message.showMessage('Login code: '+ data.code);
 						if(data.privateKey){
-							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
+							$.jStorage.set('uid',data.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
 							SD.login.checkLoginState(true);
 						}else{
