@@ -5,7 +5,7 @@
 // Text fields
 textarea,
 input,
-.uneditable-input {
+select {
 	border: 4px solid $mainGreen;
 	color: $textColorAlt;
 	padding: 12px 5px;
@@ -19,6 +19,13 @@ input,
 	@include transition(0.25s);
 	width: 100%;
 	font-size: .7em;
+	background:#FFFFFF;
+
+	&.searching {
+		background-image: url("/img/icons/preloaders/preloader-white.gif");
+		background-repeat: no-repeat;
+		background-position:  98% center;
+	}
 
 	// Alternate state
 	// --------------------------------------------------
@@ -47,13 +54,13 @@ input,
 
 	// Alternate Colors
 	// --------------------------------------------------
-	.control-group.error & {
+	&.error {
 		@include input-states($danger);
 	}
-	.control-group.success & {
+	&.success {
 		@include input-states($success);
 	}
-	.control-group.warning & {
+	&.warning {
 		@include input-states($warning);
 	}
 	.control-group.info & {
@@ -63,12 +70,19 @@ input,
 	//  .control-group & { margin-bottom: 0; }
 }
 
+label.error, label.error a {
+	@include input-states($danger);
+}
+
 // INPUT ICONS
 // ----------------------
 .control-group {
 	position: relative;
 	label {
 		font-size: .8em;
+		&.error, &.error a {
+			@include input-states($danger);
+		}
 	}
 	> .input-icon {
 		position: absolute;
@@ -140,20 +154,14 @@ input,
 
 // Disabled state
 input[disabled],
-input[readonly],
+//input[readonly],
 textarea[disabled],
+select[disabled],
 textarea[readonly] {
 	background-color: mix($gray, white, 10%);
 	border-color: mix($gray, white, 40%);
 	color: mix($gray, white, 40%);
 	cursor: default;
-}
-
-// Text field grids
-input,
-textarea,
-.uneditable-input {
-	//width: 192px;
 }
 
 // Textarea
@@ -173,4 +181,19 @@ textarea {
 textarea[class*="span"] {
 	width: 100% !important;
 	@include box-sizing(border-box);
+}
+
+select {
+	padding-left: 0;
+	color: $concrete;
+	text-indent: 3px;
+}
+
+input[type=checkbox] {
+	padding: 6px;
+	display: inline-block;
+	vertical-align: middle;
+	&:checked {
+		background: #000;
+	}
 }

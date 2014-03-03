@@ -63,10 +63,19 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['jquery'],
 				exports: 'jQuery.fn.flowtype'
 			},
-			scroller: {
+			mobiscroll: {
 				deps: ['jquery'],
-				exports: 'jQuery.fn.scroller'
-			}
+				exports: 'jQuery.fn.mobiscroll'
+			},
+			mobiscrollScroller: {
+				deps: ['jquery','mobiscroll']
+			},
+			mobiscrollDate: {
+				deps: ['jquery','mobiscrollScroller']
+			},
+			forms: {
+				deps: ['jquery']
+			},
 		},
 		paths: {
 			jquery: 'libs/jquery.min',
@@ -78,7 +87,10 @@ Table of Contents - Created by Hutber on 04/10/13.
 			sliderthumbnails: 'libs/plugins/slider/modules/jquery.rs.thumbnails',
 			sliderCaption: 'libs/plugins/slider/modules/jquery.rs.global-caption',
 			flowtype: 'libs/plugins/flowtype',
-			scroller: 'libs/plugins/date/mobiscroll',
+			mobiscroll: 'libs/plugins/date/mobiscroll.core',
+			mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
+			mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
+			forms: 'libs/plugins/hutber.forms',
 			core: 'core.functions',
 			sd : 'sd.functions',
 			dv : 'views/defaultView',
@@ -105,6 +117,7 @@ Routers
 		'views/indexView',
 		'views/homeView',
 		'views/loginView',
+		'views/forgottenView',
 		'views/signUpView',
 		'views/sex/wank',
 		'views/sex/hands',
@@ -114,9 +127,12 @@ Routers
 // Sex Details Pages --------------------,
 		'views/details/who',
 		'views/details/whoAdd',
+		'views/details/where',
 // Plugins --------------------,
 		'flowtype',
-		'scroller',
+		'mobiscroll',
+		'mobiscrollScroller',
+		'mobiscrollDate',
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -127,21 +143,27 @@ set arguments to values for ease of reading arguments
 		IndexView = arguments[7],
         HomeView = arguments[8],
         LoginView = arguments[9],
-		SignUpView = arguments[10],
-		wankView = arguments[11],
-        handsView = arguments[12],
-        oralView = arguments[13],
-        sexView = arguments[14],
-        anythingView = arguments[15],
-        whoView = arguments[16],
-		whoAddView = arguments[17];
+        ForgottenView = arguments[10],
+		SignUpView = arguments[11],
+		wankView = arguments[12],
+        handsView = arguments[13],
+        oralView = arguments[14],
+        sexView = arguments[15],
+        anythingView = arguments[16],
+        whoView = arguments[17],
+		whoAddView = arguments[18],
+		whereView = arguments[19];
 
+/*==================================================
+ Start up SD global object.
+ ================================================== */
+		SD.init();
 /*==================================================
 Load in scripts depending on which device we are.
 ================================================== */
-	if(SD.isMobile){
+	if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
 		$.getScript('phonegap.js', function( data, textStatus, jqxhr){
-			c( "cordova was loaded." );
+//			c( "cordova was loaded." );
 			var s = document.createElement('script');
 			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
 			document.getElementsByTagName('body')[0].appendChild(s);
@@ -149,12 +171,6 @@ Load in scripts depending on which device we are.
 	}else{
 		$.getScript('http://localhost:35729/livereload.js');
 	}
-
-
-		/*==================================================
-		Start up SD global object.
-		================================================== */
-	SD.init();
 
 /*==================================================
 Routes Vars
@@ -167,6 +183,7 @@ Routes Vars
     SD.VIEWS.homeView = new HomeView(),
 	SD.VIEWS.signUpView = new SignUpView(),
 	SD.VIEWS.loginView = new LoginView(),
+	SD.VIEWS.forgottenView = new ForgottenView(),
 
 // Sex views ---------------------------
 	SD.VIEWS.WankView = new wankView(),
@@ -177,7 +194,8 @@ Routes Vars
 
 // Sex Details views ---------------------------
 	SD.VIEWS.WhoView = new whoView(),
-	SD.VIEWS.WhoAddView = new whoAddView();
+	SD.VIEWS.WhoAddView = new whoAddView(),
+	SD.VIEWS.WhereView = new whereView();
 
 /*==================================================
 Routes
@@ -194,6 +212,9 @@ Routes
 // Not logged in Routers ---------------------------
 	SD.ROUTER.on('route:login', function(){
 		SD.VIEWS.loginView.render();
+	});
+	SD.ROUTER.on('route:forgotten', function(){
+		SD.VIEWS.forgottenView.render();
 	});
 	SD.ROUTER.on('route:signup', function(){
 		SD.VIEWS.signUpView.render();
@@ -223,6 +244,9 @@ Routes
 	SD.ROUTER.on('route:whoadd', function(){
 		SD.VIEWS.WhoAddView.render();
 	});
+	SD.ROUTER.on('route:where', function(){
+		SD.VIEWS.WhereView.render();
+	});
 
 /*==================================================
 Global Plugins
@@ -243,6 +267,7 @@ On Device Ready
 		}, true);
 	}else{
 		$(document).ready(function() {
+			window.scrollTo(0, 1);
 			Backbone.history.start();
 		});
 	}

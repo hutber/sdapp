@@ -40,7 +40,7 @@
             that = this,
             e = elem,
             elm = $(e),
-            s = extend({}, defaults),
+            s = extend({}, defaults, userdef),
             pres = {},
             iv = {},
             pos = {},
@@ -781,7 +781,7 @@
 
             // Show
             if (modal) {
-
+                ms.activeInstance = that;
                 dw.appendTo(s.context);
                 if (anim && !prevAnim) {
                     dw.addClass('dw-trans');
@@ -840,7 +840,6 @@
                 .on('keyup', '.dwwl', onKeyUp)
                 .on('selectstart mousedown', prevdef) // Prevents blue highlight on Android and text selection in IE
                 .on('click', '.dwb-e', prevdef)
-                .on('touchend', function () { if (s.tap) { setTap(); } })
                 .on('keydown', '.dwb-e', function (e) {
                     if (e.keyCode == 32) { // Space
                         e.preventDefault();
@@ -912,6 +911,7 @@
                 wndw.off('.dw');
             }
 
+            delete ms.activeInstance;
             pixels = {};
             visible = false;
         };

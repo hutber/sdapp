@@ -12,6 +12,7 @@ define([
         routes: {
             '': 'index',
 			'login': 'login',
+			'forgotten': 'forgotten',
 			'signup': 'signup',
 			'home': 'home',
 			'wank': 'wank',
@@ -22,7 +23,9 @@ define([
 
 			//Details
 			'who': 'who',
-			'whoadd': 'whoadd'
+			'whoadd': 'whoadd',
+			'where': 'where',
+			'whereadd': 'whereadd',
         }
     });
 
