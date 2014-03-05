@@ -37,7 +37,6 @@ define([
 		var HomeView = Backbone.View.extend({
 			el: 'body > shell',
 			events: { //Add click events for global clicks
-				'click .logout': 'doLogOut',
 				'click logo a': 'goHome',
 				'click footer sexnav' : 'sexNav',
 				'click footer saveBox': 'saveBox',
