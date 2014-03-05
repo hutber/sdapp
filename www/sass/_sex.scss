@@ -12,6 +12,7 @@ sexnav {
 	width: 100%;
 	@include vertical-middle;
 	img {
+		@include transition-duration(.2s);
 		display: block;
 		//			filter: $grayscale; /* Firefox 10+, Firefox on Android */
 		//			filter: gray; /* IE6-9 */

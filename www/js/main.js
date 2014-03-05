@@ -32,6 +32,9 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['jquery'],
 				exports: '$.jStorage'
 			},
+			chart: {
+				exports: 'chart'
+			},
 			sd: {
 				exports: 'SD'
 			},
@@ -91,6 +94,7 @@ Table of Contents - Created by Hutber on 04/10/13.
 			mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
 			mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
 			forms: 'libs/plugins/hutber.forms',
+			chart: 'libs/plugins/chart.min',
 			core: 'core.functions',
 			sd : 'sd.functions',
 			dv : 'views/defaultView',
@@ -128,11 +132,23 @@ Routers
 		'views/details/who',
 		'views/details/whoAdd',
 		'views/details/where',
+
+// User Pages --------------------,
+		'views/users/profile',
+		'views/users/previous',
+		'views/users/managewhos',
+		'views/users/settings',
+
+// Plugins --------------------,
+		'views/other/shop',
+		'views/other/privacy',
+
 // Plugins --------------------,
 		'flowtype',
 		'mobiscroll',
 		'mobiscrollScroller',
 		'mobiscrollDate',
+		'chart',
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -141,18 +157,7 @@ set arguments to values for ease of reading arguments
         Router = arguments[2],
 		SD = arguments[4],
 		IndexView = arguments[7],
-        HomeView = arguments[8],
-        LoginView = arguments[9],
-        ForgottenView = arguments[10],
-		SignUpView = arguments[11],
-		wankView = arguments[12],
-        handsView = arguments[13],
-        oralView = arguments[14],
-        sexView = arguments[15],
-        anythingView = arguments[16],
-        whoView = arguments[17],
-		whoAddView = arguments[18],
-		whereView = arguments[19];
+        HomeView = arguments[8];
 
 /*==================================================
  Start up SD global object.
@@ -178,75 +183,49 @@ Routes Vars
 // initiate routers ----------------
     SD.ROUTER = new Router(),
 
-// views ---------------------------
+//// views ---------------------------
     SD.VIEWS.indexView = new IndexView(),
-    SD.VIEWS.homeView = new HomeView(),
-	SD.VIEWS.signUpView = new SignUpView(),
-	SD.VIEWS.loginView = new LoginView(),
-	SD.VIEWS.forgottenView = new ForgottenView(),
-
-// Sex views ---------------------------
-	SD.VIEWS.WankView = new wankView(),
-	SD.VIEWS.HandsView = new handsView(),
-	SD.VIEWS.OralView = new oralView(),
-	SD.VIEWS.SexView = new sexView(),
-	SD.VIEWS.AnythingView = new anythingView(),
-
-// Sex Details views ---------------------------
-	SD.VIEWS.WhoView = new whoView(),
-	SD.VIEWS.WhoAddView = new whoAddView(),
-	SD.VIEWS.WhereView = new whereView();
+    SD.VIEWS.homeView = new HomeView();
 
 /*==================================================
 Routes
 ================================================== */
+	var names = [];
+		names[9] = 'login';
+		names[10] = 'forgotten';
+		names[11] = 'signup';
+		names[12] = 'wank';
+		names[13] = 'hands';
+		names[14] = 'oral';
+		names[15] = 'sex';
+		names[16] = 'anything';
+		names[17] = 'who';
+		names[18] = 'whoadd';
+		names[19] = 'where';
+		names[20] = 'profile';
+		names[21] = 'previous';
+		names[22] = 'managewhos';
+		names[23] = 'settings';
+		names[24] = 'shop';
+		names[25] = 'privacy';
+	var myArgs = arguments;
+
+	names.forEach(function(me, key){
+		var functionName = me+"View";
+		window["SD"]["VIEWS"][functionName] = new myArgs[key]();
+		SD.ROUTER.on('route:'+me, function(){
+			window["SD"]["VIEWS"][functionName]["render"](); // succeeds
+		});
+	});
+
 //# Default router ----------------------------------------------------------------
-	SD.ROUTER.on('route:index route:home', function(){
-		if(sessionStorage.getItem('privateKey')!==null){
-			SD.VIEWS.homeView.render();
-		}else{
-			SD.VIEWS.indexView.render();
-		}
-	});
-
-// Not logged in Routers ---------------------------
-	SD.ROUTER.on('route:login', function(){
-		SD.VIEWS.loginView.render();
-	});
-	SD.ROUTER.on('route:forgotten', function(){
-		SD.VIEWS.forgottenView.render();
-	});
-	SD.ROUTER.on('route:signup', function(){
-		SD.VIEWS.signUpView.render();
-	});
-
-// Sex Routers ---------------------------
-	SD.ROUTER.on('route:wank', function(){
-		SD.VIEWS.WankView.render();
-	});
-	SD.ROUTER.on('route:hands', function(){
-		SD.VIEWS.HandsView.render();
-	});
-	SD.ROUTER.on('route:oral', function(){
-		SD.VIEWS.OralView.render();
-	});
-	SD.ROUTER.on('route:sex', function(){
-		SD.VIEWS.SexView.render();
-	});
-	SD.ROUTER.on('route:anything', function(){
-		SD.VIEWS.AnythingView.render();
-	});
-
-// Sex Details Routes ---------------------------
-	SD.ROUTER.on('route:who', function(){
-		SD.VIEWS.WhoView.render();
-	});
-	SD.ROUTER.on('route:whoadd', function(){
-		SD.VIEWS.WhoAddView.render();
-	});
-	SD.ROUTER.on('route:where', function(){
-		SD.VIEWS.WhereView.render();
-	});
+		SD.ROUTER.on('route:index route:home', function(){
+			if(sessionStorage.getItem('privateKey')!==null){
+				SD.VIEWS.homeView.render();
+			}else{
+				SD.VIEWS.indexView.render();
+			}
+		});
 
 /*==================================================
 Global Plugins

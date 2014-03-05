@@ -15,6 +15,7 @@
 	> * { //Targets all first level items eg date, when, who, rating etc
 		height: 15%;
 		min-height: 60px;
+		max-height: 80px;
 		display: block;
 		border-bottom: 1px solid darken($mainGreen, 5%);
 		padding-left: 10px;

@@ -16,21 +16,21 @@ define([
 			var myself;
 			if (SD.STATE) { //Chhek if we are logged in or not then give different templates
 				myself = {
-					header: JST['app/www/js/templates/comp/headerIn.ejs'],
 					menu: JST['app/www/js/templates/comp/menu.ejs'],
+					header: JST['app/www/js/templates/comp/headerIn.ejs'],
 					shell: JST['app/www/js/templates/comp/shell.ejs'],
 					footer: JST['app/www/js/templates/comp/footerIn.ejs'],
 				};
 			} else if(SD.TEMPLATE === "footerout"){
 				myself = {
-					header: JST['app/www/js/templates/comp/headerOut.ejs'],
 					menu: JST['app/www/js/templates/comp/menu.ejs'],
+					header: JST['app/www/js/templates/comp/headerOut.ejs'],
 					shell: JST['app/www/js/templates/comp/shell.ejs'],
 					footer: JST['app/www/js/templates/comp/footerOut.ejs'],
 				};
 
 			}
-			return myself.header() + myself.menu() + myself.shell() + myself.footer();
+			return myself.menu() + myself.header() + myself.shell() + myself.footer();
 		}();
 
 		//extend the view with the default home view
@@ -41,6 +41,7 @@ define([
 				'click logo a': 'goHome',
 				'click footer sexnav' : 'sexNav',
 				'click footer saveBox': 'saveBox',
+				'click menubtn': 'openMenu',
 				'click savewho': 'saveWho',
 			},
 			render: function () {
@@ -54,6 +55,9 @@ define([
 				sessionStorage.clear();
 				document.location.replace('/');
 				return false;
+			},
+			openMenu: function(){
+				$('body').toggleClass('menuOpen');
 			},
 			goHome: function(){
 				SD.ROUTER.navigate('home', true);

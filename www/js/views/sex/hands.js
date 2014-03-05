@@ -20,7 +20,7 @@ define([
 
 			SD.DSV.render(data);
 
-			SD.setTitle('Somebody has nicely lent you their hands.');
+			SD.setTitle('Freehand wanking!');
 		}
 	});
 	return hands;

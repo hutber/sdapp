@@ -2,6 +2,10 @@
 // Inputs
 // --------------------------------------------------
 
+form {
+	@include pie-clearfix;
+}
+
 // Text fields
 textarea,
 input,
