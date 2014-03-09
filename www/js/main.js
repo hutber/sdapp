@@ -32,9 +32,6 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['jquery'],
 				exports: '$.jStorage'
 			},
-			chart: {
-				exports: 'chart'
-			},
 			sd: {
 				exports: 'SD'
 			},
@@ -132,34 +129,16 @@ Routers
 		'views/details/who',
 		'views/details/whoAdd',
 		'views/details/where',
-<<<<<<< HEAD
-=======
-
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 // User Pages --------------------,
 		'views/users/profile',
 		'views/users/previous',
 		'views/users/managewhos',
 		'views/users/settings',
-<<<<<<< HEAD
 // Plugins --------------------,
 		'views/other/shop',
 		'views/other/privacy',
 // Plugins --------------------,
 		'flowtype',
-=======
-
-// Plugins --------------------,
-		'views/other/shop',
-		'views/other/privacy',
-
-// Plugins --------------------,
-		'flowtype',
-		'mobiscroll',
-		'mobiscrollScroller',
-		'mobiscrollDate',
-		'chart',
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -210,15 +189,9 @@ Routes
 
 	names.forEach(function(me, key){
 		var functionName = me+"View";
-<<<<<<< HEAD
 		SD.VIEWS[functionName] = new myArgs[key]();
 		SD.ROUTER.on('route:'+me, function(){
 			SD.VIEWS[functionName]["render"](); // succeeds
-=======
-		window["SD"]["VIEWS"][functionName] = new myArgs[key]();
-		SD.ROUTER.on('route:'+me, function(){
-			window["SD"]["VIEWS"][functionName]["render"](); // succeeds
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 		});
 	});
 

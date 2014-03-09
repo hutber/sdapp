@@ -20,13 +20,10 @@ $container-width: 100%;
 //Make all elements use the border-box zising model to stop padding effecting shit
 @include border-box-sizing;
 
-<<<<<<< HEAD
 //Button definers
 $hideMenuShowBack : ".where, .who, .whoadd";
 $showPlus : ".who";
 
-=======
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 /* #Imports dependencies ------------------------------------------------------------------------ */
 @import "fontello",
 "_mixins",
@@ -130,22 +127,10 @@ header {
 		@include background-image(linear-gradient($turquoise, $green-sea));
 		border-bottom: 1px solid $emerald;
 	}
-<<<<<<< HEAD
 	menuBtn, back {
 		@include span-columns(2, 12);
 		cursor: pointer;
 		text-align: center;
-=======
-	menuBtn {
-		@include span-columns(2 omega, 12);
-		.mbtn {
-			background: url(../img/icons/sm_menu.png) no-repeat center center;
-			display: block;
-			height: 24px;
-			text-indent: -9999em;
-			cursor: pointer;
-		}
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 	}
 	.title {
 		@include span-columns(8, 12);
@@ -154,7 +139,6 @@ header {
 		text-align: center;
 		@include ellipsis;
 	}
-<<<<<<< HEAD
 	add {
 		@include span-columns(2 omega, 12);
 	}
@@ -187,25 +171,6 @@ header {
 menu {
 	position: fixed;
 	left: -85%;
-=======
-	back {
-		@include span-columns(2, 12);
-		.btn {
-			margin: 0 0 0 5px;
-			padding: 3px 0;
-			font-size: 1em;
-			width: 90%;
-			@include border-radius(4px);
-			@include background-image(linear-gradient(left,  darken($turquoise, 20%) 0%,darken($turquoise, 25%) 100%));
-		}
-	}
-}
-
-// #Menu -------------------------------------------------------------------
-menu {
-	position: fixed;
-	right: -85%;
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 	width: 85%;
 	height: 100%;
 	z-index: 2;
@@ -213,24 +178,15 @@ menu {
 	@include transition-duration(.2s);
 	@include ellipsis();
 	background-color: $lightgreen;
-<<<<<<< HEAD
 
 	.menuOpen & {
 		left: 0%;
 	}
 
-=======
-
-	.menuOpen & {
-		right: -0%;
-	}
-
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 	> a {
 		color: #FFF;
 		display: block;
 		font-size: 1.3em;
-<<<<<<< HEAD
 		line-height: 1.5em;
 		text-align: left;
 		font-weight: normal;
@@ -238,11 +194,6 @@ menu {
 		&.selected {
 			background: $bgColor;
 		}
-=======
-		line-height: 2.5em;
-		text-align: left;
-		font-family: $sdFont;
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 
 		&.headertitle {
 			font-size: 1.8em;
@@ -266,19 +217,11 @@ menu {
 
 // #Shell -------------------------------------------------------------------
 	shell {
-<<<<<<< HEAD
 		left: 0;
 		position: relative;
 		@include transition-duration(.2s);
 		.menuOpen & {
 			left: 85%;
-=======
-		right: 0;
-		position: relative;
-		@include transition-duration(.2s);
-		.menuOpen & {
-			right: 85%;
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 		}
 	}
 	// #content -------------------------------------------------------------------
@@ -378,24 +321,4 @@ messagebox {
 		right: 5px;
 		font-weight: bold;
 	}
-<<<<<<< HEAD
-=======
-}
-
-
-body[data=loggedin] logo {
-	display: inline;
-	left: 0px;
-	margin: 0;
-	position: relative;
-	top: 11px;
-}
-
-menu > a.title {
-	background-image: linear-gradient(#468E8A 0%, #3E7D7A 100%);
-	font-size: 2em;
-	text-align: center;
-	margin-bottom: 10px;
-
->>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 }
