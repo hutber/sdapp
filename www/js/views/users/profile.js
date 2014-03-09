@@ -4,7 +4,10 @@ define([
 	'backbone',
 	'JST',
 	'sd.functions',
+<<<<<<< HEAD
 	'chart',
+=======
+>>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 	'dsv',
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
@@ -16,7 +19,10 @@ define([
 		},
 		template: JST['app/www/js/templates/users/profile.ejs'],
 		render: function () {
+<<<<<<< HEAD
 			SD.convertSexNumbers();
+=======
+>>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 			this.$el.html(this.template);
 			SD.setTitle('Sex Through an App');
 
@@ -30,6 +36,7 @@ define([
 				'width' : wantedWidth
 			});
 
+<<<<<<< HEAD
 			var pieData = [
 				{
 					value : SD.SEXNUMBERS.Wank,
@@ -75,6 +82,35 @@ define([
 				animationSteps: 100,
 				animationEasing: 'easeOutBounce'
 			});
+=======
+
+			var pieData = [
+				{
+					value: 30,
+					color : "#F38630",
+					label : 'Sleep',
+					labelColor : 'white',
+					labelFontSize : '16'
+				},
+				{
+					value : 50,
+					color : "#E0E4CC",
+					label : 'Sleep',
+					labelColor : 'white',
+					labelFontSize : '16'
+				},
+				{
+					value : 100,
+					color : "#69D2E7",
+					label : 'Sleep',
+					labelColor : 'white',
+					labelFontSize : '16'
+				}
+
+			];
+
+			var myPie = new Chart(graph[0].getContext("2d")).Doughnut(pieData);
+>>>>>>> 9c87eeb257b010a665d864b3cbcc248d3d815215
 		},
 	});
 	return profile;
