@@ -12,6 +12,7 @@ sexnav {
 	width: 100%;
 	@include vertical-middle;
 	img {
+		@include transition-duration(.2s);
 		display: block;
 		//			filter: $grayscale; /* Firefox 10+, Firefox on Android */
 		//			filter: gray; /* IE6-9 */
@@ -75,6 +76,15 @@ sexnav {
 				width: auto;
 				display: block;
 				margin-bottom: 1px;
+				position: relative;
+				&:before {
+					position: absolute;
+					content: "";
+					width: 100%;
+					height: 100%;
+					top: 0;
+					left: 0;
+				}
 			}
 		}
 	}

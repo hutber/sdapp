@@ -2,24 +2,6 @@
 @import "susy";
 @import "compass/reset";
 @import "compass/css3";
-/* #Imports dependencies ------------------------------------------------------------------------ */
-@import
-"_mixins",
-//"_origi",
-"_variables",
-"_typography",
-"modules/_input",
-"modules/_buttons",
-"modules/_overlay",
-"modules/_touchcarousel",
-"modules/_blocks",
-"modules/_date",
-"pages/_who",
-"_ie",
-"_print",
-"_home",
-"_sex",
-"_loginsignup";
 
 /* #Config ------------------------------------------------------------------------ */
 // Setting up the Magic Grid
@@ -32,21 +14,53 @@ $gutter-width: 1em;
 $grid-padding: 1em;
 // and 1em padding on the grid container
 
+//Make everything 100%?
 $container-width: 100%;
 
+//Make all elements use the border-box zising model to stop padding effecting shit
 @include border-box-sizing;
+
+//Button definers
+$hideMenuShowBack : ".where, .who, .whoadd";
+$showPlus : ".who";
+
+/* #Imports dependencies ------------------------------------------------------------------------ */
+@import "fontello",
+"_mixins",
+"_variables",
+"_typography",
+"modules/_input",
+"modules/_buttons",
+"modules/_overlay",
+"modules/_touchcarousel",
+"modules/_blocks",
+"modules/_date",
+"pages/_who",
+"pages/_privacy",
+"pages/_profile",
+"_ie",
+"_print",
+"_home",
+"_sex",
+"_loginsignup";
+
 /*
 ==================================================
 Table of Contents
 ==================================================
-    #Main Styles
-      #logo
-      #Header
-      #Content
-      	#page
-      #footer
+	#Main Styles
+	#body
+	#debug
+	#Menu
+	#Header
+		#Logo
+	#shell
+		#Content
+			#page
+	#footer
+		#Message Box
 */
-* {background-size: 100%;background-repeat: no-repeat; &::selection {background: transparent;}}
+* {background-size: 100%;background-repeat: no-repeat; &::selection {background: transparent;} -webkit-tap-highlight-color: rgba(255, 255, 255, 0); -webkit-tap-highlight-color: transparent; }
 
 /* #Main Styles ------------------------------------------------------------------------ */
 body {
@@ -56,7 +70,7 @@ body {
 	overflow: hidden;
 //	border: 3px solid black;
 	text-align: center;
-	background-color: #9acdcb;
+	background-color: $bgColor;
 //	@include transition-duration(1.5s);
 }
 
@@ -71,6 +85,7 @@ debug {
 	position: fixed;
 	top: 0;
 	z-index: 4;
+	right: 0;
 	li {
 		background: none repeat scroll 0 0 #53838E;
 		padding: 3px;
@@ -79,46 +94,6 @@ debug {
 		border-bottom: 1px solid #DDD;
 		font-size: 10px;
 		line-height: 10px;
-	}
-}
-
-body messageBox {
-	position: absolute;
-	display: block;
-	bottom: -12%;
-	width: 100%;
-	border-top: 1px solid #000;
-	@include background-image(linear-gradient($emerald, darken($emerald, 10%)));
-	@include transition-duration(.5s);
-	&.bad.show {
-		@include background-image(linear-gradient($danger, darken($danger, 10%)));
-		color: #FFF;
-	}
-	&.notice.show {
-		@include background-image(linear-gradient($notice, darken($notice, 10%)));
-		color: #FFF;
-	}
-
-	&.show {
-		bottom: 0;
-	}
-
-	message {
-		width: 100%;
-		position: relative;
-		display: block;
-		height: 100%;
-		div {
-			width: 100%;
-			padding: 0 25px 0 10px;
-			@include vertical-middle;
-		}
-	}
-	close {
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		font-weight: bold;
 	}
 }
 
@@ -152,50 +127,122 @@ header {
 		@include background-image(linear-gradient($turquoise, $green-sea));
 		border-bottom: 1px solid $emerald;
 	}
-	menuBtn {
-		@include span-columns(1, 12);
-		background: url(../img/icons/sm_menu.png) no-repeat;
-		display: block;
-		height: 24px;
-		text-indent: -9999em;
+	menuBtn, back {
+		@include span-columns(2, 12);
 		cursor: pointer;
+		text-align: center;
 	}
 	.title {
-		@include span-columns(10, 12);
+		@include span-columns(8, 12);
 		font-family: $sdFont;
 		text-shadow: 0 0 2px rgba(0, 0, 0, 0.48);
 		text-align: center;
 		@include ellipsis;
 	}
-	.logout {
-		@include span-columns(1 omega, 12);
-		text-indent: -9999em;
-		background: url(../img/icons/lg.png) no-repeat;
-		background-size: 96% auto;
+	add {
+		@include span-columns(2 omega, 12);
+	}
+	back, add {
+		display: none;
+		cursor: pointer;
 	}
 }
 
+// #Turn off/on buttons - Add Classes in the config to turn off/on buttons -------------------------------------------------------------------
+#{$hideMenuShowBack} {
+	//turn on back
+	back {
+		display: inline-block;
+	}
+	//turn off menubtn
+	menubtn {
+		display: none;
+	}
+}
 
-// #content -------------------------------------------------------------------
-content {
-	@include container;
-	padding: 0;
-	width: 100%;
+#{$showPlus} {
+	//turn on Add
+	add {
+		display: inline-block;
+	}
+}
+
+// #Menu -------------------------------------------------------------------
+menu {
+	position: fixed;
+	left: -85%;
+	width: 85%;
 	height: 100%;
+	z-index: 2;
 	overflow-x: hidden;
+	@include transition-duration(.2s);
+	@include ellipsis();
+	background-color: $lightgreen;
 
-	// #page -------------------------------------------------------------------
-	page {
+	.menuOpen & {
+		left: 0%;
+	}
+
+	> a {
+		color: #FFF;
 		display: block;
-		width: 100%;
-		height: 81.3%;
-		position: relative;
-		top: 0;
-		overflow: hidden;
-		overflow-y: auto;
-		@include pie-clearfix;
+		font-size: 1.3em;
+		line-height: 1.5em;
+		text-align: left;
+		font-weight: normal;
+		font-family: $sdFont;
+		&.selected {
+			background: $bgColor;
+		}
+
+		&.headertitle {
+			font-size: 1.8em;
+			line-height: 1.5em;
+			text-align: center;
+			background-color: $lightgreen; // Old browsers
+			@include filter-gradient($turquoise, $turquoise, horizontal); // IE6-9
+			@include background-image(linear-gradient(darken($turquoise, 20%) 0%,darken($turquoise, 25%) 100%));
+		}
+
+		img {
+			width: 10%;
+			margin: 0 5%;
+			vertical-align: middle;
+		}
+		&:hover {
+			color: #FFF;
+		}
 	}
 }
+
+// #Shell -------------------------------------------------------------------
+	shell {
+		left: 0;
+		position: relative;
+		@include transition-duration(.2s);
+		.menuOpen & {
+			left: 85%;
+		}
+	}
+	// #content -------------------------------------------------------------------
+	content {
+		@include container;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+		overflow-x: hidden;
+		// #page -------------------------------------------------------------------
+		page {
+			display: block;
+			width: 100%;
+			height: 81.3%;
+			position: relative;
+			top: 0;
+			overflow: hidden;
+			overflow-y: auto;
+			@include pie-clearfix;
+		}
+	}
 
 // #btns -------------------------------------------------------------------
 a.signup {
@@ -222,20 +269,12 @@ a.signup {
 	}
 }
 
-// #Logout -------------------------------------------------------------------
-.logout {
-}
-
-
-form {
-	@include pie-clearfix;
-}
-
 // #Footer -------------------------------------------------------------------
-footer, messageBox {
+footer, messagebox {
 	@include background-image(linear-gradient($turquoise, $green-sea));
 	border-top: 1px solid $emerald;
 	height:12%;
+//	min-height: 70px;
 	display: block;
 	position: relative;
 
@@ -244,10 +283,42 @@ footer, messageBox {
 	}
 }
 
-body[data=loggedin] logo {
-	display: inline;
-	left: 0px;
-	margin: 0;
-	position: relative;
-	top: 11px;
+// #Message Box -------------------------------------------------------------------
+messagebox {
+	position: fixed;
+	display: block;
+	bottom: -12%;
+	width: 100%;
+	border-top: 1px solid #000;
+	@include background-image(linear-gradient(lighten($emerald, 10%), darken($emerald, 10%)));
+	&.bad.show {
+		@include background-image(linear-gradient($danger, darken($danger, 10%)));
+		color: #FFF;
+	}
+	&.notice.show {
+		@include background-image(linear-gradient($notice, darken($notice, 10%)));
+		color: #FFF;
+	}
+
+	&.show {
+		bottom: 0;
+	}
+
+	message {
+		width: 100%;
+		position: relative;
+		display: block;
+		height: 100%;
+		div {
+			width: 100%;
+			padding: 0 25px 0 10px;
+			@include vertical-middle;
+		}
+	}
+	close {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		font-weight: bold;
+	}
 }

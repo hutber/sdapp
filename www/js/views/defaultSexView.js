@@ -7,7 +7,10 @@ define([
 	'backbone',
 	'JST',
 	'sd.functions',
-	'dv'
+	'dv',
+	'mobiscroll',
+	'mobiscrollScroller',
+	'mobiscrollDate',
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
 

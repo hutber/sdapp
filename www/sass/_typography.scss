@@ -37,7 +37,7 @@ $default-text-shadow-v-offset: 1px;
 body {padding: 0; margin:0; font-family: $textFont; color: $textColor; font-size: $fontSize;line-height: $lineheight;}
 
 // #Links ---------------------------------------------------------------------
-a, a:visited { color: $linkColor; text-decoration: none; outline: 0; font-weight: bold }
+a { color: $linkColor; text-decoration: none; outline: 0; font-weight: bold }
 a:hover, a:focus { color: $linkColorHover; text-decoration: none; }
 p a, p a:visited { line-height: inherit; }
 

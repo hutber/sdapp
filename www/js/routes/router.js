@@ -26,6 +26,16 @@ define([
 			'whoadd': 'whoadd',
 			'where': 'where',
 			'whereadd': 'whereadd',
+
+			//Users
+			'profile': 'profile',
+			'previous': 'previous',
+			'managewhos': 'managewhos',
+			'settings': 'settings',
+
+			//Other
+			'shop' : 'shop',
+			'privacy' : 'privacy',
         }
     });
 
