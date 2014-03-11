@@ -50,21 +50,26 @@
 	/* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
+.icon-search:before { content: '\e815'; } /* '' */
+.icon-money:before { content: '\e802'; } /* '' */
+.icon-users:before { content: '\e801'; } /* '' */
+.icon-ok-circled2:before { content: '\e803'; } /* '' */
+.icon-plus-circled:before { content: '\e804'; } /* '' */
+.icon-lock:before { content: '\e805'; } /* '' */
+.icon-lock-open:before { content: '\e806'; } /* '' */
+.icon-lock-open-alt:before { content: '\e807'; } /* '' */
+.icon-pencil:before { content: '\e809'; } /* '' */
+.icon-menu:before { content: '\e80a'; } /* '' */
+.icon-cog:before { content: '\e80b'; } /* '' */
 .icon-user:before { content: '\e800'; } /* '' */
-.icon-money:before { content: '\e80c'; } /* '' */
-.icon-ok-circled2:before { content: '\e805'; } /* '' */
-.icon-cancel-circled:before { content: '\e804'; } /* '' */
-.icon-plus-circled:before { content: '\e803'; } /* '' */
-.icon-lock:before { content: '\e80b'; } /* '' */
-.icon-pencil:before { content: '\e801'; } /* '' */
-.icon-menu:before { content: '\e80e'; } /* '' */
-.icon-cog:before { content: '\e806'; } /* '' */
-.icon-users:before { content: '\e810'; } /* '' */
-.icon-basket:before { content: '\e808'; } /* '' */
-.icon-calendar:before { content: '\e802'; } /* '' */
-.icon-calendar-empty:before { content: '\e809'; } /* '' */
+.icon-wrench:before { content: '\e814'; } /* '' */
+.icon-basket:before { content: '\e80d'; } /* '' */
+.icon-calendar:before { content: '\e80e'; } /* '' */
+.icon-calendar-empty:before { content: '\e80f'; } /* '' */
+.icon-login:before { content: '\e810'; } /* '' */
 .icon-logout:before { content: '\e811'; } /* '' */
-.icon-clock:before { content: '\e80a'; } /* '' */
-.icon-left-big:before { content: '\e80f'; } /* '' */
-.icon-tasks:before { content: '\e80d'; } /* '' */
-.icon-wrench:before { content: '\e807'; } /* '' */
+.icon-clock:before { content: '\e808'; } /* '' */
+.icon-left-big:before { content: '\e812'; } /* '' */
+.icon-globe:before { content: '\e816'; } /* '' */
+.icon-tasks:before { content: '\e813'; } /* '' */
+.icon-cog-alt:before { content: '\e80c'; } /* '' */

@@ -17,8 +17,8 @@ define([
 		template: JST['app/www/js/templates/users/profile.ejs'],
 		render: function () {
 			SD.convertSexNumbers();
-			this.$el.html(this.template);
-			SD.setTitle('Sex Through an App');
+			this.$el.html(this.template(SD.SEXNUMBERS));
+			SD.setTitle('Sex Overview');
 
 			//Resize the graph
 			var wantedWidth = $('body').outerWidth(),
@@ -30,10 +30,30 @@ define([
 				'width' : wantedWidth
 			});
 
+			var data = {
+				labels : ["January","February","March","April","May","June","July"],
+				datasets : [
+					{
+						fillColor : "rgba(220,220,220,0.5)",
+						strokeColor : "rgba(220,220,220,1)",
+						pointColor : "rgba(220,220,220,1)",
+						pointStrokeColor : "#fff",
+						data : [65,59,90,81,56,55,40]
+					},
+					{
+						fillColor : "rgba(151,187,205,0.5)",
+						strokeColor : "rgba(151,187,205,1)",
+						pointColor : "rgba(151,187,205,1)",
+						pointStrokeColor : "#fff",
+						data : [28,48,40,19,96,27,100]
+					}
+				]
+			}
+
 			var pieData = [
 				{
 					value : SD.SEXNUMBERS.Wank,
-					color : "#F7464A",
+					color : "#A53134",
 					label : 'Wank',
 					labelColor : '#FFF',
 					labelFontSize : '20',
@@ -41,7 +61,7 @@ define([
 				},
 				{
 					value : SD.SEXNUMBERS.Hands,
-					color : "#E2EAE9",
+					color : "#28437E",
 					label : 'Hands',
 					labelColor : '#444',
 					labelFontSize : '20',
@@ -49,14 +69,14 @@ define([
 				},
 				{
 					value : SD.SEXNUMBERS.Oral,
-					color : "#D4CCC5",
+					color : "#2F8F2A",
 					label : 'Oral',
 					labelColor : '#FFF',
 					labelFontSize : '15'
 				},
 				{
 					value : SD.SEXNUMBERS.Sex,
-					color : "#949FB1",
+					color : "#DC87B1",
 					label : 'Sex',
 					labelColor : '#FFF',
 					labelFontSize : '25'
@@ -71,9 +91,9 @@ define([
 			];
 
 			var myChart = new Chart(graph[0].getContext("2d"));
-			var myPie = myChart.Pie(pieData, {
-				animationSteps: 100,
-				animationEasing: 'easeOutBounce'
+			var myPie = myChart.Line(data, {
+//				segmentStrokeColor : "#AADBD9",
+				animateScale: true,
 			});
 		},
 	});

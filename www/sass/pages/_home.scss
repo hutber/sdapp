@@ -19,7 +19,7 @@ anchor {
 }
 
 acts a {
-	background: url("../img/sex/sexes.png") no-repeat;
+	background: url("../../img/sex/sexes.png") no-repeat;
 	display: block;
 	height: 215px;
 	width: 200px;
@@ -43,7 +43,7 @@ acts a#hands {
 	background-position: -210px 0;
 	width: 360px;
 	&.alternative {
-		background-image: url(../img/sex/sexes.png);
+		background-image: url(../../img/sex/sexes.png);
 	}
 }
 
