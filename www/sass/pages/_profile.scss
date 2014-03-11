@@ -60,6 +60,7 @@
 			}
 			type {
 				@include span-columns(6, 12);
+				@include ellipsis();
 			}
 			theworld {
 				text-align: right;

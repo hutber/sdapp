@@ -45,6 +45,7 @@ Globals
 			where: {},
 		},
 		SEXNUMBERS: {},
+		GLOBALSEXNUMBERS: {},
 		WHO: null,
 		TEMPLATE: 'footerout',
 		HASH:'',
@@ -297,32 +298,40 @@ Networking functions
  Formatting Results
  ================================================== */
 // #SEXNUMBERS ------------------------------------------------------
-	SD.convertSexNumbers = function(){
-		if(sessionStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
-			JSON.parse(sessionStorage.SEXNUMBERS).forEach(function(me){
+	SD.convertSexNumbers = {
+		init: function(){
+			if(sessionStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
+				this.convert(sessionStorage.SEXNUMBERS, SD.SEXNUMBERS);
+			}
+			if(sessionStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
+				this.convert(sessionStorage.GLOBALSEXNUMBERS, SD.GLOBALSEXNUMBERS);
+			}
+		},
+		convert: function(item, target){
+			JSON.parse(item).forEach(function(me){
 				var sexName = me.sex,
 					sexNumber = +me.no;
 
 				switch (sexName){
 					case "1":
-						SD.SEXNUMBERS.Wank = sexNumber;
+						target.Wank = sexNumber;
 						break;
 					case "2":
-						SD.SEXNUMBERS.Hands = sexNumber;
+						target.Hands = sexNumber;
 						break;
 					case "3":
-						SD.SEXNUMBERS.Oral = sexNumber;
+						target.Oral = sexNumber;
 						break;
 					case "4":
-						SD.SEXNUMBERS.Sex = sexNumber;
+						target.Sex = sexNumber;
 						break;
 					case "5":
-						SD.SEXNUMBERS.Anything = sexNumber;
+						target.Anything = sexNumber;
 						break;
 				}
 			});
 		}
-	}
+	};
 
 	/*==================================================
 	Init for SD

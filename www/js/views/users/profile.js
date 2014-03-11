@@ -6,6 +6,7 @@ define([
 	'sd.functions',
 	'chart',
 	'dsv',
+	'slider',
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
 
@@ -16,8 +17,16 @@ define([
 		},
 		template: JST['app/www/js/templates/users/profile.ejs'],
 		render: function () {
-			SD.convertSexNumbers();
-			this.$el.html(this.template(SD.SEXNUMBERS));
+			SD.convertSexNumbers.init();
+
+			//# Set up JST variables ------------------------------------------------------
+			var data = {
+				you:SD.SEXNUMBERS,
+				world:SD.GLOBALSEXNUMBERS
+			};
+
+			//# Output and render the JST view ------------------------------------------------------
+			this.$el.html(this.template(data));
 			SD.setTitle('Sex Overview');
 
 			//Resize the graph
@@ -28,6 +37,17 @@ define([
 			graph.attr({
 				'height': wantedWidth-30,
 				'width' : wantedWidth
+			});
+
+			$('.profile .royalSlider').royalSlider({ //Set up slider
+				controlNavigationSpacing: 10,
+				controlNavigation: 'bullets',
+				loop: true,
+				arrowsNav: false,
+				keyboardNavEnabled: true,
+				block: {
+					delay: 400
+				}
 			});
 
 			var data = {

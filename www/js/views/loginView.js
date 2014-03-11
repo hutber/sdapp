@@ -60,6 +60,7 @@ define([
 							$.jStorage.set('uid',data.uid); //store user ID in the localStorage to persist
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
 							sessionStorage.setItem('SEXNUMBERS',JSON.stringify(data.sexnumbers)); //store privateKey in session so it disapears when the user closers the tab
+							sessionStorage.setItem('GLOBALSEXNUMBERS',JSON.stringify(data.globalsexnumbers)); //store privateKey in session so it disapears when the user closers the tab
 							SD.login.checkLoginState(true);
 						}else{
 							SD.message.showMessage(data.message, 'bad');
