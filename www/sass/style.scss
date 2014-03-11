@@ -303,6 +303,11 @@ messagebox {
 	width: 100%;
 	border-top: 1px solid #000;
 	@include background-image(linear-gradient(lighten($emerald, 10%), darken($emerald, 10%)));
+	@include transition-duration(.5 s);
+	&.good.show {
+		@include background-image(linear-gradient($forth3 , lighten($forth4, 10%)));
+		color: #FFF;
+	}
 	&.bad.show {
 		@include background-image(linear-gradient($danger, darken($danger, 10%)));
 		color: #FFF;

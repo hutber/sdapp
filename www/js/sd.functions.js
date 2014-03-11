@@ -160,12 +160,11 @@ SD.addSex = {
 					privateKey: sessionStorage.privateKey
 				},
 				error: function(data){
-					c('Sorry Login Failed: '+data.status);
-					SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
+					SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
 				},
 				success: function(data){
-					if(data.length===2){
-						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', null, 2500);
+					if(data===""){
+						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
 					}

@@ -61,6 +61,8 @@ define([
 							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
 							sessionStorage.setItem('SEXNUMBERS',JSON.stringify(data.sexnumbers)); //store privateKey in session so it disapears when the user closers the tab
 							sessionStorage.setItem('GLOBALSEXNUMBERS',JSON.stringify(data.globalsexnumbers)); //store privateKey in session so it disapears when the user closers the tab
+							sessionStorage.setItem('sexDetails',JSON.stringify(data.sexDetails)); //store privateKey in session so it disapears when the user closers the tab
+							sessionStorage.setItem('sexesByMonth',JSON.stringify(data.sexesByMonth)); //store privateKey in session so it disapears when the user closers the tab
 							SD.login.checkLoginState(true);
 						}else{
 							SD.message.showMessage(data.message, 'bad');

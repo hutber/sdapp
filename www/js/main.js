@@ -32,6 +32,9 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['jquery'],
 				exports: '$.jStorage'
 			},
+			date: {
+				exports: 'date'
+			},
 			sd: {
 				exports: 'SD'
 			},
@@ -89,6 +92,7 @@ Table of Contents - Created by Hutber on 04/10/13.
 			mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
 			forms: 'libs/plugins/hutber.forms',
 			chart: 'libs/plugins/chart.min',
+			date: 'libs/plugins/date',
 			core: 'core.functions',
 			sd : 'sd.functions',
 			dv : 'views/defaultView',
@@ -136,6 +140,7 @@ Routers
 		'views/other/privacy',
 // Plugins --------------------,
 		'flowtype',
+		'date',
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments

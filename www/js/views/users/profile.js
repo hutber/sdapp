@@ -50,8 +50,19 @@ define([
 				}
 			});
 
+
+			//# Set up dates for graphs ------------------------------------------------------
+			var dates = {
+				sixMonths : Date.today().addMonths(-6).toString("MMMM"),
+				fiveMonths : Date.today().addMonths(-5).toString("MMMM"),
+				fourMonths : Date.today().addMonths(-4).toString("MMMM"),
+				threeMonths : Date.today().addMonths(-3).toString("MMMM"),
+				twoMonths : Date.today().addMonths(-2).toString("MMMM"),
+				oneMonths : Date.today().addMonths(-1).toString("MMMM"),
+				now : Date.today().toString("MMMM"),
+			};
 			var data = {
-				labels : ["January","February","March","April","May","June","July"],
+				labels : [dates.sixMonths, dates.fiveMonths, dates.fourMonths, dates.threeMonths, dates.twoMonths,dates.oneMonths, 'Today'],
 				datasets : [
 					{
 						fillColor : "rgba(220,220,220,0.5)",
@@ -68,7 +79,7 @@ define([
 						data : [28,48,40,19,96,27,100]
 					}
 				]
-			}
+			};
 
 			var pieData = [
 				{
