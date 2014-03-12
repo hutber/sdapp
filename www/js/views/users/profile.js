@@ -4,9 +4,9 @@ define([
 	'backbone',
 	'JST',
 	'sd.functions',
-	'chart',
 	'dsv',
 	'slider',
+	'highcharts'
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
 
@@ -45,86 +45,121 @@ define([
 				loop: true,
 				arrowsNav: false,
 				keyboardNavEnabled: true,
+				navigateByClick: false,
 				block: {
 					delay: 400
 				}
 			});
 
 
-			//# Set up dates for graphs ------------------------------------------------------
-			var dates = {
-				sixMonths : Date.today().addMonths(-6).toString("MMMM"),
-				fiveMonths : Date.today().addMonths(-5).toString("MMMM"),
-				fourMonths : Date.today().addMonths(-4).toString("MMMM"),
-				threeMonths : Date.today().addMonths(-3).toString("MMMM"),
-				twoMonths : Date.today().addMonths(-2).toString("MMMM"),
-				oneMonths : Date.today().addMonths(-1).toString("MMMM"),
-				now : Date.today().toString("MMMM"),
-			};
-			var data = {
-				labels : [dates.sixMonths, dates.fiveMonths, dates.fourMonths, dates.threeMonths, dates.twoMonths,dates.oneMonths, 'Today'],
-				datasets : [
-					{
-						fillColor : "rgba(220,220,220,0.5)",
-						strokeColor : "rgba(220,220,220,1)",
-						pointColor : "rgba(220,220,220,1)",
-						pointStrokeColor : "#fff",
-						data : [65,59,90,81,56,55,40]
+			//Graphs Global Vars
+			var allDates = [];
+
+			// #All Rows
+			var SexByMonthData = JSON.parse(sessionStorage.sexesByMonth);
+			// #Set up Wank Rows --------------------------------------------------
+			var Wank = {
+					name: 'Wank',
+					data: []
+				},
+				Hands = {
+					name: 'Hands',
+					data: []
+				},
+				Oral = {
+					name: 'Oral',
+					data: []
+				},
+				Sex = {
+					name: 'Sex',
+					data: []
+				},
+				Anything = {
+					name: 'Anything',
+					data: []
+				};
+			SexByMonthData.Wank.forEach(function(me){
+				Wank.data.push(parseInt(me.months, 10));
+			});
+			SexByMonthData.Hands.forEach(function(me){
+				Hands.data.push(parseInt(me.months, 10));
+			});
+			SexByMonthData.Oral.forEach(function(me){
+				Oral.data.push(parseInt(me.months, 10));
+			});
+			SexByMonthData.Sex.forEach(function(me){
+				Sex.data.push(parseInt(me.months, 10));
+			});
+			SexByMonthData.Anything.forEach(function(me){
+				Anything.data.push(parseInt(me.months, 10));
+			});
+			// #Set Array used for Line Graph --------------------------------------------------
+//			var lineGraphData = [], lineLabelsDate = [];
+//			.forEach(function(me){
+//				lineLabelsDate.push(Date.today().set({ month: me.date-1}).toString("MMM"));
+//				lineGraphData.push(me.months);
+//			});
+//
+//			c(lineLabelsDate);
+//			c(lineGraphData);
+
+			$('#container').highcharts({
+				chart: {
+					backgroundColor: '#8DC5C1',
+					type: 'area',
+					spacingLeft: 0,
+//					marginLeft: 15,
+					spacingRight: 0,
+					borderColor: '#BBEEB8'
+				},
+				colors: [
+					'#7B91C2',
+					'#FEB0B2',
+					'#B3C2E1',
+					'#28437E',
+					'#BBEEB8',
+					'#237774',
+					'#6CB7B4',
+					'#A3B6E1',
+					'#AADBD9',
+					'#697692',
+					'#2F8F2A',
+					'#BE8485',
+					'#A53134',
+					'#5F8988',
+					'#86DC82',
+					'#75A572',
+					'#A8EEA5',
+					'#98DBD8',
+					'#FFDC96',
+					'#BFAB84',
+					'#A67E31',
+					'#FFE4B1',
+					'#FFECC6',
+					'#FD9698',
+					'#FEC5C6',
+				],
+				xAxis: {
+					title: {
+						text:''
 					},
-					{
-						fillColor : "rgba(151,187,205,0.5)",
-						strokeColor : "rgba(151,187,205,1)",
-						pointColor : "rgba(151,187,205,1)",
-						pointStrokeColor : "#fff",
-						data : [28,48,40,19,96,27,100]
+					labels: {
+						formatter: function() {
+							return this.value; // clean, unformatted number for year
+						}
 					}
-				]
-			};
-
-			var pieData = [
-				{
-					value : SD.SEXNUMBERS.Wank,
-					color : "#A53134",
-					label : 'Wank',
-					labelColor : '#FFF',
-					labelFontSize : '20',
-					labelAlign : 'left'
 				},
-				{
-					value : SD.SEXNUMBERS.Hands,
-					color : "#28437E",
-					label : 'Hands',
-					labelColor : '#444',
-					labelFontSize : '20',
-					labelAlign: 'center'
+				credits: {
+					enabled: false
 				},
-				{
-					value : SD.SEXNUMBERS.Oral,
-					color : "#2F8F2A",
-					label : 'Oral',
-					labelColor : '#FFF',
-					labelFontSize : '15'
+				yAxis: {
+					labels: {
+						formatter: function() {
+							return this.value;
+						}
+					}
 				},
-				{
-					value : SD.SEXNUMBERS.Sex,
-					color : "#DC87B1",
-					label : 'Sex',
-					labelColor : '#FFF',
-					labelFontSize : '25'
-				},
-				{
-					value : SD.SEXNUMBERS.Anything,
-					color : "#4D5360",
-					label : 'Anything Else',
-					labelColor : '#FFF',
-					labelFontSize : '10'
-				}
-			];
-
-			var myChart = new Chart(graph[0].getContext("2d"));
-			var myPie = myChart.Line(data, {
-//				segmentStrokeColor : "#AADBD9",
-				animateScale: true,
+				series: [Wank,Hands, Oral, Sex, Anything]
 			});
 		},
 	});

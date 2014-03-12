@@ -79,6 +79,10 @@ Table of Contents - Created by Hutber on 04/10/13.
 			forms: {
 				deps: ['jquery']
 			},
+			highcharts : {
+				deps: ['jquery'],
+				exports: 'highcharts'
+			}
 		},
 		paths: {
 			jquery: 'libs/jquery.min',
@@ -91,7 +95,7 @@ Table of Contents - Created by Hutber on 04/10/13.
 			mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
 			mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
 			forms: 'libs/plugins/hutber.forms',
-			chart: 'libs/plugins/chart.min',
+			highcharts: 'libs/plugins/highcharts',
 			date: 'libs/plugins/date',
 			core: 'core.functions',
 			sd : 'sd.functions',
@@ -140,7 +144,7 @@ Routers
 		'views/other/privacy',
 // Plugins --------------------,
 		'flowtype',
-		'date',
+		'date'
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
