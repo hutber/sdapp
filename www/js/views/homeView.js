@@ -7,9 +7,6 @@ define([
 	'sd.functions',
 	'dv',
 	'slider',
-	'slidervisibleNearby',
-	'sliderthumbnails',
-	'sliderCaption'
 ], function ($, _, Backbone, JST, core, SD) {
     'use strict';
 
@@ -20,7 +17,7 @@ define([
 			'app/www/js/templates/home.ejs'
 		],
         render: function () {
-
+			SD.convertSexNumbers.init();
 			SD.setTitle('SELECT SOME SEXYNESS');
 			this.$el.html(this.template);
 
@@ -62,7 +59,7 @@ define([
 
 					//update current sex with the class
 					$('div[data-type='+currentSex+']').addClass('selected');
-				};
+				}
 			});
 
         }

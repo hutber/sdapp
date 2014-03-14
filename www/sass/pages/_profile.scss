@@ -1,37 +1,82 @@
-.privacy {
-	img {
-		width: auto;
+.profile {
+	bg {
+		background: #8DC5C1;
+		height: 100%;
+		width: 94%;
+		position: absolute;
+		left: 3%;
+		top: 0;
+		z-index: -1;
 	}
-	li {
-		padding: .7em 1em .7em .5em;
-		border-bottom: 1px solid #abb7d0;
-		line-height: 1.3em;
-		background-image: url(../img/privacy/arrow_blue.png);
-		background-position: right center;
-		background-repeat: no-repeat;
-		background-size: auto;
-		cursor: pointer;
+	.profilehome {
+		width: 94%;
+		margin: 0 auto;
 	}
-	div.text {
-		padding: 1em;
-		line-height: 1.4em;
-		color: #444;
+	.titlebox {
+		display: block;
+		font-family: $sdFont;
+		@include clearfix();
+		span {
+			border-top: 2px solid $primary2;
+			border-bottom: 2px solid $primary2;
+			padding: 4px 25px 4px 7px;
+		}
+		.you, .theworld {
+			@include span-columns(5, 12);
+			line-height: 4em;
+			text-align: left;
+		}
+		.vs {
+			@include span-columns(2, 12);
+			font-size: 2em;
+			line-height: 2em;
+		}
+		.theworld {
+			@include span-columns(5 omega, 12);
+			text-align: right;
+			span {
+				padding: 4px 7px 4px 25px;
+			}
+		}
 	}
-	.detail div {
-		text-align: left;
+	.stats {
+		item {
+			font-family: $sdFont;
+			display: block;
+			@include clearfix();
+			padding: 12px 10px;
+			&:after {
+				border-bottom: dotted 2px $primary3;
+				position: absolute;
+				width: 100%;
+				content: "";
+				display: block;
+				left: 0;
+				margin-top: 28px;
+			}
+			you {
+				@include span-columns(3, 12);
+				text-align: left;
+			}
+			type {
+				@include span-columns(6, 12);
+				@include ellipsis();
+			}
+			theworld {
+				text-align: right;
+				@include span-columns(3 omega, 12);
+			}
+		}
 	}
-	img.icon {
-		float: left;
-		margin-right: .75em;
-		width: 32px;
-		height: 32px;
+
+	// #Graphs -------------------------------------------------------------------
+	#sexoverview {
+		margin: 0 auto;
 	}
-	li.sel {
-		 background-color: #eee;
-	 }
-	li.back {
-		padding: .7em .5em .7em 1em;
-		background-image: url(../img/privacy/arrow_back_blue.png);
-		background-position: left center;
+	.miniGraph {
+		@include span-columns(4, 12);
+	}
+	.miniGraph:last-child {
+		@include span-columns(4 omega, 12);
 	}
 }

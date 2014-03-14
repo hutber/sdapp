@@ -32,8 +32,8 @@ Table of Contents - Created by Hutber on 04/10/13.
 				deps: ['jquery'],
 				exports: '$.jStorage'
 			},
-			chart: {
-				exports: 'chart'
+			date: {
+				exports: 'date'
 			},
 			sd: {
 				exports: 'SD'
@@ -79,22 +79,24 @@ Table of Contents - Created by Hutber on 04/10/13.
 			forms: {
 				deps: ['jquery']
 			},
+			highcharts : {
+				deps: ['jquery'],
+				exports: 'highcharts'
+			}
 		},
 		paths: {
 			jquery: 'libs/jquery.min',
 			backbone: 'libs/backbone-min',
 			underscore: 'libs/underscore-min',
 			jStorage: 'libs/plugins/jStorage',
-			slider: 'libs/plugins/slider/jquery.royalslider',
-			slidervisibleNearby: 'libs/plugins/slider/modules/jquery.rs.visible-nearby',
-			sliderthumbnails: 'libs/plugins/slider/modules/jquery.rs.thumbnails',
-			sliderCaption: 'libs/plugins/slider/modules/jquery.rs.global-caption',
+			slider: 'libs/plugins/jquery.royalslider',
 			flowtype: 'libs/plugins/flowtype',
 			mobiscroll: 'libs/plugins/date/mobiscroll.core',
 			mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
 			mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
 			forms: 'libs/plugins/hutber.forms',
-			chart: 'libs/plugins/chart.min',
+			highcharts: 'libs/plugins/highcharts',
+			date: 'libs/plugins/date',
 			core: 'core.functions',
 			sd : 'sd.functions',
 			dv : 'views/defaultView',
@@ -132,23 +134,17 @@ Routers
 		'views/details/who',
 		'views/details/whoAdd',
 		'views/details/where',
-
 // User Pages --------------------,
 		'views/users/profile',
 		'views/users/previous',
 		'views/users/managewhos',
 		'views/users/settings',
-
 // Plugins --------------------,
 		'views/other/shop',
 		'views/other/privacy',
-
 // Plugins --------------------,
 		'flowtype',
-		'mobiscroll',
-		'mobiscrollScroller',
-		'mobiscrollDate',
-		'chart',
+		'date'
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -162,20 +158,7 @@ set arguments to values for ease of reading arguments
 /*==================================================
  Start up SD global object.
  ================================================== */
-		SD.init();
-/*==================================================
-Load in scripts depending on which device we are.
-================================================== */
-	if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
-		$.getScript('phonegap.js', function( data, textStatus, jqxhr){
-//			c( "cordova was loaded." );
-			var s = document.createElement('script');
-			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
-			document.getElementsByTagName('body')[0].appendChild(s);
-		});
-	}else{
-		$.getScript('http://localhost:35729/livereload.js');
-	}
+SD.init();
 
 /*==================================================
 Routes Vars
@@ -212,9 +195,9 @@ Routes
 
 	names.forEach(function(me, key){
 		var functionName = me+"View";
-		window["SD"]["VIEWS"][functionName] = new myArgs[key]();
+		SD.VIEWS[functionName] = new myArgs[key]();
 		SD.ROUTER.on('route:'+me, function(){
-			window["SD"]["VIEWS"][functionName]["render"](); // succeeds
+			SD.VIEWS[functionName]["render"](); // succeeds
 		});
 	});
 
@@ -230,11 +213,11 @@ Routes
 /*==================================================
 Global Plugins
 ================================================== */
-$('body').flowtype({
-	minFont   : 18,
-	maxFont   : 40,
-	fontRatio : 20
-});
+//$('body').flowtype({
+//	minFont   : 18,
+//	maxFont   : 30,
+//	fontRatio : 20
+//});
 
 /*==================================================
 On Device Ready

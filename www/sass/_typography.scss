@@ -16,8 +16,8 @@
 @include font-face(sdFont, font-files("sdFont.ttf.woff"));
 
 /* #Fonts ------------------------------------------------------------------------ */
-$sdFont: sdFont, Arial, serif;
-$textFont: Arial, Trebuchet, sans-serif;
+$sdFont: sdFont, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$textFont: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 //$fontSize: 62.5%;
 $fontSize: 18px;
 $lineheight: 18px;

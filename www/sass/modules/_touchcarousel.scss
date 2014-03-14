@@ -356,11 +356,8 @@ img.rsImg {
 	height: auto;
 	margin: 0 auto;
 
-	background: #000;
-	background: rgba(0,0,0,0.75);
-
 	text-align: center;
-	line-height: 8px;
+	line-height: 32px;
 	overflow: hidden;
 }
 .rsDefault .rsBullet {
@@ -732,49 +729,4 @@ img.rsImg {
 	border-radius: 2px;
 	margin: 0 auto;
 	font-size: 1.2em;
-}
-
-
-
-/**********************
-/        Hutber
-**********************/
-.royalSlider  {
-	& .rsNavItem + .rsNavItem {
-		width: 23%;
-	}
-	& .rsNavItem + .rsNavItem + .rsNavItem {
-		width: 18%;
-	}
-	& .rsNavItem + .rsNavItem + .rsNavItem + .rsNavItem {
-		width: 22%;
-	}
-	& .rsNavItem + .rsNavItem + .rsNavItem + .rsNavItem + .rsNavItem {
-		width: 12.6%;
-	}
-	&.rsDefault .rsThumb {
-		img {
-			height: auto;
-			width: 100%;
-		}
-	}
-}
-
-.rsThumbsContainer {
-	//	width: 100% !important;
-	//	padding: 0 1%;
-}
-
-.rsSlide  {
-	img {
-		height: auto !important;
-		width: 100% !important;
-		@include vertical-middle ();
-		margin: 0 !important;
-	}
-}
-
-.royalSlider .rsNavItem + .rsNavItem + .rsNavItem + .rsNavItem + .rsNavItem {
-	margin-left: 5px;
-
 }

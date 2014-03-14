@@ -44,6 +44,9 @@ Globals
 			location: [false, 'Click to get your location'],
 			where: {},
 		},
+		TOTALSEXNUMBERS: {},
+		SEXNUMBERS: {},
+		GLOBALSEXNUMBERS: {},
 		WHO: null,
 		TEMPLATE: 'footerout',
 		HASH:'',
@@ -51,6 +54,9 @@ Globals
 		VIEWS: {},
 		ROUTER: false,
 	};
+
+	SD.AJAX = SD.HTTP+'app/',
+	SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 
 // #define the globals depending on where we are ------------------------------------------------------
 	SD.globals = function () {
@@ -67,9 +73,8 @@ Globals
 					SD.AJAX = SD.HTTP+ 'app/',
 					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 				break;
-			default:
-					SD.AJAX = SD.HTTP+'app/',
-					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
+			case "m.sexdiaries.co.uk":
+					SD.ENVIROMENT = 'mobilesite';
 				break;
 		}
 	};
@@ -110,6 +115,9 @@ SD.onHashChange = function(){
 
 	SD.changeHeightofContent();
 
+	//update menu items with selected item
+	$('menu a.selected').removeAttr('class');
+	$('menu a[data-id='+SD.HASH+']').addClass('selected');
 	//Add new class to body
 //		$('body').removeAttr('class').addClass(SD.HASH); //Update class on body
 };
@@ -153,12 +161,11 @@ SD.addSex = {
 					privateKey: sessionStorage.privateKey
 				},
 				error: function(data){
-					c('Sorry Login Failed: '+data.status);
-					SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
+					SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
 				},
 				success: function(data){
-					if(data.length===2){
-						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', null, 2500);
+					if(data===""){
+						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
 					}
@@ -234,32 +241,8 @@ Display functions
 	};
 	//set up click event to hide
 	$('messageBox').on('click', SD.message.hideMessage);
-/*==================================================
-Networking functions
-================================================== */
-	SD.checkConnection = function () {
-		var networkState = navigator.connection.type;
 
-		var states = {};
-		if(typeof Connection!=="undefined"){
-			states[Connection.UNKNOWN]  = 'Unknown connection';
-			states[Connection.ETHERNET] = 'Ethernet connection';
-			states[Connection.WIFI]     = 'WiFi connection';
-			states[Connection.CELL_2G]  = 'Cell 2G connection';
-			states[Connection.CELL_3G]  = 'Cell 3G connection';
-			states[Connection.CELL_4G]  = 'Cell 4G connection';
-			states[Connection.CELL]     = 'Cell generic connection';
-			states[Connection.NONE]     = 'No network connection';
-
-//			c('Connection type: ' + states[networkState]);
-		}else{
-			c('Connection not ready yet');
-		}
-	};
-
-/*==================================================
- Display functions
- ================================================== */
+// #Location ajax formating -------------------------------------------------------------
 	SD.locationSucess = function(position) {
 		if(!SD.SEXDEFAULTS.location[0]){
 			$.ajax({
@@ -288,13 +271,95 @@ Networking functions
 			'message: ' + error.message + '\n');
 		SD.overlay.hideme();
 	}
+/*==================================================
+Networking functions
+================================================== */
+	SD.checkConnection = function () {
+		var networkState = navigator.connection.type;
 
+		var states = {};
+		if(typeof Connection!=="undefined"){
+			states[Connection.UNKNOWN]  = 'Unknown connection';
+			states[Connection.ETHERNET] = 'Ethernet connection';
+			states[Connection.WIFI]     = 'WiFi connection';
+			states[Connection.CELL_2G]  = 'Cell 2G connection';
+			states[Connection.CELL_3G]  = 'Cell 3G connection';
+			states[Connection.CELL_4G]  = 'Cell 4G connection';
+			states[Connection.CELL]     = 'Cell generic connection';
+			states[Connection.NONE]     = 'No network connection';
+
+//			c('Connection type: ' + states[networkState]);
+		}else{
+			c('Connection not ready yet');
+		}
+	};
+
+/*==================================================
+ Formatting Results
+ ================================================== */
+// #SEXNUMBERS ------------------------------------------------------
+	SD.convertSexNumbers = {
+		init: function(){
+			if(sessionStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
+				this.convert(sessionStorage.SEXNUMBERS, SD.SEXNUMBERS);
+			}
+			if(sessionStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
+				this.convert(sessionStorage.TOTALSEXNUMBERS, SD.TOTALSEXNUMBERS);
+			}
+			if(sessionStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
+				this.convert(sessionStorage.GLOBALSEXNUMBERS, SD.GLOBALSEXNUMBERS);
+			}
+		},
+		convert: function(item, target){
+			JSON.parse(item).forEach(function(me){
+				if(typeof me==="object"){
+					var sexName = me.sex,
+						sexNumber = +me.no;
+
+					switch (sexName){
+						case "1":
+							target.Wank = sexNumber;
+							break;
+						case "2":
+							target.Hands = sexNumber;
+							break;
+						case "3":
+							target.Oral = sexNumber;
+							break;
+						case "4":
+							target.Sex = sexNumber;
+							break;
+						case "5":
+							target.Anything = sexNumber;
+							break;
+					}
+				}else{
+					target.total = me;
+				}
+			});
+		}
+	};
 
 	/*==================================================
 	Init for SD
 	================================================== */
 	SD.init = function () {
 		SD.globals(); //set up our global variables
+
+		/*==================================================
+		Load in scripts depending on which device we are.
+		================================================== */
+		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
+			$.getScript('phonegap.js', function( data, textStatus, jqxhr){
+//			c( "cordova was loaded." );
+				var s = document.createElement('script');
+				s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
+				document.getElementsByTagName('body')[0].appendChild(s);
+			});
+		}else{
+			$.getScript('http://localhost:35729/livereload.js');
+		}
+
 		SD.onHashChange();
 		window.addEventListener("hashchange", SD.onHashChange, false);
 

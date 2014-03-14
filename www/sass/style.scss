@@ -20,8 +20,15 @@ $container-width: 100%;
 //Make all elements use the border-box zising model to stop padding effecting shit
 @include border-box-sizing;
 
+//Add classes here to turn off footer
+$footerHide : ".profile";
+
+//Button definers
+$hideMenuShowBack : ".where, .who, .whoadd";
+$showPlus : ".who";
+
 /* #Imports dependencies ------------------------------------------------------------------------ */
-@import
+@import "fontello",
 "_mixins",
 "_variables",
 "_typography",
@@ -34,11 +41,10 @@ $container-width: 100%;
 "pages/_who",
 "pages/_privacy",
 "pages/_profile",
-"_ie",
-"_print",
-"_home",
-"_sex",
-"_loginsignup";
+"pages/_home",
+"pages/_sex",
+"pages/_loginsignup",
+"_print";
 
 /*
 ==================================================
@@ -56,7 +62,7 @@ Table of Contents
 	#footer
 		#Message Box
 */
-* {background-size: 100%;background-repeat: no-repeat; &::selection {background: transparent;}}
+* {background-size: 100%;background-repeat: no-repeat; &::selection {background: transparent;} -webkit-tap-highlight-color: rgba(255, 255, 255, 0); -webkit-tap-highlight-color: transparent; }
 
 /* #Main Styles ------------------------------------------------------------------------ */
 body {
@@ -66,7 +72,7 @@ body {
 	overflow: hidden;
 //	border: 3px solid black;
 	text-align: center;
-	background-color: #9acdcb;
+	background-color: $bgColor;
 //	@include transition-duration(1.5s);
 }
 
@@ -81,6 +87,7 @@ debug {
 	position: fixed;
 	top: 0;
 	z-index: 4;
+	right: 0;
 	li {
 		background: none repeat scroll 0 0 #53838E;
 		padding: 3px;
@@ -122,15 +129,10 @@ header {
 		@include background-image(linear-gradient($turquoise, $green-sea));
 		border-bottom: 1px solid $emerald;
 	}
-	menuBtn {
-		@include span-columns(2 omega, 12);
-		.mbtn {
-			background: url(../img/icons/sm_menu.png) no-repeat center center;
-			display: block;
-			height: 24px;
-			text-indent: -9999em;
-			cursor: pointer;
-		}
+	menuBtn, back {
+		@include span-columns(2, 12);
+		cursor: pointer;
+		text-align: center;
 	}
 	.title {
 		@include span-columns(8, 12);
@@ -139,50 +141,75 @@ header {
 		text-align: center;
 		@include ellipsis;
 	}
+	add {
+		@include span-columns(2 omega, 12);
+	}
+	back, add {
+		display: none;
+		cursor: pointer;
+	}
+}
+
+// #Turn off/on buttons - Add Classes in the config to turn off/on buttons -------------------------------------------------------------------
+#{$hideMenuShowBack} {
+	//turn on back
 	back {
-		@include span-columns(2, 12);
-		.btn {
-			margin: 0 0 0 5px;
-			padding: 3px 0;
-			font-size: 1em;
-			width: 90%;
-			@include border-radius(4px);
-			@include background-image(linear-gradient(left,  darken($turquoise, 20%) 0%,darken($turquoise, 25%) 100%));
-		}
+		display: inline-block;
+	}
+	//turn off menubtn
+	menubtn {
+		display: none;
+	}
+}
+
+#{$showPlus} {
+	//turn on Add
+	add {
+		display: inline-block;
 	}
 }
 
 // #Menu -------------------------------------------------------------------
 menu {
 	position: fixed;
-	right: -85%;
+	left: -85%;
 	width: 85%;
 	height: 100%;
 	z-index: 2;
 	overflow-x: hidden;
 	@include transition-duration(.2s);
 	@include ellipsis();
-	background-color: $lightgreen;
+	background-color: $lightgreen; // Old browsers
+	@include filter-gradient($turquoise, $turquoise, horizontal); // IE6-9
+	@include background-image(linear-gradient(darken($turquoise, 20%) 0%,darken($turquoise, 25%) 100%));
 
 	.menuOpen & {
-		right: -0%;
+		left: 0%;
+	}
+
+	i {
+		display: inline-block;
+		padding: 2px 6px;
 	}
 
 	> a {
 		color: #FFF;
 		display: block;
 		font-size: 1.3em;
-		line-height: 2.5em;
+		line-height: 1.5em;
 		text-align: left;
-		font-family: $sdFont;
+//		font-weight: normal;
+//		font-family: $sdFont;
+		&.selected {
+			background: $bgColor;
+			color: $textColorAlt;
+		}
 
 		&.headertitle {
 			font-size: 1.8em;
 			line-height: 1.5em;
 			text-align: center;
-			background-color: $lightgreen; // Old browsers
-			@include filter-gradient($turquoise, $turquoise, horizontal); // IE6-9
-			@include background-image(linear-gradient(darken($turquoise, 20%) 0%,darken($turquoise, 25%) 100%));
+			background-color: $primary3;
 		}
 
 		img {
@@ -198,11 +225,11 @@ menu {
 
 // #Shell -------------------------------------------------------------------
 	shell {
-		right: 0;
+		left: 0;
 		position: relative;
 		@include transition-duration(.2s);
 		.menuOpen & {
-			right: 85%;
+			left: 85%;
 		}
 	}
 	// #content -------------------------------------------------------------------
@@ -255,12 +282,17 @@ footer, messagebox {
 	@include background-image(linear-gradient($turquoise, $green-sea));
 	border-top: 1px solid $emerald;
 	height:12%;
+//	min-height: 70px;
 	display: block;
 	position: relative;
 
 	> * {
 		display: none; //default, sexnav is turned off
 	}
+}
+
+#{$footerHide} footer {
+	display: none;
 }
 
 // #Message Box -------------------------------------------------------------------
@@ -271,6 +303,11 @@ messagebox {
 	width: 100%;
 	border-top: 1px solid #000;
 	@include background-image(linear-gradient(lighten($emerald, 10%), darken($emerald, 10%)));
+	@include transition-duration(.5 s);
+	&.good.show {
+		@include background-image(linear-gradient($forth3 , lighten($forth4, 10%)));
+		color: #FFF;
+	}
 	&.bad.show {
 		@include background-image(linear-gradient($danger, darken($danger, 10%)));
 		color: #FFF;
@@ -301,21 +338,4 @@ messagebox {
 		right: 5px;
 		font-weight: bold;
 	}
-}
-
-
-body[data=loggedin] logo {
-	display: inline;
-	left: 0px;
-	margin: 0;
-	position: relative;
-	top: 11px;
-}
-
-menu > a.title {
-	background-image: linear-gradient(#468E8A 0%, #3E7D7A 100%);
-	font-size: 2em;
-	text-align: center;
-	margin-bottom: 10px;
-
 }

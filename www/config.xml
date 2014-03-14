@@ -11,7 +11,7 @@
         Sex Diaries
     </author>
 
-    <preference name="phonegap-version" value="3.3.0" />
+    <preference name="phonegap-version" value="3.4.0" />
 
     <!--/////////////////////////////////////////////////
                      Features to be added

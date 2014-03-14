@@ -15,7 +15,7 @@ define([
 		el: 'page',
 		events: {
 			'keyup #searchwho': 'searchWho',
-			'click addContact': 'openAddContact',
+//			'click addContact': 'openAddContact',
 			'click result': 'selectSearchResults',
 		},
 		template: JST['app/www/js/templates/details/who.ejs'],
@@ -71,14 +71,16 @@ define([
 			}
 		},
 		render: function () {
-			myself = this;
 			this.$el.html(this.template);
+
+			//Add click event for the plus
+			$('html').on('click', '.who add', function(){
+				SD.pageLoad('whoadd');
+			});
+
 			$('save').addClass('disabled');
 			SD.setTitle('Who was involved?');
-		},
-		openAddContact: function(){
-			SD.pageLoad('whoadd');
-		},
+		}
 	});
 	return who;
 });
