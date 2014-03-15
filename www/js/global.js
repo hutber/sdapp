@@ -36,6 +36,7 @@ Bind C to be alert on mobile console.log in desktop
 	} else {
 		c = function (msg) {
 			debug(msg);
+			console.info(msg);
 		};
 	}
 

@@ -44,7 +44,7 @@
 			font-family: $sdFont;
 			display: block;
 			@include clearfix();
-			padding: 12px 0;
+			padding: 12px 10px;
 			&:after {
 				border-bottom: dotted 2px $primary3;
 				position: absolute;
@@ -68,4 +68,37 @@
 			}
 		}
 	}
+
+	// #Graphs -------------------------------------------------------------------
+	.royalSlider {
+		min-height: 630px;
+	}
+	.minigraphs {
+		@include clearfix;
+		.miniGraph {
+			float: left;
+			width: 33.3%;
+		}
+	}
+
+	// #Mini Icons -------------------------------------------------------------------
+	.miniIcons {
+		h2 {
+			margin: 0 0 13px;
+		}
+		margin: 0.4em 0;
+		@include pie-clearfix;
+		span {
+			display: block;
+			margin-top: 7px;
+		}
+		div {
+			float: left;
+			width: 25%;
+		}
+		i {
+			font-size: 2.5em;
+		}
+	}
+
 }

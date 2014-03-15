@@ -10,6 +10,16 @@ define([
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
 
+	function createData (object, type) {
+		var tempType = [];
+			tempType.name = type,
+			tempType.data = [];
+		object[type].forEach(function(me){
+			tempType.data.push(parseInt(me.numberof, 10));
+		});
+		return tempType;
+	}
+
 	//set up homeview
 	var profile = SD.defaultView.extend({
 		el: 'page',
@@ -21,6 +31,7 @@ define([
 
 			//# Set up JST variables ------------------------------------------------------
 			var data = {
+				youtotal:SD.TOTALSEXNUMBERS,
 				you:SD.SEXNUMBERS,
 				world:SD.GLOBALSEXNUMBERS
 			};
@@ -29,16 +40,293 @@ define([
 			this.$el.html(this.template(data));
 			SD.setTitle('Sex Overview');
 
-			//Resize the graph
-			var wantedWidth = $('body').outerWidth(),
-				wantedHeight = $('content').outerHeight()/3,
-				graph = $('#sexpeak');
+			var sliderHeight = $('.graphs').outerHeight();
 
-			graph.attr({
-				'height': wantedWidth-30,
+			/************************************************
+			================Graph Page 2 ====================
+			************************************************/
+			//Resize the graph
+			var wantedWidth = $('body').outerWidth()/1.05,
+				graph = $('#sexoverview');
+
+			graph.css({
+				'height': $('body').outerHeight()/2,
 				'width' : wantedWidth
 			});
 
+			// #Graphs Global Vars --------------------------------------------------
+			var areaData = [];
+
+			// #set up vars --------------------------------------------------
+			var SexByMonthData = JSON.parse(sessionStorage.sexesByMonth), details = ['Wank','Hands','Oral','Sex','Anything'];
+
+			// #build new arrays for graph --------------------------------------------------
+			details.forEach(function(me){
+				var details = createData(SexByMonthData, me);
+				if(details.data.length>0)
+				areaData.push(details);
+			});
+
+			// #Build Months In Results --------------------------------------------------
+			var highestRow = null, highestObject = null;
+			for(var key in SexByMonthData){
+				if(SexByMonthData[key].length > highestRow){
+					highestObject = key;
+					highestRow = SexByMonthData[key].length;
+				}
+			}
+
+			// #Build month names --------------------------------------------------
+			var lineLabelsDate = [];
+			for(var i=0; i<highestRow; i++){
+				lineLabelsDate.push(Date.today().addMonths(-i).toString("MMM"));
+			}
+			lineLabelsDate.reverse();
+
+			var colors = [
+				'rgba(255, 255, 255, 0.60)',
+				'rgba(223, 222, 255, 0.60)',
+				'#f1c40f',
+				'rgba(220, 134, 177, 0.6)',
+				'rgba(0, 0, 0, 0.60)',
+			];
+
+			graph.highcharts({
+				chart: {
+					backgroundColor: 'transparent',
+					borderColor: '#272C33',
+					type: 'spline',
+					spacingLeft: 0,
+					spacingTop: 20,
+					marginLeft: 30,
+					spacingRight: 0,
+					spacingBottom: 17,
+					plotBorderWidth: 0,
+				},
+				title:{
+					text:''
+				},
+				credits: {
+					enabled: false
+				},
+				colors: colors,
+				plotOptions: {
+					spline:{
+						lineWidth: 4,
+						states: {
+							hover: {
+								lineWidth: 5
+							}
+						},
+						marker: {
+							enabled: false
+						},
+						connectNulls: true,
+					}
+				},
+				legend: {
+					layout: 'vertical',
+					align: 'right',
+					verticalAlign: 'top',
+					x: 0,
+					y: 0,
+					floating: true,
+					backgroundColor: 'transparent',
+					borderColor: 'transparent',
+					itemStyle: {
+						color: '#FFF',
+						fontFamily: 'sdFont',
+						padding: '14px',
+					}
+				},
+				tooltip: {
+					backgroundColor: 'rgba(255, 255, 255, 0.5)',
+					borderColor: '#75B4B1',
+					borderRadius: '2',
+					shadow: false,
+					style: {
+						color: '#75B4B1',
+						fontSize: '14px',
+						padding: '8px',
+						fontFamily: 'sdFont',
+					},
+				},
+				xAxis: {
+					lineColor: '#FFFFFF',
+					lineWidth: 1,
+					dateTimeLabelFormats: true,
+					title: {
+						text:'',
+					},
+					ordinal: false,
+					gridLineColor: 'transparent',
+					categories: lineLabelsDate,
+					labels:  {
+						overflow: 'justify',
+						style: {
+							color: '#fff',
+							fontFamily: 'sdFont'
+						}
+					}
+				},
+				yAxis: {
+					lineColor: '#FFFFFF',
+					lineWidth: 1,
+					gridLineColor: 'transparent',
+					min: 0,
+					title: {
+						text:'',
+					},
+					labels: {
+						style: {
+							color: '#fff',
+							fontFamily: 'sdFont'
+						},
+						formatter: function() {
+							return this.value;
+						}
+					},
+					plotBands: [
+						{
+							from: 0,
+							to: 10,
+							color: 'rgba(68, 170, 213, 0.1)',
+							label: {
+								text: 'Beginner',
+								style: {
+									color: '#FFF'
+								}
+							}
+						},
+							{
+							from: 10,
+							to: 20,
+							label: {
+								text: 'Average Joe',
+								style: {
+									color: '#FFF'
+								}
+							}
+						},
+							{
+							from: 20,
+							to: 30,
+							color: 'rgba(68, 170, 213, 0.1)',
+							label: {
+								text: 'Player?',
+								style: {
+									color: '#FFF'
+								}
+							}
+						},
+						{
+							from: 30,
+							to: 40,
+							label: {
+								text: 'Fucking Rock Star!',
+								style: {
+									color: '#FFF'
+								}
+							}
+						},
+						{
+							from: 40,
+							to: 60,
+							color: 'rgba(68, 170, 213, 0.1)',
+							label: {
+								text: 'Ok fuck off now',
+								style: {
+									color: '#FFF'
+								}
+							}
+						},
+						{
+							from: 60,
+							to: 600,
+							label: {
+								text: 'Porn Star',
+								style: {
+									color: '#FFF'
+								}
+							}
+						}
+					]
+				},
+				series: areaData
+			});
+			/************************************************
+			================Mini Graphs====================
+			************************************************/
+			// #Wanks --------------------------------------------------
+			var miniPies = ['Wank','Oral','Sex'];
+
+			miniPies.forEach(function(me){
+				var selector = $('#'+me+'PerMonth');
+
+				selector.css({
+					'height': $('.minigraphs').outerWidth()/2.6,
+					'width': $('.minigraphs').outerWidth()/2.9
+				});
+				var totalWanks = Math.round(100 * SD.SEXNUMBERS[me]/SD.SEXNUMBERS.total);
+
+				//Now we init the graph
+				selector.highcharts({
+					chart: {
+						backgroundColor: 'transparent',
+						plotBackgroundColor: null,
+						plotShadow: false,
+						marginLeft: 0,
+						marginTop: 0,
+						spacingLeft: 0,
+						spacingRight: 0,
+						spacingBottom: 30,
+						plotBorderWidth: 0,
+//						height: selector.outerWidth(),
+//						width: selector.outerWidth()+30,
+					},
+					credits: {
+						enabled: false
+					},
+					colors: colors,
+					title: {
+						text: totalWanks+'% '+ me,
+						style: {
+							fontFamily: 'sdFont',
+							fontSize: '16px',
+							color: '#FFF',
+						},
+						verticalAlign: 'bottom',
+					},
+					plotOptions: {
+						pie: {
+							dataLabels: {
+								enabled: false,
+								distance: -50,
+								style: {
+									fontWeight: 'bold',
+									color: 'white',
+									textShadow: '0px 1px 2px black'
+								}
+							},
+//						center: ['50%', '50%']
+						}
+					},
+					tooltip: {
+						enabled: false
+					},
+					series: [{
+						type: 'pie',
+						name: 'Browser share',
+//					innerSize: '50%',
+						data: [
+							['Total Wanks',   totalWanks],
+							['All Sexes', SD.TOTALSEXNUMBERS.total],
+						]
+					}]
+				});
+			});
+
+			//Init slider
 			$('.profile .royalSlider').royalSlider({ //Set up slider
 				controlNavigationSpacing: 10,
 				controlNavigation: 'bullets',
@@ -46,120 +334,6 @@ define([
 				arrowsNav: false,
 				keyboardNavEnabled: true,
 				navigateByClick: false,
-				block: {
-					delay: 400
-				}
-			});
-
-
-			//Graphs Global Vars
-			var allDates = [];
-
-			// #All Rows
-			var SexByMonthData = JSON.parse(sessionStorage.sexesByMonth);
-			// #Set up Wank Rows --------------------------------------------------
-			var Wank = {
-					name: 'Wank',
-					data: []
-				},
-				Hands = {
-					name: 'Hands',
-					data: []
-				},
-				Oral = {
-					name: 'Oral',
-					data: []
-				},
-				Sex = {
-					name: 'Sex',
-					data: []
-				},
-				Anything = {
-					name: 'Anything',
-					data: []
-				};
-			SexByMonthData.Wank.forEach(function(me){
-				Wank.data.push(parseInt(me.months, 10));
-			});
-			SexByMonthData.Hands.forEach(function(me){
-				Hands.data.push(parseInt(me.months, 10));
-			});
-			SexByMonthData.Oral.forEach(function(me){
-				Oral.data.push(parseInt(me.months, 10));
-			});
-			SexByMonthData.Sex.forEach(function(me){
-				Sex.data.push(parseInt(me.months, 10));
-			});
-			SexByMonthData.Anything.forEach(function(me){
-				Anything.data.push(parseInt(me.months, 10));
-			});
-			// #Set Array used for Line Graph --------------------------------------------------
-//			var lineGraphData = [], lineLabelsDate = [];
-//			.forEach(function(me){
-//				lineLabelsDate.push(Date.today().set({ month: me.date-1}).toString("MMM"));
-//				lineGraphData.push(me.months);
-//			});
-//
-//			c(lineLabelsDate);
-//			c(lineGraphData);
-
-			$('#container').highcharts({
-				chart: {
-					backgroundColor: '#8DC5C1',
-					type: 'area',
-					spacingLeft: 0,
-//					marginLeft: 15,
-					spacingRight: 0,
-					borderColor: '#BBEEB8'
-				},
-				colors: [
-					'#7B91C2',
-					'#FEB0B2',
-					'#B3C2E1',
-					'#28437E',
-					'#BBEEB8',
-					'#237774',
-					'#6CB7B4',
-					'#A3B6E1',
-					'#AADBD9',
-					'#697692',
-					'#2F8F2A',
-					'#BE8485',
-					'#A53134',
-					'#5F8988',
-					'#86DC82',
-					'#75A572',
-					'#A8EEA5',
-					'#98DBD8',
-					'#FFDC96',
-					'#BFAB84',
-					'#A67E31',
-					'#FFE4B1',
-					'#FFECC6',
-					'#FD9698',
-					'#FEC5C6',
-				],
-				xAxis: {
-					title: {
-						text:''
-					},
-					labels: {
-						formatter: function() {
-							return this.value; // clean, unformatted number for year
-						}
-					}
-				},
-				credits: {
-					enabled: false
-				},
-				yAxis: {
-					labels: {
-						formatter: function() {
-							return this.value;
-						}
-					}
-				},
-				series: [Wank,Hands, Oral, Sex, Anything]
 			});
 		},
 	});

@@ -44,6 +44,7 @@ Globals
 			location: [false, 'Click to get your location'],
 			where: {},
 		},
+		TOTALSEXNUMBERS: {},
 		SEXNUMBERS: {},
 		GLOBALSEXNUMBERS: {},
 		WHO: null,
@@ -302,31 +303,38 @@ Networking functions
 			if(sessionStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
 				this.convert(sessionStorage.SEXNUMBERS, SD.SEXNUMBERS);
 			}
+			if(sessionStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
+				this.convert(sessionStorage.TOTALSEXNUMBERS, SD.TOTALSEXNUMBERS);
+			}
 			if(sessionStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
 				this.convert(sessionStorage.GLOBALSEXNUMBERS, SD.GLOBALSEXNUMBERS);
 			}
 		},
 		convert: function(item, target){
 			JSON.parse(item).forEach(function(me){
-				var sexName = me.sex,
-					sexNumber = +me.no;
+				if(typeof me==="object"){
+					var sexName = me.sex,
+						sexNumber = +me.no;
 
-				switch (sexName){
-					case "1":
-						target.Wank = sexNumber;
-						break;
-					case "2":
-						target.Hands = sexNumber;
-						break;
-					case "3":
-						target.Oral = sexNumber;
-						break;
-					case "4":
-						target.Sex = sexNumber;
-						break;
-					case "5":
-						target.Anything = sexNumber;
-						break;
+					switch (sexName){
+						case "1":
+							target.Wank = sexNumber;
+							break;
+						case "2":
+							target.Hands = sexNumber;
+							break;
+						case "3":
+							target.Oral = sexNumber;
+							break;
+						case "4":
+							target.Sex = sexNumber;
+							break;
+						case "5":
+							target.Anything = sexNumber;
+							break;
+					}
+				}else{
+					target.total = me;
 				}
 			});
 		}

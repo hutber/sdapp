@@ -1,5 +1,32 @@
 <div class="royalSlider rsDefault">
-	<div id="container" style="width:100%; height:400px;"></div>
+	<div class="graphs">
+		<div id="sexoverview"></div>
+		<div class="minigraphs">
+			<h2>You Are...</h2>
+			<div class="miniGraph"><div id="WankPerMonth"></div></div>
+			<div class="miniGraph"><div id="OralPerMonth"></div></div>
+			<div class="miniGraph"><div id="SexPerMonth"></div></div>
+		</div>
+		<div class="miniIcons">
+			<h2>Top stats from this month</h2>
+		    <div class="user">
+				<i class="icon-user"></i>
+				<span>Stacey</span>
+		    </div>
+		    <div class="location">
+				<i class="icon-location"></i>
+				<span>America</span>
+		    </div>
+		    <div class="where">
+				<i class="icon-map"></i>
+				<span>McDonalds Toilet</span>
+		    </div>
+		    <div class="time">
+				<i class="icon-clock"></i>
+				<span>18:00 - 19:00</span>
+		    </div>
+		</div>
+	</div>
 	<div class="profilehome">
 		<div class="titlebox">
 			<div class="you"><span>You</span></div>
@@ -8,50 +35,50 @@
 		</div>
 		<div class="stats">
 			<item>
-				<you><%= data.you.Wank+data.you.Hands+data.you.Oral+data.you.Sex+data.you.Anything %></you>
+				<you><%= data.youtotal.total %></you>
 				<type>Total Sexes</type>
 				<theworld><%= data.world.Wank+data.world.Hands+data.world.Oral+data.world.Sex+data.world.Anything+123112 %></theworld>
 			</item>
 			<item>
-				<you><%= data.you.Wank %></you>
+				<you><%= data.youtotal.Wank %></you>
 				<type>Self Sex’d</type>
 				<theworld><%= data.world.Wank+12112 %></theworld>
 			</item>
 			<item>
-				<you><%= data.you.Hands %></you>
+				<you><%= data.youtotal.Hands %></you>
 				<type>Handed Borrowed</type>
-				<theworld><%= data.world.Hands+12112 %></theworld>
+				<theworld><%= data.world.Hands+1211 %></theworld>
 			</item>
 			<item>
-				<you><%= data.you.Oral %></you>
+				<you><%= data.youtotal.Oral %></you>
 				<type>Licked/Sucked</type>
-				<theworld><%= data.world.Oral+12112 %></theworld>
+				<theworld><%= data.world.Oral+9122 %></theworld>
 			</item>
 			<item>
-				<you><%= data.you.Sex %></you>
+				<you><%= data.youtotal.Sex %></you>
 				<type>Sex</type>
-				<theworld><%= data.world.Sex+12112 %></theworld>
+				<theworld><%= data.world.Sex+21112 %></theworld>
 			</item>
 			<item>
-				<you><%= data.you.Anything %></you>
+				<you><%= data.youtotal.Anything %></you>
 				<type>Everything else</type>
-				<theworld><%= data.world.Anything+12112 %></theworld>
+				<theworld><%= data.world.Anything+1314 %></theworld>
 			</item>
-			<item>
-				<you><%= data.world.Wank+12112 %></you>
-				<type>Popular Location</type>
-				<theworld><%= data.world.Wank+12112 %></theworld>
-			</item>
-			<item>
-				<you>123</you>
-				<type>Different Partners</type>
-				<theworld><%= data.world.Wank+12112 %></theworld>
-			</item>
-			<item>
-				<you>123</you>
-				<type>Wanks/Sex</type>
-				<theworld><%= data.world.Wank+12112 %></theworld>
-			</item>
+			<!--<item>-->
+				<!--<you><%= data.world.Wank+12112 %></you>-->
+				<!--<type>Popular Location</type>-->
+				<!--<theworld><%= data.world.Wank+12112 %></theworld>-->
+			<!--</item>-->
+			<!--<item>-->
+				<!--<you>123</you>-->
+				<!--<type>Different Partners</type>-->
+				<!--<theworld><%= data.world.Wank+12112 %></theworld>-->
+			<!--</item>-->
+			<!--<item>-->
+				<!--<you>123</you>-->
+				<!--<type>Wanks/Sex</type>-->
+				<!--<theworld><%= data.world.Wank+12112 %></theworld>-->
+			<!--</item>-->
 		</div>
 		<bg></bg>
 		<menu>

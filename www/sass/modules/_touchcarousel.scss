@@ -7,7 +7,7 @@
 	direction: ltr;
 }
 .royalSlider > * {
-	float: left;
+//	float: left;
 }
 
 .rsWebkit3d .rsSlide {
@@ -348,7 +348,7 @@ img.rsImg {
 ****************/
 
 .rsDefault .rsBullets {
-	position: absolute;
+	position: fixed;
 	z-index: 35;
 	left: 0;
 	bottom: 0;
@@ -357,7 +357,6 @@ img.rsImg {
 	margin: 0 auto;
 
 	text-align: center;
-	line-height: 32px;
 	overflow: hidden;
 }
 .rsDefault .rsBullet {
@@ -366,7 +365,7 @@ img.rsImg {
 	display: inline-block;
 	*display:inline;
 	*zoom:1;
-	padding: 6px 5px 6px;
+	padding: 0px 6px;
 }
 .rsDefault .rsBullet span {
 	display: block;
