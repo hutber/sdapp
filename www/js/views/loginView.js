@@ -43,11 +43,6 @@ define([
 			if(noerror){
 				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
-				alert(SD.ENVIROMENT);
-				alert(SD.HTTP);
-				alert(SD.AJAX);
-				alert(SD.SEXDEFAULTS.url);
-				alert(SD.AJAX+'users/login');
 				$.ajax({
 					url: SD.AJAX+'users/login',
 					type: 'POST',
