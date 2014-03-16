@@ -288,7 +288,7 @@ Networking functions
 			states[Connection.CELL]     = 'Cell generic connection';
 			states[Connection.NONE]     = 'No network connection';
 
-			c('Connection type: ' + states[networkState]);
+//			c('Connection type: ' + states[networkState]);
 		}else{
 			c('Connection not ready yet');
 		}
