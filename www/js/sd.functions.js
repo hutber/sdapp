@@ -270,7 +270,7 @@ Display functions
 		alert('code: '    + error.code    + '\n' +
 			'message: ' + error.message + '\n');
 		SD.overlay.hideme();
-	}
+	};
 /*==================================================
 Networking functions
 ================================================== */

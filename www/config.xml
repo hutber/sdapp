@@ -25,17 +25,24 @@
     <feature name="Geolocation"><param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" /></feature>
 
     <!--/////////////////////////////////////////////////
+                            Plugins
+     /////////////////////////////////////////////////-->
+    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <gap:plugin name="org.apache.cordova.network-information" />
+    <gap:plugin name="org.apache.cordova.dialogs" />
+    <gap:plugin name="org.apache.cordova.vibration" />
+    <gap:plugin name="org.apache.cordova.geolocation" />
+
+    <!--/////////////////////////////////////////////////
                      Phone Preferences
      /////////////////////////////////////////////////-->
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
-    <!--<preference name="fullscreen" value="true" />-->
     <preference name="webviewbounce" value="true" />
     <preference name="prerendered-icon" value="false" />
     <preference name="DisallowOverscroll" value="true"/>
     <preference name="stay-in-webview" value="false" />
-    <!--<preference name="ios-statusbarstyle" value="black-opaque" />-->
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="show-splash-screen-spinner" value="true" />
@@ -44,6 +51,8 @@
     <preference name="android-minSdkVersion" value="7" />
     <preference name="android-installLocation" value="auto" />
     <preference name="EnableViewportScale" value="true" />
+    <!--<preference name="fullscreen" value="true" />-->
+    <!--<preference name="ios-statusbarstyle" value="black-opaque" />-->
 
     <!--/////////////////////////////////////////////////
                            Icons
