@@ -32,6 +32,7 @@ Bind C to be alert on mobile console.log in desktop
 	if (typeof console === "object" && typeof console.error === "function" && !SD.isMobile) {
 		c = function (msg) {
 			console.info(msg);
+			debug(msg);
 		};
 	} else {
 		c = function (msg) {
