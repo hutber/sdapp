@@ -23,6 +23,8 @@ $container-width: 100%;
 //Add classes here to turn off footer
 $footerHide : ".profile";
 
+$menuAnimateTime : .2s;
+
 //Button definers
 $hideMenuShowBack : ".where, .who, .whoadd";
 $showPlus : ".who";
@@ -70,10 +72,8 @@ body {
 	width: 100%;
 	position: absolute;
 	overflow: hidden;
-//	border: 3px solid black;
 	text-align: center;
 	background-color: $bgColor;
-//	@include transition-duration(1.5s);
 }
 
 //Hack to stop landscape
@@ -103,6 +103,10 @@ debug {
 header {
 	padding: 8px 0;
 	@include clearfix();
+	@include transition-duration($menuAnimateTime);
+	.menuOpen & {
+		@include transform(translate(85%, 0));
+	}
 	> * {
 		height: 100%;
 	}
@@ -172,19 +176,15 @@ header {
 // #Menu -------------------------------------------------------------------
 menu {
 	position: fixed;
-	left: -85%;
 	width: 85%;
 	height: 100%;
 	z-index: 2;
-	overflow-x: hidden;
-	@include transition-duration(.2s);
-	@include ellipsis();
-	background-color: $lightgreen; // Old browsers
-	@include filter-gradient($turquoise, $turquoise, horizontal); // IE6-9
+	@include transform(translate(-100%, 0));
+	@include transition-duration($menuAnimateTime);
 	@include background-image(linear-gradient(darken($turquoise, 20%) 0%,darken($turquoise, 25%) 100%));
 
 	.menuOpen & {
-		left: 0%;
+		@include transform(translate(0, 0));
 	}
 
 	i {
@@ -192,14 +192,17 @@ menu {
 		padding: 2px 6px;
 	}
 
+	h1 {
+		font-size: 2em;
+	}
+
 	> a {
 		color: #FFF;
+		@include ellipsis();
 		display: block;
 		font-size: 1.3em;
 		line-height: 1.5em;
 		text-align: left;
-//		font-weight: normal;
-//		font-family: $sdFont;
 		&.selected {
 			background: $bgColor;
 			color: $textColorAlt;
@@ -225,12 +228,7 @@ menu {
 
 // #Shell -------------------------------------------------------------------
 	shell {
-		left: 0;
-		position: relative;
 		@include transition-duration(.2s);
-		.menuOpen & {
-			left: 85%;
-		}
 	}
 	// #content -------------------------------------------------------------------
 	content {
@@ -238,7 +236,6 @@ menu {
 		padding: 0;
 		width: 100%;
 		height: 100%;
-//		overflow-x: hidden;
 		// #page -------------------------------------------------------------------
 		page {
 			display: block;
@@ -250,6 +247,10 @@ menu {
 			overflow-y: auto;
 			-webkit-overflow-scrolling:touch;
 			@include pie-clearfix;
+			@include transition-duration($menuAnimateTime);
+			.menuOpen & {
+				@include transform(translate(85%, 0));
+			}
 		}
 	}
 
@@ -286,6 +287,10 @@ footer, messagebox {
 //	min-height: 70px;
 	display: block;
 	position: relative;
+	@include transition-duration($menuAnimateTime);
+	.menuOpen & {
+		@include transform(translate(85%, 0));
+	}
 
 	> * {
 		display: none; //default, sexnav is turned off

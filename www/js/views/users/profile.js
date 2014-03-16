@@ -40,7 +40,27 @@ define([
 			this.$el.html(this.template(data));
 			SD.setTitle('Sex Overview');
 
-			var sliderHeight = $('.graphs').outerHeight();
+			//Remove style hieght
+			$('page').css('height', '93%');
+
+			//Init slider
+			$('.profile .royalSlider').royalSlider({ //Set up slider
+				controlNavigationSpacing: 10,
+				controlNavigation: 'bullets',
+				loop: true,
+				arrowsNav: false,
+				keyboardNavEnabled: true,
+				navigateByClick: false,
+//				autoHeight: true,
+//				autoScaleSliderHeight: $('page').outerHeight(),
+				block: {
+					delay: 400
+				}
+			});
+
+//			//Minus the height of the bullets
+//			var page = $('page');
+//			page.height(page.height()-$('.rsBullets').outerHeight());
 
 			/************************************************
 			================Graph Page 2 ====================
@@ -100,7 +120,7 @@ define([
 					spacingTop: 20,
 					marginLeft: 30,
 					spacingRight: 0,
-					spacingBottom: 17,
+					spacingBottom: 30,
 					plotBorderWidth: 0,
 				},
 				title:{
@@ -324,16 +344,6 @@ define([
 						]
 					}]
 				});
-			});
-
-			//Init slider
-			$('.profile .royalSlider').royalSlider({ //Set up slider
-				controlNavigationSpacing: 10,
-				controlNavigation: 'bullets',
-				loop: true,
-				arrowsNav: false,
-				keyboardNavEnabled: true,
-				navigateByClick: false,
 			});
 		},
 	});
