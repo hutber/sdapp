@@ -40,6 +40,14 @@ define([
 			this.$el.html(this.template(data));
 			SD.setTitle('Sex Overview');
 
+			$('monthpicker').flowtype({
+				minFont   : 12,
+				maxFont   : 18,
+				fontRatio : 20
+			});
+
+			//Remove style hieght
+//			$('page').css('height', '93%');
 
 			//Init slider
 			$('.profile .royalSlider').royalSlider({ //Set up slider
@@ -49,20 +57,26 @@ define([
 				arrowsNav: false,
 				keyboardNavEnabled: true,
 				navigateByClick: false,
+//				autoHeight: true,
+//				autoScaleSliderHeight: $('page').outerHeight(),
 				block: {
 					delay: 400
 				}
 			});
 
+//			//Minus the height of the bullets
+//			var page = $('page');
+//			page.height(page.height()-$('.rsBullets').outerHeight());
+
 			/************************************************
 			================Graph Page 2 ====================
 			************************************************/
 			//Resize the graph
-			var wantedWidth = $('body').outerWidth()/1.1,
+			var wantedWidth = $('body').outerWidth()/1.05,
 				graph = $('#sexoverview');
 
 			graph.css({
-				'height': wantedWidth,
+				'height': $('page').outerHeight()-30,
 				'width' : wantedWidth
 			});
 
@@ -109,9 +123,10 @@ define([
 					borderColor: '#272C33',
 					type: 'spline',
 					spacingLeft: 0,
-					marginLeft: 20,
+					spacingTop: 20,
+					marginLeft: 30,
 					spacingRight: 0,
-					spacingBottom: 10,
+					spacingBottom: 30,
 					plotBorderWidth: 0,
 				},
 				title:{
@@ -151,7 +166,7 @@ define([
 					}
 				},
 				tooltip: {
-					backgroundColor: 'rgba(255, 255, 255, 0.5)',
+					backgroundColor: 'rgba(255, 255, 255, 0.65)',
 					borderColor: '#75B4B1',
 					borderRadius: '2',
 					shadow: false,
@@ -160,6 +175,7 @@ define([
 						fontSize: '14px',
 						padding: '8px',
 						fontFamily: 'sdFont',
+						textShadow: '1px 1px 1px #000'
 					},
 				},
 				xAxis: {
@@ -169,8 +185,8 @@ define([
 					title: {
 						text:'',
 					},
-					ordinal: false,
-					gridLineColor: 'transparent',
+//					ordinal: false,
+					gridLineColor: 'rgba(196, 228, 228, 0.75)',
 					categories: lineLabelsDate,
 					labels:  {
 						overflow: 'justify',
@@ -183,7 +199,7 @@ define([
 				yAxis: {
 					lineColor: '#FFFFFF',
 					lineWidth: 1,
-					gridLineColor: 'transparent',
+					gridLineColor: 'rgba(196, 228, 228, 0.75)',
 					min: 0,
 					title: {
 						text:'',
@@ -275,7 +291,8 @@ define([
 				var selector = $('#'+me+'PerMonth');
 
 				selector.css({
-					'height': selector.outerWidth()
+					'height': $('.minigraphs').outerWidth()/2.6,
+					'width': $('.minigraphs').outerWidth()/2.9
 				});
 				var totalWanks = Math.round(100 * SD.SEXNUMBERS[me]/SD.SEXNUMBERS.total);
 
@@ -284,8 +301,15 @@ define([
 					chart: {
 						backgroundColor: 'transparent',
 						plotBackgroundColor: null,
+						plotShadow: false,
+						marginLeft: 0,
+						marginTop: 0,
+						spacingLeft: 0,
+						spacingRight: 0,
+						spacingBottom: 30,
 						plotBorderWidth: 0,
-						plotShadow: false
+//						height: selector.outerWidth(),
+//						width: selector.outerWidth()+30,
 					},
 					credits: {
 						enabled: false
@@ -295,7 +319,7 @@ define([
 						text: totalWanks+'% '+ me,
 						style: {
 							fontFamily: 'sdFont',
-							fontSize: '22px',
+							fontSize: '16px',
 							color: '#FFF',
 						},
 						verticalAlign: 'bottom',
@@ -315,16 +339,7 @@ define([
 						}
 					},
 					tooltip: {
-						backgroundColor: 'rgba(255, 255, 255, 0.5)',
-						borderColor: '#75B4B1',
-						borderRadius: '2',
-						shadow: false,
-						style: {
-							color: '#75B4B1',
-							fontSize: '14px',
-							padding: '8px',
-							fontFamily: 'sdFont',
-						},
+						enabled: false
 					},
 					series: [{
 						type: 'pie',
