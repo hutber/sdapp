@@ -348,10 +348,10 @@ img.rsImg {
 ****************/
 
 .rsDefault .rsBullets {
-	position: fixed;
+	position: absolute;
 	z-index: 35;
 	left: 0;
-	bottom: 0;
+	bottom: 10px;
 	width: 100%;
 	height: auto;
 	margin: 0 auto;

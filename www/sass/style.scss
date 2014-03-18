@@ -21,7 +21,7 @@ $container-width: 100%;
 @include border-box-sizing;
 
 //Add classes here to turn off footer
-$footerHide : ".profile";
+$footerHide : ".selector, .login, .signup, .forgotten";
 
 $menuAnimateTime : .2s;
 
@@ -297,8 +297,10 @@ footer, messagebox {
 	}
 }
 
-#{$footerHide} footer {
-	display: none;
+#{$footerHide} {
+	footer {
+		display: none;
+	}
 }
 
 // #Message Box -------------------------------------------------------------------

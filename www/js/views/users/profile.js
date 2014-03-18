@@ -40,8 +40,14 @@ define([
 			this.$el.html(this.template(data));
 			SD.setTitle('Sex Overview');
 
+			$('monthpicker').flowtype({
+				minFont   : 12,
+				maxFont   : 18,
+				fontRatio : 20
+			});
+
 			//Remove style hieght
-			$('page').css('height', '93%');
+//			$('page').css('height', '93%');
 
 			//Init slider
 			$('.profile .royalSlider').royalSlider({ //Set up slider
@@ -70,7 +76,7 @@ define([
 				graph = $('#sexoverview');
 
 			graph.css({
-				'height': $('body').outerHeight()/2,
+				'height': $('page').outerHeight()-30,
 				'width' : wantedWidth
 			});
 
@@ -160,7 +166,7 @@ define([
 					}
 				},
 				tooltip: {
-					backgroundColor: 'rgba(255, 255, 255, 0.5)',
+					backgroundColor: 'rgba(255, 255, 255, 0.65)',
 					borderColor: '#75B4B1',
 					borderRadius: '2',
 					shadow: false,
@@ -169,6 +175,7 @@ define([
 						fontSize: '14px',
 						padding: '8px',
 						fontFamily: 'sdFont',
+						textShadow: '1px 1px 1px #000'
 					},
 				},
 				xAxis: {
@@ -178,8 +185,8 @@ define([
 					title: {
 						text:'',
 					},
-					ordinal: false,
-					gridLineColor: 'transparent',
+//					ordinal: false,
+					gridLineColor: 'rgba(196, 228, 228, 0.75)',
 					categories: lineLabelsDate,
 					labels:  {
 						overflow: 'justify',
@@ -192,7 +199,7 @@ define([
 				yAxis: {
 					lineColor: '#FFFFFF',
 					lineWidth: 1,
-					gridLineColor: 'transparent',
+					gridLineColor: 'rgba(196, 228, 228, 0.75)',
 					min: 0,
 					title: {
 						text:'',
