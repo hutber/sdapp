@@ -67,6 +67,7 @@
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="org.apache.cordova.geolocation" />
+    <gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" />
 
     <!-- Local Plugins are added here, the above is for phonegap build. -->
     <feature name="SplashScreen"><param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" /></feature>
@@ -74,6 +75,7 @@
     <feature name="Notification"><param name="android-package" value="org.apache.cordova.dialogs.Notification" /></feature>
     <feature name="Vibration"><param name="android-package" value="org.apache.cordova.vibration.Vibration" /></feature>
     <feature name="Geolocation"><param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" /></feature>
+    <feature name="SpinnerDialog"><param name="android-package" value="hu.dpal.phonegap.plugins.SpinnerDialog" /></feature>
 
 
     <!--/////////////////////////////////////////////////

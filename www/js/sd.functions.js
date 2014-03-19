@@ -99,11 +99,7 @@ Routes/Views
 ================================================== */
 
 SD.changeHeightofContent = function(){
-	if($('footer').is(':visible')){
-		SD.pageHeight = $('body').outerHeight() - ($('header').outerHeight() + $('footer').outerHeight());
-	}else{
-		SD.pageHeight = $('body').outerHeight() - ($('header').outerHeight());
-	}
+	SD.pageHeight = $('body').outerHeight() - ($('header').outerHeight() + $('footer').outerHeight());
 	$('page').css({height:SD.pageHeight});
 };
 
@@ -274,7 +270,7 @@ Display functions
 		alert('code: '    + error.code    + '\n' +
 			'message: ' + error.message + '\n');
 		SD.overlay.hideme();
-	};
+	}
 /*==================================================
 Networking functions
 ================================================== */
