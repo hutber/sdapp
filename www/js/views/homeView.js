@@ -17,7 +17,6 @@ define([
 			'app/www/js/templates/home.ejs'
 		],
         render: function () {
-			SD.convertSexNumbers.init();
 			SD.setTitle('SELECT SOME SEXYNESS');
 			this.$el.html(this.template);
 

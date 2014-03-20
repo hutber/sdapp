@@ -31,6 +31,7 @@ Bind C to be alert on mobile console.log in desktop
 	var c = false;
 	if (typeof console === "object" && typeof console.error === "function" && !SD.isMobile) {
 		c = function (msg) {
+			debug(msg); //TODO remove
 			console.info(msg);
 		};
 	} else {
@@ -51,3 +52,11 @@ Bind C to be alert on mobile console.log in desktop
 			return true;
 		};
 	}
+//// Show spinner dialog
+//window.plugins.spinnerDialog.show();
+//
+//// Show spinner dialog with message (only on Android)
+//window.plugins.spinnerDialog.show("title","message");
+//
+//// Hide spinner dialog
+//window.plugins.spinnerDialog.hide();

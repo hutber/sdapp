@@ -16,100 +16,101 @@ Table of Contents - Created by Hutber on 04/10/13.
 /*==================================================
  Require JS Config
 ==================================================*/
-	require.config({
-		shim: {
-			underscore: {
-				exports: '_'
-			},
-			backbone: {
-				deps: [
-					'underscore',
-					'jquery'
-				],
-				exports: 'Backbone'
-			},
-			jStorage: {
-				deps: ['jquery'],
-				exports: '$.jStorage'
-			},
-			date: {
-				exports: 'date'
-			},
-			sd: {
-				exports: 'SD'
-			},
-			core: {
-				deps: ['jquery']
-			},
-			JST: {
-				deps: ['underscore'],
-				exports: 'JST'
-			},
-			//Carousel items
-			slider: {
-				deps: ['jquery'],
-				exports: 'jQuery.fn.touchCarousel'
-			},
-			slidervisibleNearby: {
-				deps: ['slider'],
-				exports: 'jQuery.fn.visibleNearby'
-			},
-			sliderthumbnails: {
-				deps: ['slider'],
-				exports: 'jQuery.fn.thumbnails'
-			},
-			sliderCaption: {
-				deps: ['slider'],
-				exports: 'jQuery.fn.global-caption'
-			},
-			flowtype: {
-				deps: ['jquery'],
-				exports: 'jQuery.fn.flowtype'
-			},
-			mobiscroll: {
-				deps: ['jquery'],
-				exports: 'jQuery.fn.mobiscroll'
-			},
-			mobiscrollScroller: {
-				deps: ['jquery','mobiscroll']
-			},
-			mobiscrollDate: {
-				deps: ['jquery','mobiscrollScroller']
-			},
-			forms: {
-				deps: ['jquery']
-			},
-			highcharts : {
-				deps: ['jquery'],
-				exports: 'highcharts'
-			}
+require.config({
+	shim: {
+		underscore: {
+			exports: '_'
 		},
-		paths: {
-			jquery: 'libs/jquery.min',
-			backbone: 'libs/backbone-min',
-			underscore: 'libs/underscore-min',
-			jStorage: 'libs/plugins/jStorage',
-			slider: 'libs/plugins/jquery.royalslider',
-			flowtype: 'libs/plugins/flowtype',
-			mobiscroll: 'libs/plugins/date/mobiscroll.core',
-			mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
-			mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
-			forms: 'libs/plugins/hutber.forms',
-			highcharts: 'libs/plugins/highcharts',
-			date: 'libs/plugins/date',
-			core: 'core.functions',
-			sd : 'sd.functions',
-			dv : 'views/defaultView',
-			dsv : 'views/defaultSexView',
-			JST : 'templates'
+		backbone: {
+			deps: [
+				'underscore',
+				'jquery'
+			],
+			exports: 'Backbone'
+		},
+		jStorage: {
+			deps: ['jquery'],
+			exports: '$.jStorage'
+		},
+		date: {
+			exports: 'date'
+		},
+		sd: {
+			exports: 'SD'
+		},
+		core: {
+			deps: ['jquery']
+		},
+		JST: {
+			deps: ['underscore'],
+			exports: 'JST'
+		},
+		//Carousel items
+		slider: {
+			deps: ['jquery'],
+			exports: 'jQuery.fn.touchCarousel'
+		},
+		slidervisibleNearby: {
+			deps: ['slider'],
+			exports: 'jQuery.fn.visibleNearby'
+		},
+		sliderthumbnails: {
+			deps: ['slider'],
+			exports: 'jQuery.fn.thumbnails'
+		},
+		sliderCaption: {
+			deps: ['slider'],
+			exports: 'jQuery.fn.global-caption'
+		},
+		flowtype: {
+			deps: ['jquery'],
+			exports: 'jQuery.fn.flowtype'
+		},
+		mobiscroll: {
+			deps: ['jquery'],
+			exports: 'jQuery.fn.mobiscroll'
+		},
+		mobiscrollScroller: {
+			deps: ['jquery','mobiscroll']
+		},
+		mobiscrollDate: {
+			deps: ['jquery','mobiscrollScroller']
+		},
+		forms: {
+			deps: ['jquery']
+		},
+		highcharts : {
+			deps: ['jquery'],
+			exports: 'highcharts'
 		}
-	});
+	},
+	paths: {
+		jquery: 'libs/jquery.min',
+		backbone: 'libs/backbone-min',
+		underscore: 'libs/underscore-min',
+		jStorage: 'libs/plugins/jStorage',
+		slider: 'libs/plugins/jquery.royalslider',
+		flowtype: 'libs/plugins/flowtype',
+		fastclick: 'libs/plugins/FastClick',
+		mobiscroll: 'libs/plugins/date/mobiscroll.core',
+		mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
+		mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
+		forms: 'libs/plugins/hutber.forms',
+		highcharts: 'libs/plugins/highcharts',
+		date: 'libs/plugins/date',
+		core: 'core.functions',
+		sd : 'sd.functions',
+		dv : 'views/defaultView',
+		dsv : 'views/defaultSexView',
+		JST : 'templates'
+	}
+});
 
 /*==================================================
 Routers
 ==================================================*/
 // Requires ----------------
-	require([
+require([
 		'backbone',
 		'jStorage',
 // Routes ----------------
@@ -143,9 +144,16 @@ Routers
 		'views/other/shop',
 		'views/other/privacy',
 // Plugins --------------------,
+		'fastclick',
 		'flowtype',
 		'date'
 ], function () {
+
+//Try and make clicks faster
+window.addEventListener('load', function() {
+	FastClick.attach(document.body);
+}, false);
+
 /*==================================================
 set arguments to values for ease of reading arguments
 ================================================== */
