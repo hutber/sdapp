@@ -157,11 +157,12 @@ SD.addSex = {
 	},
 	save: function(){
 		if(sessionStorage.privateKey){
+			var saveSexDetails = SD.addSex.convertPhp();
 			$.ajax({
 				url: SD.AJAX+'add',
 				type: 'POST',
 				data: {
-					info: SD.addSex.convertPhp(),
+					info: saveSexDetails,
 					privateKey: sessionStorage.privateKey
 				},
 				error: function(data){
@@ -169,6 +170,10 @@ SD.addSex = {
 				},
 				success: function(data){
 					if(data===""){
+						//Update sex stats with new sex
+						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
@@ -348,13 +353,14 @@ Networking functions
 	Init for SD
 	================================================== */
 	SD.init = function () {
+
 		SD.globals(); //set up our global variables
 
 		/*==================================================
 		Load in scripts depending on which device we are.
 		================================================== */
 		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
-			$.getScript('phonegap.js', function( data, textStatus, jqxhr){
+			$.getScript('cordova.js', function( data, textStatus, jqxhr){
 //			c( "cordova was loaded." );
 				var s = document.createElement('script');
 				s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");

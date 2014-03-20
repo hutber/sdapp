@@ -81,11 +81,11 @@ define([
 							errorYes = false;
 						}
 
-						if(disabled && SD.SEXDEFAULTS.location[0]===false){
-							SD.message.showMessage('You know we can record where u fucking fucked, click it', 'notice');
-							me.removeClass('disabled');
-							errorYes = false;
-						}
+//						if(disabled && SD.SEXDEFAULTS.location[0]===false){
+//							SD.message.showMessage('You know we can record where u fucking fucked, click it', 'notice');
+//							me.removeClass('disabled');
+//							errorYes = false;
+//						}
 
 						if(disabled &&
 							SD.SEXDEFAULTS.where.length===0 || SD.SEXDEFAULTS.where==="" || typeof SD.SEXDEFAULTS.where=== "undefined"){
@@ -180,6 +180,9 @@ define([
 				if(typeof data === "undefined"){
 					data = SD.SEXDEFAULTS;
 				}
+
+				//Build up the sexnumbers, //TODO only for dev envoiment
+				SD.convertSexNumbers.init();
 
 				//----- The global sex render --------------------------------------------------
 				//update the website with the current view

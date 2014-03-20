@@ -28,7 +28,7 @@ define(function(){
 
   this["JST"]["app/www/js/templates/index.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<div><a href="#signup" class="btn signup"><i class="icon-pencil"></i>signup</a><a href="#login" class="btn"><i class="icon-login"></i>login</a></div>';return __p};
 
-  this["JST"]["app/www/js/templates/login/forgotten.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<div><form id="forgotten" name="forgotten" method="post" action=""><input name="email" type="email" id="email" size="50" placeholder="The email address please"/><input name="Submit" type="submit" value="Recover Lost Details...?" /></form><a href="#login">Already Signed Up?</a></div>';return __p};
+  this["JST"]["app/www/js/templates/login/forgotten.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<div><form id="forgotten" name="forgotten" method="post" action=""><input name="email" type="email" id="email" size="50" placeholder="The email address please"/><button class="btn" type="submit">Reset Password</button></form><a href="#login">Already Signed Up?</a></div>';return __p};
 
   this["JST"]["app/www/js/templates/login/login.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<div><form action="/" class="loginForm"><div class="control-group"><i class="icon-user"><input type="text" name="uname" placeholder="Email" value="testme"/></i></div><div class="control-group"><i class="icon-lock"><input type="password" name="pword" placeholder="Password" value="testmeout"/></i></div><button class="btn" type="submit">Login</button></form><div class="login"><a href="#signup">Sign Up</a><br><a href="#forgotten">Forgotten Details?</a></div></div>';return __p};
 
