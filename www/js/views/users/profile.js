@@ -40,33 +40,7 @@ define([
 			this.$el.html(this.template(data));
 			SD.setTitle('Sex Overview');
 
-			$('monthpicker').flowtype({
-				minFont   : 12,
-				maxFont   : 18,
-				fontRatio : 20
-			});
-
-			//Remove style hieght
-//			$('page').css('height', '93%');
-
-			//Init slider
-			$('.profile .royalSlider').royalSlider({ //Set up slider
-				controlNavigationSpacing: 10,
-				controlNavigation: 'bullets',
-				loop: true,
-				arrowsNav: false,
-				keyboardNavEnabled: true,
-				navigateByClick: false,
-//				autoHeight: true,
-//				autoScaleSliderHeight: $('page').outerHeight(),
-				block: {
-					delay: 400
-				}
-			});
-
-//			//Minus the height of the bullets
-//			var page = $('page');
-//			page.height(page.height()-$('.rsBullets').outerHeight());
+			var sliderHeight = $('.graphs').outerHeight();
 
 			/************************************************
 			================Graph Page 2 ====================
@@ -76,7 +50,7 @@ define([
 				graph = $('#sexoverview');
 
 			graph.css({
-				'height': $('page').outerHeight()-30,
+				'height': $('body').outerHeight()/2,
 				'width' : wantedWidth
 			});
 
@@ -126,7 +100,7 @@ define([
 					spacingTop: 20,
 					marginLeft: 30,
 					spacingRight: 0,
-					spacingBottom: 30,
+					spacingBottom: 17,
 					plotBorderWidth: 0,
 				},
 				title:{
@@ -166,7 +140,7 @@ define([
 					}
 				},
 				tooltip: {
-					backgroundColor: 'rgba(255, 255, 255, 0.65)',
+					backgroundColor: 'rgba(255, 255, 255, 0.5)',
 					borderColor: '#75B4B1',
 					borderRadius: '2',
 					shadow: false,
@@ -175,7 +149,6 @@ define([
 						fontSize: '14px',
 						padding: '8px',
 						fontFamily: 'sdFont',
-						textShadow: '1px 1px 1px #000'
 					},
 				},
 				xAxis: {
@@ -185,8 +158,8 @@ define([
 					title: {
 						text:'',
 					},
-//					ordinal: false,
-					gridLineColor: 'rgba(196, 228, 228, 0.75)',
+					ordinal: false,
+					gridLineColor: 'transparent',
 					categories: lineLabelsDate,
 					labels:  {
 						overflow: 'justify',
@@ -199,7 +172,7 @@ define([
 				yAxis: {
 					lineColor: '#FFFFFF',
 					lineWidth: 1,
-					gridLineColor: 'rgba(196, 228, 228, 0.75)',
+					gridLineColor: 'transparent',
 					min: 0,
 					title: {
 						text:'',
@@ -351,6 +324,16 @@ define([
 						]
 					}]
 				});
+			});
+
+			//Init slider
+			$('.profile .royalSlider').royalSlider({ //Set up slider
+				controlNavigationSpacing: 10,
+				controlNavigation: 'bullets',
+				loop: true,
+				arrowsNav: false,
+				keyboardNavEnabled: true,
+				navigateByClick: false,
 			});
 		},
 	});
