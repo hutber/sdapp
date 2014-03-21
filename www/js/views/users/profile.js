@@ -53,7 +53,6 @@ define([
 			$('.profile .royalSlider').royalSlider({ //Set up slider
 				controlNavigationSpacing: 10,
 				controlNavigation: 'bullets',
-				loop: true,
 				arrowsNav: false,
 				keyboardNavEnabled: true,
 				navigateByClick: false,
@@ -76,7 +75,7 @@ define([
 				graph = $('#sexoverview');
 
 			graph.css({
-				'height': $('page').outerHeight()-30,
+				'height': $('page').outerHeight()/1.1,
 				'width' : wantedWidth
 			});
 
