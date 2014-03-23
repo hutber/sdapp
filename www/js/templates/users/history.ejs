@@ -1,13 +1,15 @@
-<div class="dateTitles royalSlider rsDefault">
-	<% Array.reverse(Object.keys(data)).forEach(function(key){ var currentSex = data[key]; c(key); %>
-		<div class="dateTitle">
-			<%= Date.today().set({ month: key-1}).toString("MMM") %>
-		<% currentSex.forEach(function(sexDetails){ %>
-			<div class="historyItem">
-				<% c(sexDetails); %>
-				<%= sexDetails.who %>
+<% Object.keys(data).forEach(function(key){ var currentSex = data[key]; %>
+	<div>
+		<info>
+			<div>
+				<h2><%= currentSex.sexstring %><% if (typeof currentSex.who==="string"){%> - <%= currentSex.who %> <% } %></h2>
+				<date><%= currentSex.datetring %></date>
 			</div>
-		<% }); %>
+		</info>
+		<div class="sexImage">
+			<div>
+				<img src="img/sex/thumb/<%= currentSex.sexstring %>.png" alt="<%= currentSex.sexstring %>"/>
+			</div>
 		</div>
-	<%	});  %>
-</div>
+	</div>
+<%	});  %>

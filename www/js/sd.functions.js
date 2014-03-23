@@ -47,6 +47,7 @@ Globals
 		TOTALSEXNUMBERS: {},
 		SEXNUMBERS: {},
 		GLOBALSEXNUMBERS: {},
+		FULLSEX: {},
 		WHO: null,
 		TEMPLATE: 'footerout',
 		HASH:'',

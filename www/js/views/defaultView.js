@@ -52,7 +52,7 @@ define([
 			},
 			doLogOut: function(){
 				sessionStorage.clear();
-				document.location.replace('/');
+				document.location.replace('');
 				return false;
 			},
 			openMenu: function(){

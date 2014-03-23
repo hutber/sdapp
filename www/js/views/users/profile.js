@@ -56,8 +56,8 @@ define([
 				arrowsNav: false,
 				keyboardNavEnabled: true,
 				navigateByClick: false,
-//				autoHeight: true,
-//				autoScaleSliderHeight: $('page').outerHeight(),
+				autoHeight: true,
+//				autoScaleSliderHeight: 800,
 				block: {
 					delay: 400
 				}

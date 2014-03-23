@@ -1,0 +1,16 @@
+<!--<select name="category" id="category">
+	<option value="">All <span>(<%= SD.TOTALSEXNUMBERS.total %>)</span></option>
+	<option value="1">Wanks <span>(<%= SD.TOTALSEXNUMBERS.Wank %>)</span></option>
+	<option value="2">Hands <span>(<%= SD.TOTALSEXNUMBERS.Hands %>)</span></option>
+	<option value="3">Orals <span>(<%= SD.TOTALSEXNUMBERS.Oral %>)</span></option>
+	<option value="4">Sexes <span>(<%= SD.TOTALSEXNUMBERS.Sex %>)</span></option>
+	<option value="5">Anything Else? <span>(<%= SD.TOTALSEXNUMBERS.Anything %>)</span></option>
+</select>-->
+<select name="month" id="month">
+	<% Object.keys(data).forEach(function(key){ var currentSex = data[key]; %>
+		<option value="<%= key %>"><%= key %> <span>(<%= currentSex.length %>)</span></option>
+	<%	});  %>
+</select>
+<div class="historyContent">
+
+</div>
