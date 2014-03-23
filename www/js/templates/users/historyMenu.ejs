@@ -6,11 +6,14 @@
 	<option value="4">Sexes <span>(<%= SD.TOTALSEXNUMBERS.Sex %>)</span></option>
 	<option value="5">Anything Else? <span>(<%= SD.TOTALSEXNUMBERS.Anything %>)</span></option>
 </select>-->
-<select name="month" id="month">
-	<% Object.keys(data).forEach(function(key){ var currentSex = data[key]; %>
-		<option value="<%= key %>"><%= key %> <span>(<%= currentSex.length %>)</span></option>
-	<%	});  %>
-</select>
+<span class="spanicon">
+	<i class="icon-down"></i>
+	<select name="month" id="month">
+		<% Object.keys(data).forEach(function(key){ var currentSex = data[key]; var dateSex = Date.parse(currentSex[0].sextime).toString("MMMM yyyy"); %>
+			<option value="<%= key %>"><%= dateSex %> <span>(<%= currentSex.length %>)</span></option>
+		<%	});  %>
+	</select>
+</span>
 <div class="historyContent">
 
 </div>
