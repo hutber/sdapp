@@ -1,15 +1,9 @@
 <% Object.keys(data).forEach(function(key){ var currentSex = data[key]; %>
-	<div>
-		<info>
-			<div>
-				<h2><%= currentSex.sexstring %><% if (typeof currentSex.who==="string"){%> - <%= currentSex.who %> <% } %></h2>
-				<date><%= currentSex.datetring %></date>
-			</div>
-		</info>
-		<div class="sexImage">
-			<div>
-				<img src="img/sex/thumb/<%= currentSex.sexstring %>.png" alt="<%= currentSex.sexstring %>"/>
-			</div>
-		</div>
+	<div class="<%= currentSex.sexstring %>">
+		<imgCon><img src="img/sex/thumb/<%= currentSex.sexstring %>.png" alt="<%= currentSex.sexstring %>"/></imgCon>
+		<details>
+			<h2><%= currentSex.sexstring %><% if (typeof currentSex.who==="string"){%> - <%= currentSex.who %> <% } %></h2>
+			<date><%= currentSex.datetring %><% if (typeof currentSex.city==="string"){%> - <%= currentSex.city %>, <%= currentSex.country %><% } %></date>
+		</details>
 	</div>
 <%	});  %>
