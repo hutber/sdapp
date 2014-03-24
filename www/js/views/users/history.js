@@ -18,6 +18,11 @@ define([
 		render: function () {
 			var myself = this;
 			SD.convertSexNumbers.init();
+			SD.overlay.showme();
+
+			//Reaplce title with wanted text
+			SD.setTitle('Sex History');
+
 			//window.plugins.spinnerDialog.show("Sex History","Loading your sex history... Please Wait...");
 			$.ajax({
 				url: SD.AJAX+'sex/grabfullsex',
@@ -27,6 +32,7 @@ define([
 				},
 				error: function(data){
 				//window.plugins.spinnerDialog.hide();
+					SD.overlay.hideme();
 					SD.message.showMessage('Something went wromg grabbing your data', 'bad');
 				},
 				success: function(data){
@@ -55,8 +61,8 @@ define([
 						$('.historyContent').html(myself.template(data[selection.currentTarget.value]));
 					});
 
-					//Reaplce title with wanted text
-					SD.setTitle('Sex History');
+					//Remove loading
+					SD.overlay.hideme();
 
 				}
 			});

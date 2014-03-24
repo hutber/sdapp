@@ -49,19 +49,6 @@ define([
 			//Remove style hieght
 //			$('page').css('height', '93%');
 //			c($('.profilehome').height());
-			//Init slider
-			$('.profile .royalSlider').royalSlider({ //Set up slider
-				controlNavigationSpacing: 10,
-				controlNavigation: 'bullets',
-				arrowsNav: false,
-				keyboardNavEnabled: true,
-				navigateByClick: false,
-//				autoHeight: true,
-//				autoScaleSliderHeight: 800,
-				block: {
-					delay: 400
-				}
-			});
 //			c($('.profilehome').height());
 
 //			//Minus the height of the bullets
@@ -351,6 +338,19 @@ define([
 						]
 					}]
 				});
+			});
+			//Init slider
+			$('.profile .royalSlider').royalSlider({ //Set up slider
+				controlNavigationSpacing: 10,
+				controlNavigation: 'bullets',
+				arrowsNav: false,
+				keyboardNavEnabled: true,
+				navigateByClick: false,
+//				autoHeight: true,
+//				autoScaleSliderHeight: 800,
+				block: {
+					delay: 400
+				}
 			});
 		},
 	});
