@@ -1,11 +1,7 @@
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'JST',
-	'sd.functions',
+	'sd',
 	'dv'
-], function ($, _, Backbone, JST, SD) {
+], function (SD) {
 	'use strict';
 
 	var myself;
@@ -33,7 +29,7 @@ define([
 					dataType: "json",
 					data: {
 						'code': who.val(),
-						'privateKey': sessionStorage.privateKey
+						'privateKey': localStorage.privateKey
 					},
 					error: function(data){
 						c('Sorry Login Failed: '+data.status);

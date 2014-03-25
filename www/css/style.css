@@ -1,6 +1,6 @@
-@charset "IBM437";
+@charset "CP850";
 /* #Compass imports ------------------------------------------------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000317}}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,51 +22,51 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000322}}
 html {
   line-height: 1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000324}}
 ol, ul {
   list-style: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000326}}
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000328}}
 caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000330}}
 q, blockquote {
   quotes: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003103}}
 q:before, q:after, blockquote:before, blockquote:after {
   content: "";
   content: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\0000332}}
 a img {
   border: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/reset\/_utilities\.scss}line{font-family:\00003116}}
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
 }
 
 /* #Config ------------------------------------------------------------------------ */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/susy-1\.0\.9\/sass\/susy\/_grid\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/susy-1\.0\.9\/sass\/susy\/_grid\.scss}line{font-family:\0000314}}
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -514,7 +514,7 @@ img {
 form {
   *zoom: 1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 form:after {
   content: "";
   display: table;
@@ -3106,7 +3106,7 @@ save.disabled detailsimage, save.disabled info {
 .profile .miniIcons h2 {
   margin: 0 0 13px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 .profile .miniIcons:after {
   content: "";
   display: table;
@@ -3233,7 +3233,7 @@ sexnav {
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 sexnav:after {
   content: "";
   display: table;
@@ -3299,7 +3299,7 @@ sexnav div + div + div + div + div {
   -ms-transform: translate(-50%, -50%);
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 .blocks Rating info:after {
   content: "";
   display: table;
@@ -3368,11 +3368,12 @@ when {
   overflow: hidden;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\000033}}
 .selector header, .forgotten header, .login header {
   height: auto;
+  z-index: 5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\000037}}
 .selector shell, .forgotten shell, .login shell {
   height: 100%;
   position: fixed;
@@ -3380,7 +3381,7 @@ when {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000316}}
 .selector header, .forgotten header {
   position: absolute;
   left: 25%;
@@ -3391,11 +3392,11 @@ when {
   -ms-transform: translate(-25%, -30%);
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000320}}
 .selector page, .forgotten page {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000322}}
 .selector page div, .forgotten page div {
   position: absolute;
   left: 50%;
@@ -3407,12 +3408,12 @@ when {
   width: 80%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000330}}
 .forgotten .btn {
   font-size: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000346}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000336}}
 .login header {
   position: absolute;
   left: 25%;
@@ -3423,11 +3424,11 @@ when {
   -ms-transform: translate(-25%, -30%);
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000340}}
 .login page {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000342}}
 .login page > div {
   position: absolute;
   left: 50%;
@@ -3438,15 +3439,15 @@ when {
   -ms-transform: translate(-50%, -50%);
   width: 80%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000347}}
 .login div {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000350}}
 .login input {
   padding: 12px 15px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000353}}
 .login i:before {
   color: #95a5a6;
   position: absolute;
@@ -3454,15 +3455,19 @@ when {
   top: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000362}}
+.signup header {
+  height: auto;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000365}}
 .signup logo {
   margin-top: 30px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000368}}
 .signup page {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000378}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000371}}
 .signup page .elements {
   width: 91.52542%;
   float: left;
@@ -3476,17 +3481,17 @@ when {
   -moz-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000380}}
 .signup page .terms {
   width: auto;
   margin-right: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000393}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000386}}
 .signup footer {
   margin-top: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000395}}
 .home header .loggedin {
   position: absolute;
   width: 100%;
@@ -3867,7 +3872,7 @@ content {
   width: 100%;
   height: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 content:after {
   content: "";
   display: table;
@@ -3889,7 +3894,7 @@ content page {
   -o-transition-duration: 0.2s;
   transition-duration: 0.2s;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Program\%20Files\/Ruby200-x64\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.3\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
 content page:after {
   content: "";
   display: table;

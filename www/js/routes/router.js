@@ -2,8 +2,7 @@
 define([
     'jquery',
     'backbone',
-    'sd.functions'
-
+    'sd'
 ], function ($, Backbone, SD) {
     'use strict';
 
@@ -11,6 +10,7 @@ define([
     var Router = Backbone.Router.extend({
         routes: {
             '': 'index',
+			'selector': 'index',
 			'login': 'login',
 			'forgotten': 'forgotten',
 			'signup': 'signup',

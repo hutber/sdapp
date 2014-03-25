@@ -2,12 +2,8 @@
  * Created by Hutber on 04/02/14.
  */
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'JST',
-	'sd.functions'
-], function ($, _, Backbone, JST, SD) {
+	'sd'
+], function (SD) {
 	'use strict';
 
 // #Set up the Deult router view ------------------------------------------------------
@@ -45,14 +41,11 @@ define([
 				'click header add': 'openWhoAdd',
 			},
 			render: function () {
-				//make sure we are logged in, if we are not forward back to home page
-				SD.login.checkLoginState();
-
 				//Output correct tempalte
 				this.$el.html(templatesNeeded);
 			},
 			doLogOut: function(){
-				sessionStorage.clear();
+				localStorage.clear();
 				document.location.replace('');
 				return false;
 			},
@@ -122,7 +115,7 @@ define([
 						dataType: "json",
 						data: {
 							'who': who.val(),
-							'privateKey': sessionStorage.privateKey,
+							'privateKey': localStorage.privateKey,
 						},
 						error: function(data){
 							SD.spinner.hide();

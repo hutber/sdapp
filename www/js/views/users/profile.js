@@ -1,13 +1,9 @@
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'JST',
-	'sd.functions',
-	'dsv',
+	'sd',
+	'date',
 	'slider',
 	'highcharts'
-], function ($, _, Backbone, JST, SD) {
+], function (SD) {
 	'use strict';
 
 	function createData (object, type) {
@@ -71,7 +67,7 @@ define([
 			var areaData = [];
 
 			// #set up vars --------------------------------------------------
-			var SexByMonthData = JSON.parse(sessionStorage.sexesByMonth), details = ['Wank','Hands','Oral','Sex','Anything'];
+			var SexByMonthData = JSON.parse(localStorage.sexesByMonth), details = ['Wank','Hands','Oral','Sex','Anything'];
 
 			// #build new arrays for graph --------------------------------------------------
 			details.forEach(function(me){

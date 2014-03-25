@@ -4,7 +4,7 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'sd.functions',
+	'sd',
 	'dv',
 ], function ($, _, Backbone, JST, SD) {
     'use strict';
@@ -16,7 +16,6 @@ define([
 
         render: function () {
             this.$el.html(this.template);
-			this.globalClass();
 			$('#forgotten').forms({required: 'all'});
         },
 

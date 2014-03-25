@@ -1,13 +1,7 @@
 define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'JST',
-	'core.functions',
-	'sd.functions',
-	'dv',
+	'sd',
 	'slider',
-], function ($, _, Backbone, JST, core, SD) {
+], function () {
     'use strict';
 
 	//set up homeview

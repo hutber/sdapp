@@ -1,11 +1,7 @@
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'JST',
-	'sd.functions',
+	'sd',
 	'dsv',
-], function ($, _, Backbone, JST, SD) {
+], function (SD) {
 	'use strict';
 	//set up homeview
 	var history = SD.defaultView.extend({
@@ -28,7 +24,7 @@ define([
 				url: SD.AJAX+'sex/grabfullsex',
 				dataType: "json",
 				data: {
-					'code': sessionStorage.privateKey,
+					'code': localStorage.privateKey,
 				},
 				error: function(data){
 				//window.plugins.spinnerDialog.hide();
