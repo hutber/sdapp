@@ -42,6 +42,7 @@ define([
 				'click footer saveBox': 'saveBox',
 				'click menubtn': 'openMenu',
 				'click savewho': 'saveWho',
+				'click header add': 'openWhoAdd',
 			},
 			render: function () {
 				//make sure we are logged in, if we are not forward back to home page
@@ -52,7 +53,7 @@ define([
 			},
 			doLogOut: function(){
 				sessionStorage.clear();
-				document.location.replace('/');
+				document.location.replace('');
 				return false;
 			},
 			openMenu: function(){
@@ -60,6 +61,10 @@ define([
 			},
 			goHome: function(){
 				SD.ROUTER.navigate('home', true);
+				return false;
+			},
+			openWhoAdd: function(){
+				SD.ROUTER.navigate('whoadd', true);
 				return false;
 			},
 			globalClass: function(){

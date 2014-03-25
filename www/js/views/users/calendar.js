@@ -9,15 +9,15 @@ define([
 	'use strict';
 
 	//set up homeview
-	var previous = SD.defaultView.extend({
+	var calendar = SD.defaultView.extend({
 		el: 'page',
 		events: {
 		},
-		template: JST['app/www/js/templates/users/previous.ejs'],
+		template: JST['app/www/js/templates/users/calendar.ejs'],
 		render: function () {
 			this.$el.html(this.template);
-			SD.setTitle('previous');
+			SD.setTitle('Sex Calendar');
 		},
 	});
-	return previous;
+	return calendar;
 });

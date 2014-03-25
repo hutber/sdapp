@@ -47,6 +47,7 @@ Globals
 		TOTALSEXNUMBERS: {},
 		SEXNUMBERS: {},
 		GLOBALSEXNUMBERS: {},
+		FULLSEX: {},
 		WHO: null,
 		TEMPLATE: 'footerout',
 		HASH:'',
@@ -204,6 +205,41 @@ Display functions
 		},
 		hideme: function(){
 			$('overlay').fadeOut('fast');
+		}
+	};
+
+//// Show spinner dialog
+//window.plugins.spinnerDialog.show();
+//
+//// Show spinner dialog with message (only on Android)
+//window.plugins.spinnerDialog.show("title","message");
+//
+//// Hide spinner dialog
+//window.plugins.spinnerDialog.hide();
+
+	/*==================================================
+	Loading
+	================================================== */
+	SD.spinner = {
+		show: function(title, message){
+			if(typeof title!=="string"){
+				title = null;
+			}
+			if(typeof message!=="string"){
+				message = null;
+			}
+			if(window && window.plugins && window.plugins.spinnerDialog){
+				window.plugins.spinnerDialog.show(title,message);
+			}else{
+				SD.overlay.showme();
+			}
+		},
+		hide: function(){
+			if(window && window.plugins && window.plugins.spinnerDialog){
+				window.plugins.spinnerDialog.hide();
+			}else{
+				SD.overlay.hideme();
+			}
 		}
 	};
 

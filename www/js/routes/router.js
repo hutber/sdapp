@@ -29,9 +29,10 @@ define([
 
 			//Users
 			'profile': 'profile',
-			'previous': 'previous',
+			'history': 'history',
 			'managewhos': 'managewhos',
 			'settings': 'settings',
+			'calendar': 'calendar',
 
 			//Other
 			'shop' : 'shop',

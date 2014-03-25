@@ -28,7 +28,7 @@ define([
 		getWho: function(){
 			var who = $('#searchwho'), results = $('whoReturned');
 			who.addClass('searching');
-
+			SD.spinner.show();
 			$.ajax({
 				url: SD.AJAX+'details/who',
 				type: 'POST',
@@ -40,6 +40,7 @@ define([
 				error: function(data){
 					c('Sorry Login Failed: '+data.status);
 					who.removeClass('searching');
+					SD.spinner.hide();
 				},
 				success: function(data){
 					SD.WHO = data;
@@ -48,6 +49,7 @@ define([
 						results.append(myself.resultreturned(me));
 					});
 					who.removeClass('searching');
+					SD.spinner.hide();
 				}
 			});
 		},
@@ -61,7 +63,7 @@ define([
 				if ( $.inArray(me.data('id'), SD.SEXDEFAULTS[SD.HASH]) === -1 ) {
 					var id = me.data('name');
 					SD.SEXDEFAULTS[SD.HASH][id] = me.data('id');
-					$('save').removeClass('disabled')
+					$('save').removeClass('disabled');
 				}
 			}else {
 				//If we are in the array and we have already been selected remove from the object
@@ -71,12 +73,9 @@ define([
 			}
 		},
 		render: function () {
-			this.$el.html(this.template);
+			myself = this;
 
-			//Add click event for the plus
-			$('html').on('click', '.who add', function(){
-				SD.pageLoad('whoadd');
-			});
+			this.$el.html(this.template);
 
 			$('save').addClass('disabled');
 			SD.setTitle('Who was involved?');

@@ -137,9 +137,10 @@ require([
 		'views/details/where',
 // User Pages --------------------,
 		'views/users/profile',
-		'views/users/previous',
+		'views/users/history',
 		'views/users/managewhos',
 		'views/users/settings',
+		'views/users/calendar',
 // Plugins --------------------,
 		'views/other/shop',
 		'views/other/privacy',
@@ -194,11 +195,12 @@ Routes
 		names[18] = 'whoadd';
 		names[19] = 'where';
 		names[20] = 'profile';
-		names[21] = 'previous';
+		names[21] = 'history';
 		names[22] = 'managewhos';
 		names[23] = 'settings';
-		names[24] = 'shop';
-		names[25] = 'privacy';
+		names[24] = 'calendar';
+		names[25] = 'shop';
+		names[26] = 'privacy';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){
