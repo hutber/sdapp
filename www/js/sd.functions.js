@@ -51,6 +51,7 @@ Globals
 		WHO: null,
 		TEMPLATE: 'footerout',
 		HASH:'',
+		PREVIOUSHASH:'',
 		SLIDER: null,
 		VIEWS: {},
 		ROUTER: false,
@@ -109,6 +110,7 @@ SD.changeHeightofContent = function(){
 };
 
 SD.onHashChange = function(){
+	SD.PREVIOUSHASH = SD.HASH;
 	//Update the new hash
 	SD.HASH = window.location.hash.substring(1);
 

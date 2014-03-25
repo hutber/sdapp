@@ -115,6 +115,7 @@ define([
 				var who = $('#who');
 
 				if(!who.hasClass('error') && who.val().length>2 && !$('saveWho save').hasClass('disabled')){
+					SD.spinner.show();
 					$.ajax({
 						url: SD.AJAX+'details/addwho',
 						type: 'POST',
@@ -124,15 +125,17 @@ define([
 							'privateKey': sessionStorage.privateKey,
 						},
 						error: function(data){
+							SD.spinner.hide();
 							SD.message.showMessage('A server error occured, please try again >:|', 'bad', 1500);
 						},
 						success: function(data){
+							SD.spinner.hide();
 							if(typeof data === "number"){
 
 								SD.SEXDEFAULTS['who'][who.val()] = data;
 
 								//lets go back to the sex details page.
-								SD.pageLoad(SD.CURRENTSEX);
+								SD.pageLoad(SD.PREVIOUSHASH);
 							}else{
 								SD.message.showMessage('A server error occured, please try again :(', 'bad', 1500);
 							}
