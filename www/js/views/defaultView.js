@@ -2,12 +2,9 @@
  * Created by Hutber on 04/02/14.
  */
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'JST',
-	'sd.functions'
-], function ($, _, Backbone, JST, SD) {
+	'sd',
+	'libs/plugins/hammer/hammer.min'
+], function (SD, Hammer) {
 	'use strict';
 
 // #Set up the Deult router view ------------------------------------------------------
@@ -39,25 +36,31 @@ define([
 			events: { //Add click events for global clicks
 				'click logo a': 'goHome',
 				'click footer sexnav' : 'sexNav',
+				'click hidePage' : 'hidepage',
 				'click footer saveBox': 'saveBox',
 				'click menubtn': 'openMenu',
 				'click savewho': 'saveWho',
 				'click header add': 'openWhoAdd',
 			},
 			render: function () {
-				//make sure we are logged in, if we are not forward back to home page
-				SD.login.checkLoginState();
-
 				//Output correct tempalte
 				this.$el.html(templatesNeeded);
+
+				var hammertime = Hammer(document.body).on('dragright', function(event) {
+//					c(arguments);
+//					alert('hello!');
+				});
 			},
 			doLogOut: function(){
-				sessionStorage.clear();
+				localStorage.clear();
 				document.location.replace('');
 				return false;
 			},
 			openMenu: function(){
 				$('body').toggleClass('menuOpen');
+			},
+			hidepage:function(event){
+				event.stopPropagation();
 			},
 			goHome: function(){
 				SD.ROUTER.navigate('home', true);
@@ -122,7 +125,7 @@ define([
 						dataType: "json",
 						data: {
 							'who': who.val(),
-							'privateKey': sessionStorage.privateKey,
+							'privateKey': localStorage.privateKey,
 						},
 						error: function(data){
 							SD.spinner.hide();

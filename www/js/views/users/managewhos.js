@@ -1,11 +1,7 @@
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'JST',
-	'sd.functions',
+	'sd',
 	'dsv',
-], function ($, _, Backbone, JST, SD) {
+], function (SD) {
 	'use strict';
 
 	//set up homeview
@@ -16,14 +12,14 @@ define([
 		template: JST['app/www/js/templates/users/managewhos.ejs'],
 		render: function () {
 			var myself = this;
-			SD.setTitle('Your Who\'s');
+			SD.setTitle('Your Sexy Partners');
 			SD.spinner.show();
 
 			$.ajax({
 				url: SD.AJAX+'users/myWhos',
 				dataType: "json",
 				data: {
-					'code': sessionStorage.privateKey,
+					'code': localStorage.privateKey,
 				},
 				error: function(data){
 					SD.spinner.hide();

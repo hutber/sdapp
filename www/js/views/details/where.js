@@ -1,11 +1,7 @@
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'JST',
-	'sd.functions',
+	'sd',
 	'dsv',
-], function ($, _, Backbone, JST, SD) {
+], function (SD) {
 	'use strict';
 
 	var myself;

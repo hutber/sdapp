@@ -28,24 +28,19 @@ require.config({
 			],
 			exports: 'Backbone'
 		},
-		jStorage: {
-			deps: ['jquery'],
-			exports: '$.jStorage'
-		},
 		date: {
 			exports: 'date'
 		},
 		sd: {
 			exports: 'SD'
 		},
-		core: {
-			deps: ['jquery']
+		dv: {
+			deps: ['sd']
 		},
 		JST: {
 			deps: ['underscore'],
 			exports: 'JST'
 		},
-		//Carousel items
 		slider: {
 			deps: ['jquery'],
 			exports: 'jQuery.fn.touchCarousel'
@@ -88,7 +83,6 @@ require.config({
 		jquery: 'libs/jquery.min',
 		backbone: 'libs/backbone-min',
 		underscore: 'libs/underscore-min',
-		jStorage: 'libs/plugins/jStorage',
 		slider: 'libs/plugins/jquery.royalslider',
 		flowtype: 'libs/plugins/flowtype',
 		fastclick: 'libs/plugins/FastClick',
@@ -97,6 +91,9 @@ require.config({
 		mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
 		forms: 'libs/plugins/hutber.forms',
 		highcharts: 'libs/plugins/highcharts',
+		hammer: 'libs/plugins/hammer/hammer.min',
+		jqueryhammer:'libs/plugins/hammer/jquery.hammer.min',
+		backbonehammer:'libs/plugins/hammer/backbone.hammer',
 		date: 'libs/plugins/date',
 		core: 'core.functions',
 		sd : 'sd.functions',
@@ -112,12 +109,10 @@ Routers
 // Requires ----------------
 require([
 		'backbone',
-		'jStorage',
 // Routes ----------------
 		'routes/router',
 // functions ----------------
-		'core.functions',
-		'sd.functions',
+		'sd',
 		'dv',
 		'dsv',
 // Views ----------------
@@ -141,79 +136,72 @@ require([
 		'views/users/managewhos',
 		'views/users/settings',
 		'views/users/calendar',
-// Plugins --------------------,
+// Other Pages --------------------,
 		'views/other/shop',
 		'views/other/privacy',
-// Plugins --------------------,
-		'fastclick',
-		'flowtype',
-		'date'
+		'views/users/pin',
+
 ], function () {
-
-//Try and make clicks faster
-window.addEventListener('load', function() {
-	FastClick.attach(document.body);
-}, false);
-
 /*==================================================
 set arguments to values for ease of reading arguments
 ================================================== */
     var Backbone = arguments[0],
-        Router = arguments[2],
-		SD = arguments[4],
-		IndexView = arguments[7],
-        HomeView = arguments[8];
+        Router = arguments[1],
+		SD = arguments[2],
+		IndexView = arguments[5],
+        HomeView = arguments[6];
 
 /*==================================================
  Start up SD global object.
  ================================================== */
-SD.init();
+	SD.init();
 
 /*==================================================
 Routes Vars
 ================================================== */
 // initiate routers ----------------
-    SD.ROUTER = new Router(),
+    SD.ROUTER = new Router();
 
 //// views ---------------------------
-    SD.VIEWS.indexView = new IndexView(),
+    SD.VIEWS.indexView = new IndexView();
     SD.VIEWS.homeView = new HomeView();
 
 /*==================================================
 Routes
 ================================================== */
 	var names = [];
-		names[9] = 'login';
-		names[10] = 'forgotten';
-		names[11] = 'signup';
-		names[12] = 'wank';
-		names[13] = 'hands';
-		names[14] = 'oral';
-		names[15] = 'sex';
-		names[16] = 'anything';
-		names[17] = 'who';
-		names[18] = 'whoadd';
-		names[19] = 'where';
-		names[20] = 'profile';
-		names[21] = 'history';
-		names[22] = 'managewhos';
-		names[23] = 'settings';
-		names[24] = 'calendar';
-		names[25] = 'shop';
-		names[26] = 'privacy';
+		names[7] = 'login';
+		names[8] = 'forgotten';
+		names[9] = 'signup';
+		names[10] = 'wank';
+		names[11] = 'hands';
+		names[12] = 'oral';
+		names[13] = 'sex';
+		names[14] = 'anything';
+		names[15] = 'who';
+		names[16] = 'whoadd';
+		names[17] = 'where';
+		names[18] = 'profile';
+		names[19] = 'history';
+		names[20] = 'managewhos';
+		names[21] = 'settings';
+		names[22] = 'calendar';
+		names[23] = 'shop';
+		names[24] = 'privacy';
+		names[25] = 'pin';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){
 		var functionName = me+"View";
 		SD.VIEWS[functionName] = new myArgs[key]();
 		SD.ROUTER.on('route:'+me, function(){
-			SD.VIEWS[functionName]["render"](); // succeeds
+			SD.VIEWS[functionName].render(); // succeeds
 		});
 	});
 
 //# Default router ----------------------------------------------------------------
 		SD.ROUTER.on('route:index route:home', function(){
-			if(sessionStorage.getItem('privateKey')!==null){
+			if(localStorage.getItem('privateKey')!==null){
 				SD.VIEWS.homeView.render();
 			}else{
 				SD.VIEWS.indexView.render();

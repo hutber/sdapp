@@ -11,7 +11,8 @@
 define([
 	'jquery',
 	'backbone',
-	'JST'
+	'JST',
+	'fastclick',
 ], function ($, Backbone, JST) {
 //	'use strict';
 
@@ -26,7 +27,7 @@ Globals
 		CDN: 'stage.sexdiaries.co.uk/',
 		HTTP: 'http://stage.sexdiaries.co.uk/',
 		STATE: function(){
-			if(sessionStorage.getItem('privateKey')===null){
+			if(localStorage.getItem('privateKey')===null){
 				return false;
 			}else{
 				$('body').data('state','loggedin');
@@ -85,13 +86,17 @@ Globals
 Login functions
 ================================================== */
 SD.login = {
-	checkLoginState : function(state) { //We use this state to enable us to use the function on every page load to check if the user is logged in
-		if(sessionStorage.getItem('privateKey')===null && typeof state !== "undefined"){ //Not logged in, force to home
-			document.location.replace('');
-			location.reload();
-		}else if (state){ //This state is only ever set when loggin in: loginView.js:62 //If logged in force to sex picker
+	checkLoginState : function() { //We use this state to enable us to use the function on every page load to check if the user is logged in
+		var hash = window.location.hash.substring(1);
+		var loggedInState = true;
+		if(localStorage.getItem('privateKey')=== null) {loggedInState = false;}
+
+		if(sessionStorage.appOpenedFirstTime && hash!=="pin" && loggedInState){
+			window.location.href = "#pin";
+		}else if( loggedInState && (hash==="" || hash==="signup" || hash==="forgotten" || hash==="login")){
 			window.location.href = "#home";
-			location.reload();
+		}else if (!loggedInState && hash==="home" ){
+			document.location.replace('');
 		}
 	}
 };
@@ -110,23 +115,24 @@ SD.changeHeightofContent = function(){
 };
 
 SD.onHashChange = function(){
+	//make sure we are logged in, if we are not forward back to home page
+	SD.login.checkLoginState();
+
+	//Updated previous hash
 	SD.PREVIOUSHASH = SD.HASH;
+
 	//Update the new hash
 	SD.HASH = window.location.hash.substring(1);
-
-	//Update the current sex state with whatever is in the hash
-//		SD.CURRENTSEX = SD.HASH;
 
 	//On page load update body class with current page
 	SD.DV.globalClass();
 
+	//Resize the $('page') element
 	SD.changeHeightofContent();
 
 	//update menu items with selected item
 	$('menu a.selected').removeAttr('class');
 	$('menu a[data-id='+SD.HASH+']').addClass('selected');
-	//Add new class to body
-//		$('body').removeAttr('class').addClass(SD.HASH); //Update class on body
 };
 
 /*==================================================
@@ -159,14 +165,14 @@ SD.addSex = {
 		return php;
 	},
 	save: function(){
-		if(sessionStorage.privateKey){
+		if(localStorage.privateKey){
 			var saveSexDetails = SD.addSex.convertPhp();
 			$.ajax({
 				url: SD.AJAX+'add',
 				type: 'POST',
 				data: {
 					info: saveSexDetails,
-					privateKey: sessionStorage.privateKey
+					privateKey: localStorage.privateKey
 				},
 				error: function(data){
 					SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
@@ -210,15 +216,6 @@ Display functions
 		}
 	};
 
-//// Show spinner dialog
-//window.plugins.spinnerDialog.show();
-//
-//// Show spinner dialog with message (only on Android)
-//window.plugins.spinnerDialog.show("title","message");
-//
-//// Hide spinner dialog
-//window.plugins.spinnerDialog.hide();
-
 	/*==================================================
 	Loading
 	================================================== */
@@ -257,17 +254,6 @@ Display functions
 		}else{
 			c('Nothing was given in the pageLoad');
 		}
-
-		//TODO review code - Why did we need this?
-		if(!$('sexdetails').length){
-			//If the sex details page isn't in view load it up
-			//So that we can then load the sex details page
-//			SD.DSV.render();
-		}
-
-		//update current sex
-		//SD.CURRENTSEX = useme; //Removed as this was causing double loads, we are already rendering by using on:wank for example,
-		// this was nessesery we we had two renders for sex
 
 		//Update the current view, don't re-redner it
 		SD.ROUTER.navigate(useme, true);
@@ -347,14 +333,14 @@ Networking functions
 // #SEXNUMBERS ------------------------------------------------------
 	SD.convertSexNumbers = {
 		init: function(){
-			if(sessionStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
-				this.convert(sessionStorage.SEXNUMBERS, SD.SEXNUMBERS);
+			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
+				this.convert(localStorage.SEXNUMBERS, SD.SEXNUMBERS);
 			}
-			if(sessionStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
-				this.convert(sessionStorage.TOTALSEXNUMBERS, SD.TOTALSEXNUMBERS);
+			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
+				this.convert(localStorage.TOTALSEXNUMBERS, SD.TOTALSEXNUMBERS);
 			}
-			if(sessionStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
-				this.convert(sessionStorage.GLOBALSEXNUMBERS, SD.GLOBALSEXNUMBERS);
+			if(localStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
+				this.convert(localStorage.GLOBALSEXNUMBERS, SD.GLOBALSEXNUMBERS);
 			}
 		},
 		convert: function(item, target){
@@ -387,19 +373,36 @@ Networking functions
 		}
 	};
 
+	$.fn.serializeObject = function() {
+		var o = {};
+		var a = this.serializeArray();
+		$.each(a, function() {
+			if (o[this.name]) {
+				if (!o[this.name].push) {
+					o[this.name] = [o[this.name]];
+				}
+				o[this.name].push(this.value || '');
+			} else {
+				o[this.name] = this.value || '';
+			}
+		});
+		return o;
+	};
 	/*==================================================
 	Init for SD
 	================================================== */
 	SD.init = function () {
 
+		//Try and make clicks faster
+		FastClick.attach(document.body);
+
 		SD.globals(); //set up our global variables
 
-		/*==================================================
-		Load in scripts depending on which device we are.
-		================================================== */
+		//Set up scripts to get loaded depending on envoiment
 		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
+			//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
+			sessionStorage.setItem('appOpenedFirstTime',true);
 			$.getScript('cordova.js', function( data, textStatus, jqxhr){
-//			c( "cordova was loaded." );
 				var s = document.createElement('script');
 				s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
 				document.getElementsByTagName('body')[0].appendChild(s);
@@ -408,13 +411,12 @@ Networking functions
 			$.getScript('http://localhost:35729/livereload.js');
 		}
 
+		//Set up hash change for every time it changes
 		SD.onHashChange();
 		window.addEventListener("hashchange", SD.onHashChange, false);
 
 		//Remove debugs if they are there
-		$('debug').on('click', 'li:first', function(){
-			$('debug li').remove();
-		});
+		$('debug').on('click', 'li:first', function(){ $('debug li').remove(); });
 	};
 
 //return SD

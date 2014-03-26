@@ -1,12 +1,8 @@
 /*global define*/
 define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'JST',
-	'sd.functions',
+	'sd',
 	'dv',
-], function ($, _, Backbone, JST, SD) {
+], function (SD) {
     'use strict';
 
     var LoginView = SD.defaultView.extend({
@@ -16,17 +12,13 @@ define([
 
         render: function () {
             this.$el.html(this.template);
-			this.globalClass();
         },
-
 		data: {
 			site: SD.liveApp
 		},
-
         events: {
             'submit .loginForm ': 'logUserIn',
         },
-
         logUserIn: function (elem) {
 			var items = $(elem.currentTarget).find('input'),
 				noerror = true;
@@ -57,14 +49,17 @@ define([
 					},
 					success: function(data){
 						if(data.privateKey){
-							$.jStorage.set('uid',data.uid); //store user ID in the localStorage to persist
-							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
-							sessionStorage.setItem('TOTALSEXNUMBERS',JSON.stringify(data.totalsexnumbers)); //store privateKey in session so it disapears when the user closers the tab
-							sessionStorage.setItem('SEXNUMBERS',JSON.stringify(data.sexnumbers)); //store privateKey in session so it disapears when the user closers the tab
-							sessionStorage.setItem('GLOBALSEXNUMBERS',JSON.stringify(data.globalsexnumbers)); //store privateKey in session so it disapears when the user closers the tab
-							sessionStorage.setItem('sexDetails',JSON.stringify(data.sexDetails)); //store privateKey in session so it disapears when the user closers the tab
-							sessionStorage.setItem('sexesByMonth',JSON.stringify(data.sexesByMonth)); //store privateKey in session so it disapears when the user closers the tab
-							SD.login.checkLoginState(true);
+							localStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
+							localStorage.setItem('TOTALSEXNUMBERS',JSON.stringify(data.totalsexnumbers)); //store privateKey in session so it disapears when the user closers the tab
+							localStorage.setItem('SEXNUMBERS',JSON.stringify(data.sexnumbers)); //store privateKey in session so it disapears when the user closers the tab
+							localStorage.setItem('GLOBALSEXNUMBERS',JSON.stringify(data.globalsexnumbers)); //store privateKey in session so it disapears when the user closers the tab
+							localStorage.setItem('sexDetails',JSON.stringify(data.sexDetails)); //store privateKey in session so it disapears when the user closers the tab
+							localStorage.setItem('sexesByMonth',JSON.stringify(data.sexesByMonth)); //store privateKey in session so it disapears when the user closers the tab
+
+							//Login successful, lets take you home and remove the pin variable
+							window.location.href = "#home";
+							sessionStorage.removeItem('appOpenedFirstTime');
+							location.reload();
 						}else{
 							SD.message.showMessage(data.message, 'bad');
 						}

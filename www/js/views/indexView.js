@@ -4,7 +4,7 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'sd.functions',
+	'sd',
 	'dv'
 ], function ($, _, Backbone, JST, SD) {
     'use strict';

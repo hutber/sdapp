@@ -4,7 +4,7 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'sd.functions',
+	'sd',
 	'dv',
 	'forms'
 ], function ($, _, Backbone, JST, SD) {
@@ -17,7 +17,6 @@ define([
 
         render: function () {
             this.$el.html(this.template);
-			this.globalClass();
 
 			$('.signupForm').forms({required: 'all'});
 

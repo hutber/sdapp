@@ -2,16 +2,12 @@
  * Created by Hutber on 04/02/14.
  */
 define([
-	'jquery',
-	'underscore',
-	'backbone',
-	'JST',
-	'sd.functions',
+	'sd',
 	'dv',
 	'mobiscroll',
 	'mobiscrollScroller',
 	'mobiscrollDate',
-], function ($, _, Backbone, JST, SD) {
+], function (SD) {
 	'use strict';
 
 	// The default sex view view ----------------------------------------------------------
