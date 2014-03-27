@@ -402,11 +402,12 @@ Networking functions
 
 		SD.globals(); //set up our global variables
 
-		//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
-		sessionStorage.setItem('appOpenedFirstTime',true);
-
 		//Set up scripts to get loaded depending on envoiment
 		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
+
+			//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
+			sessionStorage.setItem('appOpenedFirstTime',true);
+			
 			$.getScript('cordova.js', function( data, textStatus, jqxhr){
 				var s = document.createElement('script');
 				s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
