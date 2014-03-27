@@ -53,6 +53,9 @@
     <preference name="DisallowOverscroll"         value="true"/>
     <preference name="detect-data-types"          value="true" />
     <preference name="EnableViewportScale"        value="true" />
+    <preference name="KeyboardShrinksView"        value="false" />
+    <preference name="HideKeyboardFormAccessoryBar" value="true" />
+
 
     <!--/////////////////////////////////////////////////
                             Plugins
@@ -76,6 +79,7 @@
     <feature name="Vibration"><param name="android-package" value="org.apache.cordova.vibration.Vibration" /></feature>
     <feature name="Geolocation"><param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" /></feature>
     <feature name="SpinnerDialog"><param name="android-package" value="hu.dpal.phonegap.plugins.SpinnerDialog" /></feature>
+    <feature name="SpinnerDialog"><param name="android-package" value="hu.dpal.phonegap.plugins.PinDialog" /></feature>
 
 
     <!--/////////////////////////////////////////////////

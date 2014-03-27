@@ -56,8 +56,9 @@ define([
 							localStorage.setItem('sexDetails',JSON.stringify(data.sexDetails)); //store privateKey in session so it disapears when the user closers the tab
 							localStorage.setItem('sexesByMonth',JSON.stringify(data.sexesByMonth)); //store privateKey in session so it disapears when the user closers the tab
 
-							//Login successful, lets take you home
+							//Login successful, lets take you home and remove the pin variable
 							window.location.href = "#home";
+							sessionStorage.removeItem('appOpenedFirstTime');
 							location.reload();
 						}else{
 							SD.message.showMessage(data.message, 'bad');

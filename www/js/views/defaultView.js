@@ -2,8 +2,9 @@
  * Created by Hutber on 04/02/14.
  */
 define([
-	'sd'
-], function (SD) {
+	'sd',
+	'libs/plugins/hammer/hammer.min'
+], function (SD, Hammer) {
 	'use strict';
 
 // #Set up the Deult router view ------------------------------------------------------
@@ -35,6 +36,7 @@ define([
 			events: { //Add click events for global clicks
 				'click logo a': 'goHome',
 				'click footer sexnav' : 'sexNav',
+				'click hidepage' : 'hidepage',
 				'click footer saveBox': 'saveBox',
 				'click menubtn': 'openMenu',
 				'click savewho': 'saveWho',
@@ -43,6 +45,11 @@ define([
 			render: function () {
 				//Output correct tempalte
 				this.$el.html(templatesNeeded);
+
+				var hammertime = Hammer(document.body).on('dragright', function(event) {
+//					c(arguments);
+//					alert('hello!');
+				});
 			},
 			doLogOut: function(){
 				localStorage.clear();
@@ -51,6 +58,9 @@ define([
 			},
 			openMenu: function(){
 				$('body').toggleClass('menuOpen');
+			},
+			hidepage:function(event){
+				event.stopPropagation();
 			},
 			goHome: function(){
 				SD.ROUTER.navigate('home', true);

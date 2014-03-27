@@ -11,7 +11,8 @@
 define([
 	'jquery',
 	'backbone',
-	'JST'
+	'JST',
+	'fastclick',
 ], function ($, Backbone, JST) {
 //	'use strict';
 
@@ -90,7 +91,13 @@ SD.login = {
 		var loggedInState = true;
 		if(localStorage.getItem('privateKey')=== null) {loggedInState = false;}
 
-		if( loggedInState && (hash==="" || hash==="signup" || hash==="forgotten" || hash==="login")){
+		if(sessionStorage.tmpPin){
+		//Top level, if the user hasn't set a pin number
+		}else if(loggedInState && !localStorage.pinNumber){
+			window.location.href = "#setpin";
+		}else if(sessionStorage.appOpenedFirstTime && hash!=="pin" && loggedInState){
+			window.location.href = "#pin";
+		}else if( loggedInState && (hash==="" || hash==="signup" || hash==="forgotten" || hash==="login")){
 			window.location.href = "#home";
 		}else if (!loggedInState && hash==="home" ){
 			document.location.replace('');
@@ -252,17 +259,6 @@ Display functions
 			c('Nothing was given in the pageLoad');
 		}
 
-		//TODO review code - Why did we need this?
-		if(!$('sexdetails').length){
-			//If the sex details page isn't in view load it up
-			//So that we can then load the sex details page
-//			SD.DSV.render();
-		}
-
-		//update current sex
-		//SD.CURRENTSEX = useme; //Removed as this was causing double loads, we are already rendering by using on:wank for example,
-		// this was nessesery we we had two renders for sex
-
 		//Update the current view, don't re-redner it
 		SD.ROUTER.navigate(useme, true);
 	};
@@ -401,17 +397,13 @@ Networking functions
 	================================================== */
 	SD.init = function () {
 
-		//IMPORATNT
-//		if(!sessionStorage.appOpenedFirstTime){
-//			sessionStorage.setItem('appOpenedFirstTime',true);
-//			SD.login.checkLoginState(true);
-//			c(appOpenedFirstTime);
-//		}
-
 		//Try and make clicks faster
 		FastClick.attach(document.body);
 
 		SD.globals(); //set up our global variables
+
+		//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
+		sessionStorage.setItem('appOpenedFirstTime',true);
 
 		//Set up scripts to get loaded depending on envoiment
 		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){

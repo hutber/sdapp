@@ -1,8 +1,10 @@
 define([
 	'sd',
+	'dv',
 	'date',
 	'slider',
-	'highcharts'
+	'highcharts',
+	'flowtype',
 ], function (SD) {
 	'use strict';
 

@@ -28,6 +28,10 @@ define([
 			'whereadd': 'whereadd',
 
 			//Users
+			'setpin' : 'setpin',
+			'confirmpin' : 'confirmpin',
+			'pinsave' : 'pinsave',
+			'pin' : 'pin',
 			'profile': 'profile',
 			'history': 'history',
 			'managewhos': 'managewhos',

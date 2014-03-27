@@ -3,6 +3,7 @@
  */
 define([
 	'sd',
+	'dv',
 	'mobiscroll',
 	'mobiscrollScroller',
 	'mobiscrollDate',

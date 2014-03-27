@@ -34,11 +34,13 @@ require.config({
 		sd: {
 			exports: 'SD'
 		},
+		dv: {
+			deps: ['sd']
+		},
 		JST: {
 			deps: ['underscore'],
 			exports: 'JST'
 		},
-		//Carousel items
 		slider: {
 			deps: ['jquery'],
 			exports: 'jQuery.fn.touchCarousel'
@@ -89,6 +91,9 @@ require.config({
 		mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
 		forms: 'libs/plugins/hutber.forms',
 		highcharts: 'libs/plugins/highcharts',
+		hammer: 'libs/plugins/hammer/hammer.min',
+		jqueryhammer:'libs/plugins/hammer/jquery.hammer.min',
+		backbonehammer:'libs/plugins/hammer/backbone.hammer',
 		date: 'libs/plugins/date',
 		core: 'core.functions',
 		sd : 'sd.functions',
@@ -131,12 +136,14 @@ require([
 		'views/users/managewhos',
 		'views/users/settings',
 		'views/users/calendar',
-// Plugins --------------------,
+// Other Pages --------------------,
 		'views/other/shop',
 		'views/other/privacy',
-// Plugins --------------------,
-		'fastclick',
-		'flowtype',
+		'views/users/setpin',
+		'views/users/confirmpin',
+		'views/users/pinsave',
+		'views/users/pin',
+
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -150,7 +157,7 @@ set arguments to values for ease of reading arguments
 /*==================================================
  Start up SD global object.
  ================================================== */
-SD.init();
+	SD.init();
 
 /*==================================================
 Routes Vars
@@ -184,6 +191,10 @@ Routes
 		names[22] = 'calendar';
 		names[23] = 'shop';
 		names[24] = 'privacy';
+		names[25] = 'setpin';
+		names[26] = 'confirmpin';
+		names[27] = 'pinsave';
+		names[28] = 'pin';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){
