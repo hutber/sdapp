@@ -10,7 +10,7 @@ define([
 			'click .setpin .digit': 'checkdigit',
 		},
 		currentPw: "",
-		template: JST['app/www/js/templates/users/setpin.ejs'],
+		template: JST['app/www/js/templates/users/pin.ejs'],
 		render: function () {
 
 			var data = {
@@ -23,54 +23,14 @@ define([
 		},
 		checkdigit: function(el){
 			var myself = this,
-			valueReturned = null,
+			valueReturned = el.currentTarget.innerHTML,
 			pins = $('.pininputs'),
 			pinInputs = $('.pininputs > div'),
 			actives = pins.find('.active');
 
-			switch (el.currentTarget.innerHTML){
-				case "1":
-					valueReturned = 1;
-				break;
-				case "2":
-					valueReturned = 2;
-				break;
-				case "3":
-					valueReturned = 3;
-				break;
-				case "4":
-					valueReturned = 4;
-				break;
-				case "5":
-					valueReturned = 5;
-				break;
-				case "6":
-					valueReturned = 6;
-				break;
-				case "7":
-					valueReturned = 7;
-				break;
-				case "8":
-					valueReturned = 8;
-				break;
-				case "9":
-					valueReturned = 9;
-				break;
-				case "0":
-					valueReturned = 0;
-				break;
-				case "Forgot Pin?":
-					valueReturned = "forgotten";
-				break;
-				case "":
-					valueReturned = "del";
-				break;
-			}
-
-			if(typeof valueReturned !== "string"){
+			if(isNumber(valueReturned)){
 				pinInputs.eq(actives.length).addClass('active');
 				myself.currentPw += ''+valueReturned;
-				c(myself.currentPw.length);
 				if(myself.currentPw.length === 4){
 					sessionStorage.setItem('tmpPin',myself.currentPw);
 					window.location.href = "#confirmpin";
@@ -78,7 +38,8 @@ define([
 			}else{
 				if(valueReturned === "Forgot Pin?"){
 					//Forward to forgotten
-				}else if (valueReturned === "del"){
+				}else if (valueReturned === ""){
+					myself.currentPw = myself.currentPw.substr(0, actives.length-1);
 					pinInputs.eq(actives.length-1).removeClass('active');
 				}
 			}

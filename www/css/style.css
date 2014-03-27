@@ -3499,7 +3499,7 @@ when {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\000032}}
-.setpin .pingshell, .confirmpin .pingshell {
+.pin .pingshell, .setpin .pingshell, .confirmpin .pingshell {
   width: 83.05085%;
   float: left;
   margin-right: 1.69492%;
@@ -3507,15 +3507,15 @@ when {
   margin-left: 8.47458%;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\000036}}
-.setpin p, .confirmpin p {
+.pin p, .setpin p, .confirmpin p {
   margin: 20px 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\000039}}
-.setpin span, .confirmpin span {
+.pin span, .setpin span, .confirmpin span {
   color: #237774;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000312}}
-.setpin .pinpad, .confirmpin .pinpad {
+.pin .pinpad, .setpin .pinpad, .confirmpin .pinpad {
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -3523,7 +3523,7 @@ when {
   padding: 1.69492% 2% 0 2%;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000320}}
-.setpin .digit, .confirmpin .digit {
+.pin .digit, .setpin .digit, .confirmpin .digit {
   background-color: #237774;
   font-family: sdFont, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   margin-bottom: 1.69492%;
@@ -3535,20 +3535,20 @@ when {
   display: inline;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000321}}
-.setpin .digit:active, .confirmpin .digit:active {
+.pin .digit:active, .setpin .digit:active, .confirmpin .digit:active {
   background-color: #13403e;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000324}}
-.setpin .digit.forgotten, .confirmpin .digit.forgotten {
+.pin .digit.forgotten, .setpin .digit.forgotten, .confirmpin .digit.forgotten {
   font-size: 1.1rem;
   line-height: 3rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000328}}
-.setpin .digit.icon-left-open, .confirmpin .digit.icon-left-open {
+.pin .digit.icon-left-open, .setpin .digit.icon-left-open, .confirmpin .digit.icon-left-open {
   line-height: 1.4em;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000337}}
-.setpin .digit:nth-child(3n), .confirmpin .digit:nth-child(3n) {
+.pin .digit:nth-child(3n), .setpin .digit:nth-child(3n), .confirmpin .digit:nth-child(3n) {
   width: 32.20339%;
   float: right;
   margin-right: 0;
@@ -3557,14 +3557,14 @@ when {
   margin-bottom: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000342}}
-.setpin .pininputs, .confirmpin .pininputs {
+.pin .pininputs, .setpin .pininputs, .confirmpin .pininputs {
   width: 270px;
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000346}}
-.setpin .pininputs > div, .confirmpin .pininputs > div {
+.pin .pininputs > div, .setpin .pininputs > div, .confirmpin .pininputs > div {
   background-color: #FFF;
   border: 1px solid #DDD;
   position: relative;
@@ -3574,11 +3574,11 @@ when {
   margin-right: 10px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000354}}
-.setpin .pininputs > div:last-child, .confirmpin .pininputs > div:last-child {
+.pin .pininputs > div:last-child, .setpin .pininputs > div:last-child, .confirmpin .pininputs > div:last-child {
   margin-right: 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_pins\.scss}line{font-family:\0000358}}
-.setpin .pininputs .active:before, .confirmpin .pininputs .active:before {
+.pin .pininputs .active:before, .setpin .pininputs .active:before, .confirmpin .pininputs .active:before {
   height: 60%;
   width: 60%;
   content: "";

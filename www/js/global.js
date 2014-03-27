@@ -26,6 +26,12 @@ Is Mobile - If true then we are a mobile
 	}
 
 /*==================================================
+			Check if we are a number
+================================================== */
+function isNumber(n) {
+	return !isNaN(parseFloat(n)) && isFinite(n);
+}
+/*==================================================
 Bind C to be alert on mobile console.log in desktop
 ================================================== */
 	var c = false;
