@@ -49,13 +49,14 @@ define([
 					},
 					success: function(data){
 						if(data.privateKey){
-							localStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
-							localStorage.setItem('TOTALSEXNUMBERS',JSON.stringify(data.totalsexnumbers)); //store privateKey in session so it disapears when the user closers the tab
-							localStorage.setItem('SEXNUMBERS',JSON.stringify(data.sexnumbers)); //store privateKey in session so it disapears when the user closers the tab
-							localStorage.setItem('GLOBALSEXNUMBERS',JSON.stringify(data.globalsexnumbers)); //store privateKey in session so it disapears when the user closers the tab
-							localStorage.setItem('sexDetails',JSON.stringify(data.sexDetails)); //store privateKey in session so it disapears when the user closers the tab
-							localStorage.setItem('sexesByMonth',JSON.stringify(data.sexesByMonth)); //store privateKey in session so it disapears when the user closers the tab
-
+							Object.keys(data).forEach(function(key){
+								var me = data[key];
+								if(typeof me === "string"){ //If I'm a string then just add it to locastorage
+									localStorage.setItem(key,me);
+								}else if (typeof me === "object"){ //If we are an object then stringify if
+									localStorage.setItem(key,JSON.stringify(me));
+								}
+							});
 							//Login successful, lets take you home and remove the pin variable
 							window.location.href = "#home";
 							sessionStorage.removeItem('appOpenedFirstTime');

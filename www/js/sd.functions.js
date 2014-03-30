@@ -272,7 +272,7 @@ Display functions
 			this.timer = setTimeout(this.hideMessage, duration);
 		},
 		hideMessage: function(){
-			$('messageBox').removeClass('show').delay('500').removeAttr('class');
+			$('messageBox').removeClass('show');
 			clearTimeout(this.timer);
 		}
 	};
@@ -338,42 +338,44 @@ Networking functions
 	SD.convertSexNumbers = {
 		init: function(){
 			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
-				this.convert(localStorage.SEXNUMBERS, SD.SEXNUMBERS);
+				this.convert(localStorage.sexnumbers, SD.SEXNUMBERS);
 			}
 			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
-				this.convert(localStorage.TOTALSEXNUMBERS, SD.TOTALSEXNUMBERS);
+				this.convert(localStorage.totalsexnumbers, SD.TOTALSEXNUMBERS);
 			}
 			if(localStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
-				this.convert(localStorage.GLOBALSEXNUMBERS, SD.GLOBALSEXNUMBERS);
+				this.convert(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
 			}
 		},
 		convert: function(item, target){
-			JSON.parse(item).forEach(function(me){
-				if(typeof me==="object"){
-					var sexName = me.sex,
-						sexNumber = +me.no;
+			if(typeof item !=="undefined"){
+				JSON.parse(item).forEach(function(me){
+					if(typeof me==="object"){
+						var sexName = me.sex,
+							sexNumber = +me.no;
 
-					switch (sexName){
-						case "1":
-							target.Wank = sexNumber;
-							break;
-						case "2":
-							target.Hands = sexNumber;
-							break;
-						case "3":
-							target.Oral = sexNumber;
-							break;
-						case "4":
-							target.Sex = sexNumber;
-							break;
-						case "5":
-							target.Anything = sexNumber;
-							break;
+						switch (sexName){
+							case "1":
+								target.Wank = sexNumber;
+								break;
+							case "2":
+								target.Hands = sexNumber;
+								break;
+							case "3":
+								target.Oral = sexNumber;
+								break;
+							case "4":
+								target.Sex = sexNumber;
+								break;
+							case "5":
+								target.Anything = sexNumber;
+								break;
+						}
+					}else{
+						target.total = me;
 					}
-				}else{
-					target.total = me;
-				}
-			});
+				});
+			}
 		}
 	};
 
