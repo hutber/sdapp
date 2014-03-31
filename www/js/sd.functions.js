@@ -91,7 +91,11 @@ SD.login = {
 		var loggedInState = true;
 		if(localStorage.getItem('privateKey')=== null) {loggedInState = false;}
 
-		if(sessionStorage.appOpenedFirstTime && hash!=="pin" && loggedInState){
+		if(sessionStorage.tmpPin){
+		//Top level, if the user hasn't set a pin number
+		}else if(loggedInState && !localStorage.pinNumber){
+			window.location.href = "#setpin";
+		}else if(sessionStorage.appOpenedFirstTime && hash!=="pin" && loggedInState){
 			window.location.href = "#pin";
 		}else if( loggedInState && (hash==="" || hash==="signup" || hash==="forgotten" || hash==="login")){
 			window.location.href = "#home";
@@ -268,7 +272,7 @@ Display functions
 			this.timer = setTimeout(this.hideMessage, duration);
 		},
 		hideMessage: function(){
-			$('messageBox').removeClass('show').delay('500').removeAttr('class');
+			$('messageBox').removeClass('show');
 			clearTimeout(this.timer);
 		}
 	};
@@ -334,42 +338,44 @@ Networking functions
 	SD.convertSexNumbers = {
 		init: function(){
 			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
-				this.convert(localStorage.SEXNUMBERS, SD.SEXNUMBERS);
+				this.convert(localStorage.sexnumbers, SD.SEXNUMBERS);
 			}
 			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
-				this.convert(localStorage.TOTALSEXNUMBERS, SD.TOTALSEXNUMBERS);
+				this.convert(localStorage.totalsexnumbers, SD.TOTALSEXNUMBERS);
 			}
 			if(localStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
-				this.convert(localStorage.GLOBALSEXNUMBERS, SD.GLOBALSEXNUMBERS);
+				this.convert(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
 			}
 		},
 		convert: function(item, target){
-			JSON.parse(item).forEach(function(me){
-				if(typeof me==="object"){
-					var sexName = me.sex,
-						sexNumber = +me.no;
+			if(typeof item !=="undefined"){
+				JSON.parse(item).forEach(function(me){
+					if(typeof me==="object"){
+						var sexName = me.sex,
+							sexNumber = +me.no;
 
-					switch (sexName){
-						case "1":
-							target.Wank = sexNumber;
-							break;
-						case "2":
-							target.Hands = sexNumber;
-							break;
-						case "3":
-							target.Oral = sexNumber;
-							break;
-						case "4":
-							target.Sex = sexNumber;
-							break;
-						case "5":
-							target.Anything = sexNumber;
-							break;
+						switch (sexName){
+							case "1":
+								target.Wank = sexNumber;
+								break;
+							case "2":
+								target.Hands = sexNumber;
+								break;
+							case "3":
+								target.Oral = sexNumber;
+								break;
+							case "4":
+								target.Sex = sexNumber;
+								break;
+							case "5":
+								target.Anything = sexNumber;
+								break;
+						}
+					}else{
+						target.total = me;
 					}
-				}else{
-					target.total = me;
-				}
-			});
+				});
+			}
 		}
 	};
 
@@ -400,8 +406,10 @@ Networking functions
 
 		//Set up scripts to get loaded depending on envoiment
 		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
+
 			//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
 			sessionStorage.setItem('appOpenedFirstTime',true);
+
 			$.getScript('cordova.js', function( data, textStatus, jqxhr){
 				var s = document.createElement('script');
 				s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");

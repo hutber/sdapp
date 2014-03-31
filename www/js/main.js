@@ -139,6 +139,9 @@ require([
 // Other Pages --------------------,
 		'views/other/shop',
 		'views/other/privacy',
+		'views/users/setpin',
+		'views/users/confirmpin',
+		'views/users/pinsave',
 		'views/users/pin',
 
 ], function () {
@@ -188,7 +191,10 @@ Routes
 		names[22] = 'calendar';
 		names[23] = 'shop';
 		names[24] = 'privacy';
-		names[25] = 'pin';
+		names[25] = 'setpin';
+		names[26] = 'confirmpin';
+		names[27] = 'pinsave';
+		names[28] = 'pin';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){

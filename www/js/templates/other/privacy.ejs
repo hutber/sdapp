@@ -1,43 +1,42 @@
-<ul>
-	<li class="clear" onclick="detail_view('Data');" id="selector_Data">
+<ul class="privacyholder">
+	<li class="clear" id="Data">
 		<img src="img/privacy/data.png" class="icon">We only collect anonymous information.
 	</li>
-	<li class="clear" onclick="detail_view('Location');" id="selector_Location">
+	<li class="clear" id="Location">
 		<img src="img/privacy/location.png" class="icon">We may collect but do not share your location history.
 	</li>
-	<li class="clear" onclick="detail_view('Access');" id="selector_Access">
+	<li class="clear" id="Access">
 		<img src="img/privacy/access.png" class="icon">You can request to see your personal data.
 	</li>
-	<li class="clear" onclick="detail_view('Deletion');" id="selector_Deletion">
+	<li class="clear" id="Deletion">
 		<img src="img/privacy/deletion.png" class="icon">We keep personal data until you delete it.
 	</li>
-	<li class="clear" onclick="detail_view('Sharing');" id="selector_Sharing">
+	<li class="clear" id="Sharing">
 		<img src="img/privacy/sharing.png" class="icon">We don't share your personal data with other companies.
 	</li>
-	<li class="clear" onclick="detail_view('Ad_Tracking');" id="selector_Ad_Tracking">
+	<li class="clear" id="Ad_Tracking">
 		<img src="img/privacy/adtracking.png" class="icon">No ad companies collect data through our service.
 	</li>
-	<li class="clear" onclick="detail_view('Contact');" id="selector_Contact">
+	<li class="clear" id="Contact">
 		<img src="img/privacy/contact.png" class="icon">You can ask privacy questions.
 	</li>
-	<li class="clear" onclick="detail_view('Vendors');" id="selector_Vendors">
+	<li class="clear" id="Vendors">
 		<img src="img/privacy/analytics.png" class="icon">Service providers access data on our behalf.
 	</li>
-	<li class="clear" onclick="detail_view('Security');" id="selector_Security">
+	<li class="clear" id="Security">
 		<img src="img/privacy/vendors.png" class="icon">We take detailed steps to protect personal information.
 	</li>
-	<li class="clear" onclick="detail_view('Special');" id="selector_Special">
+	<li class="clear" id="Special">
 		<img src="img/privacy/special.png" class="icon">Special situations may require disclosure of your data.
 	</li>
-	<li class="clear" onclick="detail_view('More');" id="selector_More">
+	<li class="clear" id="More">
 		<img src="img/privacy/more.png" class="icon">You can review more privacy-related information.
 	</li>
 </ul>
-<div id="detail" style="display: none;">
+<div id="detail">
 	<div id="detail_Data" style="display: none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()"><img src="img/privacy/data.png" class="icon">We only collect anonymous information.</li>
+			<li class="clear back  sel" data-id="Data"><img src="img/privacy/data.png" class="icon">We only collect anonymous information.</li>
 		</ul>
 		<div class="text">Our systems log information like your browser, operating system and IP address.&nbsp;  We do not collect personally identifiable information about you. In other words, we do not collect information
 			such
@@ -51,9 +50,8 @@
 		</div>
 	</div>
 	<div id="detail_Location" style="display:none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="Location">
 				<img src="img/privacy/location.png" class="icon">
 				We may collect but do not share your location history.
 			</li>
@@ -65,9 +63,8 @@
 		</div>
 	</div>
 	<div id="detail_Access" style="display:none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="Access">
 				<img src="img/privacy/access.png" class="icon">
 				You can request to see your personal data.
 			</li>
@@ -79,9 +76,8 @@
 		</div>
 	</div>
 	<div id="detail_Deletion" style="display:none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="Deletion">
 				<img src="img/privacy/deletion.png" class="icon">
 				We keep personal data until you delete it.
 			</li>
@@ -89,9 +85,8 @@
 		<div class="text">We remove personally identifiable information (such as your name, address, email or phone number) and other preferences associated with your account promptly after you delete your account. We may retain other data indefinitely.</div>
 	</div>
 	<div id="detail_Sharing" style="display:none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="Sharing">
 				<img src="img/privacy/sharing.png" class="icon">
 				We don't share your personal data with other companies.
 			</li>
@@ -99,14 +94,12 @@
 		<div class="text">We do not share personally identifiable information (such as name, address, email or phone) with other companies.</div>
 	</div>
 	<div id="detail_Ad_Tracking" style="display: none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
-		<ul><li class="clear back sel" onclick="history.back()"><img src="img/privacy/adtracking.png" class="icon">No ad companies collect data through our service.</li></ul>
+		<ul><li class="clear back  sel" data-id="Ad_Tracking"><img src="img/privacy/adtracking.png" class="icon">No ad companies collect data through our service.</li></ul>
 		<div class="text">We do not allow advertising companies to collect data through our service for ad targeting.</div>
 	</div>
 	<div id="detail_Contact" style="display: none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="Data">
 				<img src="img/privacy/contact.png" class="icon">
 				You can ask privacy questions.
 
@@ -115,9 +108,8 @@
 		<div class="tet">If you have any questions or concerns about our privacy policies, please contact us: <a href="mailto:privacy@sexdiaries.co.uk">privacy@sexdiaries.co.uk</a></div>
 	</div>
 	<div id="detail_Vendors" style="display:none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="Vendors">
 				<img src="img/privacy/analytics.png" class="icon">
 				Service providers access data on our behalf.
 
@@ -143,9 +135,8 @@
 		</div>
 	</div>
 	<div id="detail_Security" style="display:none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="Security">
 				<img src="img/privacy/vendors.png" class="icon">
 				We take detailed steps to protect personal information.
 
@@ -162,9 +153,8 @@
 		</div>
 	</div>
 	<div id="detail_Special" style="display:none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="Special">
 				<img src="img/privacy/special.png" class="icon">
 				Special situations may require disclosure of your data.
 
@@ -173,9 +163,8 @@
 		<div class="text"></div>
 	</div>
 	<div id="detail_More" style="display:none;" class="detail">
-		<h1 onclick="history.back()">Privacy</h1>
 		<ul>
-			<li class="clear back sel" onclick="history.back()">
+			<li class="clear back  sel" data-id="More">
 				<img src="img/privacy/more.png" class="icon">
 				You can review more privacy-related information.
 
@@ -191,9 +180,9 @@
 		</div>
 	</div>
 	<div id="detail_90" style="display: none;" class="tracker">
-		<h1 onclick="history.back()">More Info</h1>    <a href="mobile?policy=36367&amp;mockup=1" style="text-decoration: none;">
+		<h1>More Info</h1>    <a href="mobile?policy=36367&amp;mockup=1" style="text-decoration: none;">
 		<ul>
-			<li class="clear back sel" style="padding-left:20px; text-decoration: none; color:#7A8EB6;">
+			<li class="clear back  sel" data-id="90" style="padding-left:20px; text-decoration: none; color:#7A8EB6;">
 				Back
 
 			</li>

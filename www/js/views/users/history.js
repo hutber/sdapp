@@ -14,53 +14,30 @@ define([
 		render: function () {
 			var myself = this;
 			SD.convertSexNumbers.init();
-			SD.spinner.show();
 
 			//Reaplce title with wanted text
 			SD.setTitle('Sex History');
 
-			//window.plugins.spinnerDialog.show("Sex History","Loading your sex history... Please Wait...");
-			$.ajax({
-				url: SD.AJAX+'sex/grabfullsex',
-				dataType: "json",
-				data: {
-					'code': localStorage.privateKey,
-				},
-				error: function(data){
-				//window.plugins.spinnerDialog.hide();
-					SD.overlay.hideme();
-					SD.message.showMessage('Something went wromg grabbing your data', 'bad');
-				},
-				success: function(data){
-					SD.FULLSEX = data;
+			if(!SD.FULLSEX.length)
+			SD.FULLSEX = JSON.parse(localStorage.grabFullSex);
 
-					// #Rewrite HTML on page with tempalte
-					myself.$el.html(myself.templateMenu(data));
+			// #Rewrite HTML on page with tempalte
+			myself.$el.html(myself.templateMenu(SD.FULLSEX));
 
-					// #Update the page with individual data from AJAX
-					for(var key in data) break; //Ggrab out the first item from object
-					$('.historyContent').html(myself.template(data[key]));
+			// #Update the page with individual data from AJAX
+			for(var key in SD.FULLSEX) break; //Ggrab out the first item from object
+			$('.historyContent').html(myself.template(SD.FULLSEX[key]));
 
-//					c(Object.keys(data).keepValue('Mar'));
+			//bind menu change all the way at the top :( page
+			$('page').on('change', '#category', function(selection){
+				// #Update the page with individual data from AJAX
+				$('.historyContent').html(myself.template(SD.FULLSEX[selection.currentTarget.value]));
+			});
 
-					//bind menu change all the way at the top :( page
-					$('page').on('change', '#category', function(selection){
-						// #Update the page with individual data from AJAX
-						c(data)
-						c(SD.FULLSEX[selection.currentTarget.value]);
-						$('.historyContent').html(myself.template(SD.FULLSEX[selection.currentTarget.value]));
-					});
-
-					//bind menu change all the way at the top :( page
-					$('page').on('change', '#month', function(selection){
-						// #Update the page with individual data from AJAX
-						$('.historyContent').html(myself.template(data[selection.currentTarget.value]));
-					});
-
-					//Remove loading
-					SD.overlay.hideme();
-
-				}
+			//bind menu change all the way at the top :( page
+			$('page').on('change', '#month', function(selection){
+				// #Update the page with individual data from AJAX
+				$('.historyContent').html(myself.template(SD.FULLSEX[selection.currentTarget.value]));
 			});
 		}
 	});

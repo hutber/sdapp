@@ -36,7 +36,7 @@ define([
 			events: { //Add click events for global clicks
 				'click logo a': 'goHome',
 				'click footer sexnav' : 'sexNav',
-				'click hidePage' : 'hidepage',
+				'click hidepage' : 'hidepage',
 				'click footer saveBox': 'saveBox',
 				'click menubtn': 'openMenu',
 				'click savewho': 'saveWho',
@@ -52,7 +52,9 @@ define([
 				});
 			},
 			doLogOut: function(){
+				var tmpPin = localStorage.pinNumber;
 				localStorage.clear();
+				localStorage.setItem('pinNumber', tmpPin);
 				document.location.replace('');
 				return false;
 			},
