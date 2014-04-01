@@ -83,6 +83,7 @@ require.config({
 		jquery: 'libs/jquery.min',
 		backbone: 'libs/backbone-min',
 		underscore: 'libs/underscore-min',
+		modernizr: 'libs/modernizr-dev',
 		slider: 'libs/plugins/jquery.royalslider',
 		flowtype: 'libs/plugins/flowtype',
 		fastclick: 'libs/plugins/FastClick',
@@ -109,6 +110,7 @@ Routers
 // Requires ----------------
 require([
 		'backbone',
+		'modernizr',
 // Routes ----------------
 		'routes/router',
 // functions ----------------
@@ -149,10 +151,10 @@ require([
 set arguments to values for ease of reading arguments
 ================================================== */
     var Backbone = arguments[0],
-        Router = arguments[1],
-		SD = arguments[2],
-		IndexView = arguments[5],
-        HomeView = arguments[6];
+        Router = arguments[2],
+		SD = arguments[3],
+		IndexView = arguments[6],
+        HomeView = arguments[7];
 
 /*==================================================
  Start up SD global object.
@@ -173,28 +175,28 @@ Routes Vars
 Routes
 ================================================== */
 	var names = [];
-		names[7] = 'login';
-		names[8] = 'forgotten';
-		names[9] = 'signup';
-		names[10] = 'wank';
-		names[11] = 'hands';
-		names[12] = 'oral';
-		names[13] = 'sex';
-		names[14] = 'anything';
-		names[15] = 'who';
-		names[16] = 'whoadd';
-		names[17] = 'where';
-		names[18] = 'profile';
-		names[19] = 'history';
-		names[20] = 'managewhos';
-		names[21] = 'settings';
-		names[22] = 'calendar';
-		names[23] = 'shop';
-		names[24] = 'privacy';
-		names[25] = 'setpin';
-		names[26] = 'confirmpin';
-		names[27] = 'pinsave';
-		names[28] = 'pin';
+		names[8] = 'login';
+		names[9] = 'forgotten';
+		names[10] = 'signup';
+		names[11] = 'wank';
+		names[12] = 'hands';
+		names[13] = 'oral';
+		names[14] = 'sex';
+		names[15] = 'anything';
+		names[16] = 'who';
+		names[17] = 'whoadd';
+		names[18] = 'where';
+		names[19] = 'profile';
+		names[20] = 'history';
+		names[21] = 'managewhos';
+		names[22] = 'settings';
+		names[23] = 'calendar';
+		names[24] = 'shop';
+		names[25] = 'privacy';
+		names[26] = 'setpin';
+		names[27] = 'confirmpin';
+		names[28] = 'pinsave';
+		names[29] = 'pin';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){

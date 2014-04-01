@@ -1,0 +1,67 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000334}}
+.compass {
+  margin: 1em auto;
+  position: relative;
+  width: 16em;
+  height: 16em;
+  font-size: 24px;
+  font-family: "Academy Engraved LET", "Papyrus";
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\000037}}
+.compass .n, .compass .s, .compass .e, .compass .w {
+  position: absolute;
+  width: 4em;
+  height: 4em;
+  text-align: center;
+  vertical-align: middle;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000313}}
+.compass .w {
+  left: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000315}}
+.compass .n.w, .compass .s.w {
+  left: 2em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000317}}
+.compass .n, .compass .s {
+  left: 6em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000319}}
+.compass .n.e, .compass .s.e {
+  left: 10em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000321}}
+.compass .e {
+  left: 12em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000323}}
+.compass .n {
+  top: 0px;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000325}}
+.compass .n.w, .compass .n.e {
+  top: 2em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000327}}
+.compass .w, .compass .e {
+  top: 6em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000329}}
+.compass .s.w, .compass .s.e {
+  top: 10em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000331}}
+.compass .s {
+  top: 12em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000338}}
+.compass .n p, .compass .s p, .compass .e p, .compass .w p {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/src\/compass\.scss}line{font-family:\0000343}}
+.compass .n.w p, .compass .s.w p, .compass .n.e p, .compass .s.e p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
