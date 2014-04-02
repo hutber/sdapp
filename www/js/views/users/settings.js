@@ -15,7 +15,13 @@ define([
 		},
 		template: JST['app/www/js/templates/users/settings.ejs'],
 		render: function () {
-			this.$el.html(this.template);
+
+			var data = {
+				gender: localStorage.gender,
+				regdate: localStorage.regdate
+			}
+
+			this.$el.html(this.template(data));
 			SD.setTitle('My Settings');
 		},
 	});

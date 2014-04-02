@@ -134,7 +134,7 @@ require([
 		'views/details/where',
 // User Pages --------------------,
 		'views/users/profile',
-		'views/users/history',
+		'views/users/userhistory',
 		'views/users/managewhos',
 		'views/users/settings',
 		'views/users/calendar',
@@ -187,7 +187,7 @@ Routes
 		names[17] = 'whoadd';
 		names[18] = 'where';
 		names[19] = 'profile';
-		names[20] = 'history';
+		names[20] = 'userhistory';
 		names[21] = 'managewhos';
 		names[22] = 'settings';
 		names[23] = 'calendar';

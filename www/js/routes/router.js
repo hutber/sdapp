@@ -33,7 +33,7 @@ define([
 			'pinsave' : 'pinsave',
 			'pin' : 'pin',
 			'profile': 'profile',
-			'history': 'history',
+			'userhistory': 'userhistory',
 			'managewhos': 'managewhos',
 			'settings': 'settings',
 			'calendar': 'calendar',
