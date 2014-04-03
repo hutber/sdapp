@@ -1,28 +1,32 @@
-<form action="/" class="loginForm">
-	<div class="control-group">
-		<input type="text" name="uname" placeholder="Enter your desired username" value="test"/>
-	</div>
-	<div class="control-group">
-		<input type="email" name="email" placeholder="Email"/>
-	</div>
-	<div class="control-group">
-		<input type="password" name="pword" placeholder="Password" value="testmeout"/>
-	</div>
-	<div class="control-group">
-		<input type="password" name="pwordc" placeholder="Password Confirm"/>
-	</div>
-	<div class="control-group">
-		<input type="text" name="gender" placeholder="Gender M/F"/>
-	</div>
-	<div class="control-group">
-		<input type="text" name="dob" placeholder="Date of Birth DD/MM/YYYY"/>
-	</div>
-	<div class="control-group">
+<form action="<%= SD.AJAX+'users/reg' %>" class="signupForm ajax">
+	<div class="elements">
+		<div class="control-group uname">
+			<input type="text" placeholder="Username" data-ajaxlocation="<%= SD.HTTP+'registration/ajax/' %>" name="uname" class="server" data-error="Please enter a Username" data-to="16" data-from="4" autocomplete="off"/>
+		</div>
+		<div class="control-group email">
+			<input type="text" placeholder="Email Address" data-ajaxlocation="<%= SD.HTTP+'registration/ajax/' %>" name="email" class="required email server" data-error="Please enter a Email Adress" data-from="5"/>
+		</div>
+		<div class="control-group pw">
+			<input type="password" placeholder="Password" name="pw" data-to="16" data-from="8"/>
+		</div>
+		<div class="control-group cpw">
+			<input type="password" placeholder="Confirm Password" name="cpw" data-to="16" data-from="8"/>
+		</div>
+		<div class="control-group gener">
+			<select name="gender" data-error="Please select a Gender" id="gender">
+				<option value="">Gender</option>
+				<option value="0">Male</option>
+				<option value="1">Female</option>
+			</select>
+		</div>
+		<div class="control-group dob">
+			<input type="text" name="dob" id="dob" placeholder="Date of Birth"/>
+		</div>
 		<label>
-			<input type="checkbox" name="terms" class="terms"/>
-			Agree to our Terms &amp; Condish!
+			<input type="checkbox" name="acc_tc" class="terms" id="acc_tc"/>
+			Agree to our <a href="terms">Terms &amp; Condish!</a>
 		</label>
+		<button class="btn signup" type="submit">Sign Up</button>
+		<a href="#login">Already Signed Up?</a>
 	</div>
-	<button class="btn signup" type="submit">Sign Up</button>
-	<a href="#login">Already Signed Up?</a>
 </form>

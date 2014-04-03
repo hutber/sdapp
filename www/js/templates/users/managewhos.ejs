@@ -1,0 +1,6 @@
+<% Object.keys(data).forEach(function(key){ var currentSex = data[key];%>
+		<div class="awho" data-id="<%= currentSex.id %>">
+			<div class="person"><%= currentSex.who %></div>
+			<div class="useage"><div class="number"><%= currentSex.useage %> Sexes</div></div>
+		</div>
+<%	});  %>

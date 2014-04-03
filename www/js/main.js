@@ -16,195 +16,214 @@ Table of Contents - Created by Hutber on 04/10/13.
 /*==================================================
  Require JS Config
 ==================================================*/
-	require.config({
-		shim: {
-			underscore: {
-				exports: '_'
-			},
-			backbone: {
-				deps: [
-					'underscore',
-					'jquery'
-				],
-				exports: 'Backbone'
-			},
-			jStorage: {
-				deps: ['jquery'],
-				exports: '$.jStorage'
-			},
-			sd: {
-				exports: 'SD'
-			},
-			core: {
-				deps: ['jquery']
-			},
-			JST: {
-				deps: ['underscore'],
-				exports: 'JST'
-			},
-			//Carousel items
-			slider: {
-				deps: ['jquery'],
-				exports: 'jQuery.fn.touchCarousel'
-			},
-			slidervisibleNearby: {
-				deps: ['slider'],
-				exports: 'jQuery.fn.visibleNearby'
-			},
-			sliderthumbnails: {
-				deps: ['slider'],
-				exports: 'jQuery.fn.thumbnails'
-			},
-			sliderCaption: {
-				deps: ['slider'],
-				exports: 'jQuery.fn.global-caption'
-			},
-			flowtype: {
-				deps: ['jquery'],
-				exports: 'jQuery.fn.flowtype'
-			}
+require.config({
+	shim: {
+		underscore: {
+			exports: '_'
 		},
-		paths: {
-			jquery: 'libs/jquery.min',
-			backbone: 'libs/backbone-min',
-			underscore: 'libs/underscore-min',
-			jStorage: 'libs/plugins/jStorage',
-			slider: 'libs/plugins/slider/jquery.royalslider',
-			slidervisibleNearby: 'libs/plugins/slider/modules/jquery.rs.visible-nearby',
-			sliderthumbnails: 'libs/plugins/slider/modules/jquery.rs.thumbnails',
-			sliderCaption: 'libs/plugins/slider/modules/jquery.rs.global-caption',
-			flowtype: 'libs/plugins/flowtype',
-			core: 'core.functions',
-			sd : 'sd.functions',
-			JST : 'templates'
+		backbone: {
+			deps: [
+				'underscore',
+				'jquery'
+			],
+			exports: 'Backbone'
+		},
+		date: {
+			exports: 'date'
+		},
+		sd: {
+			exports: 'SD'
+		},
+		dv: {
+			deps: ['sd']
+		},
+		JST: {
+			deps: ['underscore'],
+			exports: 'JST'
+		},
+		slider: {
+			deps: ['jquery'],
+			exports: 'jQuery.fn.touchCarousel'
+		},
+		slidervisibleNearby: {
+			deps: ['slider'],
+			exports: 'jQuery.fn.visibleNearby'
+		},
+		sliderthumbnails: {
+			deps: ['slider'],
+			exports: 'jQuery.fn.thumbnails'
+		},
+		sliderCaption: {
+			deps: ['slider'],
+			exports: 'jQuery.fn.global-caption'
+		},
+		flowtype: {
+			deps: ['jquery'],
+			exports: 'jQuery.fn.flowtype'
+		},
+		mobiscroll: {
+			deps: ['jquery'],
+			exports: 'jQuery.fn.mobiscroll'
+		},
+		mobiscrollScroller: {
+			deps: ['jquery','mobiscroll']
+		},
+		mobiscrollDate: {
+			deps: ['jquery','mobiscrollScroller']
+		},
+		forms: {
+			deps: ['jquery']
+		},
+		highcharts : {
+			deps: ['jquery'],
+			exports: 'highcharts'
 		}
-	});
+	},
+	paths: {
+		jquery: 'libs/jquery.min',
+		backbone: 'libs/backbone-min',
+		underscore: 'libs/underscore-min',
+		modernizr: 'libs/modernizr-dev',
+		slider: 'libs/plugins/jquery.royalslider',
+		flowtype: 'libs/plugins/flowtype',
+		fastclick: 'libs/plugins/FastClick',
+		mobiscroll: 'libs/plugins/date/mobiscroll.core',
+		mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
+		mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
+		forms: 'libs/plugins/hutber.forms',
+		highcharts: 'libs/plugins/highcharts',
+		hammer: 'libs/plugins/hammer/hammer.min',
+		jqueryhammer:'libs/plugins/hammer/jquery.hammer.min',
+		backbonehammer:'libs/plugins/hammer/backbone.hammer',
+		date: 'libs/plugins/date',
+		core: 'core.functions',
+		sd : 'sd.functions',
+		dv : 'views/defaultView',
+		dsv : 'views/defaultSexView',
+		JST : 'templates'
+	}
+});
 
 /*==================================================
 Routers
 ==================================================*/
 // Requires ----------------
-	require([
+require([
 		'backbone',
-		'jStorage',
+		'modernizr',
 // Routes ----------------
 		'routes/router',
 // functions ----------------
-		'core.functions',
-		'sd.functions',
+		'sd',
+		'dv',
+		'dsv',
 // Views ----------------
 		'views/indexView',
 		'views/homeView',
 		'views/loginView',
+		'views/forgottenView',
 		'views/signUpView',
 		'views/sex/wank',
 		'views/sex/hands',
 		'views/sex/oral',
 		'views/sex/sex',
 		'views/sex/anything',
-// Plugins --------------------,
-		'flowtype',
+// Sex Details Pages --------------------,
+		'views/details/who',
+		'views/details/whoAdd',
+		'views/details/where',
+// User Pages --------------------,
+		'views/users/profile',
+		'views/users/userhistory',
+		'views/users/managewhos',
+		'views/users/settings',
+		'views/users/calendar',
+// Other Pages --------------------,
+		'views/other/shop',
+		'views/other/privacy',
+		'views/users/setpin',
+		'views/users/confirmpin',
+		'views/users/pinsave',
+		'views/users/pin',
+
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
 ================================================== */
     var Backbone = arguments[0],
         Router = arguments[2],
-		SD = arguments[4],
-		IndexView = arguments[5],
-        HomeView = arguments[6],
-        LoginView = arguments[7],
-		SignUpView = arguments[8],
-		wankView = arguments[9],
-        handsView = arguments[10],
-        oralView = arguments[11],
-        sexView = arguments[12],
-        anythingView = arguments[13];
+		SD = arguments[3],
+		IndexView = arguments[6],
+        HomeView = arguments[7];
 
 /*==================================================
-Load in scripts depending on which device we are.
-================================================== */
-	if(SD.isMobile){
-		$.getScript('phonegap.js', function( data, textStatus, jqxhr){
-			c( "cordova was loaded." );
-			var s = document.createElement('script');
-			s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
-			document.getElementsByTagName('body')[0].appendChild(s);
-		});
-	}else{
-		$.getScript('http://localhost:35729/livereload.js');
-	}
-
-
-		/*==================================================
-		Start up SD global object.
-		================================================== */
+ Start up SD global object.
+ ================================================== */
 	SD.init();
 
 /*==================================================
 Routes Vars
 ================================================== */
 // initiate routers ----------------
-    SD.ROUTER = new Router(),
+    SD.ROUTER = new Router();
 
-// views ---------------------------
-    SD.VIEWS.indexView = new IndexView(),
-    SD.VIEWS.homeView = new HomeView(),
-	SD.VIEWS.signUpView = new SignUpView(),
-	SD.VIEWS.loginView = new LoginView(),
-
-// Sex views ---------------------------
-	SD.VIEWS.WankView = new wankView(),
-	SD.VIEWS.HandsView = new handsView(),
-	SD.VIEWS.OralView = new oralView(),
-	SD.VIEWS.SexView = new sexView(),
-	SD.VIEWS.AnythingView = new anythingView();
+//// views ---------------------------
+    SD.VIEWS.indexView = new IndexView();
+    SD.VIEWS.homeView = new HomeView();
 
 /*==================================================
 Routes
 ================================================== */
+	var names = [];
+		names[8] = 'login';
+		names[9] = 'forgotten';
+		names[10] = 'signup';
+		names[11] = 'wank';
+		names[12] = 'hands';
+		names[13] = 'oral';
+		names[14] = 'sex';
+		names[15] = 'anything';
+		names[16] = 'who';
+		names[17] = 'whoadd';
+		names[18] = 'where';
+		names[19] = 'profile';
+		names[20] = 'userhistory';
+		names[21] = 'managewhos';
+		names[22] = 'settings';
+		names[23] = 'calendar';
+		names[24] = 'shop';
+		names[25] = 'privacy';
+		names[26] = 'setpin';
+		names[27] = 'confirmpin';
+		names[28] = 'pinsave';
+		names[29] = 'pin';
+	var myArgs = arguments;
+
+	names.forEach(function(me, key){
+		var functionName = me+"View";
+		SD.VIEWS[functionName] = new myArgs[key]();
+		SD.ROUTER.on('route:'+me, function(){
+			SD.VIEWS[functionName].render(); // succeeds
+		});
+	});
+
 //# Default router ----------------------------------------------------------------
-	SD.ROUTER.on('route:index route:home', function(){
-		if(sessionStorage.getItem('privateKey')!==null){
-			SD.VIEWS.homeView.render();
-		}else{
-			SD.VIEWS.indexView.render();
-		}
-	});
-
-// Not logged in Routers ---------------------------
-	SD.ROUTER.on('route:login', function(){
-		SD.VIEWS.loginView.render();
-	});
-	SD.ROUTER.on('route:signup', function(){
-		SD.VIEWS.signUpView.render();
-	});
-
-// Sex Routers ---------------------------
-	SD.ROUTER.on('route:wank', function(){
-		SD.VIEWS.WankView.render();
-	});
-	SD.ROUTER.on('route:hands', function(){
-		SD.VIEWS.HandsView.render();
-	});
-	SD.ROUTER.on('route:oral', function(){
-		SD.VIEWS.OralView.render();
-	});
-	SD.ROUTER.on('route:sex', function(){
-		SD.VIEWS.SexView.render();
-	});
-	SD.ROUTER.on('route:anything', function(){
-		SD.VIEWS.AnythingView.render();
-	});
+		SD.ROUTER.on('route:index route:home', function(){
+			if(localStorage.getItem('privateKey')!==null){
+				SD.VIEWS.homeView.render();
+			}else{
+				SD.VIEWS.indexView.render();
+			}
+		});
 
 /*==================================================
 Global Plugins
 ================================================== */
-$('body').flowtype({
-	minFont   : 18,
-	maxFont   : 40,
-	fontRatio : 20
-});
+//$('body').flowtype({
+//	minFont   : 18,
+//	maxFont   : 30,
+//	fontRatio : 20
+//});
 
 /*==================================================
 On Device Ready
@@ -216,6 +235,7 @@ On Device Ready
 		}, true);
 	}else{
 		$(document).ready(function() {
+			window.scrollTo(0, 1);
 			Backbone.history.start();
 		});
 	}

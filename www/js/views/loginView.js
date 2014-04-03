@@ -1,11 +1,8 @@
 /*global define*/
 define([
-    'jquery',
-    'underscore',
-    'backbone',
-    'JST',
-	'sd.functions',
-], function ($, _, Backbone, JST, SD) {
+	'sd',
+	'dv',
+], function (SD) {
     'use strict';
 
     var LoginView = SD.defaultView.extend({
@@ -14,18 +11,14 @@ define([
         template: JST['app/www/js/templates/login/login.ejs'],
 
         render: function () {
-			SD.templates.login = this.template(this.data);
             this.$el.html(this.template);
         },
-
 		data: {
 			site: SD.liveApp
 		},
-
         events: {
-            'submit .loginForm ': 'logUserIn'
+            'submit .loginForm ': 'logUserIn',
         },
-
         logUserIn: function (elem) {
 			var items = $(elem.currentTarget).find('input'),
 				noerror = true;
@@ -51,16 +44,25 @@ define([
 						'pword': values.pword
 					},
 					error: function(data){
-						c('Sorry Login Failed: '+data.status);
+						SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
 						SD.overlay.hideme();
 					},
 					success: function(data){
-						c('Login code: '+ data.code);
-						c(data);
 						if(data.privateKey){
-							$.jStorage.set('uid',data.ud.uid); //store user ID in the localStorage to persist
-							sessionStorage.setItem('privateKey',data.privateKey); //store privateKey in session so it disapears when the user closers the tab
-							SD.login.checkLoginState(true);
+							Object.keys(data).forEach(function(key){
+								var me = data[key];
+								if(typeof me === "string"){ //If I'm a string then just add it to locastorage
+									localStorage.setItem(key,me);
+								}else if (typeof me === "object"){ //If we are an object then stringify if
+									localStorage.setItem(key,JSON.stringify(me));
+								}
+							});
+							//Login successful, lets take you home and remove the pin variable
+							window.location.href = "#home";
+							sessionStorage.removeItem('appOpenedFirstTime');
+							location.reload();
+						}else{
+							SD.message.showMessage(data.message, 'bad');
 						}
 						SD.overlay.hideme();
 					}

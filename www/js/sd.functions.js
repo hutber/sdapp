@@ -11,7 +11,8 @@
 define([
 	'jquery',
 	'backbone',
-	'JST'
+	'JST',
+	'fastclick',
 ], function ($, Backbone, JST) {
 //	'use strict';
 
@@ -26,7 +27,7 @@ Globals
 		CDN: 'stage.sexdiaries.co.uk/',
 		HTTP: 'http://stage.sexdiaries.co.uk/',
 		STATE: function(){
-			if(sessionStorage.getItem('privateKey')===null){
+			if(localStorage.getItem('privateKey')===null){
 				return false;
 			}else{
 				$('body').data('state','loggedin');
@@ -34,26 +35,49 @@ Globals
 			}
 		}(),
 		CURRENTSEX: 'na',
+		SEXDEFAULTS: {
+			sextype: 'default',
+			sexnumber: 0,
+			image: '/img/path.jpg',
+			sextime:[false,false],
+			who: {},
+			rating: 0,
+			location: [false, 'Click to get your location'],
+			where: {},
+		},
+		TOTALSEXNUMBERS: {},
+		SEXNUMBERS: {},
+		GLOBALSEXNUMBERS: {},
+		FULLSEX: {},
+		WHO: null,
+		TEMPLATE: 'footerout',
+		HASH:'',
+		PREVIOUSHASH:'',
 		SLIDER: null,
 		VIEWS: {},
-		ROUTER: false
+		ROUTER: false,
 	};
+
+	SD.AJAX = SD.HTTP+'app/',
+	SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 
 // #define the globals depending on where we are ------------------------------------------------------
 	SD.globals = function () {
 		switch (window.location.hostname) {
 			case "sd.local":
-				SD.ENVIROMENT = 'localApp',
+					SD.ENVIROMENT = 'localApp',
 					SD.CDN = 'sd.local/',
 					SD.HTTP = 'http://sexdiaires.local/',
-					SD.AJAX = SD.HTTP+'app/';
+					SD.AJAX = SD.HTTP+'app/',
+					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 				break;
 			case "192.168.0.25":
-				SD.ENVIROMENT = 'mobilePhone',
-					SD.AJAX = SD.HTTP+ 'app/';
+					SD.ENVIROMENT = 'mobilePhone',
+					SD.AJAX = SD.HTTP+ 'app/',
+					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 				break;
-			default:
-				SD.AJAX = SD.HTTP+'app/';
+			case "m.sexdiaries.co.uk":
+					SD.ENVIROMENT = 'mobilesite';
 				break;
 		}
 	};
@@ -62,18 +86,21 @@ Globals
 Login functions
 ================================================== */
 SD.login = {
-	checkLoginState : function(state) { //We use this state to enable us to use the function on every page load to check if the user is logged in
-		if(sessionStorage.getItem('privateKey')===null && typeof state !== "undefined"){ //Not logged in, force to home
-			document.location.replace('');
-			location.reload();
-//			SD.defaultView.render();
-//			SD.ROUTER.navigate('');
-		}else if (state){ //This state is only ever set when loggin in: loginView.js:62 //If logged in force to sex picker
+	checkLoginState : function() { //We use this state to enable us to use the function on every page load to check if the user is logged in
+		var hash = window.location.hash.substring(1);
+		var loggedInState = true;
+		if(localStorage.getItem('privateKey')=== null) {loggedInState = false;}
+
+		if(sessionStorage.tmpPin){
+		//Top level, if the user hasn't set a pin number
+		}else if(loggedInState && !localStorage.pinNumber){
+			window.location.href = "#setpin";
+		}else if(sessionStorage.appOpenedFirstTime && hash!=="pin" && loggedInState){
+			window.location.href = "#pin";
+		}else if( loggedInState && (hash==="" || hash==="signup" || hash==="forgotten" || hash==="login")){
 			window.location.href = "#home";
-			location.reload();
-//			SD.DSV.render();
-//			SD.VIEWS.homeView.render();
-//			SD.ROUTER.navigate('home');
+		}else if (!loggedInState && hash==="home" ){
+			document.location.replace('');
 		}
 	}
 };
@@ -81,122 +108,96 @@ SD.login = {
 /*==================================================
 Routes/Views
 ================================================== */
-// #Set up the Deult router view ------------------------------------------------------
-	SD.defaultView = function(){ //Default controller for all views
-		var templatesNeeded = function () { //create a var of the template view
-			var myself;
-			if (SD.STATE) { //Chhek if we are logged in or not then give different templates
-				myself = {
-					header: JST['app/www/js/templates/comp/headerIn.ejs'],
-					menu: JST['app/www/js/templates/comp/menu.ejs'],
-					shell: JST['app/www/js/templates/comp/shell.ejs'],
-					footer: JST['app/www/js/templates/comp/footerIn.ejs'],
-				};
-			} else {
-				myself = {
-					header: JST['app/www/js/templates/comp/headerOut.ejs'],
-					menu: JST['app/www/js/templates/comp/menu.ejs'],
-					shell: JST['app/www/js/templates/comp/shell.ejs'],
-					footer: JST['app/www/js/templates/comp/footerOut.ejs'],
-				};
 
+SD.changeHeightofContent = function(){
+	if($('footer').is(':visible')){
+		SD.pageHeight = $('body').outerHeight() - ($('header').outerHeight() + $('footer').outerHeight());
+	}else{
+		SD.pageHeight = $('body').outerHeight() - ($('header').outerHeight());
+	}
+	$('page').css({height:SD.pageHeight});
+};
+
+SD.onHashChange = function(){
+	//make sure we are logged in, if we are not forward back to home page
+	SD.login.checkLoginState();
+
+	//Updated previous hash
+	SD.PREVIOUSHASH = SD.HASH;
+
+	//Update the new hash
+	SD.HASH = window.location.hash.substring(1);
+
+	//On page load update body class with current page
+	SD.DV.globalClass();
+
+	//Resize the $('page') element
+	SD.changeHeightofContent();
+
+	//update menu items with selected item
+	$('menu a.selected').removeAttr('class');
+	$('menu a[data-id='+SD.HASH+']').addClass('selected');
+};
+
+/*==================================================
+Add Sex Functions
+================================================== */
+SD.addSex = {
+	convertPhp: function(){
+		var php = {};
+
+		php.sexnumber = SD.SEXDEFAULTS.sexnumber,
+		php.sextime = $.scroller.formatDate('yy-mm-dd HH:ii:ss', SD.SEXDEFAULTS.sextime[0].getDate()),
+		php.rating = SD.SEXDEFAULTS.rating;
+
+		if(SD.SEXDEFAULTS.location[0]!==false){
+			//Location Generator
+			for	(var index in SD.SEXDEFAULTS.location[0].address) {
+				php['location'+index] = SD.SEXDEFAULTS.location[0].address[index];
 			}
-			SD.templates = myself;
-			return myself.header() + myself.menu() + myself.shell() + myself.footer();
-		}();
+			php.locationlat = SD.SEXDEFAULTS.location[0].lat,
+			php.locationlon = SD.SEXDEFAULTS.location[0].lon;
+		}
 
-		//extend the view with the default home view
-		var HomeView = Backbone.View.extend({
-			el: 'body > shell',
-			events: { //Add click events for global clicks
-				'click .logout': 'doLogOut',
-				'click logo a': 'goHome',
-				'click a, sexoptions > *': 'globalClass',
-				'click footer sexnav' : 'sexNav'
-			},
-			render: function () {
-				SD.login.checkLoginState();
-				this.$el.html(templatesNeeded);
-			},
-			doLogOut: function(){
-				sessionStorage.clear();
-				document.location.replace('/');
-				return false;
-			},
-			goHome: function(){
-				SD.ROUTER.navigate('home', true);
-				return false;
-			},
-			globalClass: function(m){
-				var desireClass = function(){if(m.currentTarget.nodeName === "A"){
-						return m.currentTarget.hash.substring(1);
+		if(Object.keys(SD.SEXDEFAULTS.who).length>0){
+			php.who = SD.SEXDEFAULTS.who;
+		}
+		if(Object.keys(SD.SEXDEFAULTS.where).length>0){
+			php.where = SD.SEXDEFAULTS.where;
+		}
+
+		return php;
+	},
+	save: function(){
+		if(localStorage.privateKey){
+			var saveSexDetails = SD.addSex.convertPhp();
+			$.ajax({
+				url: SD.AJAX+'add',
+				type: 'POST',
+				data: {
+					info: saveSexDetails,
+					privateKey: localStorage.privateKey
+				},
+				error: function(data){
+					SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
+				},
+				success: function(data){
+					if(data===""){
+						//Update sex stats with new sex
+						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
-						return m.currentTarget.nodeName;
-					}
-				};
-				$('body').removeAttr('class').addClass(desireClass);
-			},
-			sexNav: function(m){
-				for(var index in m.currentTarget.children) {
-					if(m.target.outerHTML === m.currentTarget.children[index].innerHTML){
-						var currentClick = m.currentTarget.children[index],
-							currentClickIndex = index;
+						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
 					}
 				}
-				if($('.royalSlider')[0]){ //Check to see if the slider is open, if it is lets go to slide
-					SD.SLIDER.goTo(currentClickIndex);
-				}else{
-					SD.pageLoad(currentClick.attributes[0].value);
-				}
-			}
-		});
-		var defaultView = new HomeView();
-		defaultView.render();
-		return HomeView;
-	}();
-
-	SD.defaultSexView = function(){
-		//set up homeview
-		var sexView = SD.defaultView.extend({
-			el: 'page',
-			jstemplate: JST['app/www/js/templates/sex/sexTemplate.ejs'],
-			ownView: JST['app/www/js/templates/sex.ejs'],
-			events:{
-				"click sexoptions > *" : 'changeSex',
-				"click sexform items > *" : 'openASex',
-			},
-			changeSex: function(elem){
-				var me = elem.currentTarget.localName;
-				SD.updateSexClass(me); // #update body classes with new sex class
-
-				$('.selected').removeClass('selected');// #update selected from bottom navigation
-				$(me).addClass('selected');
-
-				SD.CURRENTSEX = elem; //update the state
-				SD.pageLoad(elem);
-			},
-			openASex: function(el){
-
-			},
-			render: function () { //the global render
-				useme = document.location.hash.replace('#','');
-				if(useme.length===0){
-					$('body').removeAttr('class').addClass('login');
-				}else {
-					$('body').removeAttr('class').addClass(useme);
-				}
-				var compiled = this.jstemplate();
-				this.$el.html(compiled);
-			},
-			renderSex: function (view){
-				$('sexdetails').html(view);
-			}
-		});
-
-		SD.DSV = new sexView();
-		SD.DSV.render();
-		return sexView;
-	}();
+			});
+		}else{
+			SD.message.showMessage('You appear to not be logged in?', 'bad');
+		}
+	}
+};
 
 /*==================================================
 Display functions
@@ -204,13 +205,6 @@ Display functions
 //	#Update title
 	SD.setTitle = function(title){
 		$('.title').html(title);
-	};
-
-//	#Remove Classes
-	SD.updateSexClass = function(sex){
-		var bodydom = $('body');
-//		if(bodydom.hasClass('loggin')){bodydom.attr('class','loggin');}
-		bodydom.toggleClass(sex);
 	};
 
 // #display the popup/overlay ------------------------------------------------------
@@ -226,28 +220,93 @@ Display functions
 		}
 	};
 
+	/*==================================================
+	Loading
+	================================================== */
+	SD.spinner = {
+		show: function(title, message){
+			if(typeof title!=="string"){
+				title = null;
+			}
+			if(typeof message!=="string"){
+				message = null;
+			}
+			if(window && window.plugins && window.plugins.spinnerDialog){
+				window.plugins.spinnerDialog.show(title,message);
+			}else{
+				SD.overlay.showme();
+			}
+		},
+		hide: function(){
+			if(window && window.plugins && window.plugins.spinnerDialog){
+				window.plugins.spinnerDialog.hide();
+			}else{
+				SD.overlay.hideme();
+			}
+		}
+	};
+
 	//update details on page load
-	SD.pageLoad = function(elem){
+	SD.pageLoad = function(pageToLoad){
 		var useme;
 
-		if(typeof elem === "object" && elem.currentTarget.id){
-			useme = elem.currentTarget.id;
-		}else if(typeof elem === "object"){
-			useme = elem.currentTarget.localName;
-		}else if(elem){
-			useme = elem;
+		//Simple check if we have been given a string
+		if(typeof pageToLoad === "string"){
+			useme = pageToLoad;
 		}else if(document.location.hash){
-			useme = document.location.hash.replace('#','');
+			useme = SD.HASH;
 		}else{
-			useme = elem;
+			c('Nothing was given in the pageLoad');
 		}
 
-		if(!$('sexdetails').length){
-			SD.DSV.render();
-		}
-
-		SD.CURRENTSEX = useme; //update the state
+		//Update the current view, don't re-redner it
 		SD.ROUTER.navigate(useme, true);
+	};
+
+	SD.message = {
+		timer: null,
+		showMessage: function(message, type, duration){
+			if(typeof duration === "undefined") duration = 5000;
+			$('messageBox message').find('div').html(message);
+			$('messageBox').removeAttr('class').attr('class',type+' show');
+			this.timer = setTimeout(this.hideMessage, duration);
+		},
+		hideMessage: function(){
+			$('messageBox').removeClass('show');
+			clearTimeout(this.timer);
+		}
+	};
+	//set up click event to hide
+	$('messageBox').on('click', SD.message.hideMessage);
+
+// #Location ajax formating -------------------------------------------------------------
+	SD.locationSucess = function(position) {
+		if(!SD.SEXDEFAULTS.location[0]){
+			$.ajax({
+				url: 'http://nominatim.openstreetmap.org/reverse',
+				dataType: "json",
+				data: {
+					'format': 'json',
+					'lat': position.coords.latitude,
+					'lon': position.coords.longitude,
+					'zoom' : 18
+				},
+				error: function(data){
+					SD.overlay.hideme();
+				},
+				success: function(data){
+					SD.SEXDEFAULTS.location[0] = data;
+					SD.SEXDEFAULTS.location[1] = data.address.city_district + ', '+ data.address.city +', '+data.address.country_code.toUpperCase();
+					$('location location').html(SD.SEXDEFAULTS.location[1]);
+					SD.overlay.hideme();
+				}
+			});
+		}
+	};
+	SD.locationFail = function (error) {
+		alert('code: '    + error.code    + '\n' +
+			'message: ' + error.message + '\n');
+		SD.overlay.hideme();
 	};
 /*==================================================
 Networking functions
@@ -266,16 +325,111 @@ Networking functions
 			states[Connection.CELL]     = 'Cell generic connection';
 			states[Connection.NONE]     = 'No network connection';
 
-			c('Connection type: ' + states[networkState]);
+//			c('Connection type: ' + states[networkState]);
 		}else{
 			c('Connection not ready yet');
 		}
 	};
 
+/*==================================================
+ Formatting Results
+ ================================================== */
+// #SEXNUMBERS ------------------------------------------------------
+	SD.convertSexNumbers = {
+		init: function(){
+			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
+				this.convert(localStorage.sexnumbers, SD.SEXNUMBERS);
+			}
+			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
+				this.convert(localStorage.totalsexnumbers, SD.TOTALSEXNUMBERS);
+			}
+			if(localStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
+				this.convert(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
+			}
+		},
+		convert: function(item, target){
+			if(typeof item !=="undefined"){
+				JSON.parse(item).forEach(function(me){
+					if(typeof me==="object"){
+						var sexName = me.sex,
+							sexNumber = +me.no;
 
-// #Init for SD ------------------------------------------------------
+						switch (sexName){
+							case "1":
+								target.Wank = sexNumber;
+								break;
+							case "2":
+								target.Hands = sexNumber;
+								break;
+							case "3":
+								target.Oral = sexNumber;
+								break;
+							case "4":
+								target.Sex = sexNumber;
+								break;
+							case "5":
+								target.Anything = sexNumber;
+								break;
+						}
+					}else{
+						target.total = me;
+					}
+				});
+			}
+		}
+	};
+
+	$.fn.serializeObject = function() {
+		var o = {};
+		var a = this.serializeArray();
+		$.each(a, function() {
+			if (o[this.name]) {
+				if (!o[this.name].push) {
+					o[this.name] = [o[this.name]];
+				}
+				o[this.name].push(this.value || '');
+			} else {
+				o[this.name] = this.value || '';
+			}
+		});
+		return o;
+	};
+	/*==================================================
+	Init for SD
+	================================================== */
 	SD.init = function () {
+
+		//Try and make clicks faster
+		FastClick.attach(document.body);
+
 		SD.globals(); //set up our global variables
+
+		//Set up scripts to get loaded depending on envoiment
+		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
+
+			//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
+			sessionStorage.setItem('appOpenedFirstTime',true);
+
+			$.getScript('cordova.js', function( data, textStatus, jqxhr){
+				var s = document.createElement('script');
+				s.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
+				document.getElementsByTagName('body')[0].appendChild(s);
+			});
+		}else{
+			$.getScript('http://localhost:35729/livereload.js');
+		}
+
+		//Set up hash change for every time it changes
+		SD.onHashChange();
+		window.addEventListener("hashchange", SD.onHashChange, false);
+
+		//Remove debugs if they are there
+		$('debug').on('click', 'li:first', function(){ $('debug li').remove(); });
+
+		//add SD.changeHeightofContent(); to window resize
+		$( window ).resize(function() {
+			SD.changeHeightofContent();
+		});
 	};
 
 //return SD

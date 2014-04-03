@@ -3,19 +3,23 @@ define([
 	'underscore',
 	'backbone',
 	'JST',
-	'sd.functions'
+	'sd',
+	'dsv',
 ], function ($, _, Backbone, JST, SD) {
 	'use strict';
 
 	//set up homeview
 	var anything = SD.defaultSexView.extend({
-		data: {
-			url: SD.HTTP+'stats/add',
-			sextype: 'anything',
-			image: '/img/path.jpg'
-		},
 		render: function () {
-			SD.DSV.renderSex(SD.DSV.ownView(this.data));
+			var data = this.dataChecker({
+				sextype: 'anything',
+			});
+
+			//Update the current sex
+			SD.CURRENTSEX = 'anything';
+
+			SD.DSV.render(data);
+
 			SD.setTitle('Good lord really? That?!!!');
 		}
 	});

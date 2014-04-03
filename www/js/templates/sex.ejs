@@ -1,13 +1,94 @@
-<h2><%= data.header %></h2>
-
-<sexform class="<%= data.sextype %>">
-	<form action="post" method="<%= data.url %>">
-		<when><span>When</span><input name="when" type="date" required/></when>
-		<who><span>Who</span><input name="when" type="text" placeholder="Who" required/></who>
-		<rating><span>Rating</span><input name="when" type="text" placeholder="Rating" required/></rating>
-		<location><span>Location</span><input name="when" type="text" placeholder="Location" required/></location>
-		<where><span>Where</span><input name="where" type="text" placeholder="Where" required/></where>
-		<extra><span>Extra</span><br><button name="save" type="submit" value="1">Save</button></extra>
-	</form>
-	<!--<seximage><img src="img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/></seximage>-->
+<!--<h2><%= data.header %></h2>-->
+<sexform class="<%= data.sextype %> blocks">
+	<date>
+		<info>
+			<div>
+				Today, Mon 28
+			</div>
+		</info>
+	</date>
+	<when>
+		<info>
+			<div>
+				<h2><%= data.sextype %></h2>
+				<date><%= data.sextime[1] %></date>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/full/<%= data.sextype %>.png" alt="<%= data.sextype %>"/>
+			</div>
+		</detailsimage>
+	</when>
+	<who>
+		<info>
+			<div>
+				<h2>Who</h2>
+				<searchSelectedItems><%
+					for(var index in data.who){ %>
+					<%= index %>
+					<% if(index !== Object.keys(data.who)[--Object.keys(data.who).length]){ %>, <% }
+					} %></searchSelectedItems>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/who.png" alt="Who"/>
+			</div>
+		</detailsimage>
+	</who>
+	<Rating>
+		<info>
+			<face><img src="img/faces/thatsit.png" alt="My Face!!!"/></face>
+			<face><img src="img/faces/usedface.png" alt="My Face!!!"/></face>
+			<face><img src="img/faces/chuffedface.png" alt="My Face!!!"/></face>
+			<face><img src="img/faces/argyeface.png" alt="My Face!!!"/></face>
+			<face><img src="img/faces/cumface.png" alt="My Face!!!"/></face>
+		</info>
+	</Rating>
+	<Location>
+		<info>
+			<div>
+				<h2>Location</h2>
+				<location><%= data.location[1] %></location>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/location.png" alt="Where"/>
+			</div>
+		</detailsimage>
+	</Location>
+	<Where>
+		<info>
+			<div>
+				<h2>Where</h2>
+				<searchSelectedItems><%
+					for(var index in data.where){ %>
+						<%= index %>
+						<% if(index !== Object.keys(data.where)[--Object.keys(data.where).length]){ %>, <% }
+					} %></searchSelectedItems>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/where.png" alt="Location"/>
+			</div>
+		</detailsimage>
+	</Where>
+	<save class="disabled">
+		<info>
+			<div>
+				<h2>Save the sex?</h2>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/save.png" alt="Save?"/>
+			</div>
+		</detailsimage>
+	</save>
+	<!--<extra>-->
+		<!--<h2>Extra Details?</h2>-->
+	<!--</extra>-->
 </sexform>
