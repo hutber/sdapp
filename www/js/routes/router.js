@@ -41,6 +41,7 @@ define([
 			//Other
 			'shop' : 'shop',
 			'privacy' : 'privacy',
+			'terms' : 'terms',
         }
     });
 

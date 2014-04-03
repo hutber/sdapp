@@ -145,6 +145,7 @@ require([
 		'views/users/confirmpin',
 		'views/users/pinsave',
 		'views/users/pin',
+		'views/other/terms',
 
 ], function () {
 /*==================================================
@@ -197,6 +198,7 @@ Routes
 		names[27] = 'confirmpin';
 		names[28] = 'pinsave';
 		names[29] = 'pin';
+		names[30] = 'terms';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){
