@@ -21,7 +21,7 @@
 
         form.init = function(me){
             form.init.myself = me,
-            form.init.mainItems = me.find($("select:visible,textarea:visible,input:visible")),
+            form.init.mainItems = me.find($("select:visible,textarea:visible,input[type=text]:visible,input[type=password]:visible,input[type=email]:visible")),
             form.init.checkBoxItems = me.find($("input[type=checkbox]:visible"));
             form.items.init();
             form.actions();
