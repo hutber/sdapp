@@ -15,11 +15,15 @@ define([
 
         template: JST['app/www/js/templates/login/signup.ejs'],
         checkmail: JST['app/www/js/templates/login/checkmail.ejs'],
+		terms: JST['app/www/js/templates/login/terms.ejs'],
 
         render: function () {
             this.$el.html(this.template);
 
 			$('.signupForm').forms({required: 'all'});
+
+			//add terms into the template.
+			$('#terms').html(this.terms);
 
 			//Time date picker
 			$('#dob').mobiscroll({
@@ -36,8 +40,18 @@ define([
 			});
         },
         events: {
-            'submit .signupForm': 'signupForm'
+            'submit .signupForm': 'signupForm',
+            'click .terms': 'termsPop',
+            'click .icon-left-big': 'termsPopClose',
         },
+		termsPop: function(){
+			$('.signupForm').hide();
+			$('#terms').show();
+		},
+		termsPopClose: function(){
+			$('.signupForm').show();
+			$('#terms').hide();
+		},
 		signupForm: function (elem) {
 			var myself = this;
 			if($(elem.currentTarget).find('.error').length !== true){
