@@ -12,9 +12,18 @@ define([
 	var profile = SD.defaultView.extend({
 		el: 'page',
 		events: {
-			'click delete':'deleteUser'
+			'click delete':'deleteUser',
+			'click resetpin':'resetpin'
 		},
 		template: JST['app/www/js/templates/users/settings.ejs'],
+		resetpin: function(){
+			if(confirm('Yep? You sure about resetting your password?')){
+				localStorage.removeItem('pinNumber');
+				//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
+				sessionStorage.setItem('appOpenedFirstTime',true);
+				document.location.replace('#setpin');
+			}
+		},
 		deleteUser: function(){
 
 			if(confirm('Now did you mean to click me? Or did u just fuck up?')){
@@ -43,9 +52,15 @@ define([
 		render: function () {
 
 			var data = {
-				gender: localStorage.gender,
+				gender: function(){
+					if(localStorage.gender==="0"){
+						return "male";
+					}else{
+						return "female";
+					}
+				}(),
 				regdate: localStorage.regdate
-			}
+			};
 
 			this.$el.html(this.template(data));
 			SD.setTitle('My Settings');

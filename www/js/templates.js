@@ -64,7 +64,7 @@ define(function(){
 
   this["JST"]["app/www/js/templates/users/pinsave.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<div class="nostats"><h1>Pin has been saved, Thank you.</h1><p>Its now time to get going with your life.</p><a href="#home">Start Recording Sex, whore...!</a></div>';return __p};
 
-  this["JST"]["app/www/js/templates/users/settings.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<div class="blocks"><user><info><div><h2>Member Since:</h2><date>' +((__t = ( data.regdate )) == null ? '' : __t) +'</date></div></info><detailsimage><div><img src="img/icons/' +((__t = ( data.gender )) == null ? '' : __t) +'.png" alt="' +((__t = ( data.gender )) == null ? '' : __t) +'"/></div></detailsimage></user><delete><info><div><h2>Delete Account?</h2></div></info><detailsimage><i class="icon-lock"></i></detailsimage></delete></div>';return __p};
+  this["JST"]["app/www/js/templates/users/settings.ejs"] = function(data) {var __t, __p = '', __e = _.escape;__p += '<div class="blocks"><user><info><div><h2>Member Since:</h2><date>' +((__t = ( data.regdate )) == null ? '' : __t) +'</date></div></info><detailsimage><div><i class="icon-' +((__t = ( data.gender )) == null ? '' : __t) +'"></i></div></detailsimage></user><resetpin><info><div><h2>Change Pin?</h2></div></info><detailsimage><div><i class="icon-lock-open"></i></div></detailsimage></resetpin><delete><info><div><h2>Delete Account?</h2></div></info><detailsimage><i class="icon-trash"></i></detailsimage></delete></div>';return __p};
 
   return this["JST"];
 
