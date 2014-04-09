@@ -38,13 +38,14 @@ define([
 					$('#dob').html(el).removeAttr('class');
 				},
 			});
+//			this.$el.html(this.checkmail({email:'aasdas'}));
         },
         events: {
             'submit .signupForm': 'signupForm',
-            'click .terms': 'termsPop',
+            'click .elements label a': 'termsPop',
             'click .icon-left-big': 'termsPopClose',
         },
-		termsPop: function(){
+		termsPop: function(el){
 			$('.signupForm').hide();
 			$('#terms').show();
 		},

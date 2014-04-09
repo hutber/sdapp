@@ -6,6 +6,7 @@
 	<option value="4">Sexes <span>(<%= SD.TOTALSEXNUMBERS.Sex %>)</span></option>
 	<option value="5">Anything Else? <span>(<%= SD.TOTALSEXNUMBERS.Anything %>)</span></option>
 </select>-->
+<% if(typeof data !== "undefined"){ %>
 <span class="spanicon">
 	<i class="icon-down-open"></i>
 	<select name="month" id="month">
@@ -17,3 +18,11 @@
 <div class="historyContent">
 
 </div>
+
+<% }else { %>
+<div class="nostats">
+	<h1>Seriously!? You still haven't recorded anything</h1>
+	<p>Man... You need to get on and do something</p>
+	<a href="#home">Go home... click self pleasure and record something</a>
+</div>
+<% } %>
