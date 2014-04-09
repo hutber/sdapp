@@ -59,11 +59,7 @@ define([
 				}
 			},
 			doLogOut: function(){
-				var tmpPin = localStorage.pinNumber;
-				localStorage.clear();
-				localStorage.setItem('pinNumber', tmpPin);
-				document.location.replace('');
-				return false;
+				SD.login.doLogOut();
 			},
 			openMenu: function(el){
 				$('body').removeAttr('style').toggleClass('menuOpen');

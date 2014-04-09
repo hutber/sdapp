@@ -32,8 +32,7 @@ define([
 				pinInputs.eq(actives.length).addClass('active');
 				myself.currentPw += ''+valueReturned;
 				if(myself.currentPw.length === 4 && myself.currentPw === localStorage.pinNumber){
-					sessionStorage.removeItem('appOpenedFirstTime');
-					window.location.href = "#home";
+					SD.login.checkPrivateKey();
 				}else if (myself.currentPw.length === 4){
 					SD.message.showMessage('Pin incorrect', 'bad', 1000);
 				}

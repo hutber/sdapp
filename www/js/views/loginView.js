@@ -48,22 +48,7 @@ define([
 						SD.overlay.hideme();
 					},
 					success: function(data){
-						if(data.privateKey){
-							Object.keys(data).forEach(function(key){
-								var me = data[key];
-								if(typeof me === "string"){ //If I'm a string then just add it to locastorage
-									localStorage.setItem(key,me);
-								}else if (typeof me === "object"){ //If we are an object then stringify if
-									localStorage.setItem(key,JSON.stringify(me));
-								}
-							});
-							//Login successful, lets take you home and remove the pin variable
-							window.location.href = "#home";
-							sessionStorage.removeItem('appOpenedFirstTime');
-							location.reload();
-						}else{
-							SD.message.showMessage(data.message, 'bad');
-						}
+						SD.login.doLogin(data);
 						SD.overlay.hideme();
 					}
 				});

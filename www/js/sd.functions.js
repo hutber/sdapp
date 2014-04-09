@@ -86,6 +86,55 @@ Globals
 Login functions
 ================================================== */
 SD.login = {
+	moveToHome: function(reload){
+		if(typeof reload === "undefined") {reload = false;} //if no reload is passed make it false
+		sessionStorage.removeItem('appOpenedFirstTime');
+		if(reload){
+			location.reload();
+		}else {
+			window.location.href = "#home";
+		}
+	},
+	doLogin: function(data){
+		if(data.privateKey){
+			Object.keys(data).forEach(function(key){
+				var me = data[key];
+				if(typeof me === "string"){ //If I'm a string then just add it to locastorage
+					localStorage.setItem(key,me);
+				}else if (typeof me === "object"){ //If we are an object then stringify if
+					localStorage.setItem(key,JSON.stringify(me));
+				}
+			});
+			SD.login.moveToHome(true);
+		}else{
+			SD.message.showMessage(data.message, 'bad');
+		}
+	},
+	checkPrivateKey: function(){
+		SD.spinner.show('Looking up', 'We are checking if you  have logged in on another device');
+		$.ajax({
+			url: SD.AJAX+'users/checkKey',
+			type: 'POST',
+			dataType: "json",
+			data: {
+				'ierihias': localStorage.uid,
+				'adfbse4': localStorage.privateKey
+			},
+			error: function(data){
+				SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
+				SD.spinner.hide();
+			},
+			success: function(data){
+				if(data.current==="1"){
+					SD.login.moveToHome();
+					SD.spinner.hide();
+				}else{
+					alert('You have logged in somewhere else since using this app. For security you\'ll need to log in again.');
+					SD.login.doLogOut();
+				}
+			}
+		});
+	},
 	checkLoginState : function() { //We use this state to enable us to use the function on every page load to check if the user is logged in
 		var hash = window.location.hash.substring(1);
 		var loggedInState = true;
@@ -102,6 +151,13 @@ SD.login = {
 		}else if (!loggedInState && hash==="home" ){
 			document.location.replace('');
 		}
+	},
+	doLogOut: function(){
+		var tmpPin = localStorage.pinNumber;
+		localStorage.clear();
+		localStorage.setItem('pinNumber', tmpPin);
+		document.location.replace('');
+		return false;
 	}
 };
 
@@ -279,7 +335,9 @@ Display functions
 	//set up click event to hide
 	$('messageBox').on('click', SD.message.hideMessage);
 
-// #Location ajax formating -------------------------------------------------------------
+/*==================================================
+ Location ajax formating
+ ================================================== */
 	SD.locationSucess = function(position) {
 		if(!SD.SEXDEFAULTS.location[0]){
 			$.ajax({
