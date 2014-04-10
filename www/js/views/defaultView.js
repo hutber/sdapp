@@ -3,7 +3,7 @@
  */
 define([
 	'sd',
-	'libs/plugins/hammer/hammer.min'
+	'hammer'
 ], function (SD, Hammer) {
 	'use strict';
 
@@ -36,7 +36,7 @@ define([
 			events: { //Add click events for global clicks
 				'click logo a': 'goHome',
 				'click footer sexnav' : 'sexNav',
-				'click hidepage' : 'hidepage',
+				'click hidepage' : 'openMenu',
 				'click footer saveBox': 'saveBox',
 				'click menubtn': 'openMenu',
 				'click savewho': 'saveWho',
@@ -45,24 +45,24 @@ define([
 			render: function () {
 				//Output correct tempalte
 				this.$el.html(templatesNeeded);
-
-				var hammertime = Hammer(document.body).on('dragright', function(event) {
-//					c(arguments);
-//					alert('hello!');
-				});
+//				this.slideMenu.init();
+			},
+			slideMenu: {
+				init: function(){
+					var menuItem = document.getElementById('hidepage');
+					if(menuItem){
+						var hammertime = Hammer(menuItem).on('dragleft', function(event) {
+							document.body.style.MozTransform = 'translate('+event.gesture.touches[0].screenX +'px,0)';
+							document.body.style.webkitTransform = '-webkit-translate('+event.gesture.touches[0].screenX +'px,0)';
+						});
+					}
+				}
 			},
 			doLogOut: function(){
-				var tmpPin = localStorage.pinNumber;
-				localStorage.clear();
-				localStorage.setItem('pinNumber', tmpPin);
-				document.location.replace('');
-				return false;
+				SD.login.doLogOut();
 			},
-			openMenu: function(){
-				$('body').toggleClass('menuOpen');
-			},
-			hidepage:function(event){
-				event.stopPropagation();
+			openMenu: function(el){
+				$('body').removeAttr('style').toggleClass('menuOpen');
 			},
 			goHome: function(){
 				SD.ROUTER.navigate('home', true);

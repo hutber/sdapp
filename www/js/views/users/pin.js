@@ -32,14 +32,17 @@ define([
 				pinInputs.eq(actives.length).addClass('active');
 				myself.currentPw += ''+valueReturned;
 				if(myself.currentPw.length === 4 && myself.currentPw === localStorage.pinNumber){
-					sessionStorage.removeItem('appOpenedFirstTime');
-					window.location.href = "#home";
+					SD.login.checkPrivateKey();
 				}else if (myself.currentPw.length === 4){
 					SD.message.showMessage('Pin incorrect', 'bad', 1000);
 				}
 			}else{
 				if(valueReturned === "Forgot Pin?"){
 					//Forward to forgotten
+					if(confirm('Are you sure you have forgotten your pin code? Doing this will reset your pin and log you out')){
+						localStorage.clear();
+						document.location.replace('');
+					}
 				}else if (valueReturned === ""){
 					myself.currentPw = myself.currentPw.substr(0, actives.length-1);
 					pinInputs.eq(actives.length-1).removeClass('active');

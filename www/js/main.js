@@ -93,8 +93,8 @@ require.config({
 		forms: 'libs/plugins/hutber.forms',
 		highcharts: 'libs/plugins/highcharts',
 		hammer: 'libs/plugins/hammer/hammer.min',
-		jqueryhammer:'libs/plugins/hammer/jquery.hammer.min',
-		backbonehammer:'libs/plugins/hammer/backbone.hammer',
+//		jqueryhammer:'libs/plugins/hammer/jquery.hammer.min',
+//		backbonehammer:'libs/plugins/hammer/backbone.hammer',
 		date: 'libs/plugins/date',
 		core: 'core.functions',
 		sd : 'sd.functions',
@@ -132,8 +132,10 @@ require([
 		'views/details/who',
 		'views/details/whoAdd',
 		'views/details/where',
+// Stats --------------------,
+		'views/stats/overview',
+		'views/stats/graphs',
 // User Pages --------------------,
-		'views/users/profile',
 		'views/users/userhistory',
 		'views/users/managewhos',
 		'views/users/settings',
@@ -187,18 +189,19 @@ Routes
 		names[16] = 'who';
 		names[17] = 'whoadd';
 		names[18] = 'where';
-		names[19] = 'profile';
-		names[20] = 'userhistory';
-		names[21] = 'managewhos';
-		names[22] = 'settings';
-		names[23] = 'calendar';
-		names[24] = 'shop';
-		names[25] = 'privacy';
-		names[26] = 'setpin';
-		names[27] = 'confirmpin';
-		names[28] = 'pinsave';
-		names[29] = 'pin';
-		names[30] = 'terms';
+		names[19] = 'overview';
+		names[20] = 'graphs';
+		names[21] = 'userhistory';
+		names[22] = 'managewhos';
+		names[23] = 'settings';
+		names[24] = 'calendar';
+		names[25] = 'shop';
+		names[26] = 'privacy';
+		names[27] = 'setpin';
+		names[28] = 'confirmpin';
+		names[29] = 'pinsave';
+		names[30] = 'pin';
+		names[31] = 'terms';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){

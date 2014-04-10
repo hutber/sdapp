@@ -27,12 +27,15 @@ define([
 			'where': 'where',
 			'whereadd': 'whereadd',
 
+			//Stats
+			'overview': 'overview',
+			'graphs': 'graphs',
+
 			//Users
 			'setpin' : 'setpin',
 			'confirmpin' : 'confirmpin',
 			'pinsave' : 'pinsave',
 			'pin' : 'pin',
-			'profile': 'profile',
 			'userhistory': 'userhistory',
 			'managewhos': 'managewhos',
 			'settings': 'settings',

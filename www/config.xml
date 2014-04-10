@@ -3,7 +3,7 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "co.uk.sexdiaries.app"
+        id        = "co.uk.sexdiariesalpha.app"
         version   = "0.0.1">
 
     <name>Sex Diaries</name>
@@ -48,7 +48,6 @@
     <preference name="show-splash-screen-spinner" value="true" />           <!-- ios: if set to false, the spinner won't appear on the splash screen during app loading -->
     <preference name="auto-hide-splash-screen"    value="true" />           <!-- ios: if set to false, the splash screen must be hidden using a JavaScript API -->
     <preference name="disable-cursor"             value="false" />          <!-- blackberry: prevents a mouse-icon/cursor from being displayed on the app -->
-    <preference name="android-minSdkVersion"      value="7" />              <!-- android: MIN SDK version supported on the target device. MAX version is blank by default. -->
     <preference name="android-installLocation"    value="auto" />           <!-- android: app install location. 'auto' will choose. 'internalOnly' is device memory. 'preferExternal' is SDCard. -->
     <preference name="webviewbounce"              value="true" />
     <preference name="DisallowOverscroll"         value="true"/>
@@ -66,18 +65,18 @@
         <gap:plugin name="Example" />
         A list of available plugins are available at https://build.phonegap.com/docs/plugins
     -->
-    <gap:plugin name="org.apache.cordova.splashscreen" />
+    <!--<gap:plugin name="org.apache.cordova.splashscreen" />-->
     <gap:plugin name="org.apache.cordova.network-information" />
     <gap:plugin name="org.apache.cordova.dialogs" />
-    <gap:plugin name="org.apache.cordova.vibration" />
+    <!--<gap:plugin name="org.apache.cordova.vibration" />-->
     <gap:plugin name="org.apache.cordova.geolocation" />
     <!--<gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" />-->
 
     <!-- Local Plugins are added here, the above is for phonegap build. -->
-    <feature name="SplashScreen"><param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" /></feature>
+    <!--<feature name="SplashScreen"><param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" /></feature>-->
     <feature name="NetworkStatus"><param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" /></feature>
     <feature name="Notification"><param name="android-package" value="org.apache.cordova.dialogs.Notification" /></feature>
-    <feature name="Vibration"><param name="android-package" value="org.apache.cordova.vibration.Vibration" /></feature>
+    <!--<feature name="Vibration"><param name="android-package" value="org.apache.cordova.vibration.Vibration" /></feature>-->
     <feature name="Geolocation"><param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" /></feature>
     <!--<feature name="SpinnerDialog"><param name="android-package" value="hu.dpal.phonegap.plugins.SpinnerDialog" /></feature>-->
 
@@ -100,14 +99,14 @@
                            Splash
      /////////////////////////////////////////////////-->
     <!-- Define app splash screen for each platform. -->
-    <gap:splash src="res/screen/android/screen-ldpi-portrait.png"  gap:platform="android" gap:density="ldpi" />
-    <gap:splash src="res/screen/android/screen-mdpi-portrait.png"  gap:platform="android" gap:density="mdpi" />
-    <gap:splash src="res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
-    <gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
-    <gap:splash src="res/screen/ios/screen-iphone-portrait.png"    gap:platform="ios"     width="320" height="480" />
-    <gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios"     width="640" height="960" />
-    <gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />
-    <gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />
+    <!--<gap:splash src="res/screen/android/screen-ldpi-portrait.png"  gap:platform="android" gap:density="ldpi" />-->
+    <!--<gap:splash src="res/screen/android/screen-mdpi-portrait.png"  gap:platform="android" gap:density="mdpi" />-->
+    <!--<gap:splash src="res/screen/android/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />-->
+    <!--<gap:splash src="res/screen/android/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />-->
+    <!--<gap:splash src="res/screen/ios/screen-iphone-portrait.png"    gap:platform="ios"     width="320" height="480" />-->
+    <!--<gap:splash src="res/screen/ios/screen-iphone-portrait-2x.png" gap:platform="ios"     width="640" height="960" />-->
+    <!--<gap:splash src="res/screen/ios/screen-ipad-portrait.png"      gap:platform="ios"     width="768" height="1024" />-->
+    <!--<gap:splash src="res/screen/ios/screen-ipad-landscape.png"     gap:platform="ios"     width="1024" height="768" />-->
     <!--
         Define access to external domains.
 
