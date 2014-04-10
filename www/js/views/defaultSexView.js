@@ -15,89 +15,21 @@ define([
 		//set up homeview
 		var sexView = SD.defaultView.extend({
 			el: 'page',
+
 			template: JST['app/www/js/templates/sexTemplate.ejs'],
 			ownView: JST['app/www/js/templates/sex.ejs'],
-			dataChecker: function(data){
-				//------ this function is called from within a 'sex' view and the data, if the same type of data is passed from the sex view it over writes the default. ------------------------------------------------------
-				if(typeof data !=="undefined"){
-					//Loop through the sexdefaults and then cross check them against the sex views data, if the sex view has some data that we have update the SD.defaults
-					for	(var index in SD.SEXDEFAULTS) {
-						if(typeof data[index] !== "undefined"){
-							SD.SEXDEFAULTS[index] = data[index];
-						}
-					}
-				}
-				//return the updateed sexdefaults build from the SD.SEXDEFAULTS and the data supplied from the view
-				return SD.SEXDEFAULTS;
+			when: function(){
+				$('when').scroller('show');
 			},
-			openASex: function(el){ //Define the click events for the sex details page
-				var name = el.currentTarget.localName,myself = $(el.currentTarget);
-				switch (name){
-					case "when":
-						$('when').scroller('show');
-						break;
-					case "who":
-						SD.pageLoad('who');
-						break;
-					case "rating":
-						this.rating($(el.target).parent());
-						break;
-					case "location":
-						if(SD.SEXDEFAULTS.location[1] === "Click to get your location"){
-							SD.overlay.showme('Please wait for us to find you');
-							navigator.geolocation.getCurrentPosition(function(details){
-								SD.locationSucess(details);
-							}, function(details){
-								SD.locationFail(details);
-							});
-						}
-						break;
-					case "where":
-						SD.pageLoad('where');
-						break;
-					case "extra":
-						c('extra');
-						break;
-					case "save":
-						var errorYes = true, me = $(el.currentTarget), disabled = me.hasClass('disabled');
-
-						if(SD.SEXDEFAULTS.sexnumber===0 || SD.SEXDEFAULTS.sexnumber==="" || typeof SD.SEXDEFAULTS.sexnumber=== "undefined"){
-							SD.message.showMessage('Somehow a category of sex has not been selected', 'notice');
-							errorYes = false;
-						}
-
-						if(disabled && SD.SEXDEFAULTS.sextime===0 || SD.SEXDEFAULTS.sextime==="" || typeof SD.SEXDEFAULTS.sextime=== "undefined"){
-							SD.message.showMessage('This is technically impossble, but a time hasn\'t been set', 'notice');
-							errorYes = false;
-						}
-
-						if(disabled && SD.SEXDEFAULTS.rating===0 || SD.SEXDEFAULTS.rating==="" || typeof SD.SEXDEFAULTS.rating=== "undefined"){
-							SD.message.showMessage('Set a rating maybe? You don\'t have to, would be nice though', 'notice');
-							me.removeClass('disabled');
-							errorYes = false;
-						}
-
-//						if(disabled && SD.SEXDEFAULTS.location[0]===false){
-//							SD.message.showMessage('You know we can record where u fucking fucked, click it', 'notice');
-//							me.removeClass('disabled');
-//							errorYes = false;
-//						}
-
-						if(disabled &&
-							SD.SEXDEFAULTS.where.length===0 || SD.SEXDEFAULTS.where==="" || typeof SD.SEXDEFAULTS.where=== "undefined"){
-							SD.message.showMessage('Bit boring if you don\'t set where you did it', 'notice');
-							me.removeClass('disabled');
-							errorYes = false;
-						}
-
-						//If we have no errors save the sex
-						if(errorYes) SD.addSex.save();
-						break;
-				}
+			who: function(){
+				SD.pageLoad('who');
 			},
-			rating: function(myself){
+			rating: function(el){
 				//set up a rating
 				var currentIndex, finalIndex;
+
+				if(typeof el !=="undefined")
+					var myself = $(el.target).parent();
 
 				//If no rating has been set, quickly grab settings from the global
 				if(typeof myself ==="undefined"){
@@ -125,6 +57,76 @@ define([
 					SD.SEXDEFAULTS.rating = finalIndex;
 				}
 			},
+			location: function(){
+				if(SD.SEXDEFAULTS.location[1] === "Click to get your location"){
+					SD.overlay.showme('Please wait for us to find you');
+					navigator.geolocation.getCurrentPosition(function(details){
+						SD.locationSucess(details);
+					}, function(details){
+						SD.locationFail(details);
+					});
+				}
+			},
+			where: function(){
+				SD.pageLoad('where');
+			},
+			extra: function(){
+				c('extra');
+			},
+			save: function(el){
+				var errorYes = true, me = $(el.currentTarget), disabled = me.hasClass('disabled');
+
+				if(SD.SEXDEFAULTS.sexnumber===0 || SD.SEXDEFAULTS.sexnumber==="" || typeof SD.SEXDEFAULTS.sexnumber=== "undefined"){
+					SD.message.showMessage('Somehow a category of sex has not been selected', 'notice');
+					errorYes = false;
+				}
+
+				if(SD.SEXDEFAULTS.sextime===0 || SD.SEXDEFAULTS.sextime==="" || typeof SD.SEXDEFAULTS.sextime=== "undefined"){
+					SD.message.showMessage('This is technically impossble, but a time hasn\'t been set', 'notice');
+					errorYes = false;
+				}
+
+				if(disabled && SD.SEXDEFAULTS.rating===0 || SD.SEXDEFAULTS.rating==="" || typeof SD.SEXDEFAULTS.rating=== "undefined"){
+					SD.message.showMessage('Set a rating maybe? You don\'t have to, would be nice though', 'notice');
+					me.removeClass('disabled');
+					errorYes = false;
+				}
+
+//						if(disabled && SD.SEXDEFAULTS.location[0]===false){
+//							SD.message.showMessage('You know we can record where u fucking fucked, click it', 'notice');
+//							me.removeClass('disabled');
+//							errorYes = false;
+//						}
+
+				if(disabled &&
+					SD.SEXDEFAULTS.where.length===0 || SD.SEXDEFAULTS.where==="" || typeof SD.SEXDEFAULTS.where=== "undefined"){
+					SD.message.showMessage('Bit boring if you don\'t set where you did it', 'notice');
+					me.removeClass('disabled');
+					errorYes = false;
+				}
+
+				//If we have no errors save the sex
+				if(errorYes) {SD.addSex.save();}
+			},
+			openASex: function(el){ //Define the click events for the sex details page
+				var name = el.currentTarget.localName;
+				this[name](el);
+			},
+
+			// #DataChecker is used in the sex views/sex/*.js if the same type of data is passed from the sex view it over writes the default. ---------------------------------------
+			dataChecker: function(data){
+				if(typeof data !=="undefined"){
+					//Loop through the sexdefaults and then cross check them against the sex views data, if the sex view has some data that we have update the SD.defaults
+					for	(var index in SD.SEXDEFAULTS) {
+						if(typeof data[index] !== "undefined"){
+							SD.SEXDEFAULTS[index] = data[index];
+						}
+					}
+				}
+				//return the updateed sexdefaults build from the SD.SEXDEFAULTS and the data supplied from the view
+				return SD.SEXDEFAULTS;
+			},
+
 			loadSaveSex: {
 				that: this,
 				//Load in a save default sex
@@ -200,7 +202,6 @@ define([
 		});
 
 		SD.DSV = new sexView();
-//		SD.DSV.render();
 		return sexView;
 	}();
 });
