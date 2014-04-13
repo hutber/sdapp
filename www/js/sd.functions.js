@@ -50,7 +50,11 @@ Globals
 		GLOBALSEXNUMBERS: {},
 		FULLSEX: {},
 		WHO: function (){
-			return JSON.parse(localStorage.whos);
+			if(typeof localStorage.whos !== "undefined"){
+				return JSON.parse(localStorage.whos);
+			}else{
+				return {};
+			}
 		}(),
 		TEMPLATE: 'footerout',
 		HASH:'',
