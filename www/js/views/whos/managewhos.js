@@ -9,13 +9,13 @@ define([
 		el: 'page',
 		events: {
 		},
-		template: JST['app/www/js/templates/users/managewhos.ejs'],
+		template: JST['app/www/js/templates/whos/managewhos.ejs'],
 		render: function () {
 			var myself = this;
 			SD.setTitle('Your Sexy Partners');
 
 			// #Rewrite HTML on page with tempalte
-			myself.$el.html(myself.template(JSON.parse(localStorage.whos)));
+			myself.$el.html(myself.template(SD.WHO));
 		},
 	});
 	return managewhos;

@@ -45,7 +45,6 @@ define([
 			render: function () {
 				//Output correct tempalte
 				this.$el.html(templatesNeeded);
-//				this.slideMenu.init();
 			},
 			slideMenu: {
 				init: function(){

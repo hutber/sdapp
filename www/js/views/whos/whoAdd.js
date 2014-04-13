@@ -13,7 +13,7 @@ define([
 				'keyup #who': 'searchWho',
 				'click addContact': 'openAddContact',
 		},
-		template: JST['app/www/js/templates/details/whoAdd.ejs'],
+		template: JST['app/www/js/templates/whos/whoAdd.ejs'],
 		timer: false,
 		searchWho: function(){
 			clearTimeout(this.timer);
@@ -22,6 +22,7 @@ define([
 		getWho: function(){
 			var who = $('#who');
 			if(who.val().length>2){
+				SD.spinner.show();
 				who.addClass('searching');
 				$.ajax({
 					url: SD.AJAX+'details/whoaddsearch',
@@ -32,10 +33,12 @@ define([
 						'privateKey': localStorage.privateKey
 					},
 					error: function(data){
-						c('Sorry Login Failed: '+data.status);
+						SD.message.showMessage('Query Failed: '+data.status, 'bad', 1500);
+						SD.spinner.hide();
 						who.removeClass('searching');
 					},
 					success: function(data){
+						SD.spinner.hide();
 						who.removeClass('searching');
 						if(data.length>0){
 							$('save').addClass('disabled');

@@ -49,7 +49,9 @@ Globals
 		SEXNUMBERS: {},
 		GLOBALSEXNUMBERS: {},
 		FULLSEX: {},
-		WHO: null,
+		WHO: function (){
+			return JSON.parse(localStorage.whos);
+		}(),
 		TEMPLATE: 'footerout',
 		HASH:'',
 		PREVIOUSHASH:'',
