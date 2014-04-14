@@ -77,7 +77,7 @@ require.config({
 		highcharts : {
 			deps: ['jquery'],
 			exports: 'highcharts'
-		}
+		},
 	},
 	paths: {
 		jquery: 'libs/jquery.min',
@@ -129,15 +129,15 @@ require([
 		'views/sex/sex',
 		'views/sex/anything',
 // Sex Details Pages --------------------,
-		'views/details/who',
-		'views/details/whoAdd',
+		'views/whos/who',
+		'views/whos/whoAdd',
 		'views/details/where',
 // Stats --------------------,
 		'views/stats/overview',
 		'views/stats/graphs',
 // User Pages --------------------,
 		'views/users/userhistory',
-		'views/users/managewhos',
+		'views/whos/managewhos',
 		'views/users/settings',
 		'views/users/calendar',
 // Other Pages --------------------,

@@ -45,7 +45,6 @@ define([
 			render: function () {
 				//Output correct tempalte
 				this.$el.html(templatesNeeded);
-//				this.slideMenu.init();
 			},
 			slideMenu: {
 				init: function(){
@@ -135,9 +134,21 @@ define([
 						},
 						success: function(data){
 							SD.spinner.hide();
-							if(typeof data === "number"){
+							if(data[0].id !== ""){
 
-								SD.SEXDEFAULTS['who'][who.val()] = data;
+								SD.SEXDEFAULTS['who'][who.val()] = data[0].id; //Add the current who's to the current Sex details
+
+								//Create new object of the new Who
+								var newObjectOfWhos = {
+									id:data[0].id,
+									who:data[0].who,
+									useage:"1",
+								};
+								//Add it to the current WHO's
+								SD.WHO.push(newObjectOfWhos);
+
+								//replace localStorage for development
+								localStorage.whos = JSON.stringify(SD.WHO);
 
 								//lets go back to the sex details page.
 								SD.pageLoad(SD.PREVIOUSHASH);

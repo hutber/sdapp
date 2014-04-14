@@ -18,6 +18,10 @@ define([
 
 			template: JST['app/www/js/templates/sexTemplate.ejs'],
 			ownView: JST['app/www/js/templates/sex.ejs'],
+			openASex: function(el){ //Define the click events for the sex details page
+				var name = el.currentTarget.localName;
+				this[name](el);
+			},
 			when: function(){
 				$('when').scroller('show');
 			},
@@ -107,10 +111,6 @@ define([
 
 				//If we have no errors save the sex
 				if(errorYes) {SD.addSex.save();}
-			},
-			openASex: function(el){ //Define the click events for the sex details page
-				var name = el.currentTarget.localName;
-				this[name](el);
 			},
 
 			// #DataChecker is used in the sex views/sex/*.js if the same type of data is passed from the sex view it over writes the default. ---------------------------------------
