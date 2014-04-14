@@ -22,7 +22,7 @@ define([
 				SD.FULLSEX = JSON.parse(localStorage.grabFullSex);
 			}
 
-			if(SD.FULLSEX.length){
+			if(Object.keys(SD.FULLSEX).length){
 				// #Rewrite HTML on page with tempalte
 				myself.$el.html(myself.templateMenu(SD.FULLSEX));
 
