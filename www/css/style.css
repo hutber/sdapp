@@ -2978,12 +2978,17 @@ save.disabled detailsimage, save.disabled info {
   display: inline;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_who\.scss}line{font-family:\0000356}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_who\.scss}line{font-family:\0000355}}
+.managewhos awho span, .who awho span {
+  font-size: 1rem;
+  color: #def4f3;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_who\.scss}line{font-family:\0000360}}
 .managewhos .nostats a, .who .nostats a {
   line-height: 2rem;
   font-size: 1.2rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_who\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_who\.scss}line{font-family:\0000363}}
 .managewhos .nostats a i, .who .nostats a i {
   color: #FFF;
 }

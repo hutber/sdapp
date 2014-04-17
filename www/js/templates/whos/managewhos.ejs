@@ -1,12 +1,24 @@
-<% if(data.length>0){Object.keys(data).forEach(function(key){ var currentSex = data[key];%>
-		<div class="awho" data-id="<%= currentSex.id %>">
-			<div class="person"><%= currentSex.who %></div>
-			<div class="useage"><div class="number"><%= currentSex.useage %> Sexes</div></div>
-		</div>
-<%	}); }else { %>
-	<div class="nostats">
-		<h1>Missing a Who!?</h1>
-		<p>So you've been lonley or just never added a Who</p>
-		<a href="#whoadd">Add one here, or the <i class="icon-user-add"></i> at the top right of this screen...</a>
+	<% if(data.length>0){ %>
+	<div class="listOfWhos blocks">
+		<% Object.keys(data).forEach(function(key){ var currentSex = data[key];%>
+		<awho data-name="<%= currentSex.who %>" data-id="<%= currentSex.id %>">
+			<info>
+				<div>
+					<h2><%= currentSex.who %><% if (currentSex.useage>0){%><span> - Sex'd <%= currentSex.useage %> times</span><% } %></h2>
+				</div>
+			</info>
+			<detailsimage>
+				<div>
+					<img src="img/sex/who.png" alt="<%= currentSex.who %>"/>
+				</div>
+			</detailsimage>
+		</awho>
+		<%	}); %>
 	</div>
-<% } %>
+	<% }else { %>
+		<div class="nostats">
+			<h1>Missing a Who!?</h1>
+			<p>So you've been lonley or just never added a Who</p>
+			<a href="#whoadd">Add one here, or the <i class="icon-user-add"></i> at the top right of this screen...</a>
+		</div>
+	<% } %>

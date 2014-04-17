@@ -142,7 +142,7 @@ define([
 								var newObjectOfWhos = {
 									id:data[0].id,
 									who:data[0].who,
-									useage:"1",
+									useage:"0",
 								};
 								//Add it to the current WHO's
 								SD.WHO.push(newObjectOfWhos);
