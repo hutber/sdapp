@@ -3470,6 +3470,28 @@ when {
   overflow: hidden;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\00003112}}
+save {
+  height: 49px;
+  position: fixed;
+  bottom: 12%;
+  left: 0;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #9acdcb;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\00003120}}
+save h2 {
+  display: inline;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\00003123}}
+save img {
+  height: 100%;
+  width: auto;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\000033}}
 .selector header, .forgotten header, .login header {
   height: auto;
