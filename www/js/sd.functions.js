@@ -205,6 +205,31 @@ SD.onHashChange = function(){
 Add Sex Functions
 ================================================== */
 SD.addSex = {
+
+	buildMissing: function(data, sid){
+		//set up defaults
+		return newData = {
+			city:function(){
+				return (typeof data.city !== "undefined") ? data.city : null;
+			}(),
+			country:function(){
+				return (typeof data.country !== "undefined") ? data.country : null;
+			}(),
+			datetring:new Date().toString("ddd dS HH:mm"),
+			id:sid,
+			position:1,
+			rating:""+data.rating,
+			sexnumber:""+data.sexnumber,
+			sexstring:function(){
+				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.convertSexNumbers.toString(data.sexnumber);
+			}(),
+			sextime:data.sextime,
+			uid:localStorage.uid,
+			who:function(){
+				return (typeof data.country !== "undefined") ? data.country : null;
+			}()
+		};
+	},
 	convertPhp: function(){
 		var php = {};
 
@@ -236,6 +261,7 @@ SD.addSex = {
 			$.ajax({
 				url: SD.AJAX+'add',
 				type: 'POST',
+				dataType: "json",
 				data: {
 					info: saveSexDetails,
 					privateKey: localStorage.privateKey
@@ -244,13 +270,22 @@ SD.addSex = {
 					SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
 				},
 				success: function(data){
-					if(data===""){
+					if(isNumber(data)){
 						//Update sex stats with new sex
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+
+						//Update SD.FULLSEX
+						var newSexDetail  = SD.addSex.buildMissing(saveSexDetails, data);
+						c(newSexDetail);
+						c(saveSexDetails);
+						c(SD.FULLSEX.Apr[0]);
+//						SD.FULLSEX = newSexDetail;
+
 						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
+						c(data);
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
 					}
 				}
@@ -409,6 +444,25 @@ Networking functions
 			}
 			if(localStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
 				this.convert(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
+			}
+		},
+		toString: function(sex){
+			switch (sex) {
+				case (1):
+					return 'Wank';
+				break;
+				case (2):
+					return 'Hands';
+				break;
+				case (3):
+					return 'Oral';
+				break;
+				case (4):
+					return 'Sex';
+				break;
+				case (5):
+					return 'Anything';
+				break;
 			}
 		},
 		convert: function(item, target){

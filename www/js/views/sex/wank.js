@@ -12,6 +12,7 @@ define([
     var wank = SD.defaultSexView.extend({
 		events: {
 			"click sexform.blocks > *" : 'openASex',
+			"click save" : 'openASex',
 		},
 		render: function () {
 

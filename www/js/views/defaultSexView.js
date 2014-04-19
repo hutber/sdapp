@@ -181,6 +181,9 @@ define([
 
 				//Build up the sexnumbers, //TODO only for dev envoiment
 				SD.convertSexNumbers.init();
+				if(!SD.FULLSEX.length) {
+					SD.FULLSEX = JSON.parse(localStorage.grabFullSex);
+				}
 
 				//----- The global sex render --------------------------------------------------
 				//update the website with the current view
