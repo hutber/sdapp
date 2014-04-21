@@ -215,7 +215,7 @@ SD.addSex = {
 			country:function(){
 				return (typeof data.country !== "undefined") ? data.country : null;
 			}(),
-			datetring:new Date().toString("ddd dS HH:mm"),
+			datetring:Date.parse(data.sextime).toString('ddd dS HH:mm'),
 			id:sid,
 			position:1,
 			rating:""+data.rating,
@@ -276,12 +276,13 @@ SD.addSex = {
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 
-						//Update SD.FULLSEX
+						// Build a new array to add to SD.FULLSEX
 						var newSexDetail  = SD.addSex.buildMissing(saveSexDetails, data);
-						c(newSexDetail);
-						c(saveSexDetails);
-						c(SD.FULLSEX.Apr[0]);
-//						SD.FULLSEX = newSexDetail;
+						//Grab current moth as string
+						var currentDate = new Date().toString("MMM");
+						//Push currently converted sex details to array
+						SD.FULLSEX[currentDate].push(newSexDetail);
+						localStorage.grabFullSex = JSON.stringify(SD.FULLSEX);
 
 						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{

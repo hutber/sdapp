@@ -1,6 +1,7 @@
 #Normal Site
 .DS_Store
 .idea
+*.db
 
 #yeoman grunt
 bower_components
