@@ -33,8 +33,6 @@ define([
 			/************************************************
 				=================Graph====================
 			************************************************/
-			var data = JSON.parse(localStorage.sexesByMonth);
-
 			//Resize the graph
 			var wantedWidth = $('body').outerWidth()/1.05,
 				graph = $('#sexoverview');
@@ -48,11 +46,11 @@ define([
 			var areaData = [];
 
 			// #set up vars --------------------------------------------------
-			var SexByMonthData = data, details = ['Wank','Hands','Oral','Sex','Anything'];
+			var details = ['Wank','Hands','Oral','Sex','Anything'];
 
 			// #build new arrays for graph --------------------------------------------------
 			details.forEach(function(me){
-				var stats = createData(SexByMonthData, me);
+				var stats = createData(SD.BYMONTH, me);
 				if(stats.data.length>0)
 				areaData.push(stats);
 			});
@@ -60,10 +58,10 @@ define([
 			// #Build Months In Results, convert it to an array --------------------------------------------------
 			//We need to know all the months in the last 6 months for the labels
 			var highestRow = null, highestObject = null;
-			for(var key in SexByMonthData){
-				if(SexByMonthData[key].length > highestRow){
+			for(var key in SD.BYMONTH){
+				if(SD.BYMONTH[key].length > highestRow){
 					highestObject = key;
-					highestRow = SexByMonthData[key].length;
+					highestRow = SD.BYMONTH[key].length;
 				}
 			}
 

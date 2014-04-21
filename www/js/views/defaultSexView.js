@@ -174,15 +174,9 @@ define([
 				}
 			},
 			render: function (data) {
-				//Check to see if we have a value
+				//Check to see if we have already entered sex details, if not grab them from locally stored details
 				if(typeof data === "undefined"){
 					data = SD.SEXDEFAULTS;
-				}
-
-				//Build up the sexnumbers, //TODO only for dev envoiment
-				SD.convertSexNumbers.init();
-				if(!SD.FULLSEX.length) {
-					SD.FULLSEX = JSON.parse(localStorage.grabFullSex);
 				}
 
 				//----- The global sex render --------------------------------------------------

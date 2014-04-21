@@ -48,7 +48,20 @@ Globals
 		TOTALSEXNUMBERS: {},
 		SEXNUMBERS: {},
 		GLOBALSEXNUMBERS: {},
-		FULLSEX: {},
+		FULLSEX: function (){
+			if(typeof localStorage.grabFullSex !== "undefined"){
+				return JSON.parse(localStorage.grabFullSex);
+			}else{
+				return {};
+			}
+		}(),
+		BYMONTH: function (){
+			if(typeof localStorage.sexesByMonth !== "undefined"){
+				return JSON.parse(localStorage.sexesByMonth);
+			}else{
+				return {};
+			}
+		}(),
 		WHO: function (){
 			if(typeof localStorage.whos !== "undefined"){
 				return JSON.parse(localStorage.whos);
@@ -205,7 +218,6 @@ SD.onHashChange = function(){
 Add Sex Functions
 ================================================== */
 SD.addSex = {
-
 	buildMissing: function(data, sid){
 		//set up defaults
 		return newData = {
@@ -221,7 +233,7 @@ SD.addSex = {
 			rating:""+data.rating,
 			sexnumber:""+data.sexnumber,
 			sexstring:function(){
-				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.convertSexNumbers.toString(data.sexnumber);
+				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.buildSexNumbers.toString(data.sexnumber);
 			}(),
 			sextime:data.sextime,
 			uid:localStorage.uid,
@@ -271,18 +283,43 @@ SD.addSex = {
 				},
 				success: function(data){
 					if(isNumber(data)){
+
+//						SD.saveVar('globalsexnumbers','GLOBALSEXNUMBERS');
+//						SD.saveVar('sexnumbers','SEXNUMBERS');
+//						SD.saveVar('totalsexnumbers','TOTALSEXNUMBERS');
+						/*==================================================
+						Update FULLSEX and create some var's
+						================================================== */
+						// Build a new array to add to SD.FULLSEX
+						var newSexDetail  = SD.addSex.buildMissing(saveSexDetails, data);
+						var sexTime = Date.parse(saveSexDetails.sextime);
+						//Grab current moth as string
+						var currentMonthString = sexTime.toString("MMM");
+						//Push currently converted sex details to array
+						SD.FULLSEX[currentMonthString].push(newSexDetail);
+						SD.saveVar('grabFullSex','FULLSEX');
+
+						/*==================================================
+						Update Sex Data Graph
+						================================================== */
+						var currentMonthDigit = sexTime.toString("M"),
+							sexTypeString = newSexDetail.sexstring;
+						SD.BYMONTH[sexTypeString].forEach(function(me){
+							if(me.date===currentMonthDigit){
+								var newNumber = parseInt(me.numberof)+1; //Keep it a string
+								me.numberof = newNumber + ""; //Keep it a string
+							}
+						});
+						SD.saveVar('sexesByMonth','BYMONTH');
+
+						/*==================================================
+						Update Sex Nubers
+						================================================== */
 						//Update sex stats with new sex
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-
-						// Build a new array to add to SD.FULLSEX
-						var newSexDetail  = SD.addSex.buildMissing(saveSexDetails, data);
-						//Grab current moth as string
-						var currentDate = new Date().toString("MMM");
-						//Push currently converted sex details to array
-						SD.FULLSEX[currentDate].push(newSexDetail);
-						localStorage.grabFullSex = JSON.stringify(SD.FULLSEX);
+						//Update localstorage's with new details
 
 						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
@@ -298,144 +335,17 @@ SD.addSex = {
 };
 
 /*==================================================
-Display functions
+localStorage - SD Gloabls
 ================================================== */
-//	#Update title
-	SD.setTitle = function(title){
-		$('.title').html(title);
+	SD.saveVar = function(local, sd) {
+		localStorage[local] = JSON.stringify(SD[sd]);
 	};
-
-// #display the popup/overlay ------------------------------------------------------
-	SD.overlay = {
-		init: function(elem) {
-			SD.centerItems(elem);
-		},
-		showme: function(){
-			$('overlay').fadeIn();
-		},
-		hideme: function(){
-			$('overlay').fadeOut('fast');
-		}
-	};
-
-	/*==================================================
-	Loading
-	================================================== */
-	SD.spinner = {
-		show: function(title, message){
-			if(typeof title!=="string"){
-				title = null;
-			}
-			if(typeof message!=="string"){
-				message = null;
-			}
-			if(window && window.plugins && window.plugins.spinnerDialog){
-				window.plugins.spinnerDialog.show(title,message);
-			}else{
-				SD.overlay.showme();
-			}
-		},
-		hide: function(){
-			if(window && window.plugins && window.plugins.spinnerDialog){
-				window.plugins.spinnerDialog.hide();
-			}else{
-				SD.overlay.hideme();
-			}
-		}
-	};
-
-	//update details on page load
-	SD.pageLoad = function(pageToLoad){
-		var useme;
-
-		//Simple check if we have been given a string
-		if(typeof pageToLoad === "string"){
-			useme = pageToLoad;
-		}else if(document.location.hash){
-			useme = SD.HASH;
-		}else{
-			c('Nothing was given in the pageLoad');
-		}
-
-		//Update the current view, don't re-redner it
-		SD.ROUTER.navigate(useme, true);
-	};
-
-	SD.message = {
-		timer: null,
-		showMessage: function(message, type, duration){
-			if(typeof duration === "undefined") duration = 5000;
-			$('messageBox message').find('div').html(message);
-			$('messageBox').removeAttr('class').attr('class',type+' show');
-			this.timer = setTimeout(this.hideMessage, duration);
-		},
-		hideMessage: function(){
-			$('messageBox').removeClass('show');
-			clearTimeout(this.timer);
-		}
-	};
-	//set up click event to hide
-	$('messageBox').on('click', SD.message.hideMessage);
 
 /*==================================================
- Location ajax formating
- ================================================== */
-	SD.locationSucess = function(position) {
-		if(!SD.SEXDEFAULTS.location[0]){
-			$.ajax({
-				url: 'http://nominatim.openstreetmap.org/reverse',
-				dataType: "json",
-				data: {
-					'format': 'json',
-					'lat': position.coords.latitude,
-					'lon': position.coords.longitude,
-					'zoom' : 18
-				},
-				error: function(data){
-					SD.overlay.hideme();
-				},
-				success: function(data){
-					SD.SEXDEFAULTS.location[0] = data;
-					SD.SEXDEFAULTS.location[1] = data.address.city_district + ', '+ data.address.city +', '+data.address.country_code.toUpperCase();
-					$('location location').html(SD.SEXDEFAULTS.location[1]);
-					SD.overlay.hideme();
-				}
-			});
-		}
-	};
-	SD.locationFail = function (error) {
-		alert('code: '    + error.code    + '\n' +
-			'message: ' + error.message + '\n');
-		SD.overlay.hideme();
-	};
-/*==================================================
-Networking functions
+Formatting Results
 ================================================== */
-	SD.checkConnection = function () {
-		var networkState = navigator.connection.type;
-
-		var states = {};
-		if(typeof Connection!=="undefined"){
-			states[Connection.UNKNOWN]  = 'Unknown connection';
-			states[Connection.ETHERNET] = 'Ethernet connection';
-			states[Connection.WIFI]     = 'WiFi connection';
-			states[Connection.CELL_2G]  = 'Cell 2G connection';
-			states[Connection.CELL_3G]  = 'Cell 3G connection';
-			states[Connection.CELL_4G]  = 'Cell 4G connection';
-			states[Connection.CELL]     = 'Cell generic connection';
-			states[Connection.NONE]     = 'No network connection';
-
-//			c('Connection type: ' + states[networkState]);
-		}else{
-			c('Connection not ready yet');
-		}
-	};
-
-/*==================================================
- Formatting Results
- ================================================== */
 // #SEXNUMBERS ------------------------------------------------------
-	SD.convertSexNumbers = {
+	SD.buildSexNumbers = {
 		init: function(){
 			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
 				this.convert(localStorage.sexnumbers, SD.SEXNUMBERS);
@@ -513,6 +423,141 @@ Networking functions
 		});
 		return o;
 	};
+
+/*==================================================
+Display functions
+================================================== */
+//	#Update title
+	SD.setTitle = function(title){
+		$('.title').html(title);
+	};
+
+// #display the popup/overlay ------------------------------------------------------
+	SD.overlay = {
+		init: function(elem) {
+			SD.centerItems(elem);
+		},
+		showme: function(){
+			$('overlay').fadeIn();
+		},
+		hideme: function(){
+			$('overlay').fadeOut('fast');
+		}
+	};
+
+/*==================================================
+Loading
+================================================== */
+	SD.spinner = {
+		show: function(title, message){
+			if(typeof title!=="string"){
+				title = null;
+			}
+			if(typeof message!=="string"){
+				message = null;
+			}
+			if(window && window.plugins && window.plugins.spinnerDialog){
+				window.plugins.spinnerDialog.show(title,message);
+			}else{
+				SD.overlay.showme();
+			}
+		},
+		hide: function(){
+			if(window && window.plugins && window.plugins.spinnerDialog){
+				window.plugins.spinnerDialog.hide();
+			}else{
+				SD.overlay.hideme();
+			}
+		}
+	};
+
+	//update details on page load
+	SD.pageLoad = function(pageToLoad){
+		var useme;
+
+		//Simple check if we have been given a string
+		if(typeof pageToLoad === "string"){
+			useme = pageToLoad;
+		}else if(document.location.hash){
+			useme = SD.HASH;
+		}else{
+			c('Nothing was given in the pageLoad');
+		}
+
+		//Update the current view, don't re-redner it
+		SD.ROUTER.navigate(useme, true);
+	};
+
+	SD.message = {
+		timer: null,
+		showMessage: function(message, type, duration){
+			if(typeof duration === "undefined") duration = 5000;
+			$('messageBox message').find('div').html(message);
+			$('messageBox').removeAttr('class').attr('class',type+' show');
+			this.timer = setTimeout(this.hideMessage, duration);
+		},
+		hideMessage: function(){
+			$('messageBox').removeClass('show');
+			clearTimeout(this.timer);
+		}
+	};
+	//set up click event to hide
+	$('messageBox').on('click', SD.message.hideMessage);
+
+/*==================================================
+Location ajax formating
+================================================== */
+	SD.locationSucess = function(position) {
+		if(!SD.SEXDEFAULTS.location[0]){
+			$.ajax({
+				url: 'http://nominatim.openstreetmap.org/reverse',
+				dataType: "json",
+				data: {
+					'format': 'json',
+					'lat': position.coords.latitude,
+					'lon': position.coords.longitude,
+					'zoom' : 18
+				},
+				error: function(data){
+					SD.overlay.hideme();
+				},
+				success: function(data){
+					SD.SEXDEFAULTS.location[0] = data;
+					SD.SEXDEFAULTS.location[1] = data.address.city_district + ', '+ data.address.city +', '+data.address.country_code.toUpperCase();
+					$('location location').html(SD.SEXDEFAULTS.location[1]);
+					SD.overlay.hideme();
+				}
+			});
+		}
+	};
+	SD.locationFail = function (error) {
+		alert('code: '    + error.code    + '\n' +
+			'message: ' + error.message + '\n');
+		SD.overlay.hideme();
+	};
+/*==================================================
+Networking functions
+================================================== */
+	SD.checkConnection = function () {
+		var networkState = navigator.connection.type;
+
+		var states = {};
+		if(typeof Connection!=="undefined"){
+			states[Connection.UNKNOWN]  = 'Unknown connection';
+			states[Connection.ETHERNET] = 'Ethernet connection';
+			states[Connection.WIFI]     = 'WiFi connection';
+			states[Connection.CELL_2G]  = 'Cell 2G connection';
+			states[Connection.CELL_3G]  = 'Cell 3G connection';
+			states[Connection.CELL_4G]  = 'Cell 4G connection';
+			states[Connection.CELL]     = 'Cell generic connection';
+			states[Connection.NONE]     = 'No network connection';
+
+//			c('Connection type: ' + states[networkState]);
+		}else{
+			c('Connection not ready yet');
+		}
+	};
+
 	/*==================================================
 	Init for SD
 	================================================== */

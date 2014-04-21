@@ -37,7 +37,7 @@ define([
 								return me.id !== whoId;
 							});
 
-							//replace localStorage for development
+							//Replace localstorage for saving for user
 							localStorage.whos = JSON.stringify(SD.WHO);
 
 							$('.awho[data-id='+whoId+']').fadeOut('500')

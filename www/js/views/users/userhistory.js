@@ -18,10 +18,6 @@ define([
 			//Reaplce title with wanted text
 			SD.setTitle('Sex History');
 
-			if(!SD.FULLSEX.length) {
-				SD.FULLSEX = JSON.parse(localStorage.grabFullSex);
-			}
-
 			if(Object.keys(SD.FULLSEX).length){
 				// #Rewrite HTML on page with tempalte
 				myself.$el.html(myself.templateMenu(SD.FULLSEX));
