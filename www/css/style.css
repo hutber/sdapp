@@ -3393,21 +3393,6 @@ sexnav div + div + div + div + div {
 .blocks Rating info {
   width: 100%;
   height: 100%;
-  *zoom: 1;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  position: relative;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/RUBY200\/lib\/ruby\/gems\/2\.0\.0\/gems\/compass-0\.12\.2\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
-.blocks Rating info:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\0000369}}
 .blocks Rating info face {
