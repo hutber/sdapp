@@ -21,6 +21,7 @@ Globals
 ================================================== */
 
 // #Globals for SD ------------------------------------------------------
+	//Setup fullsex so we can build other numbers from this.
 	SD = {
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
@@ -45,9 +46,6 @@ Globals
 			location: [false, 'Click to get your location'],
 			where: {},
 		},
-		TOTALSEXNUMBERS: {},
-		SEXNUMBERS: {},
-		GLOBALSEXNUMBERS: {},
 		FULLSEX: function (){
 			if(typeof localStorage.grabFullSex !== "undefined"){
 				return JSON.parse(localStorage.grabFullSex);
@@ -55,9 +53,31 @@ Globals
 				return {};
 			}
 		}(),
+		TOTALSEXNUMBERS: function (){
+			if(typeof localStorage.totalsexnumbers !== "undefined"){
+				return JSON.parse(localStorage.totalsexnumbers);
+			}else{
+				return {};
+			}
+		}(),
+		SEXNUMBERS: function (){
+			if(typeof localStorage.sexnumbers !== "undefined"){
+				return JSON.parse(localStorage.sexnumbers);
+			}else{
+				return {};
+			}
+		}(),
+		GLOBALSEXNUMBERS: {},
 		BYMONTH: function (){
 			if(typeof localStorage.sexesByMonth !== "undefined"){
 				return JSON.parse(localStorage.sexesByMonth);
+			}else{
+				return {};
+			}
+		}(),
+		BYMONTHNEW: function (){
+			if(typeof localStorage.sexesByMonthNEW !== "undefined"){
+				return JSON.parse(localStorage.sexesByMonthNEW);
 			}else{
 				return {};
 			}
@@ -77,6 +97,9 @@ Globals
 		ROUTER: false,
 	};
 
+// #Build up Stats for SD ------------------------------------------------------
+
+//Setup SD vars for ajax requests
 	SD.AJAX = SD.HTTP+'app/',
 	SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 
@@ -304,12 +327,20 @@ SD.addSex = {
 						================================================== */
 						var currentMonthDigit = sexTime.toString("M"),
 							sexTypeString = newSexDetail.sexstring;
-						SD.BYMONTH[sexTypeString].forEach(function(me){
-							if(me.date===currentMonthDigit){
-								var newNumber = parseInt(me.numberof)+1; //Keep it a string
-								me.numberof = newNumber + ""; //Keep it a string
-							}
-						});
+						//If we have ever recorded this sex type add it, otherwise create it then add it to the BYMONTH object.
+						if(SD.BYMONTH[sexTypeString].length > 0){
+							SD.BYMONTH[sexTypeString].forEach(function(me){
+								if(me.date===currentMonthDigit){
+									var newNumber = parseInt(me.numberof)+1; //Keep it a string
+									me.numberof = newNumber + ""; //Keep it a string
+								}
+							});
+						}else{
+							SD.BYMONTH[sexTypeString] = [{
+								numberof: 1 + "",
+								date: currentMonthDigit + ""
+							}];
+						}
 						SD.saveVar('sexesByMonth','BYMONTH');
 
 						/*==================================================
@@ -317,7 +348,9 @@ SD.addSex = {
 						================================================== */
 						//Update sex stats with new sex
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						c(SD.SEXNUMBERS);
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						c(SD.SEXNUMBERS);
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						//Update localstorage's with new details
 
@@ -347,14 +380,14 @@ Formatting Results
 // #SEXNUMBERS ------------------------------------------------------
 	SD.buildSexNumbers = {
 		init: function(){
-			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
-				this.convert(localStorage.sexnumbers, SD.SEXNUMBERS);
-			}
-			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
-				this.convert(localStorage.totalsexnumbers, SD.TOTALSEXNUMBERS);
-			}
-			if(localStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
-				this.convert(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
+//			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
+//				this.convertFromLocal(localStorage.sexnumbers, SD.SEXNUMBERS);
+//			}
+//			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
+//				this.convertFromLocal(localStorage.totalsexnumbers, SD.TOTALSEXNUMBERS);
+//			}
+			if(localStorage.globalsexnumbers !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
+				this.convertFromLocal(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
 			}
 		},
 		toString: function(sex){
@@ -376,11 +409,41 @@ Formatting Results
 				break;
 			}
 		},
-		convert: function(item, target){
+		convertFromLocal: function(item, target){
 			if(typeof item !=="undefined"){
 				JSON.parse(item).forEach(function(me){
 					if(typeof me==="object"){
-						var sexName = me.sex,
+						var sexName = me.sextype,
+							sexNumber = +me.no;
+
+						switch (sexName){
+							case "1":
+								target.Wank = sexNumber;
+								break;
+							case "2":
+								target.Hands = sexNumber;
+								break;
+							case "3":
+								target.Oral = sexNumber;
+								break;
+							case "4":
+								target.Sex = sexNumber;
+								break;
+							case "5":
+								target.Anything = sexNumber;
+								break;
+						}
+					}else{
+						target.total = me;
+					}
+				});
+			}
+		},
+		convertToLocal: function(item, target){
+			if(typeof item !=="undefined"){
+				JSON.parse(item).forEach(function(me){
+					if(typeof me==="object"){
+						var sexName = me.sexType,
 							sexNumber = +me.no;
 
 						switch (sexName){

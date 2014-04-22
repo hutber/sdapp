@@ -25,15 +25,13 @@ define([
 		},
 		template: JST['app/www/js/templates/stats/overview.ejs'],
 		render: function () {
-			SD.convertSexNumbers.init();
-
 			//# Set up JST variables ------------------------------------------------------
 			var data = {
 				youtotal:SD.TOTALSEXNUMBERS,
 				you:SD.SEXNUMBERS,
 				world:SD.GLOBALSEXNUMBERS
 			};
-
+c(data);
 			//# Output and render the JST view ------------------------------------------------------
 			this.$el.html(this.template(data));
 			SD.setTitle('Stats Overview');
