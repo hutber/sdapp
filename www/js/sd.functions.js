@@ -381,18 +381,7 @@ localStorage - SD Gloabls
 Formatting Results
 ================================================== */
 // #SEXNUMBERS ------------------------------------------------------
-	SD.buildSexNumbers = {
-		init: function(){
-//			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
-//				this.convertFromLocal(localStorage.sexnumbers, SD.SEXNUMBERS);
-//			}
-//			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
-//				this.convertFromLocal(localStorage.totalsexnumbers, SD.TOTALSEXNUMBERS);
-//			}
-//			if(localStorage.globalsexnumbers !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
-//				this.convertFromLocal(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
-//			}
-		},
+	SD.formet = {
 		toString: function(sex){
 			switch (sex) {
 				case (1):
@@ -410,36 +399,6 @@ Formatting Results
 				case (5):
 					return 'Anything';
 				break;
-			}
-		},
-		convertFromLocal: function(item, target){
-			if(typeof item !=="undefined"){
-				JSON.parse(item).forEach(function(me){
-					if(typeof me==="object"){
-						var sexName = me.sextype,
-							sexNumber = +me.no;
-
-						switch (sexName){
-							case "1":
-								target.Wank = sexNumber;
-								break;
-							case "2":
-								target.Hands = sexNumber;
-								break;
-							case "3":
-								target.Oral = sexNumber;
-								break;
-							case "4":
-								target.Sex = sexNumber;
-								break;
-							case "5":
-								target.Anything = sexNumber;
-								break;
-						}
-					}else{
-						target.total = me;
-					}
-				});
 			}
 		},
 		convertToLocal: function(item, target){

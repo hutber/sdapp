@@ -46,7 +46,6 @@ define([
 				//Output correct tempalte
 				this.$el.html(templatesNeeded);
 				//Make sure we have values for some SD.* sex details
-				SD.buildSexNumbers.init();
 			},
 			slideMenu: {
 				init: function(){
