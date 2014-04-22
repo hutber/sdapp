@@ -31,7 +31,7 @@ define([
 				you:SD.SEXNUMBERS,
 				world:SD.GLOBALSEXNUMBERS
 			};
-c(data);
+
 			//# Output and render the JST view ------------------------------------------------------
 			this.$el.html(this.template(data));
 			SD.setTitle('Stats Overview');

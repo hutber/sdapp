@@ -67,7 +67,13 @@ Globals
 				return {};
 			}
 		}(),
-		GLOBALSEXNUMBERS: {},
+		GLOBALSEXNUMBERS: function (){
+			if(typeof localStorage.globalsexnumbers !== "undefined"){
+				return JSON.parse(localStorage.globalsexnumbers);
+			}else{
+				return {};
+			}
+		}(),
 		BYMONTH: function (){
 			if(typeof localStorage.sexesByMonth !== "undefined"){
 				return JSON.parse(localStorage.sexesByMonth);
@@ -348,15 +354,12 @@ SD.addSex = {
 						================================================== */
 						//Update sex stats with new sex
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-						c(SD.SEXNUMBERS);
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-						c(SD.SEXNUMBERS);
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						//Update localstorage's with new details
 
 						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
-						c(data);
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
 					}
 				}
@@ -386,9 +389,9 @@ Formatting Results
 //			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
 //				this.convertFromLocal(localStorage.totalsexnumbers, SD.TOTALSEXNUMBERS);
 //			}
-			if(localStorage.globalsexnumbers !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
-				this.convertFromLocal(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
-			}
+//			if(localStorage.globalsexnumbers !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
+//				this.convertFromLocal(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
+//			}
 		},
 		toString: function(sex){
 			switch (sex) {
