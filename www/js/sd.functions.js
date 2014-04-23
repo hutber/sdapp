@@ -81,13 +81,6 @@ Globals
 				return {};
 			}
 		}(),
-		BYMONTHNEW: function (){
-			if(typeof localStorage.sexesByMonthNEW !== "undefined"){
-				return JSON.parse(localStorage.sexesByMonthNEW);
-			}else{
-				return {};
-			}
-		}(),
 		WHO: function (){
 			if(typeof localStorage.whos !== "undefined"){
 				return JSON.parse(localStorage.whos);
@@ -249,7 +242,7 @@ Add Sex Functions
 SD.addSex = {
 	buildMissing: function(data, sid){
 		//set up defaults
-		return newData = {
+		return {
 			city:function(){
 				return (typeof data.city !== "undefined") ? data.city : null;
 			}(),
@@ -262,12 +255,12 @@ SD.addSex = {
 			rating:""+data.rating,
 			sexnumber:""+data.sexnumber,
 			sexstring:function(){
-				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.buildSexNumbers.toString(data.sexnumber);
+				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.format.toString(data.sexnumber);
 			}(),
 			sextime:data.sextime,
 			uid:localStorage.uid,
 			who:function(){
-				return (typeof data.country !== "undefined") ? data.country : null;
+				return (typeof data.country !== "undefined") ? data.who : null;
 			}()
 		};
 	},
@@ -312,10 +305,6 @@ SD.addSex = {
 				},
 				success: function(data){
 					if(isNumber(data)){
-
-//						SD.saveVar('globalsexnumbers','GLOBALSEXNUMBERS');
-//						SD.saveVar('sexnumbers','SEXNUMBERS');
-//						SD.saveVar('totalsexnumbers','TOTALSEXNUMBERS');
 						/*==================================================
 						Update FULLSEX and create some var's
 						================================================== */
@@ -331,32 +320,35 @@ SD.addSex = {
 						/*==================================================
 						Update Sex Data Graph
 						================================================== */
-						var currentMonthDigit = sexTime.toString("M"),
-							sexTypeString = newSexDetail.sexstring;
-						//If we have ever recorded this sex type add it, otherwise create it then add it to the BYMONTH object.
-						if(SD.BYMONTH[sexTypeString].length > 0){
-							SD.BYMONTH[sexTypeString].forEach(function(me){
-								if(me.date===currentMonthDigit){
-									var newNumber = parseInt(me.numberof)+1; //Keep it a string
-									me.numberof = newNumber + ""; //Keep it a string
-								}
-							});
-						}else{
-							SD.BYMONTH[sexTypeString] = [{
-								numberof: 1 + "",
-								date: currentMonthDigit + ""
-							}];
-						}
+						var sexTypeString = newSexDetail.sexstring;
+						//plus 1 to the number off in a given month
+						SD.BYMONTH[sexTypeString][currentMonthString].numberof++
 						SD.saveVar('sexesByMonth','BYMONTH');
+
+						/*==================================================
+						Update Whos - Find the who then add the who
+						================================================== */
+						if(saveSexDetails.who){
+							Object.keys(saveSexDetails.who).forEach(function(myself){
+								SD.WHO.forEach(function(me){
+									if(me.who===myself){
+										me.useage++;
+										me.useage = me.useage+"";
+									}
+								});
+							});
+							SD.saveVar('whos','WHO');
+						}
 
 						/*==================================================
 						Update Sex Nubers
 						================================================== */
-						//Update sex stats with new sex
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.saveVar('globalsexnumbers','GLOBALSEXNUMBERS');
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.saveVar('sexnumbers','SEXNUMBERS');
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-						//Update localstorage's with new details
+						SD.saveVar('totalsexnumbers','TOTALSEXNUMBERS');
 
 						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
@@ -381,7 +373,7 @@ localStorage - SD Gloabls
 Formatting Results
 ================================================== */
 // #SEXNUMBERS ------------------------------------------------------
-	SD.formet = {
+	SD.format = {
 		toString: function(sex){
 			switch (sex) {
 				case (1):
@@ -526,6 +518,7 @@ Loading
 			clearTimeout(this.timer);
 		}
 	};
+
 	//set up click event to hide
 	$('messageBox').on('click', SD.message.hideMessage);
 

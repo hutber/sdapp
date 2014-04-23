@@ -136,7 +136,6 @@ define([
 							fontSize: '14px',
 							padding: '8px',
 							fontFamily: 'sdFont',
-							textShadow: '1px 1px 1px #000'
 						},
 					},
 					xAxis: {
