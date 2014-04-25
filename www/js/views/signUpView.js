@@ -20,7 +20,7 @@ define([
         render: function () {
             this.$el.html(this.template);
 
-			$('.signupForm').forms({required: 'all'});
+			$('.signupForm').forms();
 
 			//add terms into the template.
 			$('#terms').html(this.terms);
@@ -43,7 +43,7 @@ define([
         events: {
             'submit .signupForm': 'signupForm',
             'click .elements label a': 'termsPop',
-            'click .icon-left-big': 'termsPopClose',
+            'click back': 'termsPopClose',
         },
 		termsPop: function(el){
 			$('.signupForm').hide();
@@ -58,6 +58,7 @@ define([
 			if($(elem.currentTarget).find('.error').length !== true){
 				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
+				c(values);
 				//Turn off signup button
 				$('.btn.signup').attr('disabled','disabled');
 				$.ajax({

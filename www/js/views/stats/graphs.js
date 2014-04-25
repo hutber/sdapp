@@ -12,8 +12,8 @@ define([
 		var tempType = [];
 			tempType.name = type,
 			tempType.data = [];
-		object[type].forEach(function(me){
-			tempType.data.push(parseInt(me.numberof, 10));
+		Object.keys(object[type]).forEach(function(me){
+			tempType.data.push(object[type][me].numberof);
 		});
 		return tempType;
 	}
@@ -55,19 +55,9 @@ define([
 				areaData.push(stats);
 			});
 
-			// #Build Months In Results, convert it to an array --------------------------------------------------
-			//We need to know all the months in the last 6 months for the labels
-			var highestRow = null, highestObject = null;
-			for(var key in SD.BYMONTH){
-				if(SD.BYMONTH[key].length > highestRow){
-					highestObject = key;
-					highestRow = SD.BYMONTH[key].length;
-				}
-			}
-
 			// #Build month names NB: This is only used labels --------------------------------------------------
 			var lineLabelsDate = [];
-			for(var i=0; i<highestRow; i++){
+			for(var i=0; i <= Object.keys(SD.BYMONTH['Wank']).length; i++){ //Count number of months used in Wank then loop through and get month string from the last x months
 				lineLabelsDate.push(Date.today().addMonths(-i).toString("MMM"));
 			}
 			lineLabelsDate.reverse();
@@ -146,7 +136,6 @@ define([
 							fontSize: '14px',
 							padding: '8px',
 							fontFamily: 'sdFont',
-							textShadow: '1px 1px 1px #000'
 						},
 					},
 					xAxis: {

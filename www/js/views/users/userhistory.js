@@ -13,7 +13,6 @@ define([
 		template: JST['app/www/js/templates/users/history.ejs'],
 		render: function () {
 			var myself = this;
-			SD.convertSexNumbers.init();
 
 			//Reaplce title with wanted text
 			SD.setTitle('Sex History');

@@ -25,8 +25,6 @@ define([
 		},
 		template: JST['app/www/js/templates/stats/overview.ejs'],
 		render: function () {
-			SD.convertSexNumbers.init();
-
 			//# Set up JST variables ------------------------------------------------------
 			var data = {
 				youtotal:SD.TOTALSEXNUMBERS,

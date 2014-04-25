@@ -10,11 +10,11 @@ define([
 	var managewhos = SD.defaultView.extend({
 		el: 'page',
 		events: {
-			'click .awho': 'removeWho'
+			'click deleteButton': 'removeWho'
 		},
 		template: JST['app/www/js/templates/whos/managewhos.ejs'],
 		removeWho: function(me){
-			var whoName = me.currentTarget.children[0].innerHTML, whoId = me.currentTarget.dataset.id;
+			var parentMe = $(me.currentTarget).parent(), whoName = parentMe.data('name'), whoId = parentMe.data('id');
 			if(confirm('Do you really want to delete ' + whoName)){
 				SD.spinner.show();
 				$.ajax({
@@ -34,13 +34,12 @@ define([
 
 							//Remove it from the current WHO's
 							SD.WHO = SD.WHO.filter(function(me){
-								return me.id !== whoId;
+								return parseInt(me.id) !== parseInt(whoId);
 							});
-
 							//Replace localstorage for saving for user
-							localStorage.whos = JSON.stringify(SD.WHO);
+							SD.saveVar('whos','WHO');
 
-							$('.awho[data-id='+whoId+']').fadeOut('500')
+							parentMe.fadeOut('500')
 						}else{
 							SD.message.showMessage('A server error occured, please try again :(', 'bad', 1500);
 						}
@@ -56,10 +55,17 @@ define([
 			myself.$el.html(myself.template(SD.WHO));
 
 			var whos = document.getElementsByClassName('awho');
-//			var hammertime = Hammer(whos).on('dragleft', function(event) {
-//				c('slideLeft');
-//			});
-
+			$('awho').each(function(){
+				var myself = $(this);
+				Hammer($(this)[0]).on('dragleft', function(event) {
+					myself.find('detailsimage').addClass('hiding');
+					myself.find('deleteButton').addClass('showing');
+				});
+				Hammer($(this)[0]).on('dragright', function(event) {
+					myself.find('detailsimage').removeClass('hiding');
+					myself.find('deleteButton').removeClass('showing');
+				});
+			})
 		},
 	});
 	return managewhos;

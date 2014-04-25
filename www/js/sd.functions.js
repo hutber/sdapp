@@ -21,6 +21,7 @@ Globals
 ================================================== */
 
 // #Globals for SD ------------------------------------------------------
+	//Setup fullsex so we can build other numbers from this.
 	SD = {
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
@@ -45,12 +46,30 @@ Globals
 			location: [false, 'Click to get your location'],
 			where: {},
 		},
-		TOTALSEXNUMBERS: {},
-		SEXNUMBERS: {},
-		GLOBALSEXNUMBERS: {},
 		FULLSEX: function (){
 			if(typeof localStorage.grabFullSex !== "undefined"){
 				return JSON.parse(localStorage.grabFullSex);
+			}else{
+				return {};
+			}
+		}(),
+		TOTALSEXNUMBERS: function (){
+			if(typeof localStorage.totalsexnumbers !== "undefined"){
+				return JSON.parse(localStorage.totalsexnumbers);
+			}else{
+				return {};
+			}
+		}(),
+		SEXNUMBERS: function (){
+			if(typeof localStorage.sexnumbers !== "undefined"){
+				return JSON.parse(localStorage.sexnumbers);
+			}else{
+				return {};
+			}
+		}(),
+		GLOBALSEXNUMBERS: function (){
+			if(typeof localStorage.globalsexnumbers !== "undefined"){
+				return JSON.parse(localStorage.globalsexnumbers);
 			}else{
 				return {};
 			}
@@ -77,6 +96,9 @@ Globals
 		ROUTER: false,
 	};
 
+// #Build up Stats for SD ------------------------------------------------------
+
+//Setup SD vars for ajax requests
 	SD.AJAX = SD.HTTP+'app/',
 	SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 
@@ -220,7 +242,7 @@ Add Sex Functions
 SD.addSex = {
 	buildMissing: function(data, sid){
 		//set up defaults
-		return newData = {
+		return {
 			city:function(){
 				return (typeof data.city !== "undefined") ? data.city : null;
 			}(),
@@ -233,12 +255,12 @@ SD.addSex = {
 			rating:""+data.rating,
 			sexnumber:""+data.sexnumber,
 			sexstring:function(){
-				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.buildSexNumbers.toString(data.sexnumber);
+				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.format.toString(data.sexnumber);
 			}(),
 			sextime:data.sextime,
 			uid:localStorage.uid,
 			who:function(){
-				return (typeof data.country !== "undefined") ? data.country : null;
+				return (typeof data.country !== "undefined") ? data.who : null;
 			}()
 		};
 	},
@@ -283,10 +305,6 @@ SD.addSex = {
 				},
 				success: function(data){
 					if(isNumber(data)){
-
-//						SD.saveVar('globalsexnumbers','GLOBALSEXNUMBERS');
-//						SD.saveVar('sexnumbers','SEXNUMBERS');
-//						SD.saveVar('totalsexnumbers','TOTALSEXNUMBERS');
 						/*==================================================
 						Update FULLSEX and create some var's
 						================================================== */
@@ -302,28 +320,38 @@ SD.addSex = {
 						/*==================================================
 						Update Sex Data Graph
 						================================================== */
-						var currentMonthDigit = sexTime.toString("M"),
-							sexTypeString = newSexDetail.sexstring;
-						SD.BYMONTH[sexTypeString].forEach(function(me){
-							if(me.date===currentMonthDigit){
-								var newNumber = parseInt(me.numberof)+1; //Keep it a string
-								me.numberof = newNumber + ""; //Keep it a string
-							}
-						});
+						var sexTypeString = newSexDetail.sexstring;
+						//plus 1 to the number off in a given month
+						SD.BYMONTH[sexTypeString][currentMonthString].numberof++
 						SD.saveVar('sexesByMonth','BYMONTH');
+
+						/*==================================================
+						Update Whos - Find the who then add the who
+						================================================== */
+						if(saveSexDetails.who){
+							Object.keys(saveSexDetails.who).forEach(function(myself){
+								SD.WHO.forEach(function(me){
+									if(me.who===myself){
+										me.useage++;
+										me.useage = me.useage+"";
+									}
+								});
+							});
+							SD.saveVar('whos','WHO');
+						}
 
 						/*==================================================
 						Update Sex Nubers
 						================================================== */
-						//Update sex stats with new sex
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.saveVar('globalsexnumbers','GLOBALSEXNUMBERS');
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.saveVar('sexnumbers','SEXNUMBERS');
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-						//Update localstorage's with new details
+						SD.saveVar('totalsexnumbers','TOTALSEXNUMBERS');
 
 						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
-						c(data);
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
 					}
 				}
@@ -345,18 +373,7 @@ localStorage - SD Gloabls
 Formatting Results
 ================================================== */
 // #SEXNUMBERS ------------------------------------------------------
-	SD.buildSexNumbers = {
-		init: function(){
-			if(localStorage.SEXNUMBERS !=="" && jQuery.isEmptyObject(SD.SEXNUMBERS)){
-				this.convert(localStorage.sexnumbers, SD.SEXNUMBERS);
-			}
-			if(localStorage.TOTALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.TOTALSEXNUMBERS)){
-				this.convert(localStorage.totalsexnumbers, SD.TOTALSEXNUMBERS);
-			}
-			if(localStorage.GLOBALSEXNUMBERS !=="" && jQuery.isEmptyObject(SD.GLOBALSEXNUMBERS)){
-				this.convert(localStorage.globalsexnumbers, SD.GLOBALSEXNUMBERS);
-			}
-		},
+	SD.format = {
 		toString: function(sex){
 			switch (sex) {
 				case (1):
@@ -376,11 +393,11 @@ Formatting Results
 				break;
 			}
 		},
-		convert: function(item, target){
+		convertToLocal: function(item, target){
 			if(typeof item !=="undefined"){
 				JSON.parse(item).forEach(function(me){
 					if(typeof me==="object"){
-						var sexName = me.sex,
+						var sexName = me.sexType,
 							sexNumber = +me.no;
 
 						switch (sexName){
@@ -501,6 +518,7 @@ Loading
 			clearTimeout(this.timer);
 		}
 	};
+
 	//set up click event to hide
 	$('messageBox').on('click', SD.message.hideMessage);
 
