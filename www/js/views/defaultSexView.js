@@ -77,6 +77,9 @@ define([
 			extra: function(){
 				c('extra');
 			},
+			entry: function(){
+				alert('coming soon');
+			},
 			save: function(el){
 				var errorYes = true, me = $(el.currentTarget), disabled = me.hasClass('disabled');
 
@@ -183,9 +186,6 @@ define([
 				//update the website with the current view
 				var compiled = this.template();
 				this.$el.html(compiled);
-
-				//adujst the height of the sexdetails so that we can scroll
-				$('sexdetails').height($('page').outerHeight());
 
 				//Check are we a details page or the sex selection page
 				if(SD.CURRENTSEX === "na"){
