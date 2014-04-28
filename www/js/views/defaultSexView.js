@@ -77,6 +77,9 @@ define([
 			extra: function(){
 				c('extra');
 			},
+			entry: function(){
+				alert('coming soon');
+			},
 			save: function(el){
 				var errorYes = true, me = $(el.currentTarget), disabled = me.hasClass('disabled');
 

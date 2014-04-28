@@ -314,8 +314,14 @@ SD.addSex = {
 						//Grab current moth as string
 						var currentMonthString = sexTime.toString("MMM");
 						//Push currently converted sex details to array
-						SD.FULLSEX[currentMonthString].push(newSexDetail);
-						SD.saveVar('grabFullSex','FULLSEX');
+						if(typeof SD.FULLSEX[currentMonthString] !== "undefined") {
+							SD.FULLSEX[currentMonthString].push(newSexDetail);
+							SD.saveVar('grabFullSex','FULLSEX');
+						} else {
+							SD.FULLSEX[currentMonthString] = [newSexDetail];
+							c(SD.FULLSEX);
+							localStorage.setItem('grabFullSex',JSON.stringify(SD.FULLSEX));
+						}
 
 						/*==================================================
 						Update Sex Data Graph
