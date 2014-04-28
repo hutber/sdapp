@@ -149,7 +149,7 @@ define([
 								SD.WHO.push(newObjectOfWhos);
 
 								//replace localStorage for development
-								localStorage.whos = JSON.stringify(SD.WHO);
+								localStorage.WHO = JSON.stringify(SD.WHO);
 
 								//lets go back to the sex details page.
 								SD.pageLoad(SD.PREVIOUSHASH);

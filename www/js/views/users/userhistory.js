@@ -20,7 +20,6 @@ define([
 			var parentMe = $(me.currentTarget).parent().parent(),
 				deleteDetails = parentMe.find('h2')[0].innerHTML,
 				sexId = parentMe[0].id;
-			c(sexId);
 			if(confirm('Do you really want to delete ' + deleteDetails)){
 				SD.spinner.show();
 				$.ajax({
@@ -37,13 +36,31 @@ define([
 					success: function(data){
 						SD.spinner.hide();
 						if(data === ""){
+							var toDeleteIndex = -1,
+								toDeleteMonth = '',
+								toDeleteSexString = '';
 
-							//Remove it from the current WHO's
-//							SD.WHO = SD.WHO.filter(function(me){
-//								return parseInt(me.id) !== parseInt(whoId);
-//							});
-//							Replace localstorage for saving for user
-//							SD.saveVar('whos','WHO');
+							//Loopthough all sexes in fullsex
+							Object.keys(SD.FULLSEX).forEach(function(me){
+								var i = 0;
+								SD.FULLSEX[me].forEach(function(myself){
+									var sid = parseInt(myself.id);
+									if(parseInt(sexId) === sid){
+										toDeleteMonth = me;
+										toDeleteSexString = myself.sexstring;
+										toDeleteIndex = i;
+									}
+									i++;
+								});
+							});
+							SD.FULLSEX[toDeleteMonth].splice(toDeleteIndex, 1);
+							//Replace localstorage for saving for user
+							SD.saveVar('FULLSEX');
+
+							//Remove sex stats from SD.BYMONTH
+							SD.BYMONTH[toDeleteSexString][toDeleteMonth].numberof = SD.BYMONTH[toDeleteSexString][toDeleteMonth].numberof-1;
+							//Replace localstorage for saving for user
+							SD.saveVar('BYMONTH');
 
 							parentMe.fadeOut('500')
 						}else{

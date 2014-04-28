@@ -57,7 +57,7 @@ define([
 
 			// #Build month names NB: This is only used labels --------------------------------------------------
 			var lineLabelsDate = [];
-			for(var i=0; i <= Object.keys(SD.BYMONTH['Wank']).length; i++){ //Count number of months used in Wank then loop through and get month string from the last x months
+			for(var i=0; i <= Object.keys(SD.BYMONTH['Wank']).length-1; i++){ //Count number of months used in Wank then loop through and get month string from the last x months
 				lineLabelsDate.push(Date.today().addMonths(-i).toString("MMM"));
 			}
 			lineLabelsDate.reverse();

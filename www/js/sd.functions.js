@@ -47,43 +47,43 @@ Globals
 			where: {},
 		},
 		FULLSEX: function (){
-			if(typeof localStorage.grabFullSex !== "undefined"){
-				return JSON.parse(localStorage.grabFullSex);
+			if(typeof localStorage.FULLSEX !== "undefined"){
+				return JSON.parse(localStorage.FULLSEX);
 			}else{
 				return {};
 			}
 		}(),
 		TOTALSEXNUMBERS: function (){
-			if(typeof localStorage.totalsexnumbers !== "undefined"){
-				return JSON.parse(localStorage.totalsexnumbers);
+			if(typeof localStorage.TOTALSEXNUMBERS !== "undefined"){
+				return JSON.parse(localStorage.TOTALSEXNUMBERS);
 			}else{
 				return {};
 			}
 		}(),
 		SEXNUMBERS: function (){
-			if(typeof localStorage.sexnumbers !== "undefined"){
-				return JSON.parse(localStorage.sexnumbers);
+			if(typeof localStorage.SEXNUMBERS !== "undefined"){
+				return JSON.parse(localStorage.SEXNUMBERS);
 			}else{
 				return {};
 			}
 		}(),
 		GLOBALSEXNUMBERS: function (){
-			if(typeof localStorage.globalsexnumbers !== "undefined"){
-				return JSON.parse(localStorage.globalsexnumbers);
+			if(typeof localStorage.GLOBALSEXNUMBERS !== "undefined"){
+				return JSON.parse(localStorage.GLOBALSEXNUMBERS);
 			}else{
 				return {};
 			}
 		}(),
 		BYMONTH: function (){
-			if(typeof localStorage.sexesByMonth !== "undefined"){
-				return JSON.parse(localStorage.sexesByMonth);
+			if(typeof localStorage.BYMONTH !== "undefined"){
+				return JSON.parse(localStorage.BYMONTH);
 			}else{
 				return {};
 			}
 		}(),
 		WHO: function (){
-			if(typeof localStorage.whos !== "undefined"){
-				return JSON.parse(localStorage.whos);
+			if(typeof localStorage.WHO !== "undefined"){
+				return JSON.parse(localStorage.WHO);
 			}else{
 				return {};
 			}
@@ -316,11 +316,11 @@ SD.addSex = {
 						//Push currently converted sex details to array
 						if(typeof SD.FULLSEX[currentMonthString] !== "undefined") {
 							SD.FULLSEX[currentMonthString].push(newSexDetail);
-							SD.saveVar('grabFullSex','FULLSEX');
+							SD.saveVar('FULLSEX');
 						} else {
 							SD.FULLSEX[currentMonthString] = [newSexDetail];
 							c(SD.FULLSEX);
-							localStorage.setItem('grabFullSex',JSON.stringify(SD.FULLSEX));
+							localStorage.setItem('FULLSEX',JSON.stringify(SD.FULLSEX));
 						}
 
 						/*==================================================
@@ -329,7 +329,7 @@ SD.addSex = {
 						var sexTypeString = newSexDetail.sexstring;
 						//plus 1 to the number off in a given month
 						SD.BYMONTH[sexTypeString][currentMonthString].numberof++
-						SD.saveVar('sexesByMonth','BYMONTH');
+						SD.saveVar('BYMONTH');
 
 						/*==================================================
 						Update Whos - Find the who then add the who
@@ -343,18 +343,18 @@ SD.addSex = {
 									}
 								});
 							});
-							SD.saveVar('whos','WHO');
+							SD.saveVar('WHO');
 						}
 
 						/*==================================================
 						Update Sex Nubers
 						================================================== */
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-						SD.saveVar('globalsexnumbers','GLOBALSEXNUMBERS');
+						SD.saveVar('GLOBALSEXNUMBERS');
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-						SD.saveVar('sexnumbers','SEXNUMBERS');
+						SD.saveVar('SEXNUMBERS');
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-						SD.saveVar('totalsexnumbers','TOTALSEXNUMBERS');
+						SD.saveVar('TOTALSEXNUMBERS');
 
 						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
 					}else{
@@ -371,8 +371,8 @@ SD.addSex = {
 /*==================================================
 localStorage - SD Gloabls
 ================================================== */
-	SD.saveVar = function(local, sd) {
-		localStorage[local] = JSON.stringify(SD[sd]);
+	SD.saveVar = function(variable) {
+		localStorage[variable] = JSON.stringify(SD[variable]);
 	};
 
 /*==================================================

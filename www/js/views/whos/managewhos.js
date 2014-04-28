@@ -34,7 +34,7 @@ define([
 								return parseInt(me.id) !== parseInt(whoId);
 							});
 							//Replace localstorage for saving for user
-							SD.saveVar('whos','WHO');
+							SD.saveVar('WHO');
 
 							parentMe.fadeOut('500')
 						}else{
