@@ -44,7 +44,11 @@ define([
 						'pword': values.pword
 					},
 					error: function(data){
-						SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
+						if(data.status === 200){
+							SD.message.showMessage('Opps, sorry just hit login one more time.');
+						}else{
+							SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
+						}
 						SD.overlay.hideme();
 					},
 					success: function(data){

@@ -9,9 +9,6 @@ define([
 	//set up homeview
 	var managewhos = SD.defaultView.extend({
 		el: 'page',
-		events: {
-			'click deleteButton': 'removeWho'
-		},
 		template: JST['app/www/js/templates/whos/managewhos.ejs'],
 		removeWho: function(me){
 			var parentMe = $(me.currentTarget).parent(), whoName = parentMe.data('name'), whoId = parentMe.data('id');
