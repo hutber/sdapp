@@ -200,8 +200,14 @@ define([
 				}
 
 				//adujst the height of the sexdetails so that we can scroll
-//				$('sexdetails').height($('page').outerHeight());
-				$('sexdetails').css('margin-bottom', $('sexform > *:last-child').outerHeight());
+				var elementsHeight = 0,
+					pageHeight = $('page').outerHeight();
+				$('sexform > *').each(function(){
+					elementsHeight += $(this).outerHeight();
+				});
+				if(elementsHeight > pageHeight){
+					$('sexdetails').css('margin-bottom', $('sexform > *:last-child').outerHeight() + $('save').outerHeight());
+				};
 			}
 		});
 

@@ -4,7 +4,7 @@
 		<historydetails>
 			<h2><%= currentSex.sexstring %><% if (typeof currentSex.who==="string"){%> - <%= currentSex.who %> <% } %></h2>
 			<date><%= currentSex.datetring %><% if (typeof currentSex.city==="string"){%> - <%= currentSex.city %>, <%= currentSex.country %><% } %></date>
-			<deleteButton data-function="removeSex"><i class="icon-trash"></i></deleteButton>
 		</historydetails>
+		<deleteButton data-function="removeSex"><i class="icon-trash"></i></deleteButton>
 	</div>
 <%	}); %>

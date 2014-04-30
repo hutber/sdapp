@@ -2132,10 +2132,7 @@ img.rsImg {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_blocks\.scss}line{font-family:\0000395}}
 .blocks extra {
-  width: 100%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
+  display: block;
   text-align: center;
   position: relative;
   cursor: pointer;
@@ -3886,37 +3883,19 @@ save img {
   font-size: 1rem;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\000039}}
-.userhistory deleteButton {
-  float: right;
-  position: absolute;
-  right: 26px;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000313}}
-.userhistory deleteButton .icon-trash {
-  font-size: 3rem;
-  color: #e74c3c;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000319}}
 .userhistory .spanicon {
-  position: fixed;
+  position: absolute;
   display: block;
   margin-bottom: 7px;
   width: 100%;
   z-index: 1;
-  top: 40px;
+  top: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000326}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000316}}
 .userhistory .spanicon i {
   pointer-events: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000320}}
 .userhistory .icon-down-open {
   height: 100%;
   display: block;
@@ -3929,11 +3908,11 @@ save img {
   top: 0;
   right: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000332}}
 .userhistory .historyContent {
   margin-top: 50px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000334}}
 .userhistory .historyContent > div {
   display: block;
   overflow: hidden;
@@ -3942,68 +3921,73 @@ save img {
   text-align: left;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000341}}
 .userhistory .historyContent > div.Wank {
   border-color: #a67e31;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000344}}
 .userhistory .historyContent > div.Hands {
   border-color: #dfdfff;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000347}}
 .userhistory .historyContent > div.Oral {
   border-color: #ffdfbf;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000350}}
 .userhistory .historyContent > div.Sex {
   border-color: #dc87b1;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000353}}
 .userhistory .historyContent > div.Anything {
   border-color: #230e0e;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000357}}
 .userhistory .historyContent h2 {
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000361}}
 .userhistory date {
   font-size: 14px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000374}}
-.userhistory historydetails {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  position: relative;
-  width: 83.05085%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
-}
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000364}}
 .userhistory imgCon {
   padding: 4px;
   text-align: left;
   height: 100%;
-  position: absolute;
   width: 15.25424%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000386}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000369}}
 .userhistory imgCon img {
   width: 90%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000392}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000373}}
+.userhistory historydetails {
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 66.10169%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000377}}
+.userhistory deleteButton {
+  width: 15.25424%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
+  display: inline;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000379}}
+.userhistory deleteButton .icon-trash {
+  font-size: 2rem;
+  color: #e74c3c;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000385}}
 .userhistory .nostats h1 {
   font-size: 2rem;
 }
@@ -4060,11 +4044,11 @@ body {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/style\.scss}line{font-family:\00003122}}
 body.menuOpen {
   display: block;
-  -webkit-transform: translate(250px, 0);
-  -moz-transform: translate(250px, 0);
-  -ms-transform: translate(250px, 0);
-  -o-transform: translate(250px, 0);
-  transform: translate(250px, 0);
+  -webkit-transform: translate(80%, 0);
+  -moz-transform: translate(80%, 0);
+  -ms-transform: translate(80%, 0);
+  -o-transform: translate(80%, 0);
+  transform: translate(80%, 0);
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/style\.scss}line{font-family:\00003129}}
@@ -4225,7 +4209,7 @@ header back, header add {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/style\.scss}line{font-family:\00003251}}
 menu {
   position: absolute;
-  width: 250px;
+  width: 80%;
   height: 100%;
   z-index: 101;
   -webkit-transform: translate(-100%, 0);

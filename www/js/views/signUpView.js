@@ -58,7 +58,6 @@ define([
 			if($(elem.currentTarget).find('.error').length !== true){
 				SD.overlay.showme();
 				var values = $(elem.currentTarget).serializeObject();
-				c(values);
 				//Turn off signup button
 				$('.btn.signup').attr('disabled','disabled');
 				$.ajax({
