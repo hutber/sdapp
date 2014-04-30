@@ -84,18 +84,20 @@ define([
 				for(var key in SD.FULLSEX) break; //Ggrab out the first item from object
 				$('.historyContent').html(myself.template(SD.FULLSEX[key]));
 
-				//bind menu change all the way at the top :( page
-				$('page').on('change', '#category', function(selection){
-					c('boud')
-					// #Update the page with individual data from AJAX
-					$('.historyContent').html(myself.template(SD.FULLSEX[selection.currentTarget.value]));
-				});
+				//Check to make sure that the change event hasn't already been bound.
+				if(typeof $._data($("page")[0]).events.change === "undefined"){
+					//bind menu change all the way at the top :( page
+					$('page').on('change', '#category', function(selection){
+						// #Update the page with individual data from AJAX
+						$('.historyContent').html(myself.template(SD.FULLSEX[selection.currentTarget.value]));
+					});
 
-				//bind menu change all the way at the top :( page
-				$('page').on('change', '#month', function(selection){
-					// #Update the page with individual data from AJAX
-					$('.historyContent').html(myself.template(SD.FULLSEX[selection.currentTarget.value]));
-				});
+					//bind menu change all the way at the top :( page
+					$('page').on('change', '#month', function(selection){
+						// #Update the page with individual data from AJAX
+						$('.historyContent').html(myself.template(SD.FULLSEX[selection.currentTarget.value]));
+					});
+				}
 			}else{
 				// #Rewrite HTML on page with tempalte
 				myself.$el.html(myself.templateMenu());

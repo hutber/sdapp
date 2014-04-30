@@ -63,7 +63,7 @@ define([
 			lineLabelsDate.reverse();
 
 			var colors = [
-				'rgba(255, 255, 255, 0.60)',
+				'rgba(222, 239, 255, 0.6)',
 				'rgba(223, 222, 255, 0.60)',
 				'#f1c40f',
 				'rgba(220, 134, 177, 0.6)',
