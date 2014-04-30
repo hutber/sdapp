@@ -75,7 +75,7 @@ define([
 				SD.pageLoad('where');
 			},
 			extra: function(){
-				c('extra');
+				alert('coming soon');
 			},
 			entry: function(){
 				alert('coming soon');
@@ -187,9 +187,6 @@ define([
 				var compiled = this.template();
 				this.$el.html(compiled);
 
-				//adujst the height of the sexdetails so that we can scroll
-				$('sexdetails').height($('page').outerHeight());
-
 				//Check are we a details page or the sex selection page
 				if(SD.CURRENTSEX === "na"){
 					$('sexdetails').html();
@@ -201,6 +198,10 @@ define([
 
 					this.loadSaveSex.post();
 				}
+
+				//adujst the height of the sexdetails so that we can scroll
+//				$('sexdetails').height($('page').outerHeight());
+				$('sexdetails').css('margin-bottom', $('sexform > *:last-child').outerHeight());
 			}
 		});
 
