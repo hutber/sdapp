@@ -36,7 +36,7 @@ define([
 			events: { //Add click events for global clicks
 				'click logo a': 'goHome',
 				'click footer sexnav' : 'sexNav',
-				'click hidepage' : 'openMenu',
+				'click #hidepage' : 'openMenu',
 				'click footer saveBox': 'saveBox',
 				'click menubtn': 'openMenu',
 				'click savewho': 'saveWho',

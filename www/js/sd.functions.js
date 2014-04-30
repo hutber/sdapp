@@ -162,7 +162,7 @@ SD.login = {
 				'adfbse4': localStorage.privateKey
 			},
 			error: function(data){
-				SD.message.showMessage('Sorry, please try again', 'bad');
+				SD.message.showMessage('There was a network error.', 'bad');
 				SD.spinner.hide();
 			},
 			success: function(data){
