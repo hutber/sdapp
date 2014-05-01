@@ -327,9 +327,15 @@ SD.addSex = {
 						Update Sex Data Graph
 						================================================== */
 						var sexTypeString = newSexDetail.sexstring;
-						//plus 1 to the number off in a given month
-						SD.BYMONTH[sexTypeString][currentMonthString].numberof++
-						SD.saveVar('BYMONTH');
+						//Make sure we have added a sex before
+						if(typeof SD.BYMONTH[currentMonthString] !== "undefined") {
+							//plus 1 to the number off in a given month
+							SD.BYMONTH[sexTypeString][currentMonthString].numberof++;
+							SD.saveVar('BYMONTH');
+						} else {
+							SD.BYMONTH[sexTypeString][currentMonthString] = {"numberof":1,"date": Date.today().toString("M")};
+							localStorage.setItem('BYMONTH',JSON.stringify(SD.BYMONTH));
+						}
 
 						/*==================================================
 						Update Whos - Find the who then add the who
