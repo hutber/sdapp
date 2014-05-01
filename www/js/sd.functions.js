@@ -291,6 +291,7 @@ SD.addSex = {
 	},
 	save: function(){
 		if(localStorage.privateKey){
+			SD.spinner.show();
 			var saveSexDetails = SD.addSex.convertPhp();
 			$.ajax({
 				url: SD.AJAX+'add',
@@ -319,7 +320,6 @@ SD.addSex = {
 							SD.saveVar('FULLSEX');
 						} else {
 							SD.FULLSEX[currentMonthString] = [newSexDetail];
-							c(SD.FULLSEX);
 							localStorage.setItem('FULLSEX',JSON.stringify(SD.FULLSEX));
 						}
 
@@ -347,16 +347,33 @@ SD.addSex = {
 						}
 
 						/*==================================================
-						Update Sex Nubers
+						Update Sex Numbers
 						================================================== */
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.GLOBALSEXNUMBERS.total++;
 						SD.saveVar('GLOBALSEXNUMBERS');
 						SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.SEXNUMBERS.total++;
 						SD.saveVar('SEXNUMBERS');
 						SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+						SD.TOTALSEXNUMBERS.total++;
 						SD.saveVar('TOTALSEXNUMBERS');
 
-						SD.message.showMessage('Entry has been added and all stats updated, fuck ye man...', 'good', 2500);
+						//Move us home after resetting all the sex details
+						SD.SEXDEFAULTS = {
+							sextype: 'default',
+							sexnumber: 0,
+							image: '/img/path.jpg',
+							sextime:[false,false],
+							who: {},
+							rating: 0,
+							location: [false, 'Click to get your location'],
+							where: {},
+						};
+						SD.pageLoad('overview');
+						SD.spinner.hide();
+						//display completled sex
+						SD.message.showMessage('Sex added you cheeky sod', 'good', 2500);
 					}else{
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
 					}
@@ -543,13 +560,13 @@ Location ajax formating
 					'zoom' : 18
 				},
 				error: function(data){
-					SD.overlay.hideme();
+					SD.spinner.hide();
 				},
 				success: function(data){
 					SD.SEXDEFAULTS.location[0] = data;
 					SD.SEXDEFAULTS.location[1] = data.address.city_district + ', '+ data.address.city +', '+data.address.country_code.toUpperCase();
 					$('location location').html(SD.SEXDEFAULTS.location[1]);
-					SD.overlay.hideme();
+					SD.spinner.hide();
 				}
 			});
 		}
@@ -557,7 +574,7 @@ Location ajax formating
 	SD.locationFail = function (error) {
 		alert('code: '    + error.code    + '\n' +
 			'message: ' + error.message + '\n');
-		SD.overlay.hideme();
+		SD.spinner.hide();
 	};
 /*==================================================
 Networking functions
