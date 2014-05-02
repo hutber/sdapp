@@ -20,6 +20,7 @@ define([
 			ownView: JST['app/www/js/templates/sex.ejs'],
 			openASex: function(el){ //Define the click events for the sex details page
 				var name = el.currentTarget.localName;
+				if(name !== 'date')
 				this[name](el);
 			},
 			when: function(){
@@ -206,7 +207,11 @@ define([
 					elementsHeight += $(this).outerHeight();
 				});
 				if(elementsHeight > pageHeight){
-					$('sexdetails').css('margin-bottom', $('sexform > *:last-child').outerHeight() + $('save').outerHeight());
+					if(SD.CURRENTSEX==="wank"){
+						$('sexdetails').css('margin-bottom', $('save').outerHeight());
+					}else{
+						$('sexdetails').css('margin-bottom', $('sexform > *:last-child').outerHeight() + $('save').outerHeight());
+					}
 				};
 			}
 		});

@@ -30,7 +30,7 @@ define([
 			$('who').hide();
 
 			//Set the page's title
-			SD.setTitle('MOTHER FUCKING WANK!!!');
+			SD.setTitle('Selfie!!');
         }
     });
     return wank;

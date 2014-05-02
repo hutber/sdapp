@@ -20,7 +20,7 @@ define([
 
 			SD.DSV.render(data);
 
-			SD.setTitle('Freehand wanking!');
+			SD.setTitle('Fingers or Hands!');
 		}
 	});
 	return hands;

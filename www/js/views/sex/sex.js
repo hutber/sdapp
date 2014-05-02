@@ -20,7 +20,7 @@ define([
 
 			SD.DSV.render(data);
 
-			SD.setTitle('Argh yeee...  ...   sex  ... yeeee');
+			SD.setTitle('Argh yeee...  ...');
 
 		}
 	});

@@ -289,17 +289,6 @@ SD.manageSex = {
 
 		return php;
 	},
-	updateNumbers: function(numberToDo, globalSexNumber, sexNumber, totalSexNumber){
-		SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-		SD.GLOBALSEXNUMBERS.total++;
-		SD.saveVar('GLOBALSEXNUMBERS');
-		SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-		SD.SEXNUMBERS.total++;
-		SD.saveVar('SEXNUMBERS');
-		SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
-		SD.TOTALSEXNUMBERS.total++;
-		SD.saveVar('TOTALSEXNUMBERS');
-	},
 	save: function(){
 		if(localStorage.privateKey){
 			SD.spinner.show();
@@ -325,9 +314,9 @@ SD.manageSex = {
 						var sexTime = Date.parse(saveSexDetails.sextime);
 						//Grab current moth as string
 						var currentMonthString = sexTime.toString("MMM");
-						//Push currently converted sex details to array
+						//unshift currently converted sex details to array
 						if(typeof SD.FULLSEX[currentMonthString] !== "undefined") {
-							SD.FULLSEX[currentMonthString].push(newSexDetail);
+							SD.FULLSEX[currentMonthString].unshift(newSexDetail);
 							SD.saveVar('FULLSEX');
 						} else {
 							SD.FULLSEX[currentMonthString] = [newSexDetail];
@@ -586,6 +575,7 @@ Loading
 		hide: function(){
 			if(window && window.plugins && window.plugins.spinnerDialog){
 				window.plugins.spinnerDialog.hide();
+				SD.overlay.hideme();
 			}else{
 				SD.overlay.hideme();
 			}
