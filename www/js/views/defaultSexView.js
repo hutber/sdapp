@@ -151,7 +151,6 @@ define([
 					//Display the correct rating
 					SD.DSV.rating();
 
-
 					//Time date picker
 					$('when').mobiscroll({
 						preset: 'datetime',
@@ -163,18 +162,21 @@ define([
 						dateOrder: 'dMyy',
 						onSelect: function(el) {
 							$('when date').html(el);
-							SD.SEXDEFAULTS.sextime[1] = el,
-								SD.SEXDEFAULTS.sextime[2] = SD.SEXDEFAULTS.sextime[0].values;
-						},
-						onBeforeShow: function(){
-							if(SD.SEXDEFAULTS.sextime[0]){
-								SD.SEXDEFAULTS.sextime[0].setValue(SD.SEXDEFAULTS.sextime[2]);
-							}
+							SD.SEXDEFAULTS.sextime[0] = el,
+							SD.SEXDEFAULTS.sextime[1] = currentDatePicker.values;
 						}
 					});
-					SD.SEXDEFAULTS.sextime[0] = $('when').mobiscroll('getInst'),
-					SD.SEXDEFAULTS.sextime[1] = SD.SEXDEFAULTS.sextime[0].val;
-					$('when date').html(SD.SEXDEFAULTS.sextime[1]);
+
+					//set the current date instance
+					var currentDatePicker = $('when').mobiscroll('getInst');
+
+					//Update current instance to the old value of the date if it exists
+					if(SD.SEXDEFAULTS.sextime[1]){
+						currentDatePicker.setValue(SD.SEXDEFAULTS.sextime[1]);
+					}
+
+					//On page load update the date string
+					$('when date').html(currentDatePicker.val);
 				}
 			},
 			render: function (data) {
