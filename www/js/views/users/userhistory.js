@@ -17,58 +17,11 @@ define([
 			SD.VIEWS[document.body.className+'View'][functionName](me);
 		},
 		removeSex: function(me){
-			var parentMe = $(me.currentTarget).parent().parent(),
+
+			var parentMe = $(me.currentTarget).parent(),
 				deleteDetails = parentMe.find('h2')[0].innerHTML,
 				sexId = parentMe[0].id;
-			if(confirm('Do you really want to delete ' + deleteDetails)){
-				SD.spinner.show();
-				$.ajax({
-					url: SD.AJAX+'sex/deletesex',
-					type: 'POST',
-					data: {
-						'id': sexId,
-						'privateKey': localStorage.privateKey,
-					},
-					error: function(data){
-						SD.spinner.hide();
-						SD.message.showMessage('A server error occured, please try again >:|', 'bad', 1500);
-					},
-					success: function(data){
-						SD.spinner.hide();
-						if(data === ""){
-							var toDeleteIndex = -1,
-								toDeleteMonth = '',
-								toDeleteSexString = '';
-
-							//Loopthough all sexes in fullsex
-							Object.keys(SD.FULLSEX).forEach(function(me){
-								var i = 0;
-								SD.FULLSEX[me].forEach(function(myself){
-									var sid = parseInt(myself.id);
-									if(parseInt(sexId) === sid){
-										toDeleteMonth = me;
-										toDeleteSexString = myself.sexstring;
-										toDeleteIndex = i;
-									}
-									i++;
-								});
-							});
-							SD.FULLSEX[toDeleteMonth].splice(toDeleteIndex, 1);
-							//Replace localstorage for saving for user
-							SD.saveVar('FULLSEX');
-
-							//Remove sex stats from SD.BYMONTH
-							SD.BYMONTH[toDeleteSexString][toDeleteMonth].numberof = SD.BYMONTH[toDeleteSexString][toDeleteMonth].numberof-1;
-							//Replace localstorage for saving for user
-							SD.saveVar('BYMONTH');
-
-							parentMe.fadeOut('500');
-						}else{
-							SD.message.showMessage('A server error occured, please try again :(', 'bad', 1500);
-						}
-					}
-				});
-			}
+				SD.manageSex.removeSex(sexId, deleteDetails, parentMe);
 		},
 		render: function () {
 			var myself = this;

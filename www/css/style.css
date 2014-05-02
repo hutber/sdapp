@@ -3986,8 +3986,9 @@ save img {
 .userhistory deleteButton .icon-trash {
   font-size: 2rem;
   color: #e74c3c;
+  line-height: 3rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000386}}
 .userhistory .nostats h1 {
   font-size: 2rem;
 }

@@ -239,7 +239,7 @@ SD.onHashChange = function(){
 /*==================================================
 Add Sex Functions
 ================================================== */
-SD.addSex = {
+SD.manageSex = {
 	buildMissing: function(data, sid){
 		//set up defaults
 		return {
@@ -289,10 +289,21 @@ SD.addSex = {
 
 		return php;
 	},
+	updateNumbers: function(numberToDo, globalSexNumber, sexNumber, totalSexNumber){
+		SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+		SD.GLOBALSEXNUMBERS.total++;
+		SD.saveVar('GLOBALSEXNUMBERS');
+		SD.SEXNUMBERS[Object.keys(SD.SEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+		SD.SEXNUMBERS.total++;
+		SD.saveVar('SEXNUMBERS');
+		SD.TOTALSEXNUMBERS[Object.keys(SD.TOTALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
+		SD.TOTALSEXNUMBERS.total++;
+		SD.saveVar('TOTALSEXNUMBERS');
+	},
 	save: function(){
 		if(localStorage.privateKey){
 			SD.spinner.show();
-			var saveSexDetails = SD.addSex.convertPhp();
+			var saveSexDetails = SD.manageSex.convertPhp();
 			$.ajax({
 				url: SD.AJAX+'add',
 				type: 'POST',
@@ -310,7 +321,7 @@ SD.addSex = {
 						Update FULLSEX and create some var's
 						================================================== */
 						// Build a new array to add to SD.FULLSEX
-						var newSexDetail  = SD.addSex.buildMissing(saveSexDetails, data);
+						var newSexDetail  = SD.manageSex.buildMissing(saveSexDetails, data);
 						var sexTime = Date.parse(saveSexDetails.sextime);
 						//Grab current moth as string
 						var currentMonthString = sexTime.toString("MMM");
@@ -388,7 +399,71 @@ SD.addSex = {
 		}else{
 			SD.message.showMessage('You appear to not be logged in?', 'bad');
 		}
-	}
+	},
+	removeSex: function(sexId, text, deleteArea){
+		if(confirm('Do you really want to delete ' + text)){
+			SD.spinner.show();
+			$.ajax({
+				url: SD.AJAX+'sex/deletesex',
+				type: 'POST',
+				data: {
+					'id': sexId,
+					'privateKey': localStorage.privateKey,
+				},
+				error: function(data){
+					SD.spinner.hide();
+					SD.message.showMessage('A server error occured, please try again >:|', 'bad', 1500);
+				},
+				success: function(data){
+					SD.spinner.hide();
+					if(data === ""){
+						var toDeleteIndex = -1,
+							toDeleteMonth = '',
+							toDeleteSexString = '';
+
+						//Loopthough all sexes in fullsex
+						Object.keys(SD.FULLSEX).forEach(function(me){
+							var i = 0;
+							SD.FULLSEX[me].forEach(function(myself){
+								var sid = parseInt(myself.id);
+								if(parseInt(sexId) === sid){
+									toDeleteMonth = me;
+									toDeleteSexString = myself.sexstring;
+									toDeleteIndex = i;
+								}
+								i++;
+							});
+						});
+						SD.FULLSEX[toDeleteMonth].splice(toDeleteIndex, 1);
+						//Replace localstorage for saving for user
+						SD.saveVar('FULLSEX');
+
+						//Remove sex stats from SD.BYMONTH
+						SD.BYMONTH[toDeleteSexString][toDeleteMonth].numberof = SD.BYMONTH[toDeleteSexString][toDeleteMonth].numberof-1;
+						//Replace localstorage for saving for user
+						SD.saveVar('BYMONTH');
+
+						/*==================================================
+										Update Sex Numbers
+						================================================== */
+						SD.GLOBALSEXNUMBERS[toDeleteSexString]--;
+						SD.GLOBALSEXNUMBERS.total--;
+						SD.saveVar('GLOBALSEXNUMBERS');
+						SD.SEXNUMBERS[toDeleteSexString]--;
+						SD.SEXNUMBERS.total--;
+						SD.saveVar('SEXNUMBERS');
+						SD.TOTALSEXNUMBERS[toDeleteSexString]--;
+						SD.TOTALSEXNUMBERS.total--;
+						SD.saveVar('TOTALSEXNUMBERS');
+
+						deleteArea.fadeOut('500');
+					}else{
+						SD.message.showMessage('A server error occured, please try again :(', 'bad', 1500);
+					}
+				}
+			});
+		}
+	},
 };
 
 /*==================================================

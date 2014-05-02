@@ -113,7 +113,7 @@ define([
 				}
 
 				//If we have no errors save the sex
-				if(errorYes) {SD.addSex.save();}
+				if(errorYes) {SD.manageSex.save();}
 			},
 
 			// #DataChecker is used in the sex views/sex/*.js if the same type of data is passed from the sex view it over writes the default. ---------------------------------------
