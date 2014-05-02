@@ -244,10 +244,10 @@ SD.manageSex = {
 		//set up defaults
 		return {
 			city:function(){
-				return (typeof data.city !== "undefined") ? data.city : null;
+				return (typeof data.locationcity !== "undefined") ? data.locationcity : null;
 			}(),
 			country:function(){
-				return (typeof data.country !== "undefined") ? data.country : null;
+				return (typeof data.locationcountry !== "undefined") ? data.locationcountry : null;
 			}(),
 			datetring:Date.parse(data.sextime).toString('ddd dS HH:mm'),
 			id:sid,

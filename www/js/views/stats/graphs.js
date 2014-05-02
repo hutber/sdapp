@@ -51,8 +51,9 @@ define([
 			// #build new arrays for graph --------------------------------------------------
 			details.forEach(function(me){
 				var stats = createData(SD.BYMONTH, me);
-				if(stats.data.length>0)
-				areaData.push(stats);
+				if(stats.data[0]){
+					areaData.push(stats);
+				}
 			});
 
 			// #Build month names NB: This is only used labels --------------------------------------------------
@@ -176,7 +177,7 @@ define([
 						plotBands: [
 							{
 								from: 0,
-								to: 10,
+								to: 5,
 								color: 'rgba(68, 170, 213, 0.1)',
 								label: {
 									text: 'Beginner',
@@ -186,8 +187,8 @@ define([
 								}
 							},
 								{
-								from: 10,
-								to: 20,
+								from: 5,
+								to: 15,
 								label: {
 									text: 'Average Joe',
 									style: {
