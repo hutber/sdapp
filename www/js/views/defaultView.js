@@ -34,13 +34,13 @@ define([
 		var HomeView = Backbone.View.extend({
 			el: 'body > shell',
 			events: { //Add click events for global clicks
-//				'click logo a': 'goHome',
-//				'click footer sexnav' : 'sexNav',
-//				'click #hidepage' : 'openMenu',
-//				'click footer saveBox': 'saveBox',
-//				'click menubtn': 'openMenu',
-//				'click savewho': 'saveWho',
-//				'click header add': 'openWhoAdd',
+				'click logo a': 'goHome',
+				'click footer sexnav' : 'sexNav',
+				'click #hidepage' : 'openMenu',
+				'click footer saveBox': 'saveBox',
+				'click menubtn': 'openMenu',
+				'click savewho': 'saveWho',
+				'click header add': 'openWhoAdd',
 			},
 			render: function () {
 				//Output correct tempalte
@@ -50,13 +50,13 @@ define([
 			},
 			slideMenu: {
 				init: function(){
-//					var menuItem = document.getElementById('hidepage');
-//					if(menuItem){
-//						var hammertime = Hammer(menuItem).on('dragleft', function(event) {
-//							document.body.style.MozTransform = 'translate('+event.gesture.touches[0].screenX +'px,0)';
-//							document.body.style.webkitTransform = '-webkit-translate('+event.gesture.touches[0].screenX +'px,0)';
-//						});
-//					}
+					var menuItem = document.getElementById('hidepage');
+					if(menuItem){
+						var hammertime = Hammer(menuItem).on('dragleft', function(event) {
+							document.body.style.MozTransform = 'translate('+event.gesture.touches[0].screenX +'px,0)';
+							document.body.style.webkitTransform = '-webkit-translate('+event.gesture.touches[0].screenX +'px,0)';
+						});
+					}
 				}
 			},
 			doLogOut: function(){
