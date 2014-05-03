@@ -128,15 +128,12 @@ Login functions
 ================================================== */
 SD.login = {
 	moveToHome: function(reload){
-		alert('1');
 		if(typeof reload === "undefined") {reload = false;} //if no reload is passed make it false
 		sessionStorage.removeItem('appOpenedFirstTime');
-		alert('2');
 		if(reload){
-			alert('3');
 			location.reload();
 		}else {
-			alert('4');
+			alert('1');
 			window.location.href = "#home";
 		}
 	},
@@ -223,20 +220,23 @@ SD.changeHeightofContent = function(){
 
 SD.onHashChange = function(){
 	//make sure we are logged in, if we are not forward back to home page
-	SD.login.checkLoginState();
 
+	alert('2');
+	SD.login.checkLoginState();
+	alert('3');
+	alert(SD.HASH);
 	//Updated previous hash
 	SD.PREVIOUSHASH = SD.HASH;
-
+	alert('4');
 	//Update the new hash
 	SD.HASH = window.location.hash.substring(1);
-
+	alert('5');
 	//On page load update body class with current page
 	SD.DV.globalClass();
-
+	alert('6');
 	//Resize the $('page') element
 	SD.changeHeightofContent();
-
+	alert('7');
 	//update menu items with selected item
 	$('menu a.selected').removeAttr('class');
 	$('menu a[data-id='+SD.HASH+']').addClass('selected');

@@ -81,7 +81,7 @@ define([
 				if(window.location.hash !== ''){
 					desiredClass = SD.HASH;
 				}
-
+				c(desiredClass);
 				//Add new class to body
 				$('body').removeAttr('class').addClass(desiredClass); //Update class on body
 			},
