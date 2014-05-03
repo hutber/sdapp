@@ -34,13 +34,13 @@ define([
 		var HomeView = Backbone.View.extend({
 			el: 'body > shell',
 			events: { //Add click events for global clicks
-				'click logo a': 'goHome',
-				'click footer sexnav' : 'sexNav',
-				'click #hidepage' : 'openMenu',
-				'click footer saveBox': 'saveBox',
-				'click menubtn': 'openMenu',
-				'click savewho': 'saveWho',
-				'click header add': 'openWhoAdd',
+//				'click logo a': 'goHome',
+//				'click footer sexnav' : 'sexNav',
+//				'click #hidepage' : 'openMenu',
+//				'click footer saveBox': 'saveBox',
+//				'click menubtn': 'openMenu',
+//				'click savewho': 'saveWho',
+//				'click header add': 'openWhoAdd',
 			},
 			render: function () {
 				//Output correct tempalte

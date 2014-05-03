@@ -676,7 +676,7 @@ Networking functions
 	SD.init = function () {
 
 		//Try and make clicks faster
-		FastClick.attach(document.body);
+//		FastClick.attach(document.body);
 
 		SD.globals(); //set up our global variables
 
@@ -684,7 +684,7 @@ Networking functions
 		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
 
 			//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
-			sessionStorage.setItem('appOpenedFirstTime',true);
+//			sessionStorage.setItem('appOpenedFirstTime',true);
 
 			//load in cordova.js
 //			var c = document.createElement('script');
@@ -692,24 +692,24 @@ Networking functions
 //			document.body.appendChild(c);
 
 			//add phonegap debugging script
-			var d = document.createElement('script');
-			d.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
-			document.getElementsByTagName('body')[0].appendChild(d);
+//			var d = document.createElement('script');
+//			d.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
+//			document.getElementsByTagName('body')[0].appendChild(d);
 		}else{
 			$.getScript('http://localhost:35729/livereload.js');
 		}
 
-		//Set up hash change for every time it changes
-		SD.onHashChange();
-		window.addEventListener("hashchange", SD.onHashChange, false);
-
-		//Remove debugs if they are there
-		$('debug').on('click', 'li:first', function(){ $('debug li').remove(); });
-
-		//add SD.changeHeightofContent(); to window resize
-		$( window ).resize(function() {
-			SD.changeHeightofContent();
-		});
+//		//Set up hash change for every time it changes
+//		SD.onHashChange();
+//		window.addEventListener("hashchange", SD.onHashChange, false);
+//
+//		//Remove debugs if they are there
+//		$('debug').on('click', 'li:first', function(){ $('debug li').remove(); });
+//
+//		//add SD.changeHeightofContent(); to window resize
+//		$( window ).resize(function() {
+//			SD.changeHeightofContent();
+//		});
 	};
 
 //return SD
