@@ -12,9 +12,12 @@ define([
 			'app/www/js/templates/home.ejs'
 		],
         render: function () {
+			alert('11');
 			SD.setTitle('SELECT SOME SEXYNESS');
+			alert('12');
 			this.$el.html(this.template);
 
+			alert('13');
 			SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
 				controlNavigation: 'none',
 				arrowsNavHideOnTouch: true,
@@ -31,6 +34,7 @@ define([
 				}
 			}).data('royalSlider');
 
+			alert('14');
 			//if we have the sex nav open on load select the correct class
 			if(SD.SEXDEFAULTS.sextype === "default"){
 				$('div[data-type=wank]').addClass('selected');
@@ -39,10 +43,12 @@ define([
 				SD.SLIDER.goTo($('sexnav div.selected').index());
 			}
 
+			alert('15');
 			SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
 				SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
 			});
 
+			alert('16');
 			SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
 				if($('.royalSlider')[0]){
 					//make sure no elements have any selected items
