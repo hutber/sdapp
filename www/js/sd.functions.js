@@ -687,9 +687,9 @@ Networking functions
 			sessionStorage.setItem('appOpenedFirstTime',true);
 
 			//load in cordova.js
-			var c = document.createElement('script');
-			c.setAttribute("src","cordova.js");
-			document.body.appendChild(c);
+//			var c = document.createElement('script');
+//			c.setAttribute("src","cordova.js");
+//			document.body.appendChild(c);
 
 			//add phonegap debugging script
 			var d = document.createElement('script');
