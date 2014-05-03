@@ -128,11 +128,15 @@ Login functions
 ================================================== */
 SD.login = {
 	moveToHome: function(reload){
+		alert('1');
 		if(typeof reload === "undefined") {reload = false;} //if no reload is passed make it false
 		sessionStorage.removeItem('appOpenedFirstTime');
+		alert('2');
 		if(reload){
+			alert('3');
 			location.reload();
 		}else {
+			alert('4');
 			window.location.href = "#home";
 		}
 	},
@@ -152,11 +156,9 @@ SD.login = {
 		}
 	},
 	checkPrivateKey: function(){
-		alert('2');
 		SD.spinner.show('Looking up', 'We are checking if you  have logged in on another device');
-		alert('3');
 		SD.login.moveToHome();
-		SD.spinner.hide();
+//		SD.spinner.hide();
 //		$.ajax({
 //			url: SD.AJAX+'users/checkKey',
 //			type: 'POST',
