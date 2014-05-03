@@ -46,7 +46,7 @@ define([
 				//Output correct tempalte
 				this.$el.html(templatesNeeded);
 				//Make sure we have values for some SD.* sex details
-//				$('html').removeClass('csstransforms3d');
+//				$('html').removeClass('csstransforms3d').addClass('no-csstransforms3d');
 			},
 			slideMenu: {
 				init: function(){
