@@ -43,7 +43,8 @@ define([
 				'click header add': 'openWhoAdd',
 			},
 			render: function () {
-				//Output correct tempalte
+				//Output correct template
+				alert('6');
 				this.$el.html(templatesNeeded);
 				//Make sure we have values for some SD.* sex details
 //				$('html').removeClass('csstransforms3d').addClass('no-csstransforms3d');

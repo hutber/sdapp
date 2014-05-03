@@ -680,6 +680,7 @@ Networking functions
 
 		SD.globals(); //set up our global variables
 
+		alert('10');
 		//Set up scripts to get loaded depending on envoiment
 		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
 
@@ -700,9 +701,12 @@ Networking functions
 		}
 
 		//Set up hash change for every time it changes
+		alert('7');
 		SD.onHashChange();
+		alert('8');
 		window.addEventListener("hashchange", SD.onHashChange, false);
 
+		alert('9');
 		//Remove debugs if they are there
 		$('debug').on('click', 'li:first', function(){ $('debug li').remove(); });
 

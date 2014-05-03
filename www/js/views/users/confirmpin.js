@@ -32,10 +32,15 @@ define([
 				pinInputs.eq(actives.length).addClass('active');
 				myself.currentPw += ''+valueReturned;
 				if(myself.currentPw.length === 4 && myself.currentPw === sessionStorage.tmpPin){
+					alert('1');
 					sessionStorage.removeItem('tmpPin');
+					alert('2');
 					localStorage.setItem('pinNumber',myself.currentPw);
+					alert('3');
 					sessionStorage.removeItem('appOpenedFirstTime');
+					alert('4');
 					window.location.href = "#pinsave";
+					alert('5');
 				}else if(myself.currentPw.length === 4){
 					SD.message.showMessage('Sorry, your pins do not match', 'bad', 750);
 				}
