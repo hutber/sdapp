@@ -50,13 +50,13 @@ define([
 			},
 			slideMenu: {
 				init: function(){
-					var menuItem = document.getElementById('hidepage');
-					if(menuItem){
-						var hammertime = Hammer(menuItem).on('dragleft', function(event) {
-							document.body.style.MozTransform = 'translate('+event.gesture.touches[0].screenX +'px,0)';
-							document.body.style.webkitTransform = '-webkit-translate('+event.gesture.touches[0].screenX +'px,0)';
-						});
-					}
+//					var menuItem = document.getElementById('hidepage');
+//					if(menuItem){
+//						var hammertime = Hammer(menuItem).on('dragleft', function(event) {
+//							document.body.style.MozTransform = 'translate('+event.gesture.touches[0].screenX +'px,0)';
+//							document.body.style.webkitTransform = '-webkit-translate('+event.gesture.touches[0].screenX +'px,0)';
+//						});
+//					}
 				}
 			},
 			doLogOut: function(){
