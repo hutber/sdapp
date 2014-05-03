@@ -152,7 +152,9 @@ SD.login = {
 		}
 	},
 	checkPrivateKey: function(){
+		alert('2');
 		SD.spinner.show('Looking up', 'We are checking if you  have logged in on another device');
+		alert('3');
 		$.ajax({
 			url: SD.AJAX+'users/checkKey',
 			type: 'POST',
@@ -680,7 +682,6 @@ Networking functions
 
 		SD.globals(); //set up our global variables
 
-		alert('1');
 		//Set up scripts to get loaded depending on envoiment
 		if(SD.isMobile || SD.ENVIROMENT==="liveApp"){
 
