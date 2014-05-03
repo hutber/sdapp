@@ -13,7 +13,7 @@ define([
 		],
         render: function () {
 			SD.setTitle('SELECT SOME SEXYNESS');
-//			this.$el.html(this.template);
+			this.$el.html(this.template);
 
 //			SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
 //				controlNavigation: 'none',

@@ -227,7 +227,6 @@ SD.onHashChange = function(){
 
 	//Update the new hash
 	SD.HASH = window.location.hash.substring(1);
-	alert(SD.HASH);
 
 	//On page load update body class with current page
 	SD.DV.globalClass();
