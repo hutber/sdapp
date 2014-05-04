@@ -173,6 +173,9 @@ define([
 					//Update current instance to the old value of the date if it exists
 					if(SD.SEXDEFAULTS.sextime[1]){
 						currentDatePicker.setValue(SD.SEXDEFAULTS.sextime[1]);
+					}else{
+						SD.SEXDEFAULTS.sextime[0] = currentDatePicker,
+						SD.SEXDEFAULTS.sextime[1] = currentDatePicker.values;
 					}
 
 					//On page load update the date string
@@ -203,18 +206,18 @@ define([
 				}
 
 				//adujst the height of the sexdetails so that we can scroll
-				var elementsHeight = 0,
-					pageHeight = $('page').outerHeight();
-				$('sexform > *').each(function(){
-					elementsHeight += $(this).outerHeight();
-				});
-				if(elementsHeight > pageHeight){
-					if(SD.CURRENTSEX==="wank"){
-						$('sexdetails').css('margin-bottom', $('save').outerHeight());
-					}else{
-						$('sexdetails').css('margin-bottom', $('sexform > *:last-child').outerHeight() + $('save').outerHeight());
-					}
-				};
+//				var elementsHeight = 0,
+//					pageHeight = $('page').outerHeight();
+//				$('sexform > *').each(function(){
+//					elementsHeight += $(this).outerHeight();
+//				});
+//				if(elementsHeight > pageHeight){
+//					if(SD.CURRENTSEX==="wank"){
+//						$('sexdetails').css('margin-bottom', $('save').outerHeight());
+//					}else{
+//						$('sexdetails').css('margin-bottom', $('sexform > *:last-child').outerHeight() + $('save').outerHeight());
+//					}
+//				};
 			}
 		});
 
