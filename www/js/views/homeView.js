@@ -1,6 +1,7 @@
 define([
 	'sd',
 	'dv',
+	'slider'
 ], function () {
     'use strict';
 
@@ -8,7 +9,7 @@ define([
     var HomeView = SD.defaultView.extend({
 		el: 'page',
 		events: {
-			
+
 		},
         template: JST[
 			'app/www/js/templates/home.ejs'
@@ -60,8 +61,18 @@ define([
 				});
 			}else{
 				$('.royalSlider a').each(function(){
-					var type = $(this)[0].id;
-					$(this).find('anchor').prepend('<img src="img/sex/full/'+type+'.png" >');
+					var type = $(this)[0].id,
+						copiedContent = $(this).find('anchor').clone(),
+						newLink = $('<a href="#'+type+'" ></a>');
+
+					//remove old content
+					$(this).remove();
+					//add relevent image to copied content
+					copiedContent.prepend('<img src="img/sex/full/'+type+'.png" >');
+					//Add old content to new link
+					newLink.append(copiedContent);
+					//Create link
+					$('.royalSlider').append(newLink);
 				});
 			}
         }
