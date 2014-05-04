@@ -133,7 +133,6 @@ SD.login = {
 		if(reload){
 			location.reload();
 		}else {
-			alert('1');
 			window.location.href = "#home";
 		}
 	},
@@ -154,30 +153,28 @@ SD.login = {
 	},
 	checkPrivateKey: function(){
 		SD.spinner.show('Looking up', 'We are checking if you  have logged in on another device');
-		SD.login.moveToHome();
-//		SD.spinner.hide();
-//		$.ajax({
-//			url: SD.AJAX+'users/checkKey',
-//			type: 'POST',
-//			dataType: "json",
-//			data: {
-//				'ierihias': localStorage.uid,
-//				'adfbse4': localStorage.privateKey
-//			},
-//			error: function(data){
-//				SD.message.showMessage('There was a network error.', 'bad');
-//				SD.spinner.hide();
-//			},
-//			success: function(data){
-//				if(data.current==="1"){
-//					SD.login.moveToHome();
-//					SD.spinner.hide();
-//				}else{
-//					alert('You have logged in somewhere else since using this app. For security you\'ll need to log in again.');
-//					SD.login.doLogOut();
-//				}
-//			}
-//		});
+		$.ajax({
+			url: SD.AJAX+'users/checkKey',
+			type: 'POST',
+			dataType: "json",
+			data: {
+				'ierihias': localStorage.uid,
+				'adfbse4': localStorage.privateKey
+			},
+			error: function(data){
+				SD.message.showMessage('There was a network error.', 'bad');
+				SD.spinner.hide();
+			},
+			success: function(data){
+				if(data.current==="1"){
+					SD.login.moveToHome();
+					SD.spinner.hide();
+				}else{
+					alert('You have logged in somewhere else since using this app. For security you\'ll need to log in again.');
+					SD.login.doLogOut();
+				}
+			}
+		});
 	},
 	checkLoginState : function() { //We use this state to enable us to use the function on every page load to check if the user is logged in
 		var hash = window.location.hash.substring(1);
