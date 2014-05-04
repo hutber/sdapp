@@ -15,7 +15,6 @@ define([
 		//set up homeview
 		var sexView = SD.defaultView.extend({
 			el: 'page',
-
 			template: JST['app/www/js/templates/sexTemplate.ejs'],
 			ownView: JST['app/www/js/templates/sex.ejs'],
 			openASex: function(el){ //Define the click events for the sex details page
@@ -182,6 +181,25 @@ define([
 					$('when date').html(currentDatePicker.val);
 				}
 			},
+			//adujst the height of the sexdetails so that we can scroll
+			moreBelow: {
+				init: function(){
+					this.page = $('page'),
+					this.sexForm = $('sexform').outerHeight(),
+					this.sexSave = $('save').outerHeight(),
+					this.sexDetails = $('sexdetails').outerHeight(),
+					this.pageHeight = this.page.outerHeight(),
+					this.icon = $('.icon-down-open');
+					this.check();
+				},
+				check: function(){
+					if( (this.sexDetails-this.pageHeight) < this.page.scrollTop() || (this.sexForm + this.sexSave) < this.pageHeight) {
+						this.icon.hide();
+					}else{
+						this.icon.show();
+					}
+				}
+			},
 			render: function (data) {
 				//Check to see if we have already entered sex details, if not grab them from locally stored details
 				if(typeof data === "undefined"){
@@ -204,20 +222,10 @@ define([
 
 					this.loadSaveSex.post();
 				}
-
-				//adujst the height of the sexdetails so that we can scroll
-//				var elementsHeight = 0,
-//					pageHeight = $('page').outerHeight();
-//				$('sexform > *').each(function(){
-//					elementsHeight += $(this).outerHeight();
-//				});
-//				if(elementsHeight > pageHeight){
-//					if(SD.CURRENTSEX==="wank"){
-//						$('sexdetails').css('margin-bottom', $('save').outerHeight());
-//					}else{
-//						$('sexdetails').css('margin-bottom', $('sexform > *:last-child').outerHeight() + $('save').outerHeight());
-//					}
-//				};
+				var below = this.moreBelow;
+				below.init();
+				$('page').scroll(function(){below.check();});
+				$(window).resize(function(){below.init();});
 			}
 		});
 
