@@ -80,6 +80,9 @@ define([
 			entry: function(){
 				alert('coming soon');
 			},
+			i: function(){
+				this.moreBelow.moveToBottom();
+			},
 			save: function(el){
 				var errorYes = true, me = $(el.currentTarget), disabled = me.hasClass('disabled');
 
@@ -193,11 +196,14 @@ define([
 					this.check();
 				},
 				check: function(){
-					if( (this.sexDetails-this.pageHeight) < this.page.scrollTop() || (this.sexForm + this.sexSave) < this.pageHeight) {
+					if( (this.sexDetails-this.pageHeight) < this.page.scrollTop() || this.sexForm < this.pageHeight) {
 						this.icon.hide();
 					}else{
 						this.icon.show();
 					}
+				},
+				moveToBottom: function(){
+					this.page.scrollTop(this.pageHeight);
 				}
 			},
 			render: function (data) {

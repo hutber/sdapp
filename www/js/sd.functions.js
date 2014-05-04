@@ -686,10 +686,12 @@ Networking functions
 			//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
 			sessionStorage.setItem('appOpenedFirstTime',true);
 
-			//load in cordova.js
-//			var c = document.createElement('script');
-//			c.setAttribute("src","cordova.js");
-//			document.body.appendChild(c);
+			//load in cordova.js if its not already there
+			if(typeof cordova === "undefined"){
+				var c = document.createElement('script');
+				c.setAttribute("src","cordova.js");
+				document.body.appendChild(c);
+			}
 
 			//add phonegap debugging script
 			var d = document.createElement('script');
