@@ -51,9 +51,10 @@ define([
 			// #build new arrays for graph --------------------------------------------------
 			details.forEach(function(me){
 				var stats = createData(SD.BYMONTH, me);
-				if(stats.data[0]){
-					areaData.push(stats);
-				}
+				c(stats.data);
+				//stats.data[0]
+				if(stats.data.length>0)
+				areaData.push(stats);
 			});
 
 			// #Build month names NB: This is only used labels --------------------------------------------------

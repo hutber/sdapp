@@ -302,7 +302,14 @@ SD.manageSex = {
 					privateKey: localStorage.privateKey
 				},
 				error: function(data){
-					SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
+					SD.spinner.hide();
+					if(data.responseText!==""){
+						SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
+					}else{
+						//display completled sex
+						SD.message.showMessage('Sex added you cheeky sod', 'good', 2500);
+						SD.pageLoad('overview');
+					}
 				},
 				success: function(data){
 					if(isNumber(data)){
@@ -316,7 +323,9 @@ SD.manageSex = {
 						var currentMonthString = sexTime.toString("MMM");
 						//unshift currently converted sex details to array
 						if(typeof SD.FULLSEX[currentMonthString] !== "undefined") {
+							c(SD.FULLSEX)
 							SD.FULLSEX[currentMonthString].unshift(newSexDetail);
+							c(SD.FULLSEX)
 							SD.saveVar('FULLSEX');
 						} else {
 							SD.FULLSEX[currentMonthString] = [newSexDetail];
@@ -579,6 +588,7 @@ Loading
 		},
 		hide: function(){
 			SD.spinner.icon.hide();
+			window.clearTimeout(SD.spinner.timer);
 			if(window && window.plugins && window.plugins.spinnerDialog){
 				window.plugins.spinnerDialog.hide();
 				SD.overlay.hideme();
@@ -652,8 +662,10 @@ Location ajax formating
 		}
 	};
 	SD.locationFail = function (error) {
-		alert('code: '    + error.code    + '\n' +
-			'message: ' + error.message + '\n');
+		SD.message.showMessage('Sorry, maybe your gps isn\'t turned on?', 'bad');
+//		alert('code: '    + error.code    + '\n' +
+//			'message: ' + error.message + '\n');
+
 		SD.spinner.hide();
 	};
 /*==================================================
