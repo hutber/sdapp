@@ -17,6 +17,7 @@ Table of Contents - Created by Hutber on 04/10/13.
  Require JS Config
 ==================================================*/
 require.config({
+	waitSeconds: 200,
 	shim: {
 		underscore: {
 			exports: '_'
@@ -40,22 +41,6 @@ require.config({
 		JST: {
 			deps: ['underscore'],
 			exports: 'JST'
-		},
-		slider: {
-			deps: ['jquery'],
-			exports: 'jQuery.fn.touchCarousel'
-		},
-		slidervisibleNearby: {
-			deps: ['slider'],
-			exports: 'jQuery.fn.visibleNearby'
-		},
-		sliderthumbnails: {
-			deps: ['slider'],
-			exports: 'jQuery.fn.thumbnails'
-		},
-		sliderCaption: {
-			deps: ['slider'],
-			exports: 'jQuery.fn.global-caption'
 		},
 		flowtype: {
 			deps: ['jquery'],
@@ -84,7 +69,6 @@ require.config({
 		backbone: 'libs/backbone-min',
 		underscore: 'libs/underscore-min',
 		modernizr: 'libs/modernizr-dev',
-		slider: 'libs/plugins/jquery.royalslider',
 		flowtype: 'libs/plugins/flowtype',
 		fastclick: 'libs/plugins/FastClick',
 		mobiscroll: 'libs/plugins/date/mobiscroll.core',

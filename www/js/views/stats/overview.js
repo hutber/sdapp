@@ -2,7 +2,6 @@ define([
 	'sd',
 	'dv',
 	'date',
-	'slider',
 	'highcharts',
 	'flowtype',
 ], function (SD) {
