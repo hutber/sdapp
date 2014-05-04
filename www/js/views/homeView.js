@@ -7,6 +7,9 @@ define([
 	//set up homeview
     var HomeView = SD.defaultView.extend({
 		el: 'page',
+		events: {
+			
+		},
         template: JST[
 			'app/www/js/templates/home.ejs'
 		],
@@ -54,6 +57,11 @@ define([
 						//update current sex with the class
 						$('div[data-type='+currentSex+']').addClass('selected');
 					}
+				});
+			}else{
+				$('.royalSlider a').each(function(){
+					var type = $(this)[0].id;
+					$(this).find('anchor').prepend('<img src="img/sex/full/'+type+'.png" >');
 				});
 			}
         }

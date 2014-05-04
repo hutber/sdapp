@@ -107,7 +107,7 @@ define([
 					$(currentClick).addClass('selected');
 
 					//Check to see if the slider is open, if it is lets go to slide
-					if($('.royalSlider')[0]){
+					if($('.royalSlider')[0] && jQuery.fn.royalSlider){
 						SD.SLIDER.goTo(currentClickIndex);
 					}else{
 						SD.pageLoad(currentClick.attributes[0].value);
