@@ -559,12 +559,17 @@ Display functions
 Loading
 ================================================== */
 	SD.spinner = {
-		show: function(title, message){
+		timer: null,
+		icon: $('overlay .icon-cancel-circled'),
+		show: function(title, message, timer){
 			if(typeof title!=="string"){
 				title = null;
 			}
 			if(typeof message!=="string"){
 				message = null;
+			}
+			if(timer){
+				SD.spinner.timer = window.setTimeout(SD.spinner.displayCloseButton , 5000);
 			}
 			if(window && window.plugins && window.plugins.spinnerDialog){
 				window.plugins.spinnerDialog.show(title,message);
@@ -573,12 +578,16 @@ Loading
 			}
 		},
 		hide: function(){
+			SD.spinner.icon.hide();
 			if(window && window.plugins && window.plugins.spinnerDialog){
 				window.plugins.spinnerDialog.hide();
 				SD.overlay.hideme();
 			}else{
 				SD.overlay.hideme();
 			}
+		},
+		displayCloseButton: function(){
+			SD.spinner.icon.fadeIn();
 		}
 	};
 
@@ -712,6 +721,9 @@ Networking functions
 		$( window ).resize(function() {
 			SD.changeHeightofContent();
 		});
+
+		//add click to hide overlay button on click
+		$('overlay .icon-cancel-circled').click(SD.spinner.hide);
 	};
 
 //return SD

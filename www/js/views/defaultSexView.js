@@ -63,7 +63,7 @@ define([
 			},
 			location: function(){
 				if(SD.SEXDEFAULTS.location[1] === "Click to get your location"){
-					SD.overlay.showme('Please wait for us to find you');
+					SD.spinner.show('Please wait for us to find you', null, true);
 					navigator.geolocation.getCurrentPosition(function(details){
 						SD.locationSucess(details);
 					}, function(details){
