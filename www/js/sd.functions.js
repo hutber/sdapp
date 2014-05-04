@@ -306,13 +306,7 @@ SD.manageSex = {
 				},
 				error: function(data){
 					SD.spinner.hide();
-					if(data.responseText!==""){
-						SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
-					}else{
-						//display completled sex
-						SD.message.showMessage('Sex added you cheeky sod', 'good', 2500);
-						SD.pageLoad('overview');
-					}
+					SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
 				},
 				success: function(data){
 					if(isNumber(data)){
@@ -392,6 +386,10 @@ SD.manageSex = {
 						//display completled sex
 						SD.message.showMessage('Sex added you cheeky sod', 'good', 2500);
 					}else{
+						if(data==="We could not get your User Id, sorry"){
+							alert('You have logged in somewhere else, we will force a logout');
+							SD.login.doLogOut();
+						}
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
 					}
 				}
