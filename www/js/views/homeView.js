@@ -1,7 +1,7 @@
 define([
 	'sd',
 	'dv',
-//	'slider',
+	'slider',
 ], function () {
     'use strict';
 
