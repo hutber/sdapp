@@ -13,6 +13,9 @@ define([
 			tempType.name = type,
 			tempType.data = [];
 		Object.keys(object[type]).forEach(function(me){
+			if(Object.keys(SD.BYMONTH['Wank']).length===1){
+				tempType.data.push(0);
+			}
 			tempType.data.push(object[type][me].numberof);
 		});
 		return tempType;
@@ -51,16 +54,18 @@ define([
 			// #build new arrays for graph --------------------------------------------------
 			details.forEach(function(me){
 				var stats = createData(SD.BYMONTH, me);
-				c(stats.data);
+//				c(stats);
 				//stats.data[0]
 				if(stats.data.length>0)
 				areaData.push(stats);
 			});
-
 			// #Build month names NB: This is only used labels --------------------------------------------------
 			var lineLabelsDate = [];
 			for(var i=0; i <= Object.keys(SD.BYMONTH['Wank']).length-1; i++){ //Count number of months used in Wank then loop through and get month string from the last x months
 				lineLabelsDate.push(Date.today().addMonths(-i).toString("MMM"));
+			}
+			if(Object.keys(SD.BYMONTH['Wank']).length===1){
+				lineLabelsDate.push(Date.today().addMonths(-1).toString("MMM"));
 			}
 			lineLabelsDate.reverse();
 
@@ -72,7 +77,7 @@ define([
 				'rgba(0, 0, 0, 0.60)',
 			];
 
-			if(areaData.length){
+			if(SD.SEXNUMBERS.total > 0){
 				$('.nostats').hide();
 				$('monthpicker').flowtype({
 					minFont   : 12,

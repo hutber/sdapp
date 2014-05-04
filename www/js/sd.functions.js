@@ -255,7 +255,7 @@ SD.manageSex = {
 			rating:""+data.rating,
 			sexnumber:""+data.sexnumber,
 			sexstring:function(){
-				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.format.toString(data.sexnumber);
+				return (typeof data.sexstring !== "undefined") ? data.sexstring: SD.format.toString(parseInt(data.sexnumber));
 			}(),
 			sextime:data.sextime,
 			uid:localStorage.uid,
@@ -266,9 +266,12 @@ SD.manageSex = {
 	},
 	convertPhp: function(){
 		var php = {};
-
-		php.sexnumber = SD.SEXDEFAULTS.sexnumber,
-		php.sextime = $.scroller.formatDate('yy-mm-dd HH:ii:ss', SD.SEXDEFAULTS.sextime[0].getDate()),
+		php.sexnumber = SD.SEXDEFAULTS.sexnumber;
+		if(typeof SD.SEXDEFAULTS.sextime[0] === "object"){
+			php.sextime = Date.parse(SD.SEXDEFAULTS.sextime[0].getDate()).toString('s');
+		}else{
+			php.sextime = Date.parse(SD.SEXDEFAULTS.sextime[0]).toString('s');
+		}
 		php.rating = SD.SEXDEFAULTS.rating;
 
 		if(SD.SEXDEFAULTS.location[0]!==false){
@@ -323,9 +326,7 @@ SD.manageSex = {
 						var currentMonthString = sexTime.toString("MMM");
 						//unshift currently converted sex details to array
 						if(typeof SD.FULLSEX[currentMonthString] !== "undefined") {
-							c(SD.FULLSEX)
 							SD.FULLSEX[currentMonthString].unshift(newSexDetail);
-							c(SD.FULLSEX)
 							SD.saveVar('FULLSEX');
 						} else {
 							SD.FULLSEX[currentMonthString] = [newSexDetail];
@@ -337,12 +338,13 @@ SD.manageSex = {
 						================================================== */
 						var sexTypeString = newSexDetail.sexstring;
 						//Make sure we have added a sex before
-						if(typeof SD.BYMONTH[currentMonthString] !== "undefined") {
+						if(typeof SD.BYMONTH[sexTypeString][currentMonthString] !== "undefined") {
 							//plus 1 to the number off in a given month
 							SD.BYMONTH[sexTypeString][currentMonthString].numberof++;
 							SD.saveVar('BYMONTH');
 						} else {
-							SD.BYMONTH[sexTypeString][currentMonthString] = {"numberof":1,"date": Date.today().toString("M")};
+							//TODO shoudlnt' get the date from today, as user could have set it in the past
+							SD.BYMONTH[sexTypeString][currentMonthString] = {"numberof":1,"date": sexTime.toString("M")};
 							localStorage.setItem('BYMONTH',JSON.stringify(SD.BYMONTH));
 						}
 
@@ -477,23 +479,25 @@ Formatting Results
 // #SEXNUMBERS ------------------------------------------------------
 	SD.format = {
 		toString: function(sex){
+			var val = 'Anything';
 			switch (sex) {
 				case (1):
-					return 'Wank';
+					val = 'Wank';
 				break;
 				case (2):
-					return 'Hands';
+					val = 'Hands';
 				break;
 				case (3):
-					return 'Oral';
+					val = 'Oral';
 				break;
 				case (4):
-					return 'Sex';
+					val = 'Sex';
 				break;
 				case (5):
-					return 'Anything';
+					val = 'Anything';
 				break;
 			}
+			return val;
 		},
 		convertToLocal: function(item, target){
 			if(typeof item !=="undefined"){

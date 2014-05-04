@@ -113,7 +113,7 @@ define([
 						SD.pageLoad(currentClick.attributes[0].value);
 					}
 
-					SD.SEXDEFAULTS.sexnumber = currentClickIndex;
+					SD.SEXDEFAULTS.sexnumber = parseInt(currentClickIndex)+1;
 				}
 			},
 			saveWho: function(){
