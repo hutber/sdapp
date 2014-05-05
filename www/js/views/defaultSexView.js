@@ -74,10 +74,10 @@ define([
 			where: function(){
 				SD.pageLoad('where');
 			},
-			extra: function(){
-				alert('coming soon');
-			},
 			entry: function(){
+
+			},
+			extra: function(){
 				alert('coming soon');
 			},
 			i: function(){
