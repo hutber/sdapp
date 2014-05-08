@@ -17,7 +17,7 @@
 		</info>
 		<detailsimage>
 			<div>
-				<img src="img/sex/thumb/<%= data.sextype %>.png" alt="<%= data.sextype %>"/>
+				<img src="img/sex/thumb/<% var sexType = data.sextype.charAt(0).toUpperCase() + data.sextype.slice(1); %><%= sexType %>.png" alt="<%= data.sextype %>"/>
 			</div>
 		</detailsimage>
 	</when>
