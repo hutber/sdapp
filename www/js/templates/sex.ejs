@@ -81,7 +81,9 @@
 		<info>
 			<div>
 				<h2>Diary Entry</h2>
-				<location></location>
+				<% if (data.diary.length !== 0) { %>
+					<entrytext><%= data.diary %></entrytext>
+				<% } %>
 			</div>
 		</info>
 		<detailsimage>

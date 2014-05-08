@@ -75,7 +75,7 @@ define([
 				SD.pageLoad('where');
 			},
 			entry: function(){
-
+				SD.pageLoad('diary');
 			},
 			extra: function(){
 				alert('coming soon');
@@ -108,8 +108,7 @@ define([
 //							errorYes = false;
 //						}
 
-				if(disabled &&
-					SD.SEXDEFAULTS.where.length===0 || SD.SEXDEFAULTS.where==="" || typeof SD.SEXDEFAULTS.where=== "undefined"){
+				if(disabled && SD.SEXDEFAULTS.where.length===0 || SD.SEXDEFAULTS.where==="" || typeof SD.SEXDEFAULTS.where=== "undefined"){
 					SD.message.showMessage('Bit boring if you don\'t set where you did it', 'notice');
 					me.removeClass('disabled');
 					errorYes = false;
@@ -196,11 +195,19 @@ define([
 					this.check();
 				},
 				check: function(){
-					if( (this.sexDetails-this.pageHeight) < this.page.scrollTop() || this.sexForm < this.pageHeight) {
-						this.icon.hide();
-					}else{
-						this.icon.show();
-					}
+//					if(SD.HASH!=="wank"){
+						if( this.page.scrollTop() > (this.sexDetails-this.sexSave-this.pageHeight) || this.sexForm < this.pageHeight) {
+							this.icon.hide();
+						}else{
+							this.icon.show();
+						}
+//					}else{
+//						if( this.page.scrollTop() > (this.sexDetails-this.pageHeight) || this.sexForm < this.pageHeight) {
+//							this.icon.hide();
+//						}else{
+//							this.icon.show();
+//						}
+//					}
 				},
 				moveToBottom: function(){
 					this.page.scrollTop(this.pageHeight);

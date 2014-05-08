@@ -26,7 +26,7 @@ Globals
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
 		CDN: 'stage.sexdiaries.co.uk/',
-		HTTP: 'http://stage.sexdiaries.co.uk/',
+		HTTP: 'https://stage.sexdiaries.co.uk/',
 		STATE: function(){
 			if(localStorage.getItem('privateKey')===null){
 				return false;
@@ -44,6 +44,7 @@ Globals
 			who: {},
 			rating: 0,
 			location: [false, 'Click to get your location'],
+			diary: "",
 			where: {},
 		},
 		FULLSEX: function (){
@@ -259,6 +260,7 @@ SD.manageSex = {
 			}(),
 			sextime:data.sextime,
 			uid:localStorage.uid,
+			diary:data.diary,
 			who:function(){
 				return (typeof data.country !== "undefined") ? data.who : null;
 			}()
@@ -273,6 +275,7 @@ SD.manageSex = {
 			php.sextime = Date.parse(SD.SEXDEFAULTS.sextime[0]).toString('s');
 		}
 		php.rating = SD.SEXDEFAULTS.rating;
+		php.diary = SD.SEXDEFAULTS.diary;
 
 		if(SD.SEXDEFAULTS.location[0]!==false){
 			//Location Generator
@@ -379,6 +382,7 @@ SD.manageSex = {
 							who: {},
 							rating: 0,
 							location: [false, 'Click to get your location'],
+							diary: "",
 							where: {},
 						};
 						SD.pageLoad('overview');

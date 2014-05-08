@@ -45,6 +45,7 @@ define([
 			'shop' : 'shop',
 			'privacy' : 'privacy',
 			'terms' : 'terms',
+			'diary' : 'diary',
         }
     });
 

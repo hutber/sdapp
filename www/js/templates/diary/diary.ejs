@@ -1,0 +1,21 @@
+<textarea name="diary" id="diary" cols="30" rows="10" placeholder="Diary Entry...">
+	<% if (SD.SEXDEFAULTS.diary.length !== 0) { %>
+	<%= SD.SEXDEFAULTS.diary %>
+	<% } %></textarea>
+<div class="info"><span>0</span>/255</div>
+<div class="footer" onclick="window.history.back();">
+	<saveDiary class="blocks">
+		<saveinfo>
+			<info>
+				<div>
+					<h2>Save Entry?</h2>
+				</div>
+			</info>
+			<detailsimage>
+				<div>
+					<img src="img/sex/save.png" alt="Save?"/>
+				</div>
+			</detailsimage>
+		</saveinfo>
+	</saveDiary>
+</div>

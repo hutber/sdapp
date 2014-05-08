@@ -149,6 +149,7 @@ require([
 		'views/users/pinsave',
 		'views/users/pin',
 		'views/other/terms',
+		'views/diary/diary',
 
 ], function () {
 /*==================================================
@@ -203,6 +204,7 @@ Routes
 		names[29] = 'pinsave';
 		names[30] = 'pin';
 		names[31] = 'terms';
+		names[32] = 'diary';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){

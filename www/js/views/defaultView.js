@@ -36,10 +36,10 @@ define([
 			events: { //Add click events for global clicks
 				'click logo a': 'goHome',
 				'click footer sexnav' : 'sexNav',
-				'click #hidepage' : 'openMenu',
 				'click footer saveBox': 'saveBox',
+				'click footer savewho': 'saveWho',
+				'click #hidepage' : 'openMenu',
 				'click menubtn': 'openMenu',
-				'click savewho': 'saveWho',
 				'click header add': 'openWhoAdd',
 			},
 			render: function () {
@@ -169,8 +169,10 @@ define([
 				}
 			},
 			saveBox: function(){
-				//Now we have added the who reload the sex details page.
-				SD.pageLoad(SD.CURRENTSEX);
+				if(!$('saveWho save').hasClass('disabled')){
+					//Now we have added the who reload the sex details page.
+					SD.pageLoad(SD.CURRENTSEX);
+				}
 			},
 		});
 		SD.DV = new HomeView();
