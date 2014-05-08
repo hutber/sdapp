@@ -26,7 +26,7 @@ Globals
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
 		CDN: 'stage.sexdiaries.co.uk/',
-		HTTP: 'https://stage.sexdiaries.co.uk/',
+		HTTP: 'http://stage.sexdiaries.co.uk/',
 		STATE: function(){
 			if(localStorage.getItem('privateKey')===null){
 				return false;
@@ -320,7 +320,7 @@ SD.manageSex = {
 						var newSexDetail  = SD.manageSex.buildMissing(saveSexDetails, data);
 						var sexTime = Date.parse(saveSexDetails.sextime);
 						//Grab current moth as string
-						var currentMonthString = sexTime.toString("MMM");
+						var currentMonthString = sexTime.toString("MMMyy");
 						//unshift currently converted sex details to array
 						if(typeof SD.FULLSEX[currentMonthString] !== "undefined") {
 							SD.FULLSEX[currentMonthString].unshift(newSexDetail);
@@ -341,7 +341,7 @@ SD.manageSex = {
 							SD.saveVar('BYMONTH');
 						} else {
 							//TODO shoudlnt' get the date from today, as user could have set it in the past
-							SD.BYMONTH[sexTypeString][currentMonthString] = {"numberof":1,"date": sexTime.toString("M")};
+							SD.BYMONTH[sexTypeString][currentMonthString] = {"numberof":1,"date": sexTime.toString("Myy")};
 							localStorage.setItem('BYMONTH',JSON.stringify(SD.BYMONTH));
 						}
 
@@ -457,6 +457,13 @@ SD.manageSex = {
 						SD.TOTALSEXNUMBERS[toDeleteSexString]--;
 						SD.TOTALSEXNUMBERS.total--;
 						SD.saveVar('TOTALSEXNUMBERS');
+
+						//update dropdown list
+						var selectNewValue = $('#month option:selected');
+						if(selectNewValue){
+							selectNewValue.html(selectNewValue.html().replace(/\(.*?\)/, "("+ SD.FULLSEX[toDeleteMonth].length +")"));
+
+						}
 
 						deleteArea.fadeOut('500');
 					}else{

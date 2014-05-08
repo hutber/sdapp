@@ -10,8 +10,8 @@
 <span class="spanicon">
 	<i class="icon-down-open"></i>
 	<select name="month" id="month">
-		<% Object.keys(data).forEach(function(key){ var currentSex = data[key]; var dateSex = Date.parse(currentSex[0].sextime).toString("MMMM yyyy"); %>
-			<option value="<%= key %>"><%= dateSex %> <span>(<%= currentSex.length %>)</span></option>
+		<% Object.keys(data).forEach(function(key){var currentSex = data[key]; var dateSex = Date.parse(currentSex[0].sextime).toString("MMMM yyyy"); %>
+			<option value="<%= key %>"><%= dateSex %> (<%= currentSex.length %>)</option>
 		<%	});  %>
 	</select>
 </span>
