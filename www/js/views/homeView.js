@@ -18,7 +18,7 @@ define([
 			SD.setTitle('SELECT SOME SEXYNESS');
 			this.$el.html(this.template);
 
-			if(jQuery.fn.royalSlider){
+//			if(jQuery.fn.royalSlider){
 				SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
 					controlNavigation: 'none',
 					arrowsNavHideOnTouch: true,
@@ -59,22 +59,23 @@ define([
 						$('div[data-type='+currentSex+']').addClass('selected');
 					}
 				});
-			}else{
-				$('.royalSlider a').each(function(){
-					var type = $(this)[0].id,
-						copiedContent = $(this).find('anchor').clone(),
-						newLink = $('<a href="#'+type+'" ></a>');
-
-					//remove old content
-					$(this).remove();
-					//add relevent image to copied content
-					copiedContent.prepend('<img src="img/sex/full/'+type+'.png" >');
-					//Add old content to new link
-					newLink.append(copiedContent);
-					//Create link
-					$('.royalSlider').append(newLink);
-				});
-			}
+			SD.spinner.hide();
+//			}else{
+//				$('.royalSlider a').each(function(){
+//					var type = $(this)[0].id,
+//						copiedContent = $(this).find('anchor').clone(),
+//						newLink = $('<a href="#'+type+'" ></a>');
+//
+//					//remove old content
+//					$(this).remove();
+//					//add relevent image to copied content
+//					copiedContent.prepend('<img src="img/sex/full/'+type+'.png" >');
+//					//Add old content to new link
+//					newLink.append(copiedContent);
+//					//Create link
+//					$('.royalSlider').append(newLink);
+//				});
+//			}
         }
     });
     return HomeView;
