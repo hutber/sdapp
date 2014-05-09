@@ -59,7 +59,6 @@ define([
 						$('div[data-type='+currentSex+']').addClass('selected');
 					}
 				});
-			SD.spinner.hide();
 			}else{
 				$('.royalSlider a').each(function(){
 					var type = $(this)[0].id,
