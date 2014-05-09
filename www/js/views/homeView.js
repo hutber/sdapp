@@ -19,21 +19,21 @@ define([
 			this.$el.html(this.template);
 
 //			if(jQuery.fn.royalSlider){
-//				SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
-//					controlNavigation: 'none',
-//					arrowsNavHideOnTouch: true,
-//					globalCaption: true,
-//					globalCaptionInside: true,
-//					imageScaleMode: 'fit',
-//					arrowsNav: false,
-//					thumbs: {
-//						arrows: false,
-//						appendSpan: false,
-//						firstMargin: false,
-//						autoCenter: false,
-//						spacing: 5
-//					}
-//				}).data('royalSlider');
+				SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
+					controlNavigation: 'none',
+					arrowsNavHideOnTouch: true,
+					globalCaption: true,
+					globalCaptionInside: true,
+					imageScaleMode: 'fit',
+					arrowsNav: false,
+					thumbs: {
+						arrows: false,
+						appendSpan: false,
+						firstMargin: false,
+						autoCenter: false,
+						spacing: 5
+					}
+				}).data('royalSlider');
 //
 //				//if we have the sex nav open on load select the correct class
 //				if(SD.SEXDEFAULTS.sextype === "default"){
@@ -60,20 +60,20 @@ define([
 //					}
 //				});
 //			}else{
-				$('.royalSlider a').each(function(){
-					var type = $(this)[0].id,
-						copiedContent = $(this).find('anchor').clone(),
-						newLink = $('<a href="#'+type+'" ></a>');
-
-					//remove old content
-					$(this).remove();
-					//add relevent image to copied content
-					copiedContent.prepend('<img src="img/sex/full/'+localStorage.gender+'/'+type+'.png" >');
-					//Add old content to new link
-					newLink.append(copiedContent);
-					//Create link
-					$('.royalSlider').append(newLink);
-				});
+//				$('.royalSlider a').each(function(){
+//					var type = $(this)[0].id,
+//						copiedContent = $(this).find('anchor').clone(),
+//						newLink = $('<a href="#'+type+'" ></a>');
+//
+//					//remove old content
+//					$(this).remove();
+//					//add relevent image to copied content
+//					copiedContent.prepend('<img src="img/sex/full/'+localStorage.gender+'/'+type+'.png" >');
+//					//Add old content to new link
+//					newLink.append(copiedContent);
+//					//Create link
+//					$('.royalSlider').append(newLink);
+//				});
 //			}
         }
     });
