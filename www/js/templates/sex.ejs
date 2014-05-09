@@ -77,6 +77,23 @@
 			</div>
 		</detailsimage>
 	</Where>
+	<Position>
+		<info>
+			<div>
+				<h2>Place</h2>
+				<searchSelectedItems><%
+					for(var index in data.where){ %>
+						<%= index %>
+						<% if(index !== Object.keys(data.where)[--Object.keys(data.where).length]){ %>, <% }
+					} %></searchSelectedItems>
+			</div>
+		</info>
+		<detailsimage>
+			<div>
+				<img src="img/sex/where.png" alt="Location"/>
+			</div>
+		</detailsimage>
+	</Position>
 	<Entry>
 		<info>
 			<div>
