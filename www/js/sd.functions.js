@@ -25,10 +25,10 @@ Globals
 	SD = {
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
-		CDN: 'www.sexdiaries.co.uk/',
-		HTTP: 'https://www.sexdiaries.co.uk/',
-//		CDN: 'stage.sexdiaries.co.uk/',
-//		HTTP: 'http://stage.sexdiaries.co.uk/',
+//		CDN: 'www.sexdiaries.co.uk/',
+//		HTTP: 'https://www.sexdiaries.co.uk/',
+		CDN: 'stage.sexdiaries.co.uk/',
+		HTTP: 'http://stage.sexdiaries.co.uk/',
 		STATE: function(){
 			if(localStorage.getItem('privateKey')===null){
 				return false;
@@ -723,11 +723,11 @@ Networking functions
 			sessionStorage.setItem('appOpenedFirstTime',true);
 
 			//load in cordova.js if its not already there
-			if(typeof cordova === "undefined"){
-				var c = document.createElement('script');
-				c.setAttribute("src","cordova.js");
-				document.body.appendChild(c);
-			}
+//			if(typeof cordova === "undefined"){
+//				var c = document.createElement('script');
+//				c.setAttribute("src","cordova.js");
+//				document.body.appendChild(c);
+//			}
 
 			//add phonegap debugging script
 //			var d = document.createElement('script');
