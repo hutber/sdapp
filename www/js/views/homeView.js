@@ -60,11 +60,13 @@ define([
 //					}
 //				});
 //			}else{
+			alert('1');
 				$('.royalSlider a').each(function(){
 					var type = $(this)[0].id,
 						copiedContent = $(this).find('anchor').clone(),
 						newLink = $('<a href="#'+type+'" ></a>');
 
+					alert('2');
 					//remove old content
 					$(this).remove();
 					//add relevent image to copied content
@@ -72,6 +74,7 @@ define([
 					//Add old content to new link
 					newLink.append(copiedContent);
 					//Create link
+					alert('3');
 					$('.royalSlider').append(newLink);
 				});
 //			}
