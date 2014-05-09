@@ -186,6 +186,8 @@ define([
 			//adujst the height of the sexdetails so that we can scroll
 			moreBelow: {
 				init: function(){
+					var myself = this;
+					this.force = function(){if(typeof myself.force === "undefined"){return true};}(), //Only on first init do we define this true
 					this.page = $('page'),
 					this.sexForm = $('sexform').outerHeight(),
 					this.sexSave = $('save').outerHeight(),
@@ -194,20 +196,16 @@ define([
 					this.icon = $('.icon-down-open');
 					this.check();
 				},
-				check: function(){
-//					if(SD.HASH!=="wank"){
-						if( this.page.scrollTop() > (this.sexDetails-this.sexSave-this.pageHeight) || this.sexForm < this.pageHeight) {
-							this.icon.hide();
-						}else{
-							this.icon.show();
-						}
-//					}else{
-//						if( this.page.scrollTop() > (this.sexDetails-this.pageHeight) || this.sexForm < this.pageHeight) {
-//							this.icon.hide();
-//						}else{
-//							this.icon.show();
-//						}
-//					}
+				check: function(force){
+					if(this.force===true && force===true) { //Check the this.force is true only once and that force is true from the scroll
+						this.force = false;
+						this.init();
+					}
+					if( this.page.scrollTop() > (this.sexDetails-this.sexSave-this.pageHeight) || this.sexForm < this.pageHeight) {
+						this.icon.hide();
+					}else{
+						this.icon.show();
+					}
 				},
 				moveToBottom: function(){
 					this.page.scrollTop(this.pageHeight);
@@ -218,7 +216,6 @@ define([
 				if(typeof data === "undefined"){
 					data = SD.SEXDEFAULTS;
 				}
-
 				//----- The global sex render --------------------------------------------------
 				//update the website with the current view
 				var compiled = this.template();
@@ -235,9 +232,10 @@ define([
 
 					this.loadSaveSex.post();
 				}
+
 				var below = this.moreBelow;
 				below.init();
-				$('page').scroll(function(){below.check();});
+				$('page').scroll(function(){below.check(true);});
 				$(window).resize(function(){below.init();});
 			}
 		});

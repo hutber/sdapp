@@ -12,11 +12,19 @@ define([
 
     var SignUpView = SD.defaultView.extend({
 		el: 'page',
-
+		events: {
+			'submit .signupForm': 'signupForm',
+			'click .elements label a': 'termsPop',
+			'click back': 'termsPopClose',
+//			'change .uname input': 'forLowerCase'
+		},
         template: JST['app/www/js/templates/login/signup.ejs'],
         checkmail: JST['app/www/js/templates/login/checkmail.ejs'],
 		terms: JST['app/www/js/templates/login/terms.ejs'],
-
+//		forLowerCase: function(me){
+//			var clicked = $(me.currentTarget);
+//			clicked.val(clicked.val().toLowerCase());
+//		},
         render: function () {
             this.$el.html(this.template);
 
@@ -39,11 +47,6 @@ define([
 				},
 			});
 //			this.$el.html(this.checkmail({email:'aasdas'}));
-        },
-        events: {
-            'submit .signupForm': 'signupForm',
-            'click .elements label a': 'termsPop',
-            'click back': 'termsPopClose',
         },
 		termsPop: function(el){
 			$('.signupForm').hide();

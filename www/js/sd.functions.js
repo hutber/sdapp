@@ -25,6 +25,8 @@ Globals
 	SD = {
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
+//		CDN: 'www.sexdiaries.co.uk/',
+//		HTTP: 'https://www.sexdiaries.co.uk/',
 		CDN: 'stage.sexdiaries.co.uk/',
 		HTTP: 'http://stage.sexdiaries.co.uk/',
 		STATE: function(){

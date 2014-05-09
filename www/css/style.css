@@ -3396,7 +3396,7 @@ sexform .icon-down-open {
   padding-top: 3px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\0000333}}
-sexform entrytext {
+sexform entry div {
   display: inline-block;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -3626,7 +3626,7 @@ save img {
   font-size: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000342}}
 .login header {
   position: absolute;
   left: 25%;
@@ -3638,7 +3638,7 @@ save img {
   position: relative;
 }
 @media only screen and (max-height: 480px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000342}}
   .login header {
     position: absolute;
     left: 25%;
@@ -3650,11 +3650,11 @@ save img {
     position: relative;
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000350}}
 .login page {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000346}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000352}}
 .login page > div {
   position: absolute;
   left: 50%;
@@ -3665,32 +3665,32 @@ save img {
   -ms-transform: translate(-50%, -50%);
   width: 80%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000357}}
 .login div {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000359}}
 .login div i:before {
   color: #95a5a6;
   position: absolute;
   left: 6px;
   top: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000366}}
 .login input {
   padding: 12px 30px;
   text-indent: 0px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000373}}
 .signup header {
   height: auto;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000376}}
 .signup logo {
   margin-top: 30px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000379}}
 .signup .junk {
   color: #FFFFFF;
   font-family: sdFont;
@@ -3698,11 +3698,11 @@ save img {
   line-height: 1.8rem;
   text-decoration: underline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000386}}
 .signup page {
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000386}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000389}}
 .signup page .elements {
   width: 91.52542%;
   float: left;
@@ -3716,35 +3716,35 @@ save img {
   -moz-transform: translate(-50%, 0);
   -ms-transform: translate(-50%, 0);
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000393}}
 .signup page .terms {
   width: auto;
   margin-right: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003101}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\0000399}}
 .signup #terms {
   display: none;
   padding: 0 10%;
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003105}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003103}}
 .signup #terms h3 {
   margin: 12px 0 0 0;
   font-size: 1.5rem;
   line-height: 2rem;
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003111}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003109}}
 .signup #terms h4 {
   font-size: 1rem;
   line-height: 1.3rem;
   margin: 12px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003119}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003117}}
 .signup footer {
   margin-top: 20px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003120}}
 .signup .nostats {
   position: absolute;
   left: 50%;
@@ -3755,23 +3755,23 @@ save img {
   -ms-transform: translate(-50%, -40%);
   width: 80%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003125}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003123}}
 .signup .nostats h1 {
   margin-bottom: 20px;
   line-height: 3rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003129}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003127}}
 .signup .nostats p {
   margin-bottom: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003132}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003130}}
 .signup .nostats .sdfont {
   margin-top: 20px;
   font-size: 2rem;
   display: block;
   line-height: 2rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003139}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003137}}
 .signup back {
   position: fixed;
   bottom: 0;
@@ -3782,12 +3782,12 @@ save img {
   padding-left: 7%;
   line-height: 2.5rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003147}}
 .signup .icon-left-big {
   font-size: 2rem;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003158}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_loginsignup\.scss}line{font-family:\00003156}}
 .home header .loggedin {
   position: absolute;
   width: 100%;
