@@ -1,7 +1,7 @@
 define([
 	'sd',
 	'dv',
-	'slider'
+//	'slider'
 ], function () {
     'use strict';
 
@@ -60,20 +60,20 @@ define([
 //					}
 //				});
 //			}else{
-//				$('.royalSlider a').each(function(){
-//					var type = $(this)[0].id,
-//						copiedContent = $(this).find('anchor').clone(),
-//						newLink = $('<a href="#'+type+'" ></a>');
-//
-//					//remove old content
-//					$(this).remove();
-//					//add relevent image to copied content
-//					copiedContent.prepend('<img src="img/sex/full/'+localStorage.gender+'/'+type+'.png" >');
-//					//Add old content to new link
-//					newLink.append(copiedContent);
-//					//Create link
-//					$('.royalSlider').append(newLink);
-//				});
+				$('.royalSlider a').each(function(){
+					var type = $(this)[0].id,
+						copiedContent = $(this).find('anchor').clone(),
+						newLink = $('<a href="#'+type+'" ></a>');
+
+					//remove old content
+					$(this).remove();
+					//add relevent image to copied content
+					copiedContent.prepend('<img src="img/sex/full/'+localStorage.gender+'/'+type+'.png" >');
+					//Add old content to new link
+					newLink.append(copiedContent);
+					//Create link
+					$('.royalSlider').append(newLink);
+				});
 //			}
         }
     });
