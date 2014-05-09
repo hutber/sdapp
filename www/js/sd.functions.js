@@ -25,10 +25,10 @@ Globals
 	SD = {
 		isMobile: SD.isMobile,
 		ENVIROMENT: 'liveApp',
-//		CDN: 'www.sexdiaries.co.uk/',
-//		HTTP: 'https://www.sexdiaries.co.uk/',
-		CDN: 'stage.sexdiaries.co.uk/',
-		HTTP: 'http://stage.sexdiaries.co.uk/',
+		CDN: 'www.sexdiaries.co.uk/',
+		HTTP: 'https://www.sexdiaries.co.uk/',
+//		CDN: 'stage.sexdiaries.co.uk/',
+//		HTTP: 'http://stage.sexdiaries.co.uk/',
 		STATE: function(){
 			if(localStorage.getItem('privateKey')===null){
 				return false;
@@ -729,7 +729,7 @@ Networking functions
 //				document.body.appendChild(c);
 //			}
 
-			//add phonegap debugging script
+//			add phonegap debugging script
 //			var d = document.createElement('script');
 //			d.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
 //			document.getElementsByTagName('body')[0].appendChild(d);
