@@ -13,17 +13,17 @@ define([
 			var myself;
 			if (SD.STATE) { //Chhek if we are logged in or not then give different templates
 				myself = {
-					menu: JST['app/www/js/templates/comp/menu.ejs'],
-					header: JST['app/www/js/templates/comp/headerIn.ejs'],
-					shell: JST['app/www/js/templates/comp/shell.ejs'],
-					footer: JST['app/www/js/templates/comp/footerIn.ejs'],
+					menu: JST['templates/comp/menu.ejs'],
+					header: JST['templates/comp/headerIn.ejs'],
+					shell: JST['templates/comp/shell.ejs'],
+					footer: JST['templates/comp/footerIn.ejs'],
 				};
 			} else if(SD.TEMPLATE === "footerout"){
 				myself = {
-					menu: JST['app/www/js/templates/comp/menu.ejs'],
-					header: JST['app/www/js/templates/comp/headerOut.ejs'],
-					shell: JST['app/www/js/templates/comp/shell.ejs'],
-					footer: JST['app/www/js/templates/comp/footerOut.ejs'],
+					menu: JST['templates/comp/menu.ejs'],
+					header: JST['templates/comp/headerOut.ejs'],
+					shell: JST['templates/comp/shell.ejs'],
+					footer: JST['templates/comp/footerOut.ejs'],
 				};
 
 			}

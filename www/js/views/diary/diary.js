@@ -14,7 +14,7 @@ define([
 		events: {
 			'keyup textarea': 'countString',
 		},
-		template: JST['app/www/js/templates/diary/diary.ejs'],
+		template: JST['templates/diary/diary.ejs'],
 		countString: function(me){
 			var stringNumber = me.target.value.length,
 				diaryString = me.target.value;

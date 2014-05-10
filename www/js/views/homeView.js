@@ -12,7 +12,7 @@ define([
 
 		},
         template: JST[
-			'app/www/js/templates/home.ejs'
+			'templates/home.ejs'
 		],
         render: function () {
 			SD.setTitle('SELECT SOME SEXYNESS');

@@ -22,7 +22,7 @@ define([
 		el: 'page',
 		events: {
 		},
-		template: JST['app/www/js/templates/stats/overview.ejs'],
+		template: JST['templates/stats/overview.ejs'],
 		render: function () {
 			//# Set up JST variables ------------------------------------------------------
 			var data = {

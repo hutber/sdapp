@@ -9,9 +9,9 @@ define([
 		events: {
 			'click deleteButton': 'remove'
 		},
-		templateMenu: JST['app/www/js/templates/history/historyMenu.ejs'],
-		templateFull: JST['app/www/js/templates/history/historyFull.ejs'],
-		template: JST['app/www/js/templates/history/history.ejs'],
+		templateMenu: JST['templates/history/historyMenu.ejs'],
+		templateFull: JST['templates/history/historyFull.ejs'],
+		template: JST['templates/history/history.ejs'],
 		remove: function(me){
 			var functionName = me.currentTarget.attributes[0].nodeValue;
 			SD.VIEWS[document.body.className+'View'][functionName](me);

@@ -10,7 +10,7 @@ define([
 			'click .setpin .digit': 'checkdigit',
 		},
 		currentPw: "",
-		template: JST['app/www/js/templates/users/pin.ejs'],
+		template: JST['templates/users/pin.ejs'],
 		render: function () {
 
 			var data = {

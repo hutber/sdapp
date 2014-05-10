@@ -15,7 +15,7 @@ define([
 			'click delete':'deleteUser',
 			'click resetpin':'resetpin'
 		},
-		template: JST['app/www/js/templates/users/settings.ejs'],
+		template: JST['templates/users/settings.ejs'],
 		resetpin: function(){
 			if(confirm('Yep? You sure about resetting your password?')){
 				localStorage.removeItem('pinNumber');

@@ -13,7 +13,7 @@ define([
 		el: 'page',
 		events: {
 		},
-		template: JST['app/www/js/templates/other/shop.ejs'],
+		template: JST['templates/other/shop.ejs'],
 		render: function () {
 			this.$el.html(this.template);
 			SD.setTitle('Our Shop');

@@ -12,7 +12,7 @@ define([
     var ForgottenView = SD.defaultView.extend({
 		el: 'page',
 
-        template: JST['app/www/js/templates/login/forgotten.ejs'],
+        template: JST['templates/login/forgotten.ejs'],
 
         render: function () {
             this.$el.html(this.template);

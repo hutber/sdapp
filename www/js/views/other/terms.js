@@ -15,7 +15,7 @@ define([
 			'click .clear': 'openPriv',
 			'click .back': 'closePriv',
 		},
-		template: JST['app/www/js/templates/login/terms.ejs'],
+		template: JST['templates/login/terms.ejs'],
 		openPriv: function(el){
 			var target = el.currentTarget.id;
 			$('#detail_'+target).show();

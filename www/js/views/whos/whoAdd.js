@@ -13,7 +13,7 @@ define([
 				'keyup #who': 'getWho',
 				'click addContact': 'openAddContact',
 		},
-		template: JST['app/www/js/templates/whos/whoAdd.ejs'],
+		template: JST['templates/whos/whoAdd.ejs'],
 		timer: false,
 		getWho: function(){
 			var who = $('#who');

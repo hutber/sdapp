@@ -15,8 +15,8 @@ define([
 		//set up homeview
 		var sexView = SD.defaultView.extend({
 			el: 'page',
-			template: JST['app/www/js/templates/sexTemplate.ejs'],
-			ownView: JST['app/www/js/templates/sex.ejs'],
+			template: JST['templates/sexTemplate.ejs'],
+			ownView: JST['templates/sex.ejs'],
 			openASex: function(el){ //Define the click events for the sex details page
 				var name = el.currentTarget.localName;
 				if(name !== 'date')

@@ -11,7 +11,7 @@ define([
 
     var IndexView = SD.defaultView.extend({
 		el: 'page',
-        template: JST['app/www/js/templates/index.ejs'],
+        template: JST['templates/index.ejs'],
         render: function () {
             this.$el.html(this.template);
         }

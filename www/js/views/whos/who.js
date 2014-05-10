@@ -13,8 +13,8 @@ define([
 			'keyup #searchwho': 'getWho',
 			'click result': 'selectSearchResults',
 		},
-		template: JST['app/www/js/templates/whos/who.ejs'],
-		resultreturned: JST['app/www/js/templates/whos/who_result.ejs'],
+		template: JST['templates/whos/who.ejs'],
+		resultreturned: JST['templates/whos/who_result.ejs'],
 		timer: false,
 		checkIfAWhoIsSelected: function(){
 			if(!$('result').hasClass('selected')) {$('save').addClass('disabled');}

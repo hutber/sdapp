@@ -9,7 +9,7 @@ define([
 	//set up homeview
 	var managewhos = SD.defaultView.extend({
 		el: 'page',
-		template: JST['app/www/js/templates/whos/managewhos.ejs'],
+		template: JST['templates/whos/managewhos.ejs'],
 		removeWho: function(me){
 			var parentMe = $(me.currentTarget).parent(), whoName = parentMe.data('name'), whoId = parentMe.data('id');
 			if(confirm('Do you really want to delete ' + whoName)){

@@ -12,8 +12,8 @@ define([
 		events: {
 			'keyup #searchwhere': 'searchwhere',
 		},
-		template: JST['app/www/js/templates/details/where.ejs'],
-		resultreturned: JST['app/www/js/templates/details/where_result.ejs'],
+		template: JST['templates/details/where.ejs'],
+		resultreturned: JST['templates/details/where_result.ejs'],
 		timer: false,
 		searchwhere: function(){
 			clearTimeout(this.timer);

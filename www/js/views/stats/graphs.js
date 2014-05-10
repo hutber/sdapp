@@ -25,7 +25,7 @@ define([
 		el: 'page',
 		events: {
 		},
-		template: JST['app/www/js/templates/stats/graphs.ejs'],
+		template: JST['templates/stats/graphs.ejs'],
 		render: function () {
 
 			//# Output and render the JST view ------------------------------------------------------

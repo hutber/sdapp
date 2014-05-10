@@ -18,9 +18,9 @@ define([
 			'click back': 'termsPopClose',
 //			'change .uname input': 'forLowerCase'
 		},
-        template: JST['app/www/js/templates/login/signup.ejs'],
-        checkmail: JST['app/www/js/templates/login/checkmail.ejs'],
-		terms: JST['app/www/js/templates/login/terms.ejs'],
+        template: JST['templates/login/signup.ejs'],
+        checkmail: JST['templates/login/checkmail.ejs'],
+		terms: JST['templates/login/terms.ejs'],
 //		forLowerCase: function(me){
 //			var clicked = $(me.currentTarget);
 //			clicked.val(clicked.val().toLowerCase());

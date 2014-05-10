@@ -8,7 +8,7 @@ define([
     var LoginView = SD.defaultView.extend({
 		el: 'page',
 
-        template: JST['app/www/js/templates/login/login.ejs'],
+        template: JST['templates/login/login.ejs'],
 
         render: function () {
             this.$el.html(this.template);
