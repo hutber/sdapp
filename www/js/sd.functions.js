@@ -27,8 +27,6 @@ Globals
 		ENVIROMENT: 'liveApp',
 		CDN: 'www.sexdiaries.co.uk/',
 		HTTP: 'https://www.sexdiaries.co.uk/',
-//		CDN: 'stage.sexdiaries.co.uk/',
-//		HTTP: 'http://stage.sexdiaries.co.uk/',
 		STATE: function(){
 			if(localStorage.getItem('privateKey')===null){
 				return false;
@@ -121,7 +119,9 @@ Globals
 					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 				break;
 			case "m.sexdiaries.co.uk":
-					SD.ENVIROMENT = 'mobilesite';
+					SD.ENVIROMENT = 'mobilesite',
+					SD.CDN = 'stage.sexdiaries.co.uk/',
+					SD.HTTP = 'http://stage.sexdiaries.co.uk/';
 				break;
 		}
 	};
