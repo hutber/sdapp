@@ -750,7 +750,7 @@ Networking functions
 		});
 
 		//add click to hide overlay button on click
-		$('overlay .icon-cancel-circled').cl(SD.spinner.hide);
+		$('overlay .icon-cancel-circled').click(SD.spinner.hide);
 	};
 
 //return SD
