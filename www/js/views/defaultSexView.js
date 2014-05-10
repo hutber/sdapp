@@ -80,6 +80,9 @@ define([
 			extra: function(){
 				alert('coming soon');
 			},
+			position: function(){
+				alert('Coming Soon.. Let us know which positions you\'d like to select from');
+			},
 			i: function(){
 				this.moreBelow.moveToBottom();
 			},
