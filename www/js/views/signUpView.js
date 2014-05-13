@@ -70,7 +70,7 @@ define([
 					data: values,
 					error: function(data){
 						SD.overlay.hideme();
-						SD.message.showMessage('Shit man! The registration failed. Please try again?!... - '+data.bad, 'bad');
+						SD.message.showMessage('Opps, sorry! The registration failed. Please try again?!... - '+data.bad, 'bad');
 					},
 					success: function(data){
 						//TODO display the error

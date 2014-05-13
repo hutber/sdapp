@@ -45,6 +45,7 @@ Globals
 			rating: 0,
 			location: [false, 'Click to get your location'],
 			diary: "",
+			positions: {},
 			where: {},
 		},
 		FULLSEX: function (){
@@ -89,6 +90,18 @@ Globals
 				return {};
 			}
 		}(),
+		POSITIONS: {
+			1:'Afternoon Delight',
+			2:'Amazon',
+			3:'Ape',
+			4:'Ascent To Desire',
+			5:'the-backward-slide',
+			6:'the-balancing-act',
+			7:'the-basket',
+			8:'the-bridge',
+			9:'the-butterfly',
+			10:'bandoleer',
+		},
 		TEMPLATE: 'footerout',
 		HASH:'',
 		PREVIOUSHASH:'',
@@ -291,6 +304,9 @@ SD.manageSex = {
 		if(Object.keys(SD.SEXDEFAULTS.who).length>0){
 			php.who = SD.SEXDEFAULTS.who;
 		}
+		if(Object.keys(SD.SEXDEFAULTS.positions).length>0){
+			php.positions = SD.SEXDEFAULTS.positions;
+		}
 		if(Object.keys(SD.SEXDEFAULTS.where).length>0){
 			php.where = SD.SEXDEFAULTS.where;
 		}
@@ -301,6 +317,7 @@ SD.manageSex = {
 		if(localStorage.privateKey){
 			SD.spinner.show();
 			var saveSexDetails = SD.manageSex.convertPhp();
+			c(saveSexDetails);
 			$.ajax({
 				url: SD.AJAX+'add',
 				type: 'POST',
@@ -385,6 +402,7 @@ SD.manageSex = {
 							rating: 0,
 							location: [false, 'Click to get your location'],
 							diary: "",
+							positions: {},
 							where: {},
 						};
 						SD.pageLoad('overview');
@@ -729,10 +747,10 @@ Networking functions
 //				document.body.appendChild(c);
 //			}
 //
-////			add phonegap debugging script
-//			var d = document.createElement('script');
-//			d.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
-//			document.getElementsByTagName('body')[0].appendChild(d);
+//			add phonegap debugging script
+			var d = document.createElement('script');
+			d.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
+			document.getElementsByTagName('body')[0].appendChild(d);
 		}else{
 			$.getScript('http://localhost:35729/livereload.js');
 		}

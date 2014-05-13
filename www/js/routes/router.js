@@ -46,6 +46,9 @@ define([
 			'privacy' : 'privacy',
 			'terms' : 'terms',
 			'diary' : 'diary',
+
+			//positions
+			'positions' : 'positions',
         }
     });
 

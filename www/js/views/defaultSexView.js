@@ -81,7 +81,7 @@ define([
 				alert('coming soon');
 			},
 			position: function(){
-				alert('Coming Soon.. Let us know which positions you\'d like to select from');
+				SD.pageLoad('positions');
 			},
 			i: function(){
 				this.moreBelow.moveToBottom();

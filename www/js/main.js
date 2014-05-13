@@ -151,6 +151,9 @@ require([
 		'views/other/terms',
 		'views/diary/diary',
 
+// Positions -----------------------
+		'views/positions/positions'
+
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
@@ -205,6 +208,7 @@ Routes
 		names[30] = 'pin';
 		names[31] = 'terms';
 		names[32] = 'diary';
+		names[33] = 'positions';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){

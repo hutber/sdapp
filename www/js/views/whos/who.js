@@ -30,7 +30,7 @@ define([
 				var selected = false;
 
 				//check if the search term is in the SD.WHO object set when logging in.
-				if(name.who.toLowerCase().indexOf(who.val())!==-1){
+				if(name.who.toLowerCase().indexOf(who.val())!==-1 || name.who.indexOf(who.val())!==-1){
 					results.append(myself.resultreturned({'item':name, 'selected': selected}));
 				}
 			});
