@@ -126,21 +126,23 @@ Globals
 				switch (window.location.hostname) {
 					case "sd.local":
 						SD.ENVIROMENT = 'localApp',
-							SD.CDN = 'sd.local/',
-							SD.HTTP = 'http://sexdiaires.local/',
-							SD.AJAX = SD.HTTP+'app/',
-							SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
-						break;
+						SD.CDN = 'sd.local/',
+						SD.HTTP = 'http://sexdiaires.local/',
+						SD.AJAX = SD.HTTP+'app/',
+						SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
+					break;
 					case "192.168.0.25":
 						SD.ENVIROMENT = 'mobilePhone',
-							SD.AJAX = SD.HTTP+ 'app/',
-							SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
-						break;
+						SD.AJAX = SD.HTTP+ 'app/',
+						SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
+					break;
 					default:
 						SD.ENVIROMENT = 'stagingApp',
-							SD.CDN = 'stage.sexdiaries.co.uk/',
-							SD.HTTP = 'http://stage.sexdiaries.co.uk/';
-						break;
+						SD.CDN = 'stage.sexdiaries.co.uk/',
+						SD.HTTP = 'http://stage.sexdiaries.co.uk/',
+						SD.AJAX = SD.HTTP+'app/',
+						SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
+					break;
 				}
 			},
 			success: function()
