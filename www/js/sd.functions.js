@@ -119,7 +119,7 @@ Globals
 // #define the globals depending on where we are ------------------------------------------------------
 	SD.globals = function () {
 		$.ajax({
-			url:'file:///android_asset/www/cordova_plugains.js',
+			url:'file:///android_asset/www/icon-72-2x.png',
 			type:'HEAD',
 			error: function()
 			{
@@ -137,16 +137,15 @@ Globals
 							SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
 						break;
 					default:
-						SD.ENVIROMENT = 'localbuild',
+						SD.ENVIROMENT = 'stagingApp',
 							SD.CDN = 'stage.sexdiaries.co.uk/',
 							SD.HTTP = 'http://stage.sexdiaries.co.uk/';
 						break;
 				}
-				c('local')
 			},
 			success: function()
 			{
-				c('//file exists');
+//				c('//file exists');
 			}
 		});
 	};
@@ -752,12 +751,12 @@ Networking functions
 			//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
 			sessionStorage.setItem('appOpenedFirstTime',true);
 
-			//load in cordova.js if its not already there
-//			if(typeof cordova === "undefined"){
-//				var c = document.createElement('script');
-//				c.setAttribute("src","cordova.js");
-//				document.body.appendChild(c);
-//			}
+//			load in cordova.js if its not already there
+			if(typeof cordova === "undefined"){
+				var c = document.createElement('script');
+				c.setAttribute("src","cordova.js");
+				document.body.appendChild(c);
+			}
 //
 //			add phonegap debugging script
 //			var d = document.createElement('script');
