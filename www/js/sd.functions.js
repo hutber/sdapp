@@ -118,25 +118,37 @@ Globals
 
 // #define the globals depending on where we are ------------------------------------------------------
 	SD.globals = function () {
-		switch (window.location.hostname) {
-			case "sd.local":
-					SD.ENVIROMENT = 'localApp',
-					SD.CDN = 'sd.local/',
-					SD.HTTP = 'http://sexdiaires.local/',
-					SD.AJAX = SD.HTTP+'app/',
-					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
-				break;
-			case "192.168.0.25":
-					SD.ENVIROMENT = 'mobilePhone',
-					SD.AJAX = SD.HTTP+ 'app/',
-					SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
-				break;
-			case "m.sexdiaries.co.uk":
-					SD.ENVIROMENT = 'mobilesite',
-					SD.CDN = 'stage.sexdiaries.co.uk/',
-					SD.HTTP = 'http://stage.sexdiaries.co.uk/';
-				break;
-		}
+		$.ajax({
+			url:'file:///android_asset/www/cordova_plugains.js',
+			type:'HEAD',
+			error: function()
+			{
+				switch (window.location.hostname) {
+					case "sd.local":
+						SD.ENVIROMENT = 'localApp',
+							SD.CDN = 'sd.local/',
+							SD.HTTP = 'http://sexdiaires.local/',
+							SD.AJAX = SD.HTTP+'app/',
+							SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
+						break;
+					case "192.168.0.25":
+						SD.ENVIROMENT = 'mobilePhone',
+							SD.AJAX = SD.HTTP+ 'app/',
+							SD.SEXDEFAULTS.url = SD.HTTP+'stats/add';
+						break;
+					default:
+						SD.ENVIROMENT = 'localbuild',
+							SD.CDN = 'stage.sexdiaries.co.uk/',
+							SD.HTTP = 'http://stage.sexdiaries.co.uk/';
+						break;
+				}
+				c('local')
+			},
+			success: function()
+			{
+				c('//file exists');
+			}
+		});
 	};
 
 /*==================================================
@@ -748,9 +760,9 @@ Networking functions
 //			}
 //
 //			add phonegap debugging script
-			var d = document.createElement('script');
-			d.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
-			document.getElementsByTagName('body')[0].appendChild(d);
+//			var d = document.createElement('script');
+//			d.setAttribute("src","http://debug.build.phonegap.com/target/target-script-min.js#hutber");
+//			document.getElementsByTagName('body')[0].appendChild(d);
 		}else{
 			$.getScript('http://localhost:35729/livereload.js');
 		}

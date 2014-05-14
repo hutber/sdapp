@@ -35,7 +35,7 @@ define([
 						'email': values.email,
 					},
 					error: function(data){
-						SD.message.showMessage('Shit man! Something went completely wrong on the server, means I don\'t even have a normal error for u', 'bad');
+						SD.message.showMessage('Sorry, there is an error on the server. Please report this bug. Email is below', 'bad');
 						SD.overlay.hideme();
 					},
 					success: function(data){
