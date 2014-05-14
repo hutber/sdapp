@@ -91,16 +91,90 @@ Globals
 			}
 		}(),
 		POSITIONS: {
-			1:'Afternoon Delight',
-			2:'Amazon',
-			3:'Ape',
-			4:'Ascent To Desire',
-			5:'the-backward-slide',
-			6:'the-balancing-act',
-			7:'the-basket',
-			8:'the-bridge',
-			9:'the-butterfly',
-			10:'bandoleer',
+			1:'Missionary',
+			2:'Doggy Style',
+			3:'Reverse Cowgirl',
+			4:'69',
+			5:'Girl on Top',
+			6:'Afternoon Delight',
+			7:'Amazon',
+			8:'Ape',
+			9:'Ascent To Desire',
+			10:'Backward Slide',
+			11:'Balancing Act',
+			12:'Basket',
+			13:'Bridge',
+			14:'Butterfly',
+			15:'Bandoleer',
+			16:'Candle',
+			17:'Catherine Wheel',
+			18:'Challenge',
+			19:'Clasp',
+			20:'Close Up',
+			21:'Column',
+			22:'Criss Cross',
+			23:'Cross',
+			24:'Crossed Keys',
+			25:'Crouching Tiger',
+			26:'Curled Angel',
+			27:'Deck Chair',
+			28:'Dolph',
+			29:'Dcouble Decker',
+			30:'Eagle',
+			31:'Fan',
+			32:'Fantastic Rocking Horse',
+			33:'Fold',
+			34:'Frog',
+			35:'Gallery',
+			36:'G-Force',
+			37:'Glowing Juinper',
+			38:'Glowing Triangle',
+			39:'Grip',
+			40:'Hero',
+			41:'Hinge',
+			42:'Hound',
+			43:'Indrani',
+			44:'Knell',
+			45:'Kneeling Wheelbarrow',
+			46:'Landslide',
+			47:'Lotus Blossom',
+			48:'Magic Mountain',
+			49:'Mermain',
+			50:'Nirvana',
+			51:'Peg',
+			52:'Plough',
+			53:'Prine Tiger',
+			54:'Properller',
+			55:'Proposal',
+			56:'Reclining Lotus',
+			57:'Right Angle',
+			58:'Rock\'n-Roller',
+			59:'Rowing Boat',
+			60:'Seated Ball',
+			61:'Seduction',
+			62:'Shoulde Stand',
+			63:'Side Kick',
+			64:'Side Saddle',
+			65:'Sidewards Samba',
+			66:'Slide',
+			67:'Slip',
+			68:'Snail',
+			69:'Sphnix',
+			70:'Spider',
+			71:'Splitting Bamboo',
+			72:'Squat Balance',
+			73:'Standing Wheelbarrow',
+			74:'Star',
+			75:'Supernova',
+			76:'Suspended Congress',
+			77:'Suspended Scissors',
+			78:'Thigh Master',
+			79:'Tominagi',
+			80:'Triumph Arch',
+			81:'Visitor',
+			82:'Whistper',
+			83:'Widley Opened',
+			84:'Y-Curve',
 		},
 		TEMPLATE: 'footerout',
 		HASH:'',
@@ -290,7 +364,7 @@ SD.manageSex = {
 			uid:localStorage.uid,
 			diary:data.diary,
 			who:function(){
-				return (typeof data.country !== "undefined") ? data.who : null;
+				return (typeof data.who !== "undefined") ? Object.keys(data.who)[0] : null;
 			}()
 		};
 	},
@@ -330,7 +404,6 @@ SD.manageSex = {
 		if(localStorage.privateKey){
 			SD.spinner.show();
 			var saveSexDetails = SD.manageSex.convertPhp();
-			c(saveSexDetails);
 			$.ajax({
 				url: SD.AJAX+'add',
 				type: 'POST',
@@ -421,10 +494,10 @@ SD.manageSex = {
 						SD.pageLoad('overview');
 						SD.spinner.hide();
 						//display completled sex
-						SD.message.showMessage('Sex added you cheeky sod', 'good', 2500);
+						SD.message.showMessage('Your entry has been saved', 'good', 2500);
 					}else{
 						if(data==="We could not get your User Id, sorry"){
-							alert('You have logged in somewhere else, we will force a logout');
+							alert('You have logged in somewhere else, for security we will force a logout');
 							SD.login.doLogOut();
 						}
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);

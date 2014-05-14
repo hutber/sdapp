@@ -26,9 +26,6 @@ define([
 
 			SD.DSV.render(data);
 
-			//Hide who for wank
-			$('who').hide();
-
 			//Set the page's title
 			SD.setTitle('Selfie!!');
         }
