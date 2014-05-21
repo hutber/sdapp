@@ -1,9 +1,8 @@
 define([
-	'sd',
 	'hammer',
 //	'jqueryhammer',
 	'dsv',
-], function (SD, Hammer) {
+], function (Hammer) {
 	'use strict';
 
 	//set up homeview

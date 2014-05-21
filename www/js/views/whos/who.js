@@ -1,7 +1,6 @@
 define([
-	'sd',
 	'dsv',
-], function (SD) {
+], function () {
 	'use strict';
 
 	var myself;
@@ -35,6 +34,7 @@ define([
 				}
 			});
 		},
+		//Used in all instances of the click search views TODO Update to be in a better place
 		selectSearchResults: function(me){
 		//With each click we update the global object
 			me = $(me.currentTarget);
@@ -44,6 +44,7 @@ define([
 				//Make sure we aren't already in an array
 				if ( $.inArray(me.data('id'), SD.SEXDEFAULTS[SD.HASH]) === -1 ) {
 					var id = me.data('name');
+					if(SD.SEXDEFAULTS[SD.HASH] === null) {SD.SEXDEFAULTS[SD.HASH] = {};}
 					SD.SEXDEFAULTS[SD.HASH][id] = me.data('id');
 					$('save').removeClass('disabled');
 				}
@@ -58,8 +59,8 @@ define([
 		render: function () {
 			var myself = this;
 			this.$el.html(this.template(SD.WHO));
-			var results = $('whoReturned'),
-				whos = Object.keys(SD.SEXDEFAULTS.who);
+			var results = $('whoReturned');
+			var whos = (SD.SEXDEFAULTS.who !== null) ? Object.keys(SD.SEXDEFAULTS.who) : {};
 
 			//Display the last 7 whos in order of how often they were used
 			Object.keys(SD.WHO).forEach(function(me){

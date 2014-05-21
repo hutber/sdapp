@@ -2,9 +2,8 @@
  * Created by Hutber on 04/02/14.
  */
 define([
-	'sd',
 	'hammer'
-], function (SD, Hammer) {
+], function (Hammer) {
 	'use strict';
 
 // #Set up the Deult router view ------------------------------------------------------
@@ -45,18 +44,16 @@ define([
 			render: function () {
 				//Output correct template
 				this.$el.html(templatesNeeded);
-				//Make sure we have values for some SD.* sex details
-//				$('html').removeClass('csstransforms3d').addClass('no-csstransforms3d');
 			},
 			slideMenu: {
 				init: function(){
-					var menuItem = document.getElementById('hidepage');
-					if(menuItem){
-						var hammertime = Hammer(menuItem).on('dragleft', function(event) {
-							document.body.style.MozTransform = 'translate('+event.gesture.touches[0].screenX +'px,0)';
-							document.body.style.webkitTransform = '-webkit-translate('+event.gesture.touches[0].screenX +'px,0)';
-						});
-					}
+//					var menuItem = document.getElementById('hidepage');
+//					if(menuItem){
+//						var hammertime = Hammer(menuItem).on('dragleft', function(event) {
+//							document.body.style.MozTransform = 'translate('+event.gesture.touches[0].screenX +'px,0)';
+//							document.body.style.webkitTransform = '-webkit-translate('+event.gesture.touches[0].screenX +'px,0)';
+//						});
+//					}
 				}
 			},
 			doLogOut: function(){
@@ -83,7 +80,12 @@ define([
 				}
 
 				//Add new class to body
-				$('body').removeAttr('class').addClass(desiredClass); //Update class on body
+				document.body.removeAttribute('class');
+				document.body.setAttribute('class',desiredClass); //Update class on body
+				//Check, are we from edit? If we are add class of edit, otherwise don't
+				if(SD.SEXDEFAULTS.edit && (desiredClass === "wank" || desiredClass === "hands" || desiredClass === "oral" || desiredClass === "sex" || desiredClass === "anything")){
+					$('body').addClass('edit');
+				}
 			},
 			sexNav: function(m){
 				//make sure no elements have any selected items
@@ -112,8 +114,7 @@ define([
 					}else{
 						SD.pageLoad(currentClick.attributes[0].value);
 					}
-
-					SD.SEXDEFAULTS.sexnumber = parseInt(currentClickIndex)+1;
+					SD.SEXDEFAULTS.sexnumber = parseInt(currentClickIndex)+1; //update which sex number we are on
 				}
 			},
 			saveWho: function(){

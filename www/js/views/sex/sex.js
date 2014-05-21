@@ -3,9 +3,8 @@ define([
 	'underscore',
 	'backbone',
 	'JST',
-	'sd',
 	'dsv',
-], function ($, _, Backbone, JST, SD) {
+], function ($, _, Backbone, JST) {
 	'use strict';
 
 	//set up homeview

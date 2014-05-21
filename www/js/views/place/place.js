@@ -1,46 +1,44 @@
 define([
-	'sd',
 	'dsv',
-], function (SD) {
+], function () {
 	'use strict';
 
 	var myself;
 
 	//set up homeview
-	var where = SD.defaultView.extend({
+	var place = SD.defaultView.extend({
 		el: 'page',
 		events: {
-			'keyup #searchwhere': 'searchwhere',
+			'keyup #searchplace': 'searchplace',
 		},
-		template: JST['templates/details/where.ejs'],
-		resultreturned: JST['templates/details/where_result.ejs'],
+		template: JST['templates/place/place.ejs'],
+		resultreturned: JST['templates/place/place_result.ejs'],
 		timer: false,
-		searchwhere: function(){
+		searchplace: function(){
 			clearTimeout(this.timer);
-			this.timer = setTimeout(this.getwhere, 500);
+			this.timer = setTimeout(this.getplace, 500);
 		},
-		getwhere: function(){
-			var where = $('#searchwhere'), results = $('whereReturned');
-			where.addClass('searching');
+		getplace: function(){
+			var place = $('#searchplace'), results = $('placeReturned');
+			place.addClass('searching');
 
 			$.ajax({
-				url: SD.AJAX+'details/where',
+				url: SD.AJAX+'place/place',
 				type: 'POST',
 				dataType: "json",
 				data: {
-					'code': where.val(),
+					'code': place.val(),
 				},
 				error: function(data){
 					c('Sorry Login Failed: '+data.status);
-					where.removeClass('searching');
+					place.removeClass('searching');
 				},
 				success: function(data){
-					SD.where = data;
 					results.empty();
 					data.forEach(function(me){
 						results.append(myself.resultreturned(me));
 					});
-					where.removeClass('searching');
+					place.removeClass('searching');
 				}
 			});
 		},
@@ -50,5 +48,5 @@ define([
 			SD.setTitle('Where did it take place??');
 		},
 	});
-	return where;
+	return place;
 });

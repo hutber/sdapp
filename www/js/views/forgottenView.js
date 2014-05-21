@@ -4,9 +4,8 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'sd',
 	'dv',
-], function ($, _, Backbone, JST, SD) {
+], function ($, _, Backbone, JST) {
     'use strict';
 
     var ForgottenView = SD.defaultView.extend({

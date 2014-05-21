@@ -1,5 +1,4 @@
 define([
-	'sd',
 	'dv',
 	'slider'
 ], function () {
@@ -15,6 +14,7 @@ define([
 			'templates/home.ejs'
 		],
         render: function () {
+			$('body').removeClass('edit');
 			SD.setTitle('SELECT SOME SEXYNESS');
 			this.$el.html(this.template);
 
@@ -44,6 +44,7 @@ define([
 				}
 
 				SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
+					SD.SEXDEFAULTS = SD.sex.sexDefaults(); //used to reset to default sex
 					SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
 				});
 

@@ -1,8 +1,7 @@
 /*global define*/
 define([
-	'sd',
 	'dv',
-], function (SD) {
+], function () {
     'use strict';
 
     var LoginView = SD.defaultView.extend({

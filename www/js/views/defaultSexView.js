@@ -2,12 +2,11 @@
  * Created by Hutber on 04/02/14.
  */
 define([
-	'sd',
 	'dv',
 	'mobiscroll',
 	'mobiscrollScroller',
 	'mobiscrollDate',
-], function (SD) {
+], function () {
 	'use strict';
 
 	// The default sex view view ----------------------------------------------------------
@@ -65,14 +64,24 @@ define([
 				if(SD.SEXDEFAULTS.location[1] === "Click to get your location"){
 					SD.spinner.show('Please wait for us to find you', null, true);
 					navigator.geolocation.getCurrentPosition(function(details){
-						SD.locationSucess(details);
+						SD.location.locationSucess(details);
 					}, function(details){
-						SD.locationFail(details);
+						SD.location.locationFail(details);
 					});
+				}else if(SD.SEXDEFAULTS.edit === true && SD.SEXDEFAULTS.location[1] !== "Click to get your location"){
+					alert('Editing location is coming soon. Sorry for the wait.');
+//					if(confirm('This will overwrite your old location if you click save.')){
+//						SD.spinner.show('Please wait for us to find you', null, true);
+//						navigator.geolocation.getCurrentPosition(function(details){
+//							SD.locationSucess(details);
+//						}, function(details){
+//							SD.locationFail(details);
+//						});
+//					}
 				}
 			},
-			where: function(){
-				SD.pageLoad('where');
+			place: function(){
+				SD.pageLoad('place');
 			},
 			entry: function(){
 				SD.pageLoad('diary');
@@ -105,22 +114,49 @@ define([
 					errorYes = false;
 				}
 
-//						if(disabled && SD.SEXDEFAULTS.location[0]===false){
-//							SD.message.showMessage('You know we can record where u fucking fucked, click it', 'notice');
-//							me.removeClass('disabled');
-//							errorYes = false;
-//						}
+//				if(disabled && SD.SEXDEFAULTS.location[0]===false){
+//					SD.message.showMessage('You know we can record place u fucking fucked, click it', 'notice');
+//					me.removeClass('disabled');
+//					errorYes = false;
+//				}
 
-				if(disabled && SD.SEXDEFAULTS.where.length===0 || SD.SEXDEFAULTS.where==="" || typeof SD.SEXDEFAULTS.where=== "undefined"){
-					SD.message.showMessage('Bit boring if you don\'t set where you did it', 'notice');
-					me.removeClass('disabled');
-					errorYes = false;
-				}
+//				if(disabled && SD.SEXDEFAULTS.place.length===0 || SD.SEXDEFAULTS.place==="" || typeof SD.SEXDEFAULTS.place=== "undefined"){
+//					SD.message.showMessage('Bit boring if you don\'t set where you did it', 'notice');
+//					me.removeClass('disabled');
+//					errorYes = false;
+//				}
 
 				//If we have no errors save the sex
-				if(errorYes) {SD.manageSex.save();}
+				if(errorYes) {SD.sex.save();}
 			},
-
+			//adujst the height of the sexdetails so that we can scroll
+			moreBelow: {
+				init: function(){
+					var myself = this;
+					this.force = function(){if(typeof myself.force === "undefined"){return true;}}(); //Only on first init do we define this true
+					this.page = $('page');
+					this.sexForm = $('sexform').outerHeight();
+					this.sexSave = $('save').outerHeight();
+					this.sexDetails = $('sexdetails').outerHeight();
+					this.pageHeight = this.page.outerHeight();
+					this.icon = $('.icon-down-open');
+					this.check();
+				},
+				check: function(force){
+					if(this.force===true && force===true) { //Check the this.force is true only once and that force is true from the scroll
+						this.force = false;
+						this.init();
+					}
+					if( this.page.scrollTop() > (this.sexDetails-this.sexSave-this.pageHeight) || this.sexForm < this.pageHeight) {
+						this.icon.hide();
+					}else{
+						this.icon.show();
+					}
+				},
+				moveToBottom: function(){
+					this.page.scrollTop(this.pageHeight);
+				}
+			},
 			// #DataChecker is used in the sex views/sex/*.js if the same type of data is passed from the sex view it over writes the default. ---------------------------------------
 			dataChecker: function(data){
 				if(typeof data !=="undefined"){
@@ -134,7 +170,6 @@ define([
 				//return the updateed sexdefaults build from the SD.SEXDEFAULTS and the data supplied from the view
 				return SD.SEXDEFAULTS;
 			},
-
 			loadSaveSex: {
 				that: this,
 				//Load in a save default sex
@@ -170,48 +205,29 @@ define([
 							SD.SEXDEFAULTS.sextime[1] = currentDatePicker.values;
 						}
 					});
-
 					//set the current date instance
 					var currentDatePicker = $('when').mobiscroll('getInst');
 
-					//Update current instance to the old value of the date if it exists
+//					Update sextime to have the current version of the date picker
+					SD.SEXDEFAULTS.sextime[0] = currentDatePicker;
+
+//					Update current instance to the old value of the date if it exists
 					if(SD.SEXDEFAULTS.sextime[1]){
-						currentDatePicker.setValue(SD.SEXDEFAULTS.sextime[1]);
+						if(SD.SEXDEFAULTS.edit && typeof SD.SEXDEFAULTS.sextime[1][0] === "string" && typeof SD.SEXDEFAULTS.sextime[1][1] === "string" && typeof SD.SEXDEFAULTS.sextime[1][2] === "string" && typeof SD.SEXDEFAULTS.sextime[1][3] === "string" && typeof SD.SEXDEFAULTS.sextime[1][4] === "string"){
+							(function(item){
+								item[1]--;
+								currentDatePicker.setValue(item);
+							})(SD.SEXDEFAULTS.sextime[1].slice(0));
+						}
+						else {
+							currentDatePicker.setValue(SD.SEXDEFAULTS.sextime[1]);
+						}
 					}else{
-						SD.SEXDEFAULTS.sextime[0] = currentDatePicker,
 						SD.SEXDEFAULTS.sextime[1] = currentDatePicker.values;
 					}
-
 					//On page load update the date string
 					$('when date').html(currentDatePicker.val);
-				}
-			},
-			//adujst the height of the sexdetails so that we can scroll
-			moreBelow: {
-				init: function(){
-					var myself = this;
-					this.force = function(){if(typeof myself.force === "undefined"){return true};}(), //Only on first init do we define this true
-					this.page = $('page'),
-					this.sexForm = $('sexform').outerHeight(),
-					this.sexSave = $('save').outerHeight(),
-					this.sexDetails = $('sexdetails').outerHeight(),
-					this.pageHeight = this.page.outerHeight(),
-					this.icon = $('.icon-down-open');
-					this.check();
-				},
-				check: function(force){
-					if(this.force===true && force===true) { //Check the this.force is true only once and that force is true from the scroll
-						this.force = false;
-						this.init();
-					}
-					if( this.page.scrollTop() > (this.sexDetails-this.sexSave-this.pageHeight) || this.sexForm < this.pageHeight) {
-						this.icon.hide();
-					}else{
-						this.icon.show();
-					}
-				},
-				moveToBottom: function(){
-					this.page.scrollTop(this.pageHeight);
+
 				}
 			},
 			render: function (data) {
@@ -219,6 +235,12 @@ define([
 				if(typeof data === "undefined"){
 					data = SD.SEXDEFAULTS;
 				}
+
+//				if(SD.PREVIOUSHASH === "userhistory"){
+//					//Resetsexdefaults back to default if we can from a page that isn't the history page.
+//					data = SD.sex.sexDefaults();
+//				}
+
 				//----- The global sex render --------------------------------------------------
 				//update the website with the current view
 				var compiled = this.template();
@@ -236,10 +258,10 @@ define([
 					this.loadSaveSex.post();
 				}
 
-				var below = this.moreBelow;
-				below.init();
-				$('page').scroll(function(){below.check(true);});
-				$(window).resize(function(){below.init();});
+//				var below = this.moreBelow;
+//				below.init();
+//				$('page').scroll(function(){below.check(true);});
+//				$(window).resize(function(){below.init();});
 			}
 		});
 

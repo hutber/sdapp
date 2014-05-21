@@ -1,7 +1,6 @@
 define([
-	'sd',
 	'dsv',
-], function (SD) {
+], function () {
 	'use strict';
 	//set up homeview
 	var pin = SD.defaultView.extend({
@@ -35,6 +34,8 @@ define([
 					SD.login.checkPrivateKey();
 				}else if (myself.currentPw.length === 4){
 					SD.message.showMessage('Pin incorrect', 'bad', 1000);
+					pinInputs.removeAttr('class');
+					myself.currentPw = '';
 				}
 			}else{
 				if(valueReturned === "Forgot Pin?"){

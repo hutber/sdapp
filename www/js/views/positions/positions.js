@@ -1,7 +1,6 @@
 define([
-	'sd',
 	'dsv',
-], function (SD) {
+], function () {
 	'use strict';
 
 	//set up positions
@@ -44,6 +43,7 @@ define([
 			if(me.hasClass('selected')) {
 				//Make sure we aren't already in an array
 				if ( $.inArray(me.data('id'), SD.SEXDEFAULTS[SD.HASH]) === -1 ) {
+					if(SD.SEXDEFAULTS[SD.HASH] === null) {SD.SEXDEFAULTS[SD.HASH] = {};}
 					SD.SEXDEFAULTS[SD.HASH][meId] = posName;
 					$('save').removeClass('disabled');
 				}
@@ -58,8 +58,8 @@ define([
 		render: function () {
 			var myself = this;
 			this.$el.html(this.template(SD.WHO)+this.saveBtn({'name':'Position', 'savetext':'Save Positions Used'}));
-			var results = $('posReturned'),
-				positions = Object.keys(SD.SEXDEFAULTS.positions);
+			var results = $('posReturned');
+			var positions = (SD.SEXDEFAULTS.positions !== null) ? Object.keys(SD.SEXDEFAULTS.positions) : {};
 
 			//Display the last 7 whos in order of how often they were used
 			Object.keys(SD.POSITIONS).forEach(function(me){

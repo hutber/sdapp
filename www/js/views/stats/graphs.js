@@ -1,10 +1,9 @@
 define([
-	'sd',
 	'dv',
 	'date',
 	'highcharts',
 	'flowtype',
-], function (SD) {
+], function () {
 	'use strict';
 
 	function createData (object, type) {

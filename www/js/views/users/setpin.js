@@ -1,7 +1,6 @@
 define([
-	'sd',
 	'dsv',
-], function (SD) {
+], function () {
 	'use strict';
 	//set up homeview
 	var setpin = SD.defaultView.extend({

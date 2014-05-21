@@ -4,10 +4,9 @@ define([
     'underscore',
     'backbone',
     'JST',
-	'sd',
 	'dv',
 	'forms'
-], function ($, _, Backbone, JST, SD) {
+], function ($, _, Backbone, JST) {
     'use strict';
 
     var SignUpView = SD.defaultView.extend({

@@ -1,13 +1,13 @@
 define([
-	'sd',
 	'dsv',
-], function (SD) {
+], function () {
 	'use strict';
 	//set up homeview
 	var history = SD.defaultView.extend({
 		el: 'page',
 		events: {
-			'click deleteButton': 'remove'
+			'click deleteButton': 'remove',
+			'click historydetails': 'edit'
 		},
 		templateMenu: JST['templates/history/historyMenu.ejs'],
 		templateFull: JST['templates/history/historyFull.ejs'],
@@ -21,7 +21,21 @@ define([
 			var parentMe = $(me.currentTarget).parent(),
 				deleteDetails = parentMe.find('h2')[0].innerHTML,
 				sexId = parentMe[0].id;
-				SD.manageSex.removeSex(sexId, deleteDetails, parentMe);
+				SD.sex.removeSex(sexId, deleteDetails, parentMe);
+		},
+		edit: function(me){
+			var id = me.currentTarget.parentElement.id,
+				selectedDate = $('#month :selected').val();
+
+			SD.FULLSEX[selectedDate].forEach(function(items){
+				if(items.id === id){
+					SD.SEXDEFAULTS = SD.sex.edit.convert(items);
+					SD.pageLoad(items.sexstring.toLowerCase());
+					return items;
+				}
+			});
+			//Reaplce title with wanted text
+			SD.setTitle('Edit Me.');
 		},
 		render: function () {
 			var myself = this;

@@ -32,8 +32,20 @@ require.config({
 		date: {
 			exports: 'date'
 		},
-		sd: {
+		sf: {
 			exports: 'SD'
+		},
+		ss: {
+			deps: ['sf']
+		},
+		sl: {
+			deps: ['ss']
+		},
+		sloc: {
+			deps: ['sl']
+		},
+		sd: {
+			deps: ['sloc']
 		},
 		dv: {
 			deps: ['sd']
@@ -98,7 +110,11 @@ require.config({
 //		backbonehammer:'libs/plugins/hammer/backbone.hammer',
 		date: 'libs/plugins/date',
 		core: 'core.functions',
-		sd : 'sd.functions',
+		sd : 'functions/sd.functions',
+		sf : 'functions/sd.functions.sex',
+		sl : 'functions/sd.functions.login',
+		ss : 'functions/sd.functions.selection',
+		sloc : 'functions/sd.functions.location',
 		dv : 'views/defaultView',
 		dsv : 'views/defaultSexView',
 		JST : 'templates'
@@ -115,6 +131,10 @@ require([
 // Routes ----------------
 		'routes/router',
 // functions ----------------
+		'sf',
+		'ss',
+		'sl',
+		'sloc',
 		'sd',
 		'dv',
 		'dsv',
@@ -132,7 +152,7 @@ require([
 // Sex Details Pages --------------------,
 		'views/whos/who',
 		'views/whos/whoAdd',
-		'views/details/where',
+		'views/place/place',
 // Stats --------------------,
 		'views/stats/overview',
 		'views/stats/graphs',
@@ -160,9 +180,9 @@ set arguments to values for ease of reading arguments
 ================================================== */
     var Backbone = arguments[0],
         Router = arguments[2],
-		SD = arguments[3],
-		IndexView = arguments[6],
-        HomeView = arguments[7];
+		SD = arguments[6],
+		IndexView = arguments[10],
+        HomeView = arguments[11];
 
 /*==================================================
  Start up SD global object.
@@ -183,32 +203,32 @@ Routes Vars
 Routes
 ================================================== */
 	var names = [];
-		names[8] = 'login';
-		names[9] = 'forgotten';
-		names[10] = 'signup';
-		names[11] = 'wank';
-		names[12] = 'hands';
-		names[13] = 'oral';
-		names[14] = 'sex';
-		names[15] = 'anything';
-		names[16] = 'who';
-		names[17] = 'whoadd';
-		names[18] = 'where';
-		names[19] = 'overview';
-		names[20] = 'graphs';
-		names[21] = 'userhistory';
-		names[22] = 'managewhos';
-		names[23] = 'settings';
-		names[24] = 'calendar';
-		names[25] = 'shop';
-		names[26] = 'privacy';
-		names[27] = 'setpin';
-		names[28] = 'confirmpin';
-		names[29] = 'pinsave';
-		names[30] = 'pin';
-		names[31] = 'terms';
-		names[32] = 'diary';
-		names[33] = 'positions';
+		names[12] = 'login';
+		names[13] = 'forgotten';
+		names[14] = 'signup';
+		names[15] = 'wank';
+		names[16] = 'hands';
+		names[17] = 'oral';
+		names[18] = 'sex';
+		names[19] = 'anything';
+		names[20] = 'who';
+		names[21] = 'whoadd';
+		names[22] = 'place';
+		names[23] = 'overview';
+		names[24] = 'graphs';
+		names[25] = 'userhistory';
+		names[26] = 'managewhos';
+		names[27] = 'settings';
+		names[28] = 'calendar';
+		names[29] = 'shop';
+		names[30] = 'privacy';
+		names[31] = 'setpin';
+		names[32] = 'confirmpin';
+		names[33] = 'pinsave';
+		names[34] = 'pin';
+		names[35] = 'terms';
+		names[36] = 'diary';
+		names[37] = 'positions';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){

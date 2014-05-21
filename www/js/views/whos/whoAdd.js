@@ -1,7 +1,6 @@
 define([
-	'sd',
 	'dv'
-], function (SD) {
+], function () {
 	'use strict';
 
 	var myself;

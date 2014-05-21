@@ -24,8 +24,7 @@ define([
 			//Details
 			'who': 'who',
 			'whoadd': 'whoadd',
-			'where': 'where',
-			'whereadd': 'whereadd',
+			'place': 'place',
 
 			//Stats
 			'overview': 'overview',
