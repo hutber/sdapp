@@ -42,16 +42,40 @@ Globals
 			Object.keys(tmpObj).forEach(function(me){
 				tmpObj[me].forEach(function(data){
 					if(data.location !== null && typeof data.location !== "object") {
-						data.location = JSON.parse(data.location);
+						try {
+							data.location = JSON.parse(data.location);
+						}
+						catch (e) {
+							alert('Sorry, we need to log you out, since the backend has changed since the update');
+							SD.login.doLogOut();
+						}
 					}
 					if(data.place !== null && typeof data.place !== "object") {
-						data.place = JSON.parse(data.place);
+						try {
+							data.place = JSON.parse(data.place);
+						}
+						catch (e) {
+							alert('Sorry, we need to log you out, since the backend has changed since the update');
+							SD.login.doLogOut();
+						}
 					}
 					if(data.who !== null && typeof data.who !== "object") {
-						data.who = JSON.parse(data.who);
+						try {
+							data.who = JSON.parse(data.who);
+						}
+						catch (e) {
+							alert('Sorry, we need to log you out, since the backend has changed since the update');
+							SD.login.doLogOut();
+						}
 					}
 					if(data.positions !== null && typeof data.positions !== "object") {
-						data.positions = JSON.parse(data.positions);
+						try {
+							data.positions = JSON.parse(data.positions);
+						}
+						catch (e) {
+							alert('Sorry, we need to log you out, since the backend has changed since the update');
+							SD.login.doLogOut();
+						}
 					}
 				});
 			});
