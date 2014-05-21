@@ -46,9 +46,7 @@ Globals
 							data.location = JSON.parse(data.location);
 						}
 						catch (e) {
-							if(confirm('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok?')){
 								SD.login.doLogOut();
-							}
 						}
 					}
 					if(data.place !== null && typeof data.place !== "object") {
@@ -56,9 +54,7 @@ Globals
 							data.place = JSON.parse(data.place);
 						}
 						catch (e) {
-							if(confirm('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok?')){
 								SD.login.doLogOut();
-							}
 						}
 					}
 					if(data.who !== null && typeof data.who !== "object") {
@@ -66,9 +62,7 @@ Globals
 							data.who = JSON.parse(data.who);
 						}
 						catch (e) {
-							if(confirm('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok?')){
-								SD.login.doLogOut();
-							}
+							SD.login.doLogOut();
 						}
 					}
 					if(data.positions !== null && typeof data.positions !== "object") {
@@ -76,9 +70,7 @@ Globals
 							data.positions = JSON.parse(data.positions);
 						}
 						catch (e) {
-							if(confirm('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok?')){
-								SD.login.doLogOut();
-							}
+							SD.login.doLogOut();
 						}
 					}
 				});
