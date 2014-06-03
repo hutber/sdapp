@@ -138,8 +138,8 @@ define([
 						success: function(data){
 							SD.spinner.hide();
 							if(data[0].id !== ""){
-
-								SD.SEXDEFAULTS['who'][who.val()] = data[0].id; //Add the current who's to the current Sex details
+								SD.SEXDEFAULTS.who = [];
+								SD.SEXDEFAULTS.who[who.val()] = data[0].id; //Add the current who's to the current Sex details
 
 								//Create new object of the new Who
 								var newObjectOfWhos = {
