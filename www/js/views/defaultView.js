@@ -115,7 +115,7 @@ define([
 					if($('.royalSlider')[0] && jQuery.fn.royalSlider){
 						SD.SLIDER.goTo(currentClickIndex);
 					}else{
-						SD.pageLoad(currentClick.attributes[0].value);
+						SD.pageLoad(currentClick.data('type'));
 					}
 					SD.SEXDEFAULTS.sexnumber = parseInt(currentClickIndex); //update which sex number we are on
 				}
