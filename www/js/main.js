@@ -175,6 +175,9 @@ require([
 // Positions -----------------------
 		'views/positions/positions',
 
+// Extra -----------------------
+	'views/extra/extra',
+
 // Functions -----------------------
 		'sf',
 		'ss',
@@ -191,7 +194,7 @@ set arguments to values for ease of reading arguments
 ================================================== */
     var Backbone = arguments[0],
         Router = arguments[3],
-		SD = arguments[35],
+		SD = arguments[36],
 		IndexView = arguments[4],
         HomeView = arguments[5];
 
@@ -240,6 +243,7 @@ Routes
 		names[29] = 'terms';
 		names[30] = 'diary';
 		names[31] = 'positions';
+		names[32] = 'extra';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){

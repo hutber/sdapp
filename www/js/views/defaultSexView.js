@@ -87,7 +87,7 @@ define([
 				SD.pageLoad('diary');
 			},
 			extra: function(){
-				alert('coming soon');
+				SD.pageLoad('extra');
 			},
 			position: function(){
 				SD.pageLoad('positions');
