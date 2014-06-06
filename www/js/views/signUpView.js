@@ -78,9 +78,32 @@ define([
 							SD.message.showMessage(data.error, 'bad');
 							$('.btn.signup').removeAttr('disabled');
 						}else{
-							SD.overlay.hideme();
-							SD.message.showMessage(data.good);
-							myself.$el.html(myself.checkmail({email:values.email}));
+
+							$.ajax({
+								url: SD.AJAX+'users/login',
+								type: 'POST',
+								dataType: "json",
+								data: {
+									'uname': values.uname,
+									'pword': values.pw
+								},
+								error: function(data){
+									if(data.status === 200){
+										SD.message.showMessage('Opps, sorry just hit login one more time.');
+									}else{
+										SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
+									}
+									SD.overlay.hideme();
+								},
+								success: function(data){
+									SD.login.doLogin(data);
+									SD.overlay.hideme();
+								}
+							});
+//							SD.overlay.hideme();
+//
+//							SD.message.showMessage(data.good);
+//							myself.$el.html(myself.checkmail({email:values.email}));
 						}
 					}
 				});

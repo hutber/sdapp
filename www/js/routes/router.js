@@ -10,7 +10,8 @@ define([
     var Router = Backbone.Router.extend({
         routes: {
             '': 'index',
-			'selector': 'index',
+//			'selector': 'index',
+			'selector': 'login',
 			'login': 'login',
 			'forgotten': 'forgotten',
 			'signup': 'signup',

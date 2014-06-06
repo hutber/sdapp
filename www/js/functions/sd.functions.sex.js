@@ -105,8 +105,8 @@ define([
 					if(SD.SEXDEFAULTS.edit){SD.sex.removeSexStat(SD.SEXDEFAULTS.id);}
 					if(isNumber(data)){
 						/*==================================================
-						 Update FULLSEX and create some var's
-						 ================================================== */
+						Update FULLSEX and create some var's
+						================================================== */
 						// Build a new array to add to SD.FULLSEX
 						var newSexDetail  = SD.sex.buildMissing(saveSexDetails, data);
 						var sexTime = Date.parse(saveSexDetails.sextime);
@@ -117,14 +117,18 @@ define([
 							SD.FULLSEX[currentMonthString].unshift(newSexDetail);
 							SD.saveVar('FULLSEX');
 						} else {
-							SD.FULLSEX[currentMonthString] = [];
-							SD.FULLSEX[currentMonthString] = [newSexDetail];
-							localStorage.FULLSEX = JSON.stringify(SD.FULLSEX);
+							var tmpArray = {};
+							tmpArray[currentMonthString] = [newSexDetail];
+							Object.keys(SD.FULLSEX).forEach(function(item){
+								tmpArray[item] = SD.FULLSEX[item];
+							});
+							SD.FULLSEX = tmpArray;
+							localStorage.FULLSEX = JSON.stringify(tmpArray);
 						}
 
 						/*==================================================
-						 Update Sex Data Graph
-						 ================================================== */
+						Update Sex Data Graph
+						================================================== */
 						var sexTypeString = newSexDetail.sexstring;
 						//Make sure we have added a sex before
 						if(typeof SD.BYMONTH[sexTypeString][currentMonthString] !== "undefined") {
@@ -138,8 +142,8 @@ define([
 						}
 
 						/*==================================================
-						 Update Whos - Find the who then add the who
-						 ================================================== */
+						Update Whos - Find the who then add the who
+						================================================== */
 						if(saveSexDetails.who){
 							Object.keys(saveSexDetails.who).forEach(function(myself){
 								SD.WHO.forEach(function(me){
@@ -153,8 +157,8 @@ define([
 						}
 
 						/*==================================================
-						 Update Sex Numbers
-						 ================================================== */
+						Update Sex Numbers
+						================================================== */
 						SD.GLOBALSEXNUMBERS[Object.keys(SD.GLOBALSEXNUMBERS)[saveSexDetails.sexnumber-1]]++;
 						SD.GLOBALSEXNUMBERS.total++;
 						SD.saveVar('GLOBALSEXNUMBERS');
@@ -168,8 +172,8 @@ define([
 						SD.SEXDEFAULTS = SD.sex.sexDefaults();
 
 						/*==================================================
-						 Now clean up save sex page and move to where we need to be.
-						 ================================================== */
+						Now clean up save sex page and move to where we need to be.
+						================================================== */
 						SD.pageLoad('overview');
 						SD.spinner.hide();
 						SD.message.showMessage('Your entry has been saved. <br>Did you know you can now edit?', 'good', 2500);
@@ -214,8 +218,8 @@ define([
 		SD.saveVar('BYMONTH');
 
 		/*==================================================
-		 Update Sex Numbers
-		 ================================================== */
+		Update Sex Numbers
+		================================================== */
 		SD.GLOBALSEXNUMBERS[toDeleteSexString]--;
 		SD.GLOBALSEXNUMBERS.total--;
 		SD.saveVar('GLOBALSEXNUMBERS');
@@ -281,7 +285,7 @@ define([
 			//Now build up the details
 			//create data object
 			var tmpDate = Date.parse(data.sextime);
-			dataConverted.sextime[1] = [tmpDate.toString('dd'),tmpDate.toString('MM'),tmpDate.toString('yyyy'),tmpDate.toString('hh'),tmpDate.toString('mm'),0], //DD,MM,YY,HH,MM,SS
+			dataConverted.sextime[1] = [tmpDate.toString('dd'),tmpDate.toString('MM'),tmpDate.toString('yyyy'),tmpDate.toString('HH'),tmpDate.toString('mm'),0], //DD,MM,YY,HH,MM,SS
 
 			//flat converts
 			dataConverted.rating = data.rating,

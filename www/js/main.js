@@ -50,6 +50,12 @@ require.config({
 		dv: {
 			deps: ['sd']
 		},
+		ge: {
+			deps: ['dv']
+		},
+		ui: {
+			deps: ['ge']
+		},
 		JST: {
 			deps: ['underscore'],
 			exports: 'JST'
@@ -110,10 +116,12 @@ require.config({
 //		backbonehammer:'libs/plugins/hammer/backbone.hammer',
 		date: 'libs/plugins/date',
 		core: 'core.functions',
-		sd : 'functions/sd.functions',
+		sd : 'functions/sd.functions.globals',
 		sf : 'functions/sd.functions.sex',
 		sl : 'functions/sd.functions.login',
 		ss : 'functions/sd.functions.selection',
+		ge : 'functions/sd.functions.globalEvents',
+		ui : 'functions/sd.functions.ui',
 		sloc : 'functions/sd.functions.location',
 		dv : 'views/defaultView',
 		dsv : 'views/defaultSexView',
@@ -128,16 +136,9 @@ Routers
 require([
 		'backbone',
 		'modernizr',
+		'sd',
 // Routes ----------------
 		'routes/router',
-// functions ----------------
-		'sf',
-		'ss',
-		'sl',
-		'sloc',
-		'sd',
-		'dv',
-		'dsv',
 // Views ----------------
 		'views/indexView',
 		'views/homeView',
@@ -172,17 +173,27 @@ require([
 		'views/diary/diary',
 
 // Positions -----------------------
-		'views/positions/positions'
+		'views/positions/positions',
+
+// Functions -----------------------
+		'sf',
+		'ss',
+		'sl',
+		'sloc',
+		'dv',
+		'dsv',
+		'ui',
+		'ge',
 
 ], function () {
 /*==================================================
 set arguments to values for ease of reading arguments
 ================================================== */
     var Backbone = arguments[0],
-        Router = arguments[2],
-		SD = arguments[6],
-		IndexView = arguments[10],
-        HomeView = arguments[11];
+        Router = arguments[3],
+		SD = arguments[35],
+		IndexView = arguments[4],
+        HomeView = arguments[5];
 
 /*==================================================
  Start up SD global object.
@@ -203,32 +214,32 @@ Routes Vars
 Routes
 ================================================== */
 	var names = [];
-		names[12] = 'login';
-		names[13] = 'forgotten';
-		names[14] = 'signup';
-		names[15] = 'wank';
-		names[16] = 'hands';
-		names[17] = 'oral';
-		names[18] = 'sex';
-		names[19] = 'anything';
-		names[20] = 'who';
-		names[21] = 'whoadd';
-		names[22] = 'place';
-		names[23] = 'overview';
-		names[24] = 'graphs';
-		names[25] = 'userhistory';
-		names[26] = 'managewhos';
-		names[27] = 'settings';
-		names[28] = 'calendar';
-		names[29] = 'shop';
-		names[30] = 'privacy';
-		names[31] = 'setpin';
-		names[32] = 'confirmpin';
-		names[33] = 'pinsave';
-		names[34] = 'pin';
-		names[35] = 'terms';
-		names[36] = 'diary';
-		names[37] = 'positions';
+		names[6] = 'login';
+		names[7] = 'forgotten';
+		names[8] = 'signup';
+		names[9] = 'wank';
+		names[10] = 'hands';
+		names[11] = 'oral';
+		names[12] = 'sex';
+		names[13] = 'anything';
+		names[14] = 'who';
+		names[15] = 'whoadd';
+		names[16] = 'place';
+		names[17] = 'overview';
+		names[18] = 'graphs';
+		names[19] = 'userhistory';
+		names[20] = 'managewhos';
+		names[21] = 'settings';
+		names[22] = 'calendar';
+		names[23] = 'shop';
+		names[24] = 'privacy';
+		names[25] = 'setpin';
+		names[26] = 'confirmpin';
+		names[27] = 'pinsave';
+		names[28] = 'pin';
+		names[29] = 'terms';
+		names[30] = 'diary';
+		names[31] = 'positions';
 	var myArgs = arguments;
 
 	names.forEach(function(me, key){
@@ -264,6 +275,7 @@ On Device Ready
 		document.addEventListener("deviceready", function(){
 			Backbone.history.start();
 			SD.checkConnection();
+			document.addEventListener("menubutton", SD.DV.openMenu, false);
 		}, true);
 	}else{
 		$(document).ready(function() {

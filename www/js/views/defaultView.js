@@ -34,7 +34,7 @@ define([
 			el: 'body > shell',
 			events: { //Add click events for global clicks
 				'click logo a': 'goHome',
-				'click footer sexnav' : 'sexNav',
+				'click footer sexnav div' : 'sexNav',
 				'click footer saveBox': 'saveBox',
 				'click footer savewho': 'saveWho',
 				'click #hidepage' : 'openMenu',
@@ -59,7 +59,7 @@ define([
 			doLogOut: function(){
 				SD.login.doLogOut();
 			},
-			openMenu: function(el){
+			openMenu: function(){
 				$('body').removeAttr('style').toggleClass('menuOpen');
 			},
 			goHome: function(){
@@ -94,15 +94,18 @@ define([
 				//Loop through the elements and work out which one is currently selected
 				//from the #sexCurrentlySelected and then set this grab the index of this item
 				//This is used to give the slider the current sex
-				for(var index in m.currentTarget.children) {
-					if(m.target.outerHTML === m.currentTarget.children[index].innerHTML){
-						var currentClick = m.currentTarget.children[index],
-							currentClickIndex = index;
-					}
-				}
+//				for(var index in m.currentTarget.children) {
+//					if(m.target.outerHTML === m.currentTarget.children[index].innerHTML){
+//						var currentClick = m.currentTarget.children[index],
+//							currentClickIndex = index;
+//					}
+//				}
 
-				//First we make sure that the sexnav element is in fact the correct element.
-				//Sometimes we clicked just outside of the element, but still within the sexnav. Causing JS errors
+				var currentClickIndex = m.currentTarget.attributes[0].nodeValue,
+					currentClick = $(m.currentTarget);
+
+//				//First we make sure that the sexnav element is in fact the correct element.
+//				//Sometimes we clicked just outside of the element, but still within the sexnav. Causing JS errors
 				if(typeof currentClickIndex !== "undefined"){
 
 					//update current sex with the class
@@ -114,7 +117,7 @@ define([
 					}else{
 						SD.pageLoad(currentClick.attributes[0].value);
 					}
-					SD.SEXDEFAULTS.sexnumber = parseInt(currentClickIndex)+1; //update which sex number we are on
+					SD.SEXDEFAULTS.sexnumber = parseInt(currentClickIndex); //update which sex number we are on
 				}
 			},
 			saveWho: function(){
