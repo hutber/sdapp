@@ -7475,11 +7475,11 @@ header back, header add {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/style\.scss}line{font-family:\00003226}}
-.place back, .who back, .whoadd back, .diary back, .positions back {
+.place back, .who back, .whoadd back, .diary back, .positions back, .extra back {
   display: inline-block;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/style\.scss}line{font-family:\00003230}}
-.place menubtn, .who menubtn, .whoadd menubtn, .diary menubtn, .positions menubtn {
+.place menubtn, .who menubtn, .whoadd menubtn, .diary menubtn, .positions menubtn, .extra menubtn {
   display: none;
 }
 

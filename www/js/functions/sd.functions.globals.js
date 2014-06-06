@@ -14,7 +14,7 @@ define([
 	'use strict';
 
 	//Straight up just start fastclick if needed
-	fastclick(document.body);
+	fastclick.attach(document.body);
 
 	$.fn.serializeObject = function() {
 		var o = {};
