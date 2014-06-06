@@ -18,7 +18,7 @@ define([
 			SD.setTitle('SELECT SOME SEXYNESS');
 			this.$el.html(this.template);
 
-			if(jQuery.fn.royalSlider){
+			if(typeof jQuery.fn.royalSlider === "function"){
 				SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
 					controlNavigation: 'none',
 					arrowsNavHideOnTouch: true,

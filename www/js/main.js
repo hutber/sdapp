@@ -54,7 +54,7 @@ require.config({
 			deps: ['dv']
 		},
 		ui: {
-			deps: ['ge']
+			deps: ['ge', 'slider']
 		},
 		JST: {
 			deps: ['underscore'],
@@ -69,11 +69,11 @@ require.config({
 			exports: 'jQuery.fn.visibleNearby'
 		},
 		sliderthumbnails: {
-			deps: ['slider'],
+			deps: ['slidervisibleNearby'],
 			exports: 'jQuery.fn.thumbnails'
 		},
 		sliderCaption: {
-			deps: ['slider'],
+			deps: ['sliderthumbnails'],
 			exports: 'jQuery.fn.global-caption'
 		},
 		flowtype: {
@@ -275,6 +275,8 @@ On Device Ready
 		document.addEventListener("deviceready", function(){
 			Backbone.history.start();
 			SD.checkConnection();
+
+			//hook into physical buttons on phone
 			document.addEventListener("menubutton", SD.DV.openMenu, false);
 		}, true);
 	}else{

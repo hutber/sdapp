@@ -102,23 +102,22 @@ define([
 //					}
 //				}
 
-				var currentClickIndex = m.currentTarget.attributes[0].nodeValue,
-					currentClick = $(m.currentTarget);
+				var currentClick = $(m.currentTarget);
 
 //				//First we make sure that the sexnav element is in fact the correct element.
 //				//Sometimes we clicked just outside of the element, but still within the sexnav. Causing JS errors
-				if(typeof currentClickIndex !== "undefined"){
+				if(typeof currentClick !== "undefined"){
 
 					//update current sex with the class
-					$(currentClick).addClass('selected');
+					currentClick.addClass('selected');
 
 					//Check to see if the slider is open, if it is lets go to slide
 					if($('.royalSlider')[0] && jQuery.fn.royalSlider){
-						SD.SLIDER.goTo(currentClickIndex);
+						SD.SLIDER.goTo(currentClick.data('order'));
 					}else{
 						SD.pageLoad(currentClick.data('type'));
 					}
-					SD.SEXDEFAULTS.sexnumber = parseInt(currentClickIndex); //update which sex number we are on
+					SD.SEXDEFAULTS.sexnumber = parseInt(currentClick.data('order')); //update which sex number we are on
 				}
 			},
 			saveWho: function(){
