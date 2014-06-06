@@ -60,7 +60,7 @@ define([
 				SD.login.doLogOut();
 			},
 			openMenu: function(){
-				if(localStorage.privateKey!=="")
+				if(typeof localStorage.privateKey!=="undefined")
 				$('body').removeAttr('style').toggleClass('menuOpen');
 			},
 			goHome: function(){
