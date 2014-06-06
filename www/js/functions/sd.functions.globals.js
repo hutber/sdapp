@@ -9,12 +9,12 @@
  #Networking functions
  */
 define([
-	'jquery',
-	'backbone',
-	'JST',
 	'fastclick',
-], function ($, Backbone, JST) {
+], function (fastclick) {
 	'use strict';
+
+	//Straight up just start fastclick if needed
+	fastclick(document.body);
 
 	$.fn.serializeObject = function() {
 		var o = {};
