@@ -53,7 +53,8 @@ Globals
 	SD.SEXDEFAULTS = SD.sex.sexDefaults();
 	SD.FULLSEX = function (){
 		if(typeof localStorage.FULLSEX !== "undefined" && localStorage.FULLSEX !== "[]"){
-			var tmpObj = JSON.parse(localStorage.FULLSEX);
+			var tmpObj = JSON.parse(localStorage.FULLSEX),
+				failedData = false;
 
 			//This one time check will loop through all data in FULLSEX and check to make sure everything is in order.
 			//If it is not it will tell the user to login and out to reset the data.
@@ -64,9 +65,7 @@ Globals
 							data.location = JSON.parse(data.location);
 						}
 						catch (e) {
-							if(confirm('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok?')){
-								SD.login.doLogOut();
-							}
+							failedData = true;
 						}
 					}
 					if(data.place !== null && typeof data.place !== "object") {
@@ -74,9 +73,7 @@ Globals
 							data.place = JSON.parse(data.place);
 						}
 						catch (e) {
-							if(confirm('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok?')){
-								SD.login.doLogOut();
-							}
+							failedData = true;
 						}
 					}
 					if(data.who !== null && typeof data.who !== "object") {
@@ -84,9 +81,7 @@ Globals
 							data.who = JSON.parse(data.who);
 						}
 						catch (e) {
-							if(confirm('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok?')){
-								SD.login.doLogOut();
-							}
+							failedData = true;
 						}
 					}
 					if(data.positions !== null && typeof data.positions !== "object") {
@@ -94,13 +89,16 @@ Globals
 							data.positions = JSON.parse(data.positions);
 						}
 						catch (e) {
-							if(confirm('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok?')){
-								SD.login.doLogOut();
-							}
+							failedData = true;
 						}
 					}
 				});
 			});
+
+			if(failedData){
+				alert('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok...');
+				SD.login.doLogOut();
+			}
 
 			return tmpObj;
 		}else{
