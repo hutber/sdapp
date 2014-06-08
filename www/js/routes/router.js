@@ -10,11 +10,12 @@ define([
     var Router = Backbone.Router.extend({
         routes: {
             '': 'index',
-//			'selector': 'index',
 			'selector': 'login',
 			'login': 'login',
 			'forgotten': 'forgotten',
 			'signup': 'signup',
+
+			//Sex Selection
 			'home': 'home',
 			'wank': 'wank',
 			'hands': 'hands',
@@ -26,6 +27,9 @@ define([
 			'who': 'who',
 			'whoadd': 'whoadd',
 			'place': 'place',
+			'diary' : 'diary',
+			'extra' : 'extra',
+			'positions' : 'positions',
 
 			//Stats
 			'overview': 'overview',
@@ -45,11 +49,6 @@ define([
 			'shop' : 'shop',
 			'privacy' : 'privacy',
 			'terms' : 'terms',
-			'extra' : 'extra',
-			'diary' : 'diary',
-
-			//positions
-			'positions' : 'positions',
         }
     });
 

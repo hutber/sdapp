@@ -90,6 +90,9 @@ require.config({
 		mobiscrollDate: {
 			deps: ['jquery','mobiscrollScroller']
 		},
+		mobiscrollDuration: {
+			deps: ['jquery','mobiscrollDate']
+		},
 		forms: {
 			deps: ['jquery']
 		},
@@ -109,6 +112,7 @@ require.config({
 		mobiscroll: 'libs/plugins/date/mobiscroll.core',
 		mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
 		mobiscrollDate: 'libs/plugins/date/mobiscroll.datetime',
+		mobiscrollDuration: 'libs/plugins/date/mobiscroll.duration',
 		forms: 'libs/plugins/hutber.forms',
 		highcharts: 'libs/plugins/highcharts',
 		hammer: 'libs/plugins/hammer/hammer.min',

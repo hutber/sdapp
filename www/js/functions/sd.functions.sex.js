@@ -4,9 +4,6 @@
  ==================================================
  */
 define([
-	'mobiscroll',
-	'mobiscrollScroller',
-	'mobiscrollDate',
 ], function () {
 
 	SD.sex = {};
@@ -21,6 +18,7 @@ define([
 			rating: 0,
 			location: [false, 'Click to get your location'],
 			diary: "",
+//			duration: [false,false],
 			positions: null,
 		}
 	};
@@ -43,6 +41,7 @@ define([
 			uid:localStorage.uid,
 			diary:data.diary,
 			place:(typeof data.place !== "undefined") ? data.place : null,
+//			duration:(typeof data.duration !== "undefined") ? data.duration : null,
 			who:(typeof data.who !== "undefined") ? data.who : null,
 			positions:(typeof data.positions !== "undefined") ? data.positions : null,
 		};
@@ -58,6 +57,7 @@ define([
 		}
 		php.rating = SD.SEXDEFAULTS.rating;
 		php.diary = SD.SEXDEFAULTS.diary;
+//		php.duration = SD.SEXDEFAULTS.duration;
 
 		if(SD.SEXDEFAULTS.location[0]!==false){
 			php.location = SD.SEXDEFAULTS.location[0];

@@ -6,6 +6,7 @@ define([
 	'mobiscroll',
 	'mobiscrollScroller',
 	'mobiscrollDate',
+	'mobiscrollDuration',
 ], function () {
 	'use strict';
 
@@ -91,6 +92,9 @@ define([
 			},
 			position: function(){
 				SD.pageLoad('positions');
+			},
+			duration: function(){
+				$('duration').scroller('show');
 			},
 			i: function(){
 				this.moreBelow.moveToBottom();
@@ -190,8 +194,11 @@ define([
 					//Display the correct rating
 					SD.DSV.rating();
 
-					//Time date picker
-					$('when').mobiscroll({
+					/******************************************************************
+					*						Bof Set up mobi scrolls
+					*****************************************************************/
+					//# Time date picker ----------------------------------------------
+					var currentDatePicker = $('when').mobiscroll({
 						preset: 'datetime',
 						dateFormat: 'DD d M yy',
 						timeFormat: 'H:ii',
@@ -204,9 +211,7 @@ define([
 							SD.SEXDEFAULTS.sextime[0] = el,
 							SD.SEXDEFAULTS.sextime[1] = currentDatePicker.values;
 						}
-					});
-					//set the current date instance
-					var currentDatePicker = $('when').mobiscroll('getInst');
+					}).mobiscroll('getInst');
 
 //					Update sextime to have the current version of the date picker
 					SD.SEXDEFAULTS.sextime[0] = currentDatePicker;
@@ -228,6 +233,48 @@ define([
 					//On page load update the date string
 					$('when date').html(currentDatePicker.val);
 
+					//# Duration picker ----------------------------------------------
+//					var currentDuration = $('duration').mobiscroll().duration({
+//						theme: 'default',
+//						display: 'modal',
+//						mode:'scroller',
+//						durationWheels: ['hours', 'minutes'],
+//						defaults: [0,0],
+//						onSelect: function(el) {
+//							if(el === "0:00"){
+//								$('duration entrytext').html('');
+//							}else{
+//								$('duration entrytext').html(el);
+//								SD.SEXDEFAULTS.duration[0] = el,
+//								SD.SEXDEFAULTS.duration[1] = currentDatePicker.values;
+//							}
+//						}
+//					}).mobiscroll('getInst');
+//
+////					Update sextime to have the current version of the date picker
+//					SD.SEXDEFAULTS.duration[0] = currentDuration;
+//
+////					Update current instance to the old value of the date if it exists
+//					if(SD.SEXDEFAULTS.duration[1]){
+//						if(SD.SEXDEFAULTS.edit && typeof SD.SEXDEFAULTS.duration[1][0] === "string" && typeof SD.SEXDEFAULTS.duration[1][1] === "string" && typeof SD.SEXDEFAULTS.duration[1][2] === "string" && typeof SD.SEXDEFAULTS.duration[1][3] === "string" && typeof SD.SEXDEFAULTS.duration[1][4] === "string"){
+//							(function(item){
+//								item[1]--;
+//								currentDuration.setValue(item);
+//							})(SD.SEXDEFAULTS.duration[1].slice(0));
+//						}
+//						else {
+//							currentDuration.setValue(SD.SEXDEFAULTS.duration[1]);
+//						}
+//					}else{
+//						SD.SEXDEFAULTS.duration[1] = currentDuration.values;
+//					}
+//					//On page load update the date string
+//					$('duration entrytext').html(currentDuration.val);
+
+
+					/******************************************************************
+					*						Eof Set up mobi scrolls
+					*****************************************************************/
 				}
 			},
 			render: function (data) {
