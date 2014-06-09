@@ -1,5 +1,6 @@
+/*jslint eqeq: true, plusplus: true, undef: true, sloppy: true, vars: true, forin: true, nomen: true */
 /*!
- * Mobiscroll v2.11.1
+ * Mobiscroll v2.9.3
  * http://mobiscroll.com
  *
  * Copyright 2010-2014, Acid Media
@@ -31,8 +32,9 @@
     }
 
     function getCoord(e, c) {
-        var ev = e.originalEvent || e;
-        return ev.changedTouches ? ev.changedTouches[0]['page' + c] : e['page' + c];
+        var org = e.originalEvent,
+            ct = e.changedTouches;
+        return ct || (org && org.changedTouches) ? (org ? org.changedTouches[0]['page' + c] : ct[0]['page' + c]) : e['page' + c];
     }
 
     function init(that, options, args) {
@@ -80,13 +82,12 @@
         return true;
     }
 
-    var id = +new Date(),
+    var id = +new Date,
         touches = {},
         instances = {},
         extend = $.extend,
         mod = document.createElement('modernizr').style,
         has3d = testProps(['perspectiveProperty', 'WebkitPerspective', 'MozPerspective', 'OPerspective', 'msPerspective']),
-        hasFlex = testProps(['flex', 'msFlex', 'WebkitBoxDirection']),
         prefix = testPrefix(),
         pr = prefix.replace(/^\-/, '').replace(/\-$/, '').replace('moz', 'Moz');
 
@@ -100,14 +101,11 @@
             prefix: prefix,
             jsPrefix: pr,
             has3d: has3d,
-            hasFlex: hasFlex,
             getCoord: getCoord,
             testTouch: testTouch
         },
         presets: {},
-        themes: {
-            listview: {}
-        },
+        themes: {},
         i18n: {},
         instances: instances,
         classes: {},
