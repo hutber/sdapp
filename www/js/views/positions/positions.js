@@ -78,6 +78,7 @@ define([
 				}
 				results.append(myself.resultreturned({'position':name, 'positionNumber':me, 'selected': selected}));
 			});
+			$('page').scrollTop(0);
 			this.checkIfAWhoIsSelected();
 			SD.setTitle('Who was involved?');
 		}

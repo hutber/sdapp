@@ -7,8 +7,11 @@ define([
 	'mobiscrollScroller',
 	'mobiscrollDate',
 	'mobiscrollDuration',
+	'mboi',
 ], function () {
 	'use strict';
+
+	var createMobile = arguments[5];
 
 	// The default sex view view ----------------------------------------------------------
 	SD.defaultSexView = function(){
@@ -22,8 +25,8 @@ define([
 				if(name !== 'date')
 				this[name](el);
 			},
-			when: function(){
-				$('when').scroller('show');
+			sextime: function(){
+				$('sextime').scroller('show');
 			},
 			who: function(){
 				SD.pageLoad('who');
@@ -197,8 +200,9 @@ define([
 					/******************************************************************
 					*						Bof Set up mobi scrolls
 					*****************************************************************/
-					//# Time date picker ----------------------------------------------
-					var currentDatePicker = $('when').mobiscroll({
+					var when = new createMobile();
+					when.target = 'sextime';
+					when.settings = {
 						preset: 'datetime',
 						dateFormat: 'DD d M yy',
 						timeFormat: 'H:ii',
@@ -206,71 +210,34 @@ define([
 						ampm: false,
 //						height: SD.pageHeight/20,
 						dateOrder: 'dMyy',
-						onSelect: function(el) {
-							$('when date').html(el);
-							SD.SEXDEFAULTS.sextime[0] = el,
-							SD.SEXDEFAULTS.sextime[1] = currentDatePicker.values;
+						onSelect: function(el, results) {
+							$('sextime date').html(el);
+							SD.SEXDEFAULTS.sextime[0] = results,
+							SD.SEXDEFAULTS.sextime[1] = results.values;
 						}
-					}).mobiscroll('getInst');
-
-//					Update sextime to have the current version of the date picker
-					SD.SEXDEFAULTS.sextime[0] = currentDatePicker;
-
-//					Update current instance to the old value of the date if it exists
-					if(SD.SEXDEFAULTS.sextime[1]){
-						if(SD.SEXDEFAULTS.edit && typeof SD.SEXDEFAULTS.sextime[1][0] === "string" && typeof SD.SEXDEFAULTS.sextime[1][1] === "string" && typeof SD.SEXDEFAULTS.sextime[1][2] === "string" && typeof SD.SEXDEFAULTS.sextime[1][3] === "string" && typeof SD.SEXDEFAULTS.sextime[1][4] === "string"){
-							(function(item){
-								item[1]--;
-								currentDatePicker.setValue(item);
-							})(SD.SEXDEFAULTS.sextime[1].slice(0));
-						}
-						else {
-							currentDatePicker.setValue(SD.SEXDEFAULTS.sextime[1]);
-						}
-					}else{
-						SD.SEXDEFAULTS.sextime[1] = currentDatePicker.values;
-					}
-					//On page load update the date string
-					$('when date').html(currentDatePicker.val);
+					};
+					when.init();
 
 					//# Duration picker ----------------------------------------------
-//					var currentDuration = $('duration').mobiscroll().duration({
-//						theme: 'default',
-//						display: 'modal',
-//						mode:'scroller',
-//						durationWheels: ['hours', 'minutes'],
-//						defaults: [0,0],
-//						onSelect: function(el) {
-//							if(el === "0:00"){
-//								$('duration entrytext').html('');
-//							}else{
-//								$('duration entrytext').html(el);
-//								SD.SEXDEFAULTS.duration[0] = el,
-//								SD.SEXDEFAULTS.duration[1] = currentDatePicker.values;
-//							}
-//						}
-//					}).mobiscroll('getInst');
-//
-////					Update sextime to have the current version of the date picker
-//					SD.SEXDEFAULTS.duration[0] = currentDuration;
-//
-////					Update current instance to the old value of the date if it exists
-//					if(SD.SEXDEFAULTS.duration[1]){
-//						if(SD.SEXDEFAULTS.edit && typeof SD.SEXDEFAULTS.duration[1][0] === "string" && typeof SD.SEXDEFAULTS.duration[1][1] === "string" && typeof SD.SEXDEFAULTS.duration[1][2] === "string" && typeof SD.SEXDEFAULTS.duration[1][3] === "string" && typeof SD.SEXDEFAULTS.duration[1][4] === "string"){
-//							(function(item){
-//								item[1]--;
-//								currentDuration.setValue(item);
-//							})(SD.SEXDEFAULTS.duration[1].slice(0));
-//						}
-//						else {
-//							currentDuration.setValue(SD.SEXDEFAULTS.duration[1]);
-//						}
-//					}else{
-//						SD.SEXDEFAULTS.duration[1] = currentDuration.values;
-//					}
-//					//On page load update the date string
-//					$('duration entrytext').html(currentDuration.val);
-
+					var duration = new createMobile();
+					duration.target = 'duration';
+					duration.settings = {
+						theme: 'default',
+						display: 'modal',
+						mode:'scroller',
+						durationWheels: ['hours', 'minutes'],
+						defaults: [0,0],
+						onSelect: function(el, results) {
+							if(el === "0:00"){
+								$('duration date').html('');
+							}else{
+								$('duration date').html(el);
+								SD.SEXDEFAULTS.duration[0] = results,
+								SD.SEXDEFAULTS.duration[1] = results.values;
+							}
+						}
+					};
+					duration.init();
 
 					/******************************************************************
 					*						Eof Set up mobi scrolls

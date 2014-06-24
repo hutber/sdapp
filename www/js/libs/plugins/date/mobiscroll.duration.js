@@ -68,7 +68,6 @@
     var settings = inst.settings || {},
         wheelNames = settings.durationWheels || ['days', 'hours', 'minutes'],
         wheels = [],
-        wheelNames,
         defaultVals = settings.defaults || [],
         setDefaults = !defaultVals.length,
         elm = $(this); // 'this' refers to the DOM element on which the plugin is called

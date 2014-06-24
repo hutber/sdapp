@@ -2,10 +2,9 @@
  * Created by Hutber on 04/02/14.
  */
 define([
-	'hammer'
+	'hammerjs',
 ], function (Hammer) {
 	'use strict';
-
 // #Set up the Deult router view ------------------------------------------------------
 	SD.defaultView = function(){ //Default controller for all views
 		var templatesNeeded = function () { //create a var of the template view
@@ -44,16 +43,47 @@ define([
 			render: function () {
 				//Output correct template
 				this.$el.html(templatesNeeded);
+//				this.slideMenu.init();
 			},
 			slideMenu: {
+				menuItem: document.getElementById('menuslidearea'),
 				init: function(){
-//					var menuItem = document.getElementById('hidepage');
-//					if(menuItem){
-//						var hammertime = Hammer(menuItem).on('dragleft', function(event) {
-//							document.body.style.MozTransform = 'translate('+event.gesture.touches[0].screenX +'px,0)';
-//							document.body.style.webkitTransform = '-webkit-translate('+event.gesture.touches[0].screenX +'px,0)';
-//						});
-//					}
+					var myself = this;
+					c(myself.menuItem);
+					var hammerOptions = {
+						dragBlockVertical: true,
+						dragLockToAxis: true
+					};
+
+					//setup slides
+					var sliderThing = Hammer(myself.menuItem, hammerOptions);
+					sliderThing.add(new Hammer.Pan({ direction: Hammer.DIRECTION_HORIZONTAL}));
+
+
+					sliderThing.on("pan panend", function(ev) { myself.moveMenu(ev); });
+				},
+				moveMenu: function(ev){
+					var moveNumber = ev.deltaX;
+					this.setelOffset(moveNumber);
+				},
+				setelOffset: function(num, animate, force) {
+					var myself = this;
+					$(myself.menuItem).removeClass("animate");
+
+					if(animate) {
+						$(myself.menuItem).addClass("animate");
+					}
+
+					if(Modernizr.csstransforms3d) {
+						$('body').css("transform", "translate3d("+ num +"px,0,0) scale3d(1,1,1)");
+						$('#menu').css("transform", "translate3d("+ -num +"px,0,0) scale3d(1,1,1)");
+					}
+					else if(Modernizr.csstransforms) {
+						myself.menuItem.css("transform", "translate("+ num +"px,0)");
+					}
+					else {
+						myself.menuItem.css("left", num*2+"px");
+					}
 				}
 			},
 			doLogOut: function(){
@@ -91,17 +121,6 @@ define([
 			sexNav: function(m){
 				//make sure no elements have any selected items
 				$('sexnav div.selected').removeAttr('class');
-
-				//Loop through the elements and work out which one is currently selected
-				//from the #sexCurrentlySelected and then set this grab the index of this item
-				//This is used to give the slider the current sex
-//				for(var index in m.currentTarget.children) {
-//					if(m.target.outerHTML === m.currentTarget.children[index].innerHTML){
-//						var currentClick = m.currentTarget.children[index],
-//							currentClickIndex = index;
-//					}
-//				}
-
 				var currentClick = $(m.currentTarget);
 
 //				//First we make sure that the sexnav element is in fact the correct element.

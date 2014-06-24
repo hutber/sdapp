@@ -68,6 +68,14 @@ Globals
 							failedData = true;
 						}
 					}
+					if(data.extra !== null && typeof data.extra !== "object") {
+						try {
+							data.extra = JSON.parse(data.extra);
+						}
+						catch (e) {
+							failedData = true;
+						}
+					}
 					if(data.place !== null && typeof data.place !== "object") {
 						try {
 							data.place = JSON.parse(data.place);
@@ -308,7 +316,6 @@ Networking functions
 			states[Connection.CELL_4G]  = 'Cell 4G connection';
 			states[Connection.CELL]     = 'Cell generic connection';
 			states[Connection.NONE]     = 'No network connection';
-
 //			c('Connection type: ' + states[networkState]);
 		}else{
 			c('Connection not ready yet');
@@ -332,7 +339,7 @@ Networking functions
 			if(typeof sessionStorage.blockpin === "undefined" ){
 				sessionStorage.setItem('appOpenedFirstTime',true);
 			}
-			sessionStorage.removeItem('blockpin')
+			sessionStorage.removeItem('blockpin');
 
 			//load in cordova.js if its not already there
 			if(typeof cordova === "undefined"){

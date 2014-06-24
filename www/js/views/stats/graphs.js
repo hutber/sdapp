@@ -2,7 +2,6 @@ define([
 	'dv',
 	'date',
 	'highcharts',
-	'flowtype',
 ], function () {
 	'use strict';
 
@@ -77,11 +76,6 @@ define([
 
 			if(SD.SEXNUMBERS.total > 0){
 				$('.nostats').hide();
-				$('monthpicker').flowtype({
-					minFont   : 12,
-					maxFont   : 18,
-					fontRatio : 20
-				});
 
 				graph.highcharts({
 					chart: {

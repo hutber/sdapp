@@ -1,8 +1,6 @@
 define([
-	'hammer',
-//	'jqueryhammer',
 	'dsv',
-], function (Hammer) {
+], function () {
 	'use strict';
 
 	//set up homeview
@@ -27,7 +25,6 @@ define([
 					success: function(data){
 						SD.spinner.hide();
 						if(data === ""){
-
 							//Remove it from the current WHO's
 							SD.WHO = SD.WHO.filter(function(me){
 								return parseInt(me.id) !== parseInt(whoId);
@@ -35,7 +32,7 @@ define([
 							//Replace localstorage for saving for user
 							SD.saveVar('WHO');
 
-							parentMe.fadeOut('500')
+							parentMe.fadeOut('500');
 						}else{
 							SD.message.showMessage('A server error occured, please try again :(', 'bad', 1500);
 						}
@@ -49,19 +46,6 @@ define([
 
 			// #Rewrite HTML on page with tempalte
 			myself.$el.html(myself.template(SD.WHO));
-
-			var whos = document.getElementsByClassName('awho');
-			$('awho').each(function(){
-				var myself = $(this);
-				Hammer($(this)[0]).on('dragleft', function(event) {
-					myself.find('detailsimage').addClass('hiding');
-					myself.find('deleteButton').addClass('showing');
-				});
-				Hammer($(this)[0]).on('dragright', function(event) {
-					myself.find('detailsimage').removeClass('hiding');
-					myself.find('deleteButton').removeClass('showing');
-				});
-			})
 		},
 	});
 	return managewhos;

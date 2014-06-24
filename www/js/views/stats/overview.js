@@ -2,7 +2,6 @@ define([
 	'dv',
 	'date',
 	'highcharts',
-	'flowtype',
 ], function () {
 	'use strict';
 
@@ -34,11 +33,6 @@ define([
 			this.$el.html(this.template(data));
 			SD.setTitle('Stats Overview');
 
-			$('monthpicker').flowtype({
-				minFont   : 12,
-				maxFont   : 18,
-				fontRatio : 20
-			});
 			/************************************************
 			================Mini Graphs====================
 			************************************************/

@@ -79,6 +79,7 @@ define([
 				}
 				results.append(myself.resultreturned({'item':name, 'selected': selected}));
 			});
+			$('page').scrollTop(0);
 			this.checkIfAWhoIsSelected();
 			SD.setTitle('Who was involved?');
 		}

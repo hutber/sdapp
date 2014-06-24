@@ -18,8 +18,9 @@ define([
 			rating: 0,
 			location: [false, 'Click to get your location'],
 			diary: "",
-//			duration: [false,false],
+			duration: [false,false],
 			positions: null,
+			extra: {}
 		}
 	};
 	SD.sex.buildMissing = function(data, sid){
@@ -40,8 +41,9 @@ define([
 			sextime:data.sextime,
 			uid:localStorage.uid,
 			diary:data.diary,
+			extra:data.extra,
 			place:(typeof data.place !== "undefined") ? data.place : null,
-//			duration:(typeof data.duration !== "undefined") ? data.duration : null,
+			duration:(typeof data.duration !== "undefined") ? data.duration : null,
 			who:(typeof data.who !== "undefined") ? data.who : null,
 			positions:(typeof data.positions !== "undefined") ? data.positions : null,
 		};
@@ -57,7 +59,8 @@ define([
 		}
 		php.rating = SD.SEXDEFAULTS.rating;
 		php.diary = SD.SEXDEFAULTS.diary;
-//		php.duration = SD.SEXDEFAULTS.duration;
+		php.extra = SD.SEXDEFAULTS.extra;
+		php.duration = (SD.SEXDEFAULTS.duration[1][0]*60)+SD.SEXDEFAULTS.duration[1][1];
 
 		if(SD.SEXDEFAULTS.location[0]!==false){
 			php.location = SD.SEXDEFAULTS.location[0];
@@ -77,7 +80,6 @@ define([
 		if(localStorage.privateKey){
 			SD.spinner.show();
 			var saveSexDetails = SD.sex.convertPhp(),
-
 				dataToSend = function(){
 					if(SD.SEXDEFAULTS.edit){
 						return {
@@ -92,6 +94,7 @@ define([
 						};
 					}
 				}();
+
 			$.ajax({
 				url: SD.AJAX+'add',
 				type: 'POST',
@@ -282,25 +285,40 @@ define([
 			//load from defaults
 			dataConverted = SD.sex.sexDefaults();
 
-			//Now build up the details
-			//create data object
+			//Build date to work with
 			var tmpDate = Date.parse(data.sextime);
 			dataConverted.sextime[1] = [tmpDate.toString('dd'),tmpDate.toString('MM'),tmpDate.toString('yyyy'),tmpDate.toString('HH'),tmpDate.toString('mm'),0], //DD,MM,YY,HH,MM,SS
 
+			// #Rating #Diary -----------------------------------------------------
 			//flat converts
 			dataConverted.rating = data.rating,
+			dataConverted.extra = data.extra,
 			dataConverted.diary = (data.diary === null) ? '' : data.diary;
 
+			// #Location -----------------------------------------------------
 			//Work out if we should add location to edit
 			if(data.location !== null){
 				dataConverted.location[0] = data.location,
 				dataConverted.location[1] = data.location.city+', '+data.location.country;
 			}
 
+			// #Duration -----------------------------------------------------
+			dataConverted.duration = function(){
+				var totalDuration = [false,false],
+					tmpNumber = null,
+					covertedNumber = data.duration/60+'';
+
+				tmpNumber = covertedNumber.split(".");
+				totalDuration[1] = [parseInt(tmpNumber[0]),parseInt(tmpNumber[1])];
+				return totalDuration;
+			}();
+
+			// #Place #Who -----------------------------------------------------
 			//a little more complicated
 			dataConverted.place = this.checkParseOrObject(data.place),
 			dataConverted.who = this.checkParseOrObject(data.who),
 
+			// #Positions -----------------------------------------------------
 			//we need to convert positions, we need to check against SD.POSITIONS
 			dataConverted.positions = function(){
 				if(data.positions !== null){
@@ -317,7 +335,7 @@ define([
 
 			dataConverted.edit = true,
 			dataConverted.id = data.id;
-
+			c(dataConverted);
 			return dataConverted;
 		}
 	};

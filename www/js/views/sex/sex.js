@@ -19,7 +19,7 @@ define([
 
 			SD.DSV.render(data);
 
-			SD.setTitle('Argh yeee...  ...');
+			SD.setTitle('Argh yeee......');
 
 		}
 	});

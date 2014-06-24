@@ -4,9 +4,6 @@
  ==================================================
  */
 define([
-	'mobiscroll',
-	'mobiscrollScroller',
-	'mobiscrollDate',
 ], function () {
 
 	SD.globalEvents = {};

@@ -76,9 +76,8 @@ require.config({
 			deps: ['sliderthumbnails'],
 			exports: 'jQuery.fn.global-caption'
 		},
-		flowtype: {
-			deps: ['jquery'],
-			exports: 'jQuery.fn.flowtype'
+		mboi: {
+			deps: ['slider', 'ui']
 		},
 		mobiscroll: {
 			deps: ['jquery'],
@@ -107,7 +106,6 @@ require.config({
 		underscore: 'libs/underscore-min',
 		modernizr: 'libs/modernizr-dev',
 		slider: 'libs/plugins/jquery.royalslider',
-		flowtype: 'libs/plugins/flowtype',
 		fastclick: 'libs/plugins/FastClick',
 		mobiscroll: 'libs/plugins/date/mobiscroll.core',
 		mobiscrollScroller: 'libs/plugins/date/mobiscroll.scroller',
@@ -115,9 +113,7 @@ require.config({
 		mobiscrollDuration: 'libs/plugins/date/mobiscroll.duration',
 		forms: 'libs/plugins/hutber.forms',
 		highcharts: 'libs/plugins/highcharts',
-		hammer: 'libs/plugins/hammer/hammer.min',
-//		jqueryhammer:'libs/plugins/hammer/jquery.hammer.min',
-//		backbonehammer:'libs/plugins/hammer/backbone.hammer',
+		hammerjs: 'libs/plugins/hammer.min',
 		date: 'libs/plugins/date',
 		core: 'core.functions',
 		sd : 'functions/sd.functions.globals',
@@ -126,6 +122,8 @@ require.config({
 		ss : 'functions/sd.functions.selection',
 		ge : 'functions/sd.functions.globalEvents',
 		ui : 'functions/sd.functions.ui',
+		onoff : 'functions/sd.functions.onoff',
+		mboi : 'functions/sd.functions.mobi',
 		sloc : 'functions/sd.functions.location',
 		dv : 'views/defaultView',
 		dsv : 'views/defaultSexView',
@@ -268,15 +266,6 @@ Routes
 		});
 
 /*==================================================
-Global Plugins
-================================================== */
-//$('body').flowtype({
-//	minFont   : 18,
-//	maxFont   : 30,
-//	fontRatio : 20
-//});
-
-/*==================================================
 On Device Ready
 ================================================== */
 	if(SD.isMobile){
@@ -289,7 +278,6 @@ On Device Ready
 		}, true);
 	}else{
 		$(document).ready(function() {
-			window.scrollTo(0, 1);
 			Backbone.history.start();
 		});
 	}

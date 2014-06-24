@@ -17,13 +17,13 @@ define([
 			SD.VIEWS[document.body.className+'View'][functionName](me);
 		},
 		removeSex: function(me){
-
 			var parentMe = $(me.currentTarget).parent(),
 				deleteDetails = parentMe.find('h2')[0].innerHTML,
 				sexId = parentMe[0].id;
 				SD.sex.removeSex(sexId, deleteDetails, parentMe);
 		},
 		edit: function(me){
+			//build up details to select the edit data
 			var id = me.currentTarget.parentElement.id,
 				selectedDate = $('#month :selected').val();
 
