@@ -104,7 +104,7 @@ Globals
 			});
 
 			if(failedData){
-				alert('Sorry, we need to log you out, since the backend has changed since the update. We hope this is ok...');
+				alert('Sorry, we need to log you out. We have added extras, now we need to rebuild the app quickly.');
 				SD.login.doLogOut();
 			}
 
