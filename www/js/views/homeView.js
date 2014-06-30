@@ -43,28 +43,33 @@ define([
 					SD.SLIDER.goTo($('sexnav div.selected').index());
 				}
 
-				SD.SLIDER.ev.on('rsDragStart', function(event) {
-					// mouse/touch drag start
-					c('Start');
-				});
+//				SD.SLIDER.ev.on('rsDragStart', function(event) {
+//					mouse/touch drag start
+//					c('Start');
+//				});
 
 				SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
 					SD.SEXDEFAULTS = SD.sex.sexDefaults(); //used to reset to default sex
 					SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
 				});
 
-//				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
-//					if($('.royalSlider')[0]){
-//						//make sure no elements have any selected items
-//						$('sexnav div').removeClass('selected');
-//
-//						//Work out current ID
-//						var currentSex = $(SD.SLIDER.currSlide.caption).attr('id');
-//
-//						//update current sex with the class
-//						$('div[data-type='+currentSex+']').addClass('selected');
-//					}
-//				});
+				SD.SLIDER.ev.on('rsDragRelease', function(event) {
+					if($('.royalSlider')[0]){
+						//make sure no elements have any selected items
+						$('sexnav div').removeClass('selected');
+
+						//Work out current ID
+						var currentSex = $(SD.SLIDER.currSlide.caption).attr('id');
+						c(currentSex);
+						c(SD.SLIDER.currSlideId);
+						c(SD.SLIDER.currSlide);
+
+
+
+						//update current sex with the class
+						$('div[data-type='+currentSex+']').addClass('selected');
+					}
+				});
 			}else{
 				$('.royalSlider a').each(function(){
 					var type = $(this)[0].id,
