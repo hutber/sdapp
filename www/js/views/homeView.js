@@ -18,6 +18,14 @@ define([
 			SD.setTitle('SELECT SOME SEXYNESS');
 			this.$el.html(this.template);
 
+			var sexId = {
+				0: 'wank',
+				1: 'hands',
+				2: 'oral',
+				3: 'sex',
+				4: 'anything'
+			}
+
 			if(typeof jQuery.fn.royalSlider === "function"){
 				SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
 					controlNavigation: 'none',
@@ -50,25 +58,16 @@ define([
 
 				SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
 					SD.SEXDEFAULTS = SD.sex.sexDefaults(); //used to reset to default sex
-					SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
+					SD.pageLoad(sexId[SD.SLIDER.currSlideId]);
 				});
 
-				SD.SLIDER.ev.on('rsDragRelease', function(event) {
-					if($('.royalSlider')[0]){
-						//make sure no elements have any selected items
-						$('sexnav div').removeClass('selected');
+				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
+					//make sure no elements have any selected items
+					$('.selected').removeClass('selected');
+					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
 
-						//Work out current ID
-						var currentSex = $(SD.SLIDER.currSlide.caption).attr('id');
-						c(currentSex);
-						c(SD.SLIDER.currSlideId);
-						c(SD.SLIDER.currSlide);
-
-
-
-						//update current sex with the class
-						$('div[data-type='+currentSex+']').addClass('selected');
-					}
+					//update current sex with the class
+//					$('div[data-type='+currentSex+']').addClass('selected');
 				});
 			}else{
 				$('.royalSlider a').each(function(){
