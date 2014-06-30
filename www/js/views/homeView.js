@@ -48,10 +48,10 @@ define([
 					c('Start');
 				});
 
-//				SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
-//					SD.SEXDEFAULTS = SD.sex.sexDefaults(); //used to reset to default sex
-//					SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
-//				});
+				SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
+					SD.SEXDEFAULTS = SD.sex.sexDefaults(); //used to reset to default sex
+					SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
+				});
 
 //				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
 //					if($('.royalSlider')[0]){
