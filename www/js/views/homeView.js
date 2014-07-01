@@ -60,7 +60,7 @@ define([
 //					make sure no elements have any selected items
 //					$('.selected').removeClass('selected');
 //					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
-
+					c('jamie')
 					//update current sex with the class
 //					$('div[data-type='+currentSex+']').addClass('selected');
 				});
