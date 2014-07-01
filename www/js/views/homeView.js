@@ -57,11 +57,13 @@ define([
 				});
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
+					//document.querySelector('sexnav .selected');
+					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
 //					make sure no elements have any selected items
 //					$('sexnav div.selected')[0].removeAttribute('class');
 //					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
 					//update current sex with the class
-					$('div[data-type='+SD.SLIDER.currSlideId+']').addClass('selected');
+//					$('div[data-type='+SD.SLIDER.currSlideId+']').addClass('selected');
 				});
 			}else{
 				$('.royalSlider a').each(function(){
