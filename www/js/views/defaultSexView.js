@@ -208,7 +208,7 @@ define([
 						timeFormat: 'H:ii',
 						maxDate: new Date(),
 						ampm: false,
-//						height: SD.pageHeight/20,
+						height: SD.pageHeight/10,
 						dateOrder: 'dMyy',
 						onSelect: function(el, results) {
 							$('sextime date').html(el);
@@ -227,8 +227,13 @@ define([
 						mode:'scroller',
 						durationWheels: ['hours', 'minutes'],
 						defaults: [0,0],
+						onShow: function(el){
+							if(SD.SEXDEFAULTS.duration[1][0] === 0 && SD.SEXDEFAULTS.duration[1][1] === 0) {
+								$('.dwv').html('0 Minutes');
+							}
+						},
 						onSelect: function(el, results) {
-							if(el === "0:00"){
+							if(el === ""){
 								$('duration date').html('');
 							}else{
 								$('duration date').html(el);

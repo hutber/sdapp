@@ -5442,7 +5442,7 @@ save.disabled detailsimage, save.disabled info {
 .dwc {
   display: block;
   margin: 0 auto 5px;
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 /* Datewheel label */
@@ -5460,7 +5460,7 @@ save.disabled detailsimage, save.disabled info {
 /* Datewheel value */
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_date\.scss}line{font-family:\0000340}}
 .dwv {
-  padding: 10px 2px 0;
+  padding: 3px 2px 0;
   font-size: .9em;
 }
 
@@ -6271,20 +6271,22 @@ save.disabled detailsimage, save.disabled info {
   overflow: hidden;
   font-family: sdfont;
   font-size: 15px;
+  position: relative;
+  z-index: 10;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000339}}
 .onoff .entry on {
   text-align: left;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000343}}
 .onoff .entry nothing {
   text-align: center;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000347}}
 .onoff .entry off {
   text-align: right;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000351}}
 .onoff .entry line {
   display: block;
   height: 15px;
@@ -6295,15 +6297,15 @@ save.disabled detailsimage, save.disabled info {
   font-weight: 700;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000362}}
 .onoff .entry[data-val=off] line, .onoff .entry.off line {
   background: #34495e;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000365}}
 .onoff .entry[data-val=on] line, .onoff .entry.on line {
   background: #a5c04d;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000369}}
 .onoff .entry span {
   background: linear-gradient(#fdfdfd 0%, #ffffff 3%, #fcfcfc 13%, #e4e4e4 50%, #dddddd 55%, #d0d0d0 85%, #cdcdcd 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
   display: block;
@@ -6320,7 +6322,7 @@ save.disabled detailsimage, save.disabled info {
   -o-border-radius: 50px;
   border-radius: 50px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_onoff\.scss}line{font-family:\0000382}}
 .onoff .entry span:after {
   background: none repeat scroll 0 0 #e3e3e3;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.08) inset;
@@ -6910,8 +6912,9 @@ save img {
   height: 88%;
   margin: 0;
   position: absolute;
+  font-family: sans-serif;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\00003150}}
 .diary .info {
   position: absolute;
   bottom: 13%;
@@ -6919,7 +6922,7 @@ save img {
   color: #6cb7b4;
   font-family: sdFont, "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\00003156}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_sex\.scss}line{font-family:\00003157}}
 .diary saveDiary {
   height: 15%;
   display: block;
