@@ -35,7 +35,7 @@ define([
 					imageScaleMode: 'fit',
 					arrowsNav: false
 				}).data('royalSlider');
-//				c(document.getElementById(sexId[SD.SLIDER.currSlideId]));
+
 				//if we have the sex nav open on load select the correct class
 				if(SD.SEXDEFAULTS.sextype === "default"){
 //					$('sexnav div').eq(0).addClass('selected');
@@ -50,7 +50,6 @@ define([
 				});
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
-					c('jamie');
 					//document.querySelector('sexnav .selected');
 //					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
 //					make sure no elements have any selected items

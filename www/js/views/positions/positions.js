@@ -57,7 +57,8 @@ define([
 		},
 		render: function () {
 			var myself = this;
-			this.$el.html(this.template(SD.WHO)+this.saveBtn({'name':'Position', 'savetext':'Save Positions Used'}));
+			this.$el.html(this.template(SD.WHO));
+//			this.$el.html(this.template(SD.WHO)+this.saveBtn({'name':'Position', 'savetext':'Save Positions Used'}));
 			var results = $('posReturned');
 			var positions = (SD.SEXDEFAULTS.positions !== null) ? Object.keys(SD.SEXDEFAULTS.positions) : {};
 
