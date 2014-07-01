@@ -42,10 +42,10 @@ define([
 						spacing: 5
 					}
 				}).data('royalSlider');
-
+				c(document.getElementById(sexId[SD.SLIDER.currSlideId]));
 				//if we have the sex nav open on load select the correct class
 				if(SD.SEXDEFAULTS.sextype === "default"){
-					$('div[data-type=wank]').addClass('selected');
+					$('sexnav div').eq(0).addClass('selected');
 				} else{
 					//Now navigate to current selection
 					SD.SLIDER.goTo($('sexnav div.selected').index());
@@ -58,7 +58,7 @@ define([
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
 //					make sure no elements have any selected items
-					$('.selected').removeClass('selected');
+					$('sexnav div.selected')[0].removeAttribute('class');
 //					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
 					//update current sex with the class
 //					$('div[data-type='+currentSex+']').addClass('selected');
