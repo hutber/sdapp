@@ -58,7 +58,7 @@ define([
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
 //					make sure no elements have any selected items
-					$('sexnav div.selected').removeClass('class');
+					$('sexnav div.selected').removeClass('selected');
 					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
 					//update current sex with the class
 //					$('div[data-type='+currentSex+']').addClass('selected');
