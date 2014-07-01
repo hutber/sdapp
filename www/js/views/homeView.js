@@ -33,19 +33,12 @@ define([
 					globalCaption: true,
 					globalCaptionInside: true,
 					imageScaleMode: 'fit',
-					arrowsNav: false,
-					thumbs: {
-						arrows: false,
-						appendSpan: false,
-						firstMargin: false,
-						autoCenter: false,
-						spacing: 5
-					}
+					arrowsNav: false
 				}).data('royalSlider');
 //				c(document.getElementById(sexId[SD.SLIDER.currSlideId]));
 				//if we have the sex nav open on load select the correct class
 				if(SD.SEXDEFAULTS.sextype === "default"){
-					$('sexnav div').eq(0).addClass('selected');
+//					$('sexnav div').eq(0).addClass('selected');
 				} else{
 					//Now navigate to current selection
 					SD.SLIDER.goTo($('sexnav div.selected').index());
