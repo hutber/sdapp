@@ -38,7 +38,7 @@ define([
 
 				//if we have the sex nav open on load select the correct class
 				if(SD.SEXDEFAULTS.sextype === "default"){
-//					$('sexnav div').eq(0).addClass('selected');
+					$('sexnav div').eq(0).addClass('selected');
 				} else{
 					//Now navigate to current selection
 					SD.SLIDER.goTo($('sexnav div.selected').index());
@@ -51,7 +51,8 @@ define([
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
 					//document.querySelector('sexnav .selected');
-//					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
+//					$('sexnav div.selected')[0].removeAttribute('class');
+					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
 //					make sure no elements have any selected items
 //					$('sexnav div.selected')[0].removeAttribute('class');
 //					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
