@@ -225,6 +225,7 @@ define([
 						theme: 'default',
 						display: 'modal',
 						mode:'scroller',
+						height: SD.pageHeight/15,
 						durationWheels: ['hours', 'minutes'],
 						defaults: [0,0],
 						onShow: function(el){
