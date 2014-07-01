@@ -51,24 +51,19 @@ define([
 					SD.SLIDER.goTo($('sexnav div.selected').index());
 				}
 
-//				SD.SLIDER.ev.on('rsDragStart', function(event) {
-//					mouse/touch drag start
-//					c('Start');
-//				});
-
 				SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
 					SD.SEXDEFAULTS = SD.sex.sexDefaults(); //used to reset to default sex
 					SD.pageLoad(sexId[SD.SLIDER.currSlideId]);
 				});
 
-				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
-					//make sure no elements have any selected items
-					$('.selected').removeClass('selected');
-					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
+//				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
+//					make sure no elements have any selected items
+//					$('.selected').removeClass('selected');
+//					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
 
 					//update current sex with the class
 //					$('div[data-type='+currentSex+']').addClass('selected');
-				});
+//				});
 			}else{
 				$('.royalSlider a').each(function(){
 					var type = $(this)[0].id,
