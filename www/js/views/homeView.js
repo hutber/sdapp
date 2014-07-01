@@ -57,8 +57,9 @@ define([
 				});
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
+					c('jamie');
 					//document.querySelector('sexnav .selected');
-					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
+//					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
 //					make sure no elements have any selected items
 //					$('sexnav div.selected')[0].removeAttribute('class');
 //					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
