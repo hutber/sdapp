@@ -51,7 +51,7 @@ define([
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
 //					make sure no elements have any selected items
-					$('sexnav div.selected').removeClass('class');
+					$('sexnav div.selected').removeClass('selected');
 					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
 				});
 			}else{
