@@ -50,14 +50,9 @@ define([
 				});
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
-					//document.querySelector('sexnav .selected');
-//					$('sexnav div.selected')[0].removeAttribute('class');
-					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
 //					make sure no elements have any selected items
-//					$('sexnav div.selected')[0].removeAttribute('class');
-//					$('sexnav div').eq(SD.SLIDER.currSlideId).addClass('selected');
-					//update current sex with the class
-//					$('div[data-type='+SD.SLIDER.currSlideId+']').addClass('selected');
+					$('sexnav div.selected').removeClass('class');
+					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
 				});
 			}else{
 				$('.royalSlider a').each(function(){
