@@ -81,6 +81,7 @@ define([
 			});
 			this.checkIfAWhoIsSelected();
 			SD.setTitle('Who was involved?');
+			document.querySelector('page').scrollTop = 0;
 		}
 	});
 	return positions;
