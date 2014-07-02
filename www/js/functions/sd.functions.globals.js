@@ -39,6 +39,18 @@ Globals
 // #Globals for SD ------------------------------------------------------
 	//Setup fullsex so we can build other numbers from this.
 	SD.ENVIROMENT = 'liveApp';
+	SD.DEVICE = function(){
+		if(/Android/i.test(navigator.userAgent)){
+			return 'android';
+		}else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
+			return 'apple';
+		}else{
+			return 'desktop';
+		}
+
+	}();
+	$('html').addClass(SD.DEVICE);
+
 	SD.CDN = 'www.sexdiaries.co.uk/';
 	SD.HTTP = 'https://www.sexdiaries.co.uk/';
 	SD.STATE = function(){
