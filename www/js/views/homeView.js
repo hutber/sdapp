@@ -24,7 +24,7 @@ define([
 				2: 'oral',
 				3: 'sex',
 				4: 'anything'
-			}
+			};
 
 			if(typeof jQuery.fn.royalSlider === "function"){
 				SD.SLIDER = $('.royalSlider').royalSlider({ //Set up slider
@@ -38,21 +38,24 @@ define([
 
 				//if we have the sex nav open on load select the correct class
 				if(SD.SEXDEFAULTS.sextype === "default"){
-					$('sexnav div').eq(0).addClass('selected');
+					document.getElementById('navwank').setAttribute('class','selected');
 				} else{
 					//Now navigate to current selection
 					SD.SLIDER.goTo($('sexnav div.selected').index());
 				}
 
-				SD.SLIDER.ev.on('rsSlideClick', function() { //Add click events to the sex icons
+				SD.SLIDER.ev.on('rsSlideClick', function(el) { //Add click events to the sex icons
 					SD.SEXDEFAULTS = SD.sex.sexDefaults(); //used to reset to default sex
-					SD.pageLoad(sexId[SD.SLIDER.currSlideId]);
+					//SD.pageLoad(sexId[SD.SLIDER.currSlideId]);
+					SD.pageLoad($('.rsGCaption').find('anchor').attr('id'));
 				});
 
 				SD.SLIDER.ev.on('rsAfterSlideChange', function(event) {
-//					make sure no elements have any selected items
-					$('sexnav div.selected').removeClass('selected');
-					document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
+					if(SD.HASH === "home"){
+						//make sure no elements have any selected items
+						$('sexnav div.selected').removeClass('selected');
+						document.getElementById('nav'+sexId[SD.SLIDER.currSlideId]).setAttribute('class','selected');
+					}
 				});
 			}else{
 				$('.royalSlider a').each(function(){

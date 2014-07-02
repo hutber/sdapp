@@ -191,9 +191,9 @@ define([
 				//Load in a save default sex after html has been complied
 				post: function(){
 					//update correct sexnumber in SD.SEXDEFAULTS.sexnumber
-					var sexnumber = $('sexnav .selected').index();
-					SD.SEXDEFAULTS.sexnumber = ++sexnumber;
-
+					SD.SEXDEFAULTS.sexnumber = $('sexnav .selected').index();
+//					SD.SEXDEFAULTS.sexnumber = ++sexnumber;
+//
 					//Display the correct rating
 					SD.DSV.rating();
 
