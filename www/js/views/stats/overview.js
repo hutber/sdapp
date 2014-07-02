@@ -58,7 +58,7 @@ define([
 
 				if(totalWanks){
 					if(me === "Wank"){
-						me='Selfie';
+						me='Self';
 					}
 					valueExsist = true;
 					//Now we init the graph
