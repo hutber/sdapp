@@ -28,8 +28,6 @@ define([
 				SD.onoff.instances[name] = new SD.onoff.create($(this));
 				SD.onoff.instances[name].checkPrevious();
 			});
-
-			$('page').scrollTop(0);
 		},
 	});
 	return extra;
