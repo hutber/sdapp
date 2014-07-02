@@ -278,10 +278,10 @@ define([
 					this.loadSaveSex.post();
 				}
 
-				var below = this.moreBelow;
-				below.init();
-				$('page').scroll(function(){below.check(true);});
-				$(window).resize(function(){below.init();});
+//				var below = this.moreBelow;
+//				below.init();
+//				$('page').scroll(function(){below.check(true);});
+//				$(window).resize(function(){below.init();});
 			}
 		});
 

@@ -81,7 +81,6 @@ define([
 			});
 			this.checkIfAWhoIsSelected();
 			SD.setTitle('Who was involved?');
-			$('page').scrollTop(0);
 		}
 	});
 	return positions;
