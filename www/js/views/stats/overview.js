@@ -57,6 +57,9 @@ define([
 				var totalWanks = Math.round(100 * SD.SEXNUMBERS[me]/SD.SEXNUMBERS.total);
 
 				if(totalWanks){
+					if(me === "Wank"){
+						me='Selfie';
+					}
 					valueExsist = true;
 					//Now we init the graph
 					selector.highcharts({
