@@ -38,8 +38,9 @@ define([
 			}
 		},
 		checkPrivateKey: function(){
+			var numberOfTrys = 0;
 			SD.spinner.show('Looking up', 'We are checking if you  have logged in on another device');
-			$.ajax({
+			var checkKey = $.ajax({
 				url: SD.AJAX+'users/checkKey',
 				type: 'POST',
 				dataType: "json",
@@ -48,8 +49,14 @@ define([
 					'adfbse4': localStorage.privateKey
 				},
 				error: function(data){
-					SD.message.showMessage('There was a network error.', 'bad');
-					SD.spinner.hide();
+					if(numberOfTrys===0){
+						numberOfTrys= 1;
+						typeof(checkKey);
+						checkKey;
+					}else{
+						SD.message.showMessage('There was a network error.', 'bad');
+						SD.spinner.hide();
+					}
 				},
 				success: function(data){
 					if(data.current==="1"){
@@ -57,7 +64,8 @@ define([
 						SD.login.moveToHome();
 						SD.spinner.hide();
 					}else{
-						alert('You have logged in somewhere else since using this app. For security we\'ll need to log you out, please log back in after.');
+						alert('You have logged in somewhere else. We\'ll restart your session.');
+//						alert('You have logged in somewhere else since using this app. For security we\'ll need to log you out, please log back in after.');
 						SD.login.doLogOut();
 					}
 				}
