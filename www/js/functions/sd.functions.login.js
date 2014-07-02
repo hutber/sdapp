@@ -51,7 +51,6 @@ define([
 				error: function(data){
 					if(numberOfTrys===0){
 						numberOfTrys= 1;
-						typeof(checkKey);
 						checkKey;
 					}else{
 						SD.message.showMessage('There was a network error.', 'bad');
