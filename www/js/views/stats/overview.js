@@ -52,7 +52,7 @@ define([
 
 				selector.css({
 					'height': $('.minigraphs').outerWidth()/2.6,
-					'width': $('.minigraphs').outerWidth()/2.9
+					'width': $('.minigraphs').outerWidth()/2.6
 				});
 				var totalWanks = Math.round(100 * SD.SEXNUMBERS[me]/SD.SEXNUMBERS.total);
 
@@ -81,8 +81,9 @@ define([
 							text: totalWanks+'% '+ me,
 							style: {
 								fontFamily: 'sdFont',
-								fontSize: '16px',
+								fontSize: '14px',
 								color: '#FFF',
+								lineHeight: '20px'
 							},
 							verticalAlign: 'bottom',
 						},
