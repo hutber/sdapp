@@ -49,7 +49,6 @@ define([
 				menuItem: document.getElementById('menuslidearea'),
 				init: function(){
 					var myself = this;
-					c(myself.menuItem);
 					var hammerOptions = {
 						dragBlockVertical: true,
 						dragLockToAxis: true

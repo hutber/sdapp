@@ -30,7 +30,7 @@ define([
 					'code': place.val(),
 				},
 				error: function(data){
-					c('Sorry Login Failed: '+data.status);
+//					c('Sorry Login Failed: '+data.status);
 					place.removeClass('searching');
 				},
 				success: function(data){

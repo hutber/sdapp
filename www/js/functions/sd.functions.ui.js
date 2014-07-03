@@ -77,7 +77,7 @@ define([
 		}else if(document.location.hash){
 			useme = SD.HASH;
 		}else{
-			c('Nothing was given in the pageLoad');
+//			c('Nothing was given in the pageLoad');
 		}
 
 		//Update the current view, don't re-redner it

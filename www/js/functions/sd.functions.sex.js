@@ -335,7 +335,7 @@ define([
 
 			dataConverted.edit = true,
 			dataConverted.id = data.id;
-			c(dataConverted);
+
 			return dataConverted;
 		}
 	};
