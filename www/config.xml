@@ -53,6 +53,12 @@
     <preference name="EnableViewportScale"        value="true" />
     <preference name="KeyboardShrinksView"        value="false" />
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="detect-data-types" value="true" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="exit-on-suspend" value="true" />
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
