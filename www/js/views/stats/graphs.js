@@ -52,6 +52,7 @@ define([
 			details.forEach(function(me){
 				var stats = createData(SD.BYMONTH, me);
 //				c(stats);
+				if(stats.name === "Wank")stats.name = "Selfie";
 				//stats.data[0]
 				if(stats.data.length>0)
 				areaData.push(stats);

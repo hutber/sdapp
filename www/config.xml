@@ -53,7 +53,9 @@
     <preference name="EnableViewportScale"        value="true" />
     <preference name="KeyboardShrinksView"        value="false" />
     <preference name="HideKeyboardFormAccessoryBar" value="true" />
-    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <!--<preference name="StatusBarBackgroundColor" value="#000000" />-->
+    <preference name="StatusBarOverlaysWebView" value="true" />
+    <preference name="StatusBarStyle" value="lightcontent" />
 
 
     <!--/////////////////////////////////////////////////
