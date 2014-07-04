@@ -14,7 +14,7 @@
         Sex Diaries
     </author>
 
-    <preference name="phonegap-version" value="3.3.0" /> <!-- all: current version of PhoneGap -->
+    <preference name="phonegap-version" value="3.5.0" /> <!-- all: current version of PhoneGap -->
 
     <!--/////////////////////////////////////////////////
                      Features to be added
@@ -77,6 +77,7 @@
     <gap:plugin name="org.apache.cordova.geolocation" />
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
+    <gap:plugin name="org.apache.cordova.device" />
     <!--Off-->
     <!--<gap:plugin name="org.apache.cordova.splashscreen" />-->
     <!--<gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" />-->
