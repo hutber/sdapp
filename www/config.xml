@@ -125,7 +125,7 @@
     <gap:splash src="res/screen/ios/screen-ipad-portrait-2x.png"         gap:platform="ios"     width="1536" height="2008" />
 
 
-    <access origin="*.sexdiaries.co.uk*"/>
+    <access origin="http*://*.sexdiaries.co.uk*"/>
     <access origin="http://nominatim.openstreetmap.org/reverse*"/>
     <content src="index.html" />
 </widget>
