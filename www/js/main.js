@@ -201,19 +201,19 @@ set arguments to values for ease of reading arguments
         HomeView = arguments[5],
 		myself = arguments;
 
-	var runEverthing = function(){
-		/*==================================================
-		Start up SD global object.
-		================================================== */
-		SD.init();
+	/*==================================================
+	Start up SD global object.
+	================================================== */
+	SD.init();
 
+	var runEverthing = function(){
 		/*==================================================
 		Routes Vars
 		================================================== */
-	// initiate routers ----------------
+		// initiate routers ----------------
 		SD.ROUTER = new Router();
 
-	//// views ---------------------------
+		// views ---------------------------
 		SD.VIEWS.indexView = new IndexView();
 		SD.VIEWS.homeView = new HomeView();
 
