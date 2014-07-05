@@ -275,8 +275,10 @@ set arguments to values for ease of reading arguments
 				return 'Android';
 			}
 		}();
-//		c(window.device.platform);
-		c(SD.DEVICE);
+
+        if(SD.DEVICE)
+        //Add which device we are on into the html
+            $('html').addClass(SD.DEVICE);
 	};
 
 /*==================================================

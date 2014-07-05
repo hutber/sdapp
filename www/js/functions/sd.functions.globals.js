@@ -368,10 +368,6 @@ Networking functions
 			SD.changeHeightofContent();
 		});
 
-		if(SD.DEVICE)
-		//Add which device we are on into the html
-		$('html').addClass(SD.DEVICE);
-
 		//add click to hide overlay button on click
 		$('overlay .icon-cancel-circled').click(SD.spinner.hide);
 	};

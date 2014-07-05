@@ -93,7 +93,6 @@
     <!--<feature name="SplashScreen"><param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" /></feature>-->
     <!--<feature name="Vibration"><param name="android-package" value="org.apache.cordova.vibration.Vibration" /></feature>-->
 
-
     <!--/////////////////////////////////////////////////
                            Icons
      /////////////////////////////////////////////////-->
@@ -111,11 +110,6 @@
     <icon src="res/icon/ios/icon-120.png"           gap:platform="ios"        width="120" height="120" />
 
     <!--/////////////////////////////////////////////////
-                           Images
-     /////////////////////////////////////////////////-->
-
-
-    <!--/////////////////////////////////////////////////
                            Splash
      /////////////////////////////////////////////////-->
     <!-- Define app splash screen for each platform. -->
@@ -130,6 +124,6 @@
     <gap:splash src="res/screen/ios/screen-ipad-portrait-2x.png"         gap:platform="ios"     width="1536" height="2008" />
 
 
-    <access origin="http://sexdiaries.co.uk" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
+    <access origin="http://sexdiaries.co.uk*" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
     <content src="index.html" />
 </widget>
