@@ -40,17 +40,12 @@ Globals
 	//Setup fullsex so we can build other numbers from this.
 	SD.ENVIROMENT = 'liveApp';
 	SD.DEVICE = function(){
-		if(/Android/i.test(navigator.userAgent)){
-			return 'android';
-		}else if(/iPhone|iPad|iPod/i.test(navigator.userAgent)){
-			return 'apple';
+		if(typeof window.device !== "undefined"){
+			return window.device.platform;
 		}else{
-			return 'desktop';
+			return 'Android';
 		}
-
 	}();
-	$('html').addClass(SD.DEVICE);
-
 	SD.CDN = 'www.sexdiaries.co.uk/';
 	SD.HTTP = 'https://www.sexdiaries.co.uk/';
 	SD.STATE = function(){
@@ -379,6 +374,10 @@ Networking functions
 		$( window ).resize(function() {
 			SD.changeHeightofContent();
 		});
+
+		if(SD.DEVICE)
+		//Add which device we are on into the html
+		$('html').addClass(SD.DEVICE);
 
 		//add click to hide overlay button on click
 		$('overlay .icon-cancel-circled').click(SD.spinner.hide);
