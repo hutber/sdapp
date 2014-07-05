@@ -37,41 +37,45 @@ define([
 				SD.message.showMessage(data.message, 'bad');
 			}
 		},
-		checkPrivateKey: function(){
-			var numberOfTrys = 0;
-			SD.spinner.show('Looking up', 'We are checking if you  have logged in on another device');
-			var checkKey = $.ajax({
-				url: SD.AJAX+'users/checkKey',
-				type: 'POST',
-				dataType: "json",
-				data: {
-					'ierihias': localStorage.uid,
-					'adfbse4': localStorage.privateKey
-				},
-				error: function(data){
-					c(numberOfTrys);
-					if(numberOfTrys===0){
-						numberOfTrys= 1;
-						c(numberOfTrys);
-						checkKey;
-					}else{
-						c(numberOfTrys);
-						SD.message.showMessage('There was a network error.', 'bad');
-						SD.spinner.hide();
-					}
-				},
-				success: function(data){
-					if(data.current==="1"){
-						localStorage.setItem('GLOBALSEXNUMBERS',JSON.stringify(data.GLOBALSEXNUMBERS));
-						SD.login.moveToHome();
-						SD.spinner.hide();
-					}else{
-						alert('You have logged in somewhere else. We\'ll restart your session.');
+		checkPrivateKey: {
+			numberOfTrys: 0,
+			doAjax: function(){
+				$.ajax({
+					url: SD.AJAX+'users/checkKey',
+					type: 'POST',
+					dataType: "json",
+					data: {
+						'ierihias': localStorage.uid,
+						'adfbse4': localStorage.privateKey
+					},
+					error: function(data){
+						if(SD.login.checkPrivateKey.numberOfTrys===0){
+							c('Checking again');
+							SD.login.checkPrivateKey.numberOfTrys = 1;
+							SD.login.checkPrivateKey.doAjax();
+						}else{
+							SD.message.showMessage('There was a network error. Please try again.', 'bad');
+							SD.spinner.hide();
+						}
+					},
+					success: SD.login.checkPrivateKey.success
+				});
+			},
+			makeCall: function(){
+				SD.spinner.show('Looking up', 'We are checking if you have logged in on another device.');
+				SD.login.checkPrivateKey.doAjax();
+			},
+			success: function(data){
+				if(data.current==="1"){
+					localStorage.setItem('GLOBALSEXNUMBERS',JSON.stringify(data.GLOBALSEXNUMBERS));
+					SD.login.moveToHome();
+					SD.spinner.hide();
+				}else{
+					alert('Your Private Session Key has expired, this is often from logging on a different device. We will log you out for security.');
 //						alert('You have logged in somewhere else since using this app. For security we\'ll need to log you out, please log back in after.');
-						SD.login.doLogOut();
-					}
+					SD.login.doLogOut();
 				}
-			});
+			}
 		},
 		checkLoginState : function() { //We use this state to enable us to use the function on every page load to check if the user is logged in
 			var hash = window.location.hash.substring(1);

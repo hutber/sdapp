@@ -78,6 +78,7 @@
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="com.phonegap.plugin.statusbar" />
     <gap:plugin name="org.apache.cordova.device" />
+    <gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" version="0.2.1" />
     <!--Off-->
     <!--<gap:plugin name="org.apache.cordova.splashscreen" />-->
     <!--<gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" />-->

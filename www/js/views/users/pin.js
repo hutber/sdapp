@@ -31,7 +31,7 @@ define([
 				pinInputs.eq(actives.length).addClass('active');
 				myself.currentPw += ''+valueReturned;
 				if(myself.currentPw.length === 4 && myself.currentPw === localStorage.pinNumber){
-					SD.login.checkPrivateKey();
+					SD.login.checkPrivateKey.makeCall();
 				}else if (myself.currentPw.length === 4){
 					SD.message.showMessage('Pin incorrect', 'bad', 1000);
 					pinInputs.removeAttr('class');
