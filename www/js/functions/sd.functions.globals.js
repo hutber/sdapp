@@ -46,6 +46,8 @@ Globals
 			return 'Android';
 		}
 	}();
+	c(window.device.platform);
+	c(SD.DEVICE);
 	SD.CDN = 'www.sexdiaries.co.uk/';
 	SD.HTTP = 'https://www.sexdiaries.co.uk/';
 	SD.STATE = function(){
