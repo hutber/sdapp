@@ -4407,27 +4407,27 @@ overlay text {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000327}}
-.rsWebkit3d .rsSlide,
-.rsWebkit3d .rsContainer,
-.rsWebkit3d .rsThumbs,
-.rsWebkit3d .rsPreloader,
-.rsWebkit3d img,
-.rsWebkit3d .rsOverflow,
-.rsWebkit3d .rsBtnCenterer,
-.rsWebkit3d .rsAbsoluteEl,
-.rsWebkit3d .rsABlock,
-.rsWebkit3d .rsLink {
+.iOS .rsWebkit3d .rsSlide,
+.iOS .rsWebkit3d .rsContainer,
+.iOS .rsWebkit3d .rsThumbs,
+.iOS .rsWebkit3d .rsPreloader,
+.iOS .rsWebkit3d img,
+.iOS .rsWebkit3d .rsOverflow,
+.iOS .rsWebkit3d .rsBtnCenterer,
+.iOS .rsWebkit3d .rsAbsoluteEl,
+.iOS .rsWebkit3d .rsABlock,
+.iOS .rsWebkit3d .rsLink {
   -webkit-backface-visibility: hidden;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000333}}
 .rsFade.rsWebkit3d .rsSlide,
 .rsFade.rsWebkit3d img,
 .rsFade.rsWebkit3d .rsContainer {
   -webkit-transform: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000335}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000336}}
 .rsOverflow {
   width: 100%;
   height: 100%;
@@ -4437,7 +4437,7 @@ overlay text {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000343}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000344}}
 .rsVisibleNearbyWrap {
   width: 100%;
   height: 100%;
@@ -4448,14 +4448,14 @@ overlay text {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000352}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000353}}
 .rsVisibleNearbyWrap .rsOverflow {
   position: absolute;
   left: 0;
   top: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000359}}
 .rsContainer {
   position: relative;
   width: 100%;
@@ -4463,19 +4463,19 @@ overlay text {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000366}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000367}}
 .rsArrow,
 .rsThumbsArrow {
   cursor: pointer;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000370}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000371}}
 .rsThumb {
   float: left;
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000378}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000379}}
 .rsArrow,
 .rsNav,
 .rsThumbsArrow {
@@ -4486,7 +4486,7 @@ overlay text {
   transition: opacity 0.3s linear;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000385}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000386}}
 .rsHidden {
   opacity: 0;
   visibility: hidden;
@@ -4496,7 +4496,7 @@ overlay text {
   transition: visibility 0s linear 0.3s,opacity 0.3s linear;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\0000396}}
 .rsGCaption {
   width: 100%;
   float: left;
@@ -4504,7 +4504,7 @@ overlay text {
 }
 
 /* Fullscreen options, very important ^^ */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003103}}
 .royalSlider.rsFullscreen {
   position: fixed !important;
   height: auto !important;
@@ -4518,7 +4518,7 @@ overlay text {
   right: 0 !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003115}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003116}}
 .royalSlider .rsSlide.rsFakePreloader {
   opacity: 1 !important;
   -webkit-transition: 0s;
@@ -4528,7 +4528,7 @@ overlay text {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003124}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003125}}
 .rsSlide {
   position: absolute;
   left: 0;
@@ -4538,38 +4538,38 @@ overlay text {
   width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003135}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003136}}
 .royalSlider.rsAutoHeight,
 .rsAutoHeight .rsSlide {
   height: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003139}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003140}}
 .rsContent {
   width: 100%;
   height: 100%;
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003145}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003146}}
 .rsPreloader {
   position: absolute;
   z-index: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003150}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003151}}
 .rsNav {
   -moz-user-select: -moz-none;
   -webkit-user-select: none;
   user-select: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003155}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003156}}
 .rsNavItem {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.25);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003159}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003160}}
 .rsThumbs {
   cursor: pointer;
   position: relative;
@@ -4579,20 +4579,20 @@ overlay text {
   bottom: 4px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003168}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003169}}
 .rsTabs {
   float: left;
   background: none !important;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003173}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003174}}
 .rsTabs,
 .rsThumbs {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003179}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003180}}
 .rsVideoContainer {
   /*left: 0;
   top: 0;
@@ -4609,7 +4609,7 @@ overlay text {
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003194}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003195}}
 .rsVideoFrameHolder {
   position: absolute;
   left: 0;
@@ -4619,12 +4619,12 @@ overlay text {
   -webkit-transition: .3s;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003202}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003203}}
 .rsVideoFrameHolder.rsVideoActive {
   opacity: 1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003208}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003209}}
 .rsVideoContainer iframe,
 .rsVideoContainer video,
 .rsVideoContainer embed,
@@ -4638,7 +4638,7 @@ overlay text {
 }
 
 /* ios controls over video bug, shifting video */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003219}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003220}}
 .rsVideoContainer.rsIOSVideo iframe,
 .rsVideoContainer.rsIOSVideo video,
 .rsVideoContainer.rsIOSVideo embed {
@@ -4648,7 +4648,7 @@ overlay text {
   padding-right: 44px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003226}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003227}}
 .rsABlock {
   left: 0;
   top: 0;
@@ -4656,27 +4656,27 @@ overlay text {
   z-index: 15;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003234}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003235}}
 img.rsImg {
   max-width: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003238}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003239}}
 .grab-cursor {
   cursor: url(../img/icons/grab.png) 8 8, move;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003242}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003243}}
 .grabbing-cursor {
   cursor: url(../img/icons/grabbing.png) 8 8, move;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003246}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003247}}
 .rsNoDrag {
   cursor: auto;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003250}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003251}}
 .rsLink {
   left: 0;
   top: 0;
@@ -4707,7 +4707,7 @@ img.rsImg {
 *
 ******************************/
 /* Background */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003286}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003287}}
 .rsDefault,
 .rsDefault .rsOverflow,
 .rsDefault .rsSlide,
@@ -4719,7 +4719,7 @@ img.rsImg {
 /***************
 *  1. Arrows
 ****************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003295}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003296}}
 .rsDefault .rsArrow {
   height: 100%;
   width: 44px;
@@ -4729,37 +4729,37 @@ img.rsImg {
   z-index: 21;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003303}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003304}}
 .rsDefault.rsVer .rsArrow {
   width: 100%;
   height: 44px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003308}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003309}}
 .rsDefault.rsVer .rsArrowLeft {
   top: 0;
   left: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003309}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003310}}
 .rsDefault.rsVer .rsArrowRight {
   bottom: 0;
   left: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003312}}
 .rsDefault.rsHor .rsArrowLeft {
   left: 0;
   top: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003312}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003313}}
 .rsDefault.rsHor .rsArrowRight {
   right: 0;
   top: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003315}}
 .rsDefault .rsArrowIcn {
   width: 32px;
   height: 32px;
@@ -4776,32 +4776,32 @@ img.rsImg {
   border-radius: 2px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003333}}
 .rsDefault .rsArrowIcn:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003337}}
 .rsDefault.rsHor .rsArrowLeft .rsArrowIcn {
   background-position: -64px -32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003337}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003338}}
 .rsDefault.rsHor .rsArrowRight .rsArrowIcn {
   background-position: -64px -64px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003340}}
 .rsDefault.rsVer .rsArrowLeft .rsArrowIcn {
   background-position: -96px -32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003340}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003341}}
 .rsDefault.rsVer .rsArrowRight .rsArrowIcn {
   background-position: -96px -64px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003343}}
 .rsDefault .rsArrowDisabled .rsArrowIcn {
   opacity: .2;
   filter: alpha(opacity=20);
@@ -4811,7 +4811,7 @@ img.rsImg {
 /***************
 *  2. Bullets
 ****************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003350}}
 .rsDefault .rsBullets {
   position: absolute;
   z-index: 35;
@@ -4824,7 +4824,7 @@ img.rsImg {
   overflow: hidden;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003365}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003366}}
 .rsDefault .rsBullet {
   width: 8px;
   height: 8px;
@@ -4834,7 +4834,7 @@ img.rsImg {
   padding: 0px 6px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003374}}
 .rsDefault .rsBullet span {
   display: block;
   width: 8px;
@@ -4844,7 +4844,7 @@ img.rsImg {
   background: rgba(255, 255, 255, 0.5);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003382}}
 .rsDefault .rsBullet.rsNavSelected span {
   background-color: #FFF;
 }
@@ -4852,7 +4852,7 @@ img.rsImg {
 /***************
 *  3. Thumbnails
 ****************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003389}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003390}}
 .rsDefault .rsThumbsHor {
   width: 100%;
   position: absolute;
@@ -4865,7 +4865,7 @@ img.rsImg {
   top: auto;
 }
 @media screen and (min-width: 350px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003389}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003390}}
   .rsDefault .rsThumbsHor {
     position: absolute;
     left: 48%;
@@ -4878,7 +4878,7 @@ img.rsImg {
   }
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003399}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003400}}
 .rsDefault .rsThumbsVer {
   width: 96px;
   height: 100%;
@@ -4887,46 +4887,46 @@ img.rsImg {
   right: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003406}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003407}}
 .rsDefault.rsWithThumbsHor .rsThumbsContainer {
   position: relative;
   width: 100% !important;
   max-width: 445px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003412}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003413}}
 .rsDefault.rsWithThumbsVer .rsThumbsContainer {
   position: relative;
   width: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003416}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003417}}
 .rsDefault .rsThumb {
   float: left;
   overflow: hidden;
   width: 13.7%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003422}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003423}}
 .rsDefault .rsThumb img {
   width: 100%;
   height: 100%;
   opacity: 0.3;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003430}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003431}}
 .rsDefault .rsThumb.rsNavSelected img {
   opacity: 1;
   filter: alpha(opacity=30);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003434}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003435}}
 .rsDefault .rsTmb {
   display: block;
 }
 
 /* Thumbnails with text */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003439}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003440}}
 .rsDefault .rsTmb h5 {
   font-size: 16px;
   margin: 0;
@@ -4935,7 +4935,7 @@ img.rsImg {
   color: #FFF;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003446}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003447}}
 .rsDefault .rsTmb span {
   color: #DDD;
   margin: 0;
@@ -4945,7 +4945,7 @@ img.rsImg {
 }
 
 /* Thumbnails arrow icons */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003457}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003458}}
 .rsDefault .rsThumbsArrow {
   height: 100%;
   width: 20px;
@@ -4957,42 +4957,42 @@ img.rsImg {
   background: rgba(0, 0, 0, 0.75);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003467}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003468}}
 .rsDefault .rsThumbsArrow:hover {
   background: rgba(0, 0, 0, 0.9);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003470}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003471}}
 .rsDefault.rsWithThumbsVer .rsThumbsArrow {
   width: 100%;
   height: 20px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003474}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003475}}
 .rsDefault.rsWithThumbsVer .rsThumbsArrowLeft {
   top: 0;
   left: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003475}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003476}}
 .rsDefault.rsWithThumbsVer .rsThumbsArrowRight {
   bottom: 0;
   left: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003477}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003478}}
 .rsDefault.rsWithThumbsHor .rsThumbsArrowLeft {
   left: 0;
   top: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003478}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003479}}
 .rsDefault.rsWithThumbsHor .rsThumbsArrowRight {
   right: 0;
   top: 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003480}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003481}}
 .rsDefault .rsThumbsArrowIcn {
   width: 16px;
   height: 16px;
@@ -5005,27 +5005,27 @@ img.rsImg {
   background: url("../img/icons/rs-default.png");
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003492}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003493}}
 .rsDefault.rsWithThumbsHor .rsThumbsArrowLeft .rsThumbsArrowIcn {
   background-position: -128px -32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003493}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003494}}
 .rsDefault.rsWithThumbsHor .rsThumbsArrowRight .rsThumbsArrowIcn {
   background-position: -128px -48px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003495}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003496}}
 .rsDefault.rsWithThumbsVer .rsThumbsArrowLeft .rsThumbsArrowIcn {
   background-position: -144px -32px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003496}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003497}}
 .rsDefault.rsWithThumbsVer .rsThumbsArrowRight .rsThumbsArrowIcn {
   background-position: -144px -48px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003498}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003499}}
 .rsDefault .rsThumbsArrowDisabled {
   display: none !important;
 }
@@ -5036,7 +5036,7 @@ img.rsImg {
 *  4. Tabs
 *
 ****************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003523}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003524}}
 .rsDefault .rsTabs {
   width: 100%;
   height: auto;
@@ -5047,7 +5047,7 @@ img.rsImg {
   position: relative;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003530}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003531}}
 .rsDefault .rsTab {
   display: inline-block;
   cursor: pointer;
@@ -5070,7 +5070,7 @@ img.rsImg {
   *zoom: 1;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003554}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003555}}
 .rsDefault .rsTab:first-child {
   -webkit-border-top-left-radius: 4px;
   border-top-left-radius: 4px;
@@ -5078,7 +5078,7 @@ img.rsImg {
   border-bottom-left-radius: 4px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003560}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003561}}
 .rsDefault .rsTab:last-child {
   -webkit-border-top-right-radius: 4px;
   border-top-right-radius: 4px;
@@ -5087,14 +5087,14 @@ img.rsImg {
   border-right: 1px solid #cfcfcf;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003568}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003569}}
 .rsDefault .rsTab:active {
   border: 1px solid #D9D9DD;
   background-color: #f4f4f4;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2) inset;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003573}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003574}}
 .rsDefault .rsTab.rsNavSelected {
   color: #FFF;
   border: 1px solid #999;
@@ -5111,7 +5111,7 @@ img.rsImg {
 *  5. Fullscreen button
 *
 ****************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003594}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003595}}
 .rsDefault .rsFullscreenBtn {
   right: 0;
   top: 0;
@@ -5123,7 +5123,7 @@ img.rsImg {
   cursor: pointer;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003605}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003606}}
 .rsDefault .rsFullscreenIcn {
   display: block;
   margin: 6px;
@@ -5136,12 +5136,12 @@ img.rsImg {
   border-radius: 2px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003618}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003619}}
 .rsDefault .rsFullscreenIcn:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003621}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003622}}
 .rsDefault.rsFullscreen .rsFullscreenIcn {
   background-position: -32px 0;
 }
@@ -5151,7 +5151,7 @@ img.rsImg {
 *  6. Play/close video button
 *
 ****************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003635}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003636}}
 .rsDefault .rsPlayBtn {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
   width: 64px;
@@ -5161,7 +5161,7 @@ img.rsImg {
   cursor: pointer;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003643}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003644}}
 .rsDefault .rsPlayBtnIcon {
   width: 64px;
   display: block;
@@ -5177,19 +5177,19 @@ img.rsImg {
   *background-color: #000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003659}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003660}}
 .rsDefault .rsPlayBtn:hover .rsPlayBtnIcon {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003662}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003663}}
 .rsDefault .rsBtnCenterer {
   position: absolute;
   left: 50%;
   top: 50%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003667}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003668}}
 .rsDefault .rsCloseVideoBtn {
   right: 0;
   top: 0;
@@ -5202,13 +5202,13 @@ img.rsImg {
   -webkit-transform: translateZ(0);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003679}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003680}}
 .rsDefault .rsCloseVideoBtn.rsiOSBtn {
   top: -38px;
   right: -6px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003684}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003685}}
 .rsDefault .rsCloseVideoIcn {
   margin: 6px;
   width: 32px;
@@ -5219,7 +5219,7 @@ img.rsImg {
   *background-color: #000;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003693}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003694}}
 .rsDefault .rsCloseVideoIcn:hover {
   background-color: rgba(0, 0, 0, 0.9);
 }
@@ -5229,7 +5229,7 @@ img.rsImg {
 *  7. Preloader
 *
 ****************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003705}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003706}}
 .rsDefault .rsPreloader {
   width: 20px;
   height: 20px;
@@ -5245,7 +5245,7 @@ img.rsImg {
 *  8. Global caption
 *
 ****************/
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003724}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/modules\/_touchcarousel\.scss}line{font-family:\00003725}}
 .rsDefault .rsGCaption {
   position: absolute;
   float: none;
