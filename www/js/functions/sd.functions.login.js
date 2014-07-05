@@ -49,10 +49,13 @@ define([
 					'adfbse4': localStorage.privateKey
 				},
 				error: function(data){
+					c(numberOfTrys);
 					if(numberOfTrys===0){
 						numberOfTrys= 1;
+						c(numberOfTrys);
 						checkKey;
 					}else{
+						c(numberOfTrys);
 						SD.message.showMessage('There was a network error.', 'bad');
 						SD.spinner.hide();
 					}
