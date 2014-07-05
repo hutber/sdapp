@@ -198,27 +198,29 @@ set arguments to values for ease of reading arguments
         Router = arguments[3],
 		SD = arguments[36],
 		IndexView = arguments[4],
-        HomeView = arguments[5];
+        HomeView = arguments[5],
+		myself = arguments;
 
-/*==================================================
- Start up SD global object.
- ================================================== */
-	SD.init();
+	var runEverthing = function(){
+		/*==================================================
+		Start up SD global object.
+		================================================== */
+		SD.init();
 
-/*==================================================
-Routes Vars
-================================================== */
-// initiate routers ----------------
-    SD.ROUTER = new Router();
+		/*==================================================
+		Routes Vars
+		================================================== */
+	// initiate routers ----------------
+		SD.ROUTER = new Router();
 
-//// views ---------------------------
-    SD.VIEWS.indexView = new IndexView();
-    SD.VIEWS.homeView = new HomeView();
+	//// views ---------------------------
+		SD.VIEWS.indexView = new IndexView();
+		SD.VIEWS.homeView = new HomeView();
 
-/*==================================================
-Routes
-================================================== */
-	var names = [];
+		/*==================================================
+		Routes
+		================================================== */
+		var names = [];
 		names[6] = 'login';
 		names[7] = 'forgotten';
 		names[8] = 'signup';
@@ -246,17 +248,17 @@ Routes
 		names[30] = 'diary';
 		names[31] = 'positions';
 		names[32] = 'extra';
-	var myArgs = arguments;
+		var myArgs = myself;
 
-	names.forEach(function(me, key){
-		var functionName = me+"View";
-		SD.VIEWS[functionName] = new myArgs[key]();
-		SD.ROUTER.on('route:'+me, function(){
-			SD.VIEWS[functionName].render(); // succeeds
+		names.forEach(function(me, key){
+			var functionName = me+"View";
+			SD.VIEWS[functionName] = new myArgs[key]();
+			SD.ROUTER.on('route:'+me, function(){
+				SD.VIEWS[functionName].render(); // succeeds
+			});
 		});
-	});
 
-//# Default router ----------------------------------------------------------------
+	//# Default router ----------------------------------------------------------------
 		SD.ROUTER.on('route:index route:home', function(){
 			if(localStorage.getItem('privateKey')!==null){
 				SD.VIEWS.homeView.render();
@@ -265,11 +267,24 @@ Routes
 			}
 		});
 
+
+		SD.DEVICE = function(){
+			if(typeof window.device !== "undefined"){
+				return window.device.platform;
+			}else{
+				return 'Android';
+			}
+		}();
+//		c(window.device.platform);
+		c(SD.DEVICE);
+	};
+
 /*==================================================
 On Device Ready
 ================================================== */
 	if(SD.isMobile){
 		document.addEventListener("deviceready", function(){
+			runEverthing();
 			Backbone.history.start();
 			SD.checkConnection();
 
@@ -278,6 +293,7 @@ On Device Ready
 		}, true);
 	}else{
 		$(document).ready(function() {
+			runEverthing();
 			Backbone.history.start();
 		});
 	}
