@@ -124,6 +124,6 @@
     <gap:splash src="res/screen/ios/screen-ipad-portrait-2x.png"         gap:platform="ios"     width="1536" height="2008" />
 
 
-    <access origin="http://sexdiaries.co.uk*" subdomains="true" />  - same as above, but including subdomains, such as http://build.phonegap.com/
+    <access origin="*.sexdiaries.co.uk*, http://nominatim.openstreetmap.org/reverse*"/>
     <content src="index.html" />
 </widget>

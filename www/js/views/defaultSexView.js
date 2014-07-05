@@ -190,10 +190,8 @@ define([
 				},
 				//Load in a save default sex after html has been complied
 				post: function(){
-					c(SD.SEXDEFAULTS.sexnumber);
 					//update correct sexnumber in SD.SEXDEFAULTS.sexnumber
 					SD.SEXDEFAULTS.sexnumber = $('sexnav .selected').index();
-					c(SD.SEXDEFAULTS.sexnumber);
 //					SD.SEXDEFAULTS.sexnumber = ++sexnumber;
 //
 					//Display the correct rating
