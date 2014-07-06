@@ -70,7 +70,7 @@ define([
 					SD.login.moveToHome();
 					SD.spinner.hide();
 				}else{
-					SD.UI.Dialog('Private Session Key has expired.', 'this is often from logging on a different device. We will log you out for security');
+					SD.UI.Dialog('Private Session Key has expired.', 'This is often from logging on a different device. We will log you out for security.');
 					//alert('You have logged in somewhere else since using this app. For security we\'ll need to log you out, please log back in after.');
 					SD.login.doLogOut();
 				}

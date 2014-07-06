@@ -73,7 +73,7 @@ define([
 						SD.location.locationFail(details);
 					});
 				}else if(SD.SEXDEFAULTS.edit === true && SD.SEXDEFAULTS.location[1] !== "Click to get your location"){
-					alert('Editing location is coming soon. Sorry for the wait.');
+					SD.UI.Dialog('Editing.', 'location is coming soon. Sorry for the wait.');
 //					if(confirm('This will overwrite your old location if you click save.')){
 //						SD.spinner.show('Please wait for us to find you', null, true);
 //						navigator.geolocation.getCurrentPosition(function(details){

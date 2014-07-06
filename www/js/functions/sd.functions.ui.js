@@ -39,9 +39,9 @@ define([
 			navigator.notification[type](message, callback, title, button);
 		}else{
 			if(type === "alert"){
-				alert(message);
+				alert(title + ' '+ message);
 			}else if (type === "confirm"){
-				if(confirm(message)){
+				if(confirm(title + ' '+ message)){
 					callback();
 				}
 			}

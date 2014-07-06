@@ -182,7 +182,7 @@ define([
 						SD.message.showMessage('Your entry has been saved. <br>Did you know you can now edit?', 'good', 2500);
 					}else{
 						if(data==="We could not get your User Id, sorry"){
-							alert('You have logged in somewhere else, for security we will force a logout');
+							SD.UI.Dialog('Private Session Key has expired.', 'this is often from logging on a different device. We will log you out for security');
 							SD.login.doLogOut();
 						}
 						SD.message.showMessage('Something went wrong whilst adding the entry. Ek ermm... check if its there maybe?', 'bad', 6000);
