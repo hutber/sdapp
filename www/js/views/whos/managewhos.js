@@ -9,7 +9,7 @@ define([
 		template: JST['templates/whos/managewhos.ejs'],
 		removeWho: function(me){
 			var parentMe = $(me.currentTarget).parent(), whoName = parentMe.data('name'), whoId = parentMe.data('id');
-			if(confirm('Do you really want to delete ' + whoName)){
+			SD.UI.Dialog('Delete Who?', 'Do you really want to delete ' + whoName, ['Yes Please', 'Cancel'], function(){
 				SD.spinner.show();
 				$.ajax({
 					url: SD.AJAX+'details/deletewho',
@@ -37,8 +37,8 @@ define([
 							SD.message.showMessage('A server error occured, please try again :(', 'bad', 1500);
 						}
 					}
-				});
-			}
+				})
+			}, 'confirm');
 		},
 		render: function () {
 			var myself = this;

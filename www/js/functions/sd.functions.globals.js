@@ -104,7 +104,7 @@ Globals
 			});
 
 			if(failedData){
-				alert('Sorry, we need to log you out. We have added extras, now we need to rebuild the app quickly.');
+				SD.UI.Dialog('We need to log you out!', 'We have added extras, now we need to rebuild the app quickly.');
 				SD.login.doLogOut();
 			}
 

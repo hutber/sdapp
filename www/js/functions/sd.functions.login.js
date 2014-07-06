@@ -50,7 +50,6 @@ define([
 					},
 					error: function(data){
 						if(SD.login.checkPrivateKey.numberOfTrys===0){
-							c('Checking again');
 							SD.login.checkPrivateKey.numberOfTrys = 1;
 							SD.login.checkPrivateKey.doAjax();
 						}else{
@@ -71,8 +70,8 @@ define([
 					SD.login.moveToHome();
 					SD.spinner.hide();
 				}else{
-					alert('Your Private Session Key has expired, this is often from logging on a different device. We will log you out for security.');
-//						alert('You have logged in somewhere else since using this app. For security we\'ll need to log you out, please log back in after.');
+					SD.UI.Dialog('Private Session Key has expired.', 'this is often from logging on a different device. We will log you out for security');
+					//alert('You have logged in somewhere else since using this app. For security we\'ll need to log you out, please log back in after.');
 					SD.login.doLogOut();
 				}
 			}

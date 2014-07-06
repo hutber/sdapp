@@ -28,7 +28,25 @@ define([
 			$('overlay').fadeOut('fast');
 		}
 	};
-
+	/*==================================================
+	Dialogs
+	================================================== */
+	SD.UI.Dialog = function(title, message, button, callback, type){
+		if(typeof type === "undefined"){
+			type = 'alert';
+		}
+		if(typeof navigator.notification !== "undefined"){
+			navigator.notification[type](message, callback, title, button);
+		}else{
+			if(type === "alert"){
+				alert(message);
+			}else if (type === "confirm"){
+				if(confirm(message)){
+					callback();
+				}
+			}
+		}
+	};
 
 	/*==================================================
 	Loading
