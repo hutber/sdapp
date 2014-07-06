@@ -22,10 +22,10 @@ define([
 			SD.centerItems(elem);
 		},
 		showme: function(){
-			$('overlay').fadeIn();
+			$('overlay').show();
 		},
 		hideme: function(){
-			$('overlay').fadeOut('fast');
+			$('overlay').hide();
 		}
 	};
 	/*==================================================
@@ -64,22 +64,22 @@ define([
 			if(timer){
 				SD.spinner.timer = window.setTimeout(SD.spinner.displayCloseButton , 5000);
 			}
-			if(window && window.plugins && window.plugins.spinnerDialog){
-				window.plugins.spinnerDialog.show(title,message);
-			}else{
-				SD.overlay.showme();
-			}
+//			if(window && window.plugins && window.plugins.spinnerDialog){
+//				window.plugins.spinnerDialog.show(title,message);
+//			}else{
+				SD.overlay.showme(); //display in branding sex diaries loading
+//			}
 		},
 		hide: function(){
 			SD.spinner.icon.hide();
 			window.clearTimeout(SD.spinner.timer);
-			if(window && window.plugins && window.plugins.spinnerDialog){
-				window.plugins.spinnerDialog.hide();
-				SD.overlay.hideme();
-			}else{
-				SD.overlay.hideme();
+//			if(window && window.plugins && window.plugins.spinnerDialog){
+//				window.plugins.spinnerDialog.hide();
+//				SD.overlay.hideme();
+//			}else{
+//				SD.overlay.hideme();
 			}
-		},
+//		},
 		displayCloseButton: function(){
 			SD.spinner.icon.fadeIn();
 		}
