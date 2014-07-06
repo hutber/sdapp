@@ -234,7 +234,7 @@ define([
 		SD.saveVar('TOTALSEXNUMBERS');
 	};
 	SD.sex.removeSex = function(sexId, text, deleteArea){
-		if(confirm('Do you really want to delete ' + text)){
+		SD.UI.Dialog('Remove an entry?', 'Do you really want to delete ' + text, ['Cancel', 'Remove it baby!'], function(){
 			SD.spinner.show();
 			$.ajax({
 				url: SD.AJAX+'sex/deletesex',
@@ -266,8 +266,8 @@ define([
 					}
 				}
 			});
-		}
-	}
+		}, 'confirm');
+	};
 	SD.sex.edit = {
 		checkParseOrObject: function(data){
 			if(data !== null && typeof data !== "object"){
