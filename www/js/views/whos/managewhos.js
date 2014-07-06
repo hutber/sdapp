@@ -9,7 +9,7 @@ define([
 		template: JST['templates/whos/managewhos.ejs'],
 		removeWho: function(me){
 			var parentMe = $(me.currentTarget).parent(), whoName = parentMe.data('name'), whoId = parentMe.data('id');
-			SD.UI.Dialog('Delete Who?', 'Do you really want to delete ' + whoName, ['Cancel', 'Yes Please'], function(){
+			SD.UI.Dialog('Delete this person?', 'Do you really want to delete ' + whoName, ['Cancel', 'Yes Please'], function(){
 				SD.spinner.show();
 				$.ajax({
 					url: SD.AJAX+'details/deletewho',

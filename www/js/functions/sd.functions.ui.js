@@ -22,10 +22,10 @@ define([
 			SD.centerItems(elem);
 		},
 		showme: function(){
-			$('overlay').show();
+			$('overlay').addClass('display');
 		},
 		hideme: function(){
-			$('overlay').hide();
+			$('overlay').removeClass('display');
 		}
 	};
 	/*==================================================
@@ -124,8 +124,8 @@ define([
 	$('messageBox').on('click', SD.message.hideMessage);
 
 	/*==================================================
-	 Formatting Results
-	 ================================================== */
+	Formatting Results
+	================================================== */
 	//#SEXNUMBERS ------------------------------------------------------
 	SD.format = {
 		toString: function(sex){

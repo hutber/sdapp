@@ -16,17 +16,16 @@ define([
 		},
 		template: JST['templates/users/settings.ejs'],
 		resetpin: function(){
-			if(confirm('Yep? You sure about resetting your password?')){
+			SD.UI.Dialog('Reset your pincode?', 'Are you sure you wish to reset your 4 digit pincode?', ['Cancel', 'Yes, reset pincode'], function(){
 				localStorage.removeItem('pinNumber');
 				//This checker will active when the app is closed, on repoen this gets set and user has to enter their pin number
 				sessionStorage.setItem('appOpenedFirstTime',true);
 				document.location.replace('#setpin');
-			}
+			}, 'confirm');
 		},
 		deleteUser: function(){
-
-			if(confirm('Now did you mean to click me? Or did u just fuck up?')){
-				if(confirm('Ok, cool. Now I just need to check again, because you can only delete this once. Its preminent, none of that google shit with undo')){
+			SD.UI.Dialog('Delete Account?', 'Now did you mean to click me? Or did u just mess up?', ['Get me out of here, cancel', 'Yes'], function(){
+				SD.UI.Dialog('Delete Account?', 'Ok, cool. Now I just need to check again, because you can only delete this once. Its permanent, none of that google crap with undo', ['Cancel', 'Remove me from all services forever!!'], function(){
 					SD.overlay.showme();
 					$.ajax({
 						url: SD.AJAX+'users/deleteUser',
@@ -45,8 +44,8 @@ define([
 							SD.overlay.hideme();
 						}
 					});
-				}
-			}
+				}, 'confirm');
+			}, 'confirm');
 		},
 		render: function () {
 
