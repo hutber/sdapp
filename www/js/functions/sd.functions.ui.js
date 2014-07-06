@@ -37,7 +37,9 @@ define([
 		}
 		if(typeof navigator.notification !== "undefined"){
 			navigator.notification[type](message, function(button){
-				c(button);
+				if(button===2){
+					callback();
+				}
 			}, title, button);
 		}else{
 			if(type === "alert"){
