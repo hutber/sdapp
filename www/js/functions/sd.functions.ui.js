@@ -77,9 +77,9 @@ define([
 //				window.plugins.spinnerDialog.hide();
 //				SD.overlay.hideme();
 //			}else{
-//				SD.overlay.hideme();
-			}
-//		},
+				SD.overlay.hideme();
+//			}
+		},
 		displayCloseButton: function(){
 			SD.spinner.icon.fadeIn();
 		}
