@@ -40,7 +40,7 @@ define([
 			}else{
 				if(valueReturned === "Forgot Pin?"){
 					//Forward to forgotten
-					if(confirm('Are you sure you have forgotten your pin code? Doing this will reset your pin and log you out')){
+					if( confirm('Are you sure you have forgotten your pin code? Doing this will reset your pin and log you out')){
 						localStorage.clear();
 						document.location.replace('');
 					}

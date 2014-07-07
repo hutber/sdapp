@@ -4,7 +4,7 @@
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
         id        = "co.uk.couplessexdiaries"
-        version   = "0.0.37">
+        version   = "0.0.38">
 
     <name>Sex Diaries</name>
 

@@ -21,7 +21,7 @@ define([
 			$('body').addClass('itemOpen');
 		},
 		closePriv: function(el){
-			var target = el.currentTarget.attributes[0].nodeValue;
+			var target = $(el.currentTarget).data('id');
 			$('body').removeClass('itemOpen');
 			$('#detail_'+target).hide();
 		},

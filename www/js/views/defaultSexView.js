@@ -192,8 +192,8 @@ define([
 				post: function(){
 					//update correct sexnumber in SD.SEXDEFAULTS.sexnumber
 					SD.SEXDEFAULTS.sexnumber = $('sexnav .selected').index();
-//					SD.SEXDEFAULTS.sexnumber = ++sexnumber;
-//
+					SD.SEXDEFAULTS.sexnumber = ++SD.SEXDEFAULTS.sexnumber;
+
 					//Display the correct rating
 					SD.DSV.rating();
 
