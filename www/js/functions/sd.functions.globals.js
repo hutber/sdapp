@@ -275,12 +275,6 @@ Globals
 // #define the globals depending on place we are ------------------------------------------------------
 	SD.globals = function () {
 		if(window.location.protocol === "file:"){
-//			var url = "file:///assets/";
-//			if(SD.DEVICE === "iOS"){
-//				url = "file:///Payload/SexDiaries.app/";
-//			}
-//			url = url+'www/icon-76-2x.png';
-//			c(url);
 			$.ajax({
 				url:'icon-76-2x.png',
 				type:'HEAD',
@@ -290,7 +284,7 @@ Globals
 				},
 				success: function()
 				{
-					c('//file exists');
+//					c('//file exists');
 				}
 			});
 		}else{
