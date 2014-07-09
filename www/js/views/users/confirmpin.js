@@ -40,7 +40,11 @@ define([
 				}
 			}else{
 				if(valueReturned === "Forgot Pin?"){
-					//Forward to forgotten
+					SD.UI.Dialog('Pin Reset?', 'I just hope that you are resetting because of a typeo.', ['Cancl', 'Yes, Reset'], function(){
+						sessionStorage.clear();
+						localStorage.clear();
+						document.location.replace('');
+					}, 'confirm');
 				}else if (valueReturned === ""){
 					myself.currentPw = myself.currentPw.substr(0, actives.length-1);
 					pinInputs.eq(actives.length-1).removeClass('active');

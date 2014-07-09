@@ -40,10 +40,11 @@ define([
 			}else{
 				if(valueReturned === "Forgot Pin?"){
 					//Forward to forgotten
-					if( confirm('Are you sure you have forgotten your pin code? Doing this will reset your pin and log you out')){
+					SD.UI.Dialog('Pin Reset?', 'Are you sure you have forgotten your pin code? Doing this will reset your pin and log you out', ['Get me out of here, cancel', 'Yes'], function(){
+						sessionStorage.clear();
 						localStorage.clear();
 						document.location.replace('');
-					}
+					}, 'confirm');
 				}else if (valueReturned === ""){
 					myself.currentPw = myself.currentPw.substr(0, actives.length-1);
 					pinInputs.eq(actives.length-1).removeClass('active');

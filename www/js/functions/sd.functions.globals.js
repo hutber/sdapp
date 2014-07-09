@@ -38,6 +38,7 @@ Globals
 
 // #Globals for SD ------------------------------------------------------
 	//Setup fullsex so we can build other numbers from this.
+	SD.VERSION = '0.0.38';
 	SD.ENVIROMENT = 'liveApp';
 	SD.CDN = 'www.sexdiaries.co.uk/';
 	SD.HTTP = 'https://www.sexdiaries.co.uk/';
@@ -51,68 +52,6 @@ Globals
 	}();
 	SD.CURRENTSEX = 'na';
 	SD.SEXDEFAULTS = SD.sex.sexDefaults();
-	SD.FULLSEX = function (){
-		if(typeof localStorage.FULLSEX !== "undefined" && localStorage.FULLSEX !== "[]"){
-			var tmpObj = JSON.parse(localStorage.FULLSEX),
-				failedData = false;
-
-			//This one time check will loop through all data in FULLSEX and check to make sure everything is in order.
-			//If it is not it will tell the user to login and out to reset the data.
-			Object.keys(tmpObj).forEach(function(me){
-				tmpObj[me].forEach(function(data){
-					if(data.location !== null && typeof data.location !== "object") {
-						try {
-							data.location = JSON.parse(data.location);
-						}
-						catch (e) {
-							failedData = true;
-						}
-					}
-					if(data.extra !== null && typeof data.extra !== "object") {
-						try {
-							data.extra = JSON.parse(data.extra);
-						}
-						catch (e) {
-							failedData = true;
-						}
-					}
-					if(data.place !== null && typeof data.place !== "object") {
-						try {
-							data.place = JSON.parse(data.place);
-						}
-						catch (e) {
-							failedData = true;
-						}
-					}
-					if(data.who !== null && typeof data.who !== "object") {
-						try {
-							data.who = JSON.parse(data.who);
-						}
-						catch (e) {
-							failedData = true;
-						}
-					}
-					if(data.positions !== null && typeof data.positions !== "object") {
-						try {
-							data.positions = JSON.parse(data.positions);
-						}
-						catch (e) {
-							failedData = true;
-						}
-					}
-				});
-			});
-
-			if(failedData){
-				SD.UI.Dialog('We need to log you out!', 'We have added extras, now we need to rebuild the app quickly.');
-				SD.login.doLogOut();
-			}
-
-			return tmpObj;
-		}else{
-			return {};
-		}
-	}();
 	SD.TOTALSEXNUMBERS = function (){
 		if(typeof localStorage.TOTALSEXNUMBERS !== "undefined"){
 			return JSON.parse(localStorage.TOTALSEXNUMBERS);
@@ -272,6 +211,45 @@ Globals
 		}
 	}
 
+// #Build FULLSEX and check we are in the correct app version ------------------------------------------------------
+
+	SD.FULLSEXRUN = function (){
+		if(SD.STATE === true && localStorage.version !== SD.VERSION){
+			SD.spinner.showme('We\'re updating you to the latest version, sit tight.', 'Update required');
+			$.ajax({
+				url: SD.AJAX+'users/getLatestStats',
+				type: 'POST',
+				dataType: "json",
+				data: {
+					'uid': localStorage.uid,
+					'privateKey': localStorage.privateKey,
+					'version': SD.VERSION
+				},
+				error: function(data){
+					if(data.status === 200){
+						SD.message.showMessage('Opps, sorry just hit login one more time.');
+					}else{
+						SD.message.showMessage('Error Code: '+data.status, 'bad');
+					}
+					SD.spinner.hideme();
+				},
+				success: function(data){
+					SD.spinner.hideme();
+					if(data.code === 1 ){
+						localStorage.version = SD.VERSION;
+						if(typeof localStorage.FULLSEX !== "undefined" && localStorage.FULLSEX !== "[]"){
+							SD.FULLSEX = JSON.parse(localStorage.FULLSEX);
+						}else{
+							SD.FULLSEX = {};
+						}
+					}else{
+						SD.login.checkPrivateKey.makeCall();
+					}
+				}
+			});
+		}
+	};
+
 // #define the globals depending on place we are ------------------------------------------------------
 	SD.globals = function () {
 		if(window.location.protocol === "file:"){
@@ -290,6 +268,7 @@ Globals
 		}else{
 			checkEnvio();
 		}
+		SD.FULLSEXRUN();
 	};
 
 
@@ -369,6 +348,6 @@ Networking functions
 		});
 
 		//add click to hide overlay button on click
-		$('overlay .icon-cancel-circled').click(SD.spinner.hide);
+		$('overlay .icon-cancel-circled').click(SD.spinner.hideme);
 	};
 });

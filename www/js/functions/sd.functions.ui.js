@@ -16,18 +16,6 @@ define([
 		$('.title').html(title);
 	};
 
-	//#display the popup/overlay ------------------------------------------------------
-	SD.overlay = {
-		init: function(elem) {
-			SD.centerItems(elem);
-		},
-		showme: function(){
-			$('overlay').addClass('display');
-		},
-		hideme: function(){
-			$('overlay').removeClass('display');
-		}
-	};
 	/*==================================================
 	Dialogs
 	================================================== */
@@ -57,32 +45,20 @@ define([
 	================================================== */
 	SD.spinner = {
 		timer: null,
-		icon: $('overlay .icon-cancel-circled'),
-		show: function(title, message, timer){
-			if(typeof title!=="string"){
-				title = null;
-			}
-			if(typeof message!=="string"){
-				message = null;
+		overlay: $('overlay'),
+		showme: function(message, title, timer){
+			if(message === null){
+				message = 'Loading...';
 			}
 			if(timer){
 				SD.spinner.timer = window.setTimeout(SD.spinner.displayCloseButton , 5000);
 			}
-//			if(window && window.plugins && window.plugins.spinnerDialog){
-//				window.plugins.spinnerDialog.show(title,message);
-//			}else{
-				SD.overlay.showme(); //display in branding sex diaries loading
-//			}
+			this.overlay.find('span').text(message);
+			this.overlay.addClass('display');
 		},
-		hide: function(){
-			SD.spinner.icon.hide();
+		hideme: function(){
 			window.clearTimeout(SD.spinner.timer);
-//			if(window && window.plugins && window.plugins.spinnerDialog){
-//				window.plugins.spinnerDialog.hide();
-//				SD.overlay.hideme();
-//			}else{
-				SD.overlay.hideme();
-//			}
+			this.overlay.removeClass('display');
 		},
 		displayCloseButton: function(){
 			SD.spinner.icon.fadeIn();

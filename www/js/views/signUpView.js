@@ -58,7 +58,7 @@ define([
 		signupForm: function (elem) {
 			var myself = this;
 			if($(elem.currentTarget).find('.error').length !== true){
-				SD.overlay.showme();
+				SD.spinner.showme();
 				var values = $(elem.currentTarget).serializeObject();
 				//Turn off signup button
 				$('.btn.signup').attr('disabled','disabled');
@@ -68,13 +68,13 @@ define([
 					dataType: 'json',
 					data: values,
 					error: function(data){
-						SD.overlay.hideme();
+						SD.spinner.hideme();
 						SD.message.showMessage('Opps, sorry! The registration failed. Please try again?!... - '+data.bad, 'bad');
 					},
 					success: function(data){
 						//TODO display the error
 						if(data.error){
-							SD.overlay.hideme();
+							SD.spinner.hideme();
 							SD.message.showMessage(data.error, 'bad');
 							$('.btn.signup').removeAttr('disabled');
 						}else{
@@ -93,14 +93,14 @@ define([
 									}else{
 										SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
 									}
-									SD.overlay.hideme();
+									SD.spinner.hideme();
 								},
 								success: function(data){
 									SD.login.doLogin(data);
-									SD.overlay.hideme();
+									SD.spinner.hideme();
 								}
 							});
-//							SD.overlay.hideme();
+//							SD.spinner.hideme();
 //
 //							SD.message.showMessage(data.good);
 //							myself.$el.html(myself.checkmail({email:values.email}));

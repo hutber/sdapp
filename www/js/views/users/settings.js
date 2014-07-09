@@ -26,7 +26,7 @@ define([
 		deleteUser: function(){
 			SD.UI.Dialog('Delete Account?', 'Now did you mean to click me? Or did u just mess up?', ['Get me out of here, cancel', 'Yes'], function(){
 				SD.UI.Dialog('Delete Account?', 'Ok, cool. Now I just need to check again, because you can only delete this once. Its permanent, none of that google crap with undo', ['Cancel', 'Remove me from all services forever!!'], function(){
-					SD.overlay.showme();
+					SD.spinner.showme();
 					$.ajax({
 						url: SD.AJAX+'users/deleteUser',
 						type: 'POST',
@@ -41,7 +41,7 @@ define([
 						},
 						success: function(data){
 							SD.message.showMessage('Opps, didn\'t work did it', 'bad');
-							SD.overlay.hideme();
+							SD.spinner.hideme();
 						}
 					});
 				}, 'confirm');

@@ -66,7 +66,7 @@ define([
 			},
 			location: function(){
 				if(SD.SEXDEFAULTS.location[1] === "Click to get your location"){
-					SD.spinner.show('Please wait for us to find you', null, true);
+					SD.spinner.showme('Please wait for us to find you', null, true);
 					navigator.geolocation.getCurrentPosition(function(details){
 						SD.location.locationSucess(details);
 					}, function(details){
@@ -75,7 +75,7 @@ define([
 				}else if(SD.SEXDEFAULTS.edit === true && SD.SEXDEFAULTS.location[1] !== "Click to get your location"){
 					SD.UI.Dialog('Editing.', 'location is coming soon. Sorry for the wait.');
 //					if(confirm('This will overwrite your old location if you click save.')){
-//						SD.spinner.show('Please wait for us to find you', null, true);
+//						SD.spinner.showme('Please wait for us to find you', null, true);
 //						navigator.geolocation.getCurrentPosition(function(details){
 //							SD.locationSucess(details);
 //						}, function(details){

@@ -48,7 +48,7 @@ define([
 				myself.$el.html(myself.templateMenu(SD.FULLSEX));
 
 				// #Update the page with individual data from AJAX
-				for(var key in SD.FULLSEX) break; //Ggrab out the first item from object
+				for(var key in SD.FULLSEX) break; //Grab out the first item from object
 				$('.historyContent').html(myself.template(SD.FULLSEX[key]));
 
 				//Check to make sure that the change event hasn't already been bound.

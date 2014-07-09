@@ -60,6 +60,7 @@ define([
 		php.rating = SD.SEXDEFAULTS.rating;
 		php.diary = SD.SEXDEFAULTS.diary;
 		php.extra = SD.SEXDEFAULTS.extra;
+		c(SD.SEXDEFAULTS.extra);
 		php.duration = (SD.SEXDEFAULTS.duration[1][0]*60)+SD.SEXDEFAULTS.duration[1][1];
 
 		if(SD.SEXDEFAULTS.location[0]!==false){
@@ -78,7 +79,7 @@ define([
 	};
 	SD.sex.save = function(){
 		if(localStorage.privateKey){
-			SD.spinner.show();
+			SD.spinner.showme('Saving Your Sex...');
 			var saveSexDetails = SD.sex.convertPhp(),
 				dataToSend = function(){
 					if(SD.SEXDEFAULTS.edit){
@@ -94,14 +95,13 @@ define([
 						};
 					}
 				}();
-
 			$.ajax({
 				url: SD.AJAX+'add',
 				type: 'POST',
 				dataType: "json",
 				data: dataToSend,
 				error: function(data){
-					SD.spinner.hide();
+					SD.spinner.hideme();
 					SD.message.showMessage('Adding Failed, server side problem: '+ data.status, 'bad');
 				},
 				success: function(data){
@@ -178,8 +178,8 @@ define([
 						Now clean up save sex page and move to where we need to be.
 						================================================== */
 						SD.pageLoad('overview');
-						SD.spinner.hide();
-						SD.message.showMessage('Your entry has been saved. <br>Did you know you can now edit?', 'good', 2500);
+						SD.spinner.hideme();
+						SD.message.showMessage('Sex Saved', 'good', 2500);
 					}else{
 						if(data==="We could not get your User Id, sorry"){
 							SD.UI.Dialog('Private Session Key has expired.', 'this is often from logging on a different device. We will log you out for security');
@@ -235,7 +235,7 @@ define([
 	};
 	SD.sex.removeSex = function(sexId, text, deleteArea){
 		SD.UI.Dialog('Remove an entry?', 'Do you really want to delete ' + text, ['Cancel', 'Remove it baby!'], function(){
-			SD.spinner.show();
+			SD.spinner.showme('Removing Sex Entry.');
 			$.ajax({
 				url: SD.AJAX+'sex/deletesex',
 				type: 'POST',
@@ -244,11 +244,11 @@ define([
 					'privateKey': localStorage.privateKey,
 				},
 				error: function(data){
-					SD.spinner.hide();
+					SD.spinner.hideme();
 					SD.message.showMessage('A server error occured, please try again >:|', 'bad', 1500);
 				},
 				success: function(data){
-					SD.spinner.hide();
+					SD.spinner.hideme();
 					if(data === ""){
 
 						//delete stat from SD.FULLSEX
@@ -306,10 +306,12 @@ define([
 			dataConverted.duration = function(){
 				var totalDuration = [false,false],
 					tmpNumber = null,
+					covertedNumber = 0;
+				if(data.duration !== 0) {
 					covertedNumber = data.duration/60+'';
-
-				tmpNumber = covertedNumber.split(".");
-				totalDuration[1] = [parseInt(tmpNumber[0]),parseInt(tmpNumber[1])];
+					tmpNumber = covertedNumber.split(".");
+					totalDuration[1] = [parseInt(tmpNumber[0]),parseInt(tmpNumber[1])];
+				}
 				return totalDuration;
 			}();
 

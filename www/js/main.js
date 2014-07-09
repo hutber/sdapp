@@ -32,11 +32,11 @@ require.config({
 		date: {
 			exports: 'date'
 		},
-		sf: {
-			exports: 'SD'
+		ui: {
+			deps: ['jquery', 'slider']
 		},
-		ss: {
-			deps: ['sf']
+		sd: {
+			deps: ['ui']
 		},
 		sl: {
 			deps: ['ss']
@@ -44,17 +44,11 @@ require.config({
 		sloc: {
 			deps: ['sl']
 		},
-		sd: {
-			deps: ['sloc']
-		},
 		dv: {
 			deps: ['sd']
 		},
 		ge: {
 			deps: ['dv']
-		},
-		ui: {
-			deps: ['ge', 'slider']
 		},
 		JST: {
 			deps: ['underscore'],
@@ -115,13 +109,12 @@ require.config({
 		highcharts: 'libs/plugins/highcharts',
 		hammerjs: 'libs/plugins/hammer.min',
 		date: 'libs/plugins/date',
-		core: 'core.functions',
+		ui : 'functions/sd.functions.ui',
 		sd : 'functions/sd.functions.globals',
 		sf : 'functions/sd.functions.sex',
 		sl : 'functions/sd.functions.login',
 		ss : 'functions/sd.functions.selection',
 		ge : 'functions/sd.functions.globalEvents',
-		ui : 'functions/sd.functions.ui',
 		onoff : 'functions/sd.functions.onoff',
 		mboi : 'functions/sd.functions.mobi',
 		sloc : 'functions/sd.functions.location',

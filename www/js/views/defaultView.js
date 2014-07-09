@@ -143,7 +143,7 @@ define([
 				var who = $('#who');
 
 				if(!who.hasClass('error') && who.val().length>2 && !$('saveWho save').hasClass('disabled')){
-					SD.spinner.show();
+					SD.spinner.showme('Saving the Partner');
 					$.ajax({
 						url: SD.AJAX+'details/addwho',
 						type: 'POST',
@@ -153,11 +153,11 @@ define([
 							'privateKey': localStorage.privateKey,
 						},
 						error: function(data){
-							SD.spinner.hide();
+							SD.spinner.hideme();
 							SD.message.showMessage('A server error occured, please try again >:|', 'bad', 1500);
 						},
 						success: function(data){
-							SD.spinner.hide();
+							SD.spinner.hideme();
 							if(data[0].id !== ""){
 								SD.SEXDEFAULTS.who = [];
 								SD.SEXDEFAULTS.who[who.val()] = data[0].id; //Add the current who's to the current Sex details

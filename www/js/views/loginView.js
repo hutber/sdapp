@@ -32,7 +32,7 @@ define([
 			});
 
 			if(noerror){
-				SD.overlay.showme();
+				SD.spinner.showme();
 				var values = $(elem.currentTarget).serializeObject();
 				$.ajax({
 					url: SD.AJAX+'users/login',
@@ -48,11 +48,11 @@ define([
 						}else{
 							SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
 						}
-						SD.overlay.hideme();
+						SD.spinner.hideme();
 					},
 					success: function(data){
 						SD.login.doLogin(data);
-						SD.overlay.hideme();
+						SD.spinner.hideme();
 					}
 				});
 			}

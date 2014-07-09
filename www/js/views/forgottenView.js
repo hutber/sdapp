@@ -24,7 +24,7 @@ define([
 
 		forgotten: function (elem) {
 			if($(elem.currentTarget).find('.error').length !== true){
-				SD.overlay.showme();
+				SD.spinner.showme();
 				var values = $(elem.currentTarget).serializeObject();
 				$.ajax({
 					url: SD.AJAX+'users/forgotten',
@@ -35,10 +35,10 @@ define([
 					},
 					error: function(data){
 						SD.message.showMessage('Sorry, there is an error on the server. Please report this bug. Email is below', 'bad');
-						SD.overlay.hideme();
+						SD.spinner.hideme();
 					},
 					success: function(data){
-						SD.overlay.hideme();
+						SD.spinner.hideme();
 						if(data.good){
 							SD.message.showMessage(data.good);
 						}else{

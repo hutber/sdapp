@@ -54,21 +54,21 @@ define([
 							SD.login.checkPrivateKey.doAjax();
 						}else{
 							SD.message.showMessage('There was a network error. Please try again.', 'bad');
-							SD.spinner.hide();
+							SD.spinner.hideme();
 						}
 					},
 					success: SD.login.checkPrivateKey.success
 				});
 			},
 			makeCall: function(){
-				SD.spinner.show('Looking up', 'We are checking if you have logged in on another device.');
+				SD.spinner.showme('We are checking if you have logged in on another device.', 'Looking up');
 				SD.login.checkPrivateKey.doAjax();
 			},
 			success: function(data){
 				if(data.current==="1"){
 					localStorage.setItem('GLOBALSEXNUMBERS',JSON.stringify(data.GLOBALSEXNUMBERS));
 					SD.login.moveToHome();
-					SD.spinner.hide();
+					SD.spinner.hideme();
 				}else{
 					SD.UI.Dialog('Private Session Key has expired.', 'This is often from logging on a different device. We will log you out for security.');
 					//alert('You have logged in somewhere else since using this app. For security we\'ll need to log you out, please log back in after.');

@@ -51,20 +51,20 @@ define([
 						'zoom' : 18
 					},
 					error: function(data){
-						SD.spinner.hide();
+						SD.spinner.hideme();
 					},
 					success: function(data){
 						SD.SEXDEFAULTS.location[0] = SD.location.buildObject(data);
 						SD.SEXDEFAULTS.location[1] = data.address.city_district + ', '+ data.address.city +', '+data.address.country_code.toUpperCase();
 						$('location location').html(SD.SEXDEFAULTS.location[1]);
-						SD.spinner.hide();
+						SD.spinner.hideme();
 					}
 				});
 			}
 		},
 		locationFail: function (error) {
 			SD.message.showMessage('Sorry, maybe your gps isn\'t turned on?', 'bad');
-			SD.spinner.hide();
+			SD.spinner.hideme();
 		}
 	};
 
