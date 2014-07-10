@@ -32,29 +32,8 @@ define([
 			});
 
 			if(noerror){
-				SD.spinner.showme();
-				var values = $(elem.currentTarget).serializeObject();
-				$.ajax({
-					url: SD.AJAX+'users/login',
-					type: 'POST',
-					dataType: "json",
-					data: {
-						'uname': values.uname,
-						'pword': values.pword
-					},
-					error: function(data){
-						if(data.status === 200){
-							SD.message.showMessage('Opps, sorry just hit login one more time.');
-						}else{
-							SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
-						}
-						SD.spinner.hideme();
-					},
-					success: function(data){
-						SD.login.doLogin(data);
-						SD.spinner.hideme();
-					}
-				});
+				SD.spinner.showme('Logging you in..');
+				SD.login.doLogin.doAjax($(elem.currentTarget).serializeObject());
 			}
             return false;
         }

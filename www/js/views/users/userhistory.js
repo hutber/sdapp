@@ -20,7 +20,7 @@ define([
 			var parentMe = $(me.currentTarget).parent(),
 				deleteDetails = parentMe.find('h2')[0].innerHTML,
 				sexId = parentMe[0].id;
-				SD.sex.removeSex(sexId, deleteDetails, parentMe);
+				SD.sex.removeSexFromHistoryPage(sexId, deleteDetails, parentMe);
 		},
 		edit: function(me){
 			//build up details to select the edit data

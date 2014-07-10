@@ -19,22 +19,49 @@ define([
 				window.location.href = "#home";
 			}
 		},
-		doLogin: function(data){
-			if(data.privateKey){
-				Object.keys(data).forEach(function(key){
-					var me = data[key];
-					if(typeof me === "string"){ //If I'm a string then just add it to locastorage
-						localStorage.setItem(key,me);
-					}else if (typeof me === "object"){ //If we are an object then stringify if
-						localStorage.setItem(key,JSON.stringify(me));
+		doLogin: {
+			doAjax: function(values){
+				$.ajax({
+					url: SD.AJAX+'users/login',
+					type: 'POST',
+					dataType: "json",
+					data: {
+						'uname': values.uname,
+						'pword': values.pword
+					},
+					error: function(data){
+						if(data.status === 200){
+							SD.spinner.showme('Still Logging you in...');
+							SD.login.doLogin.doAjax(values);
+						}else{
+							SD.message.showMessage('Sorry Login Failed: '+data.status, 'bad');
+						}
+						SD.spinner.hideme();
+					},
+					success: function(data){
+						SD.login.doLogin.success(data);
+						SD.spinner.hideme();
 					}
 				});
-				//we add a session marker to tell the pin view that we are coming from the login and don't display the pin
-				sessionStorage.setItem('blockpin',false);
-				//Now we load the home page
-				SD.login.moveToHome(true);
-			}else{
-				SD.message.showMessage(data.message, 'bad');
+				return false;
+			},
+			success: function(data){
+				if(data.privateKey){
+					Object.keys(data).forEach(function(key){
+						var me = data[key];
+						if(typeof me === "string"){ //If I'm a string then just add it to locastorage
+							localStorage.setItem(key,me);
+						}else if (typeof me === "object"){ //If we are an object then stringify if
+							localStorage.setItem(key,JSON.stringify(me));
+						}
+					});
+					//we add a session marker to tell the pin view that we are coming from the login and don't display the pin
+					sessionStorage.setItem('blockpin',false);
+					//Now we load the home page
+					SD.login.moveToHome(true);
+				}else{
+					SD.message.showMessage(data.message, 'bad');
+				}
 			}
 		},
 		checkPrivateKey: {

@@ -233,9 +233,9 @@ define([
 		SD.TOTALSEXNUMBERS.total--;
 		SD.saveVar('TOTALSEXNUMBERS');
 	};
-	SD.sex.removeSex = function(sexId, text, deleteArea){
-		SD.UI.Dialog('Remove an entry?', 'Do you really want to delete ' + text, ['Cancel', 'Remove it baby!'], function(){
-			SD.spinner.showme('Removing Sex Entry.');
+	SD.sex.removeSexFromHistoryPage = function(sexId, text, deleteArea){
+		SD.UI.Dialog('Remove an entry?', 'Do you really want to delete ' + text +'?', ['Cancel', 'Remove it baby!'], function(){
+			SD.spinner.showme('Removing Sex Entry');
 			$.ajax({
 				url: SD.AJAX+'sex/deletesex',
 				type: 'POST',
@@ -255,9 +255,17 @@ define([
 						SD.sex.removeSexStat(sexId);
 
 						//update dropdown list
-						var selectNewValue = $('#month option:selected');
-						if(selectNewValue){
-							selectNewValue.html(selectNewValue.html().replace(/\(.*?\)/, "("+ SD.FULLSEX[selectNewValue.val()].length +")"));
+						var selectNewValue = $('#month option:selected'),
+							selectedVal = selectNewValue.val(),
+							selectedNextVal = selectNewValue.next().val(),
+							statsLength = SD.FULLSEX[selectedVal].length;
+						if(selectNewValue && statsLength > 0){
+							selectNewValue.html(selectNewValue.html().replace(/\(.*?\)/, "("+ statsLength +")"));
+						}else{
+							selectNewValue.remove();
+							delete SD.FULLSEX[selectedVal];
+							SD.saveVar('FULLSEX');
+							$('.historyContent').html(SD.VIEWS.userhistoryView.template(SD.FULLSEX[selectedNextVal]));
 						}
 
 						deleteArea.fadeOut('500');

@@ -61,7 +61,7 @@ define([
 			this.overlay.removeClass('display');
 		},
 		displayCloseButton: function(){
-			SD.spinner.icon.fadeIn();
+			SD.spinner.showme();
 		}
 	};
 
