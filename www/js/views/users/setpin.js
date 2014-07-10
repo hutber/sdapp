@@ -16,7 +16,6 @@ define([
 				text: "Please enter your desired <span>4-digit passcode.</span>",
 				target: 'setpin'
 			};
-
 			this.$el.html(this.template(data));
 			SD.setTitle('Please set a pin');
 		},
@@ -30,6 +29,7 @@ define([
 			if(isNumber(valueReturned)){
 				pinInputs.eq(actives.length).addClass('active');
 				myself.currentPw += ''+valueReturned;
+
 				if(myself.currentPw.length === 4){
 					sessionStorage.setItem('tmpPin',myself.currentPw);
 					window.location.href = "#confirmpin";

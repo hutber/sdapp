@@ -60,7 +60,7 @@ define([
 		php.rating = SD.SEXDEFAULTS.rating;
 		php.diary = SD.SEXDEFAULTS.diary;
 		php.extra = SD.SEXDEFAULTS.extra;
-		c(SD.SEXDEFAULTS.extra);
+
 		php.duration = (SD.SEXDEFAULTS.duration[1][0]*60)+SD.SEXDEFAULTS.duration[1][1];
 
 		if(SD.SEXDEFAULTS.location[0]!==false){

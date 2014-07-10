@@ -14,5 +14,5 @@ node_modules
 merges
 out
 platforms
-/plugins/
+/plugins/*
 www/img/Thumbs.db

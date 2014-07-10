@@ -7395,12 +7395,21 @@ save img {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000357}}
 .userhistory .historyContent h2 {
   text-align: left;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000361}}
-.userhistory date {
-  font-size: 14px;
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000362}}
+.userhistory .historyContent date {
+  width: 32.20339%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+  font-size: .7rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000364}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000367}}
 .userhistory imgCon {
   padding: 4px;
   text-align: left;
@@ -7410,11 +7419,11 @@ save img {
   margin-right: 1.69492%;
   display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000369}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000372}}
 .userhistory imgCon img {
   width: 90%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000373}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000376}}
 .userhistory historydetails {
   position: relative;
   display: inline-block;
@@ -7426,7 +7435,7 @@ save img {
   margin-right: 1.69492%;
   display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000378}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000381}}
 .userhistory deleteButton {
   width: 15.25424%;
   float: right;
@@ -7434,34 +7443,28 @@ save img {
   *margin-left: -1em;
   display: inline;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000380}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000383}}
 .userhistory deleteButton .icon-trash {
   font-size: 2rem;
   color: #e74c3c;
   line-height: 3rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000390}}
 .userhistory .nostats h1 {
   font-size: 2rem;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000394}}
 .userhistory extrainfo {
-  position: absolute;
-  top: 0;
-  right: 0;
   height: 18px;
-  width: 32.20339%;
-  float: left;
-  margin-right: 1.69492%;
+  width: 66.10169%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -1em;
   display: inline;
-  display: inline-block;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\0000398}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/pages\/_userhistory\.scss}line{font-family:\00003100}}
 .userhistory extrainfo img {
-  height: 100%;
+  height: 85%;
   width: auto;
   float: right;
   margin-left: 4px;
@@ -7974,13 +7977,13 @@ messagebox {
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/style\.scss}line{font-family:\00003470}}
 messagebox.good {
   background: #86c555;
-  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2JjZGZhMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzg2YzU1NSIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzg2YzU1NSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzZjYWMzYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==');
   background-size: 100%;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #bcdfa1), color-stop(100%, #86c555));
-  background-image: -webkit-linear-gradient(#bcdfa1, #86c555);
-  background-image: -moz-linear-gradient(#bcdfa1, #86c555);
-  background-image: -o-linear-gradient(#bcdfa1, #86c555);
-  background-image: linear-gradient(#bcdfa1, #86c555);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #86c555), color-stop(100%, #6cac3b));
+  background-image: -webkit-linear-gradient(#86c555, #6cac3b);
+  background-image: -moz-linear-gradient(#86c555, #6cac3b);
+  background-image: -o-linear-gradient(#86c555, #6cac3b);
+  background-image: linear-gradient(#86c555, #6cac3b);
   color: #FFF;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/var\/www\/sexdiaries\.co\.uk\/sdapp\/sass\/style\.scss}line{font-family:\00003475}}

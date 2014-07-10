@@ -30,7 +30,8 @@ define([
 			if(isNumber(valueReturned)){
 				pinInputs.eq(actives.length).addClass('active');
 				myself.currentPw += ''+valueReturned;
-				if(myself.currentPw.length === 4 && myself.currentPw === sessionStorage.tmpPin){
+
+				if(myself.currentPw.length === 4 && myself.currentPw === SD.VIEWS.setpinView.currentPw){
 					sessionStorage.removeItem('tmpPin');
 					localStorage.setItem('pinNumber',myself.currentPw);
 					sessionStorage.removeItem('appOpenedFirstTime');
@@ -42,8 +43,9 @@ define([
 				if(valueReturned === "Forgot Pin?"){
 					SD.UI.Dialog('Pin Reset?', 'I just hope that you are resetting because of a typeo.', ['Cancl', 'Yes, Reset'], function(){
 						sessionStorage.clear();
-						localStorage.clear();
-						document.location.replace('');
+						SD.VIEWS.setpinView.currentPw = "";
+						myself.currentPw = "";
+						document.location.replace('#setpin');
 					}, 'confirm');
 				}else if (valueReturned === ""){
 					myself.currentPw = myself.currentPw.substr(0, actives.length-1);

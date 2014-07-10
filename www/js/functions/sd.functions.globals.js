@@ -247,6 +247,13 @@ Globals
 					}
 				}
 			});
+		}else{
+			//we are of the correct version build fullsex
+			if(typeof localStorage.FULLSEX !== "undefined" && localStorage.FULLSEX !== "[]"){
+				SD.FULLSEX = JSON.parse(localStorage.FULLSEX);
+			}else{
+				SD.FULLSEX = {};
+			}
 		}
 	};
 
