@@ -38,6 +38,8 @@ define([
 
 				//if we have the sex nav open on load select the correct class
 				if(SD.SEXDEFAULTS.sextype === "default"){
+					//make sure no elements have any selected items
+					$('sexnav div.selected').removeClass('selected');
 					document.getElementById('navwank').setAttribute('class','selected');
 				} else{
 					//Now navigate to current selection

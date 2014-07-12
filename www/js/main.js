@@ -35,12 +35,15 @@ require.config({
 		ui: {
 			deps: ['jquery', 'slider']
 		},
+		iap: {
+			exports: 'SD.IAP'
+		},
 		sd: {
-			deps: ['ui']
+			deps: ['iap','ui']
 		},
-		sl: {
-			deps: ['ss']
-		},
+        sl: {
+            deps: ['ss']
+        },
 		sloc: {
 			deps: ['sl']
 		},
@@ -111,6 +114,7 @@ require.config({
 		date: 'libs/plugins/date',
 		ui : 'functions/sd.functions.ui',
 		sd : 'functions/sd.functions.globals',
+		iap : 'functions/sd.functions.iap',
 		sf : 'functions/sd.functions.sex',
 		sl : 'functions/sd.functions.login',
 		ss : 'functions/sd.functions.selection',
@@ -174,6 +178,7 @@ require([
 	'views/extra/extra',
 
 // Functions -----------------------
+		'iap',
 		'sf',
 		'ss',
 		'sl',

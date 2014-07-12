@@ -88,7 +88,7 @@ define([
 				});
 			},
 			makeCall: function(){
-				SD.spinner.showme('We are checking if you have logged in on another device.', 'Looking up');
+				SD.spinner.showme('Security Checks', 'Looking up');
 				SD.login.checkPrivateKey.doAjax();
 			},
 			success: function(data){
