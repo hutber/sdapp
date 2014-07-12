@@ -32,7 +32,7 @@ define([
 			});
 
 			if(noerror){
-				SD.spinner.showme('Logging you in..');
+				SD.spinner.showme('Logging you in...');
 				SD.login.doLogin.doAjax($(elem.currentTarget).serializeObject());
 			}
             return false;
