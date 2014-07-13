@@ -135,7 +135,7 @@ define([
 					}else{
 						SD.pageLoad(currentClick.data('type'));
 					}
-					SD.SEXDEFAULTS.sexnumber = parseInt(currentClick.data('order')); //update which sex number we are on
+					SD.SEXDEFAULTS.sexnumber = parseInt(currentClick.data('order'))+1; //update which sex number we are on
 				}
 			},
 			saveWho: function(){

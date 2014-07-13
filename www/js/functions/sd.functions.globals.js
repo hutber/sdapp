@@ -38,7 +38,7 @@ Globals
 
 // #Globals for SD ------------------------------------------------------
 	//Setup fullsex so we can build other numbers from this.
-	SD.VERSION = '0.0.38';
+	SD.VERSION = '0.0.39';
 	SD.ENVIROMENT = 'liveApp';
 	SD.CDN = 'www.sexdiaries.co.uk/';
 	SD.HTTP = 'https://www.sexdiaries.co.uk/';
