@@ -4,8 +4,8 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "co.uk.couplessexdiaries"
-        version   = "0.0.39">
+        id        = "co.uk.sexlogger"
+        version   = "1.0.0">
 
     <name>Sex Diaries</name>
 
