@@ -47,7 +47,7 @@ define([
 					SD.SEXDEFAULTS[SD.HASH][meId] = posName;
 					$('save').removeClass('disabled');
 				}
-			}else {
+			}else { having
 				//If we are in the array and we have already been selected remove from the object
 				for	(var index in SD.SEXDEFAULTS[SD.HASH]) {
 					if(parseInt(meId) === parseInt(index)){delete SD.SEXDEFAULTS[SD.HASH][meId];}

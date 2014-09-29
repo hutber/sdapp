@@ -175,7 +175,7 @@ require([
 		'views/positions/positions',
 
 // Extra -----------------------
-	'views/extra/extra',
+		'views/extra/extra',
 
 // Functions -----------------------
 		'iap',
