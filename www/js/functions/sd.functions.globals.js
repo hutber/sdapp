@@ -265,11 +265,11 @@ Globals
 				type:'HEAD',
 				error: function()
 				{
-					checkEnvio();
+					//c('//file exists');
 				},
 				success: function()
 				{
-					c('//file exists');
+					checkEnvio();
 				}
 			});
 		}else{
