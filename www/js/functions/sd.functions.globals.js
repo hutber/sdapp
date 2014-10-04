@@ -261,7 +261,7 @@ Globals
 	SD.globals = function () {
 		if(window.location.protocol === "file:"){
 			$.ajax({
-				url:'icon-76-2x.png',
+				url:'config.xml', //file checker
 				type:'HEAD',
 				error: function()
 				{
@@ -269,7 +269,7 @@ Globals
 				},
 				success: function()
 				{
-//					c('//file exists');
+					c('//file exists');
 				}
 			});
 		}else{
