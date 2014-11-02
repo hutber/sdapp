@@ -79,10 +79,10 @@
     <gap:plugin name="com.phonegap.plugin.statusbar" />
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" version="0.2.1" />
+    <gap:plugin name="org.apache.cordova.splashscreen" />
 
     <!--Off-->
     <!--
-        <gap:plugin name="org.apache.cordova.splashscreen" />
         <gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" />
         <gap:plugin name="org.apache.cordova.vibration" />
     -->
