@@ -80,6 +80,10 @@
     <gap:plugin name="org.apache.cordova.device" />
     <gap:plugin name="hu.dpal.phonegap.plugins.spinnerdialog" version="0.2.1" />
     <gap:plugin name="org.apache.cordova.splashscreen" />
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="ios-package" value="CDVSplashScreen" />
+    </feature>
 
     <!--Off-->
     <!--
