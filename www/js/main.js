@@ -284,6 +284,7 @@ On Device Ready
 ================================================== */
 	if(SD.isMobile){
 		document.addEventListener("deviceready", function(){
+			navigator.splashscreen.hide();
 			runEverthing();
 			Backbone.history.start();
 			SD.checkConnection();
